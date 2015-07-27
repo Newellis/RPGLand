@@ -85,7 +85,7 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
                 double lastPosY = posY;
                 posY -= (yMove + yPushed);
                 if (posY - lastPosY != 0.0) {
-                   world.addMoveEntity(this, lastPosY);
+                   world.addMoveEntity(this);
                 }
             }
         }
@@ -214,6 +214,14 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
     public void setFacing(double facing) {
         spriteFacing = (int)facing;
         this.facing = (int)(facing * 2.0);
+    }
+
+    @Override
+    public String toString() {
+        return "Entity{" + getClass() +
+                ", posY= " + posY +
+                ", posX= " + posX +
+                '}';
     }
 
     public void setMoving(boolean moving){

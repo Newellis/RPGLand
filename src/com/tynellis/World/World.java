@@ -1,6 +1,7 @@
 package com.tynellis.World;
 
 import com.tynellis.Entities.Entity;
+import com.tynellis.Entities.EntityComparator;
 import com.tynellis.Entities.moveEntity;
 import com.tynellis.Save.FileHandler;
 import com.tynellis.Save.SavedArea;
@@ -16,6 +17,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class World implements Land, Serializable{
     public static final int WIDTH = 1024;
@@ -27,8 +30,10 @@ public class World implements Land, Serializable{
     private transient int[] areaOffset;
     private static final int X = 0,Y = 1;
     private transient Area[][] loadedAreas;
-    private transient ArrayList<Entity> entities = new ArrayList<Entity>(); // list of entities sorted by entities posY
-    private transient ArrayList<moveEntity> entityMoveList = new ArrayList<moveEntity>();
+    private transient SortedSet<Entity> entities = new TreeSet<Entity>(new EntityComparator());
+    //private transient ArrayList<Entity> entities = new ArrayList<Entity>(); // list of entities sorted by entities posY
+    private transient ArrayList<Entity> entityMoveList = new ArrayList<Entity>();
+    //private transient ArrayList<moveEntity> entityMoveList = new ArrayList<moveEntity>();
 
     public final long seed;
     public final Random WORLD_RAND;
@@ -43,8 +48,10 @@ public class World implements Land, Serializable{
     }
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
-        entityMoveList = new ArrayList<moveEntity>();
-        entities = new ArrayList<Entity>();
+        entityMoveList = new ArrayList<Entity>();
+        //entityMoveList = new ArrayList<moveEntity>();
+        entities = new TreeSet<Entity>(new EntityComparator());
+        //entities = new ArrayList<Entity>();
     }
 
     //render world
@@ -81,8 +88,10 @@ public class World implements Land, Serializable{
         if (entities.size() > 0) {
             for (Entity entity : entitiesInView) {
                 entity.render(g, xOffset, yOffset);
+                System.out.println(entity);
             }
         }
+        System.out.println("\n\n");
     }
 
     public void tick() {
@@ -95,9 +104,9 @@ public class World implements Land, Serializable{
 
         //keep entities list sorted by entity posY
         if (entityMoveList.size() > 0){
-            for(moveEntity move: entityMoveList){
-                moveEntity(move.getEntity(), move.getLastY());
-            }
+            SortedSet<Entity> temp = new TreeSet<Entity>(new EntityComparator());
+            temp.addAll(entities);
+            entities = temp;
             entityMoveList.clear();
         }
     }
@@ -204,21 +213,7 @@ public class World implements Land, Serializable{
 
     //add an entity to the world
     public void addEntity(Entity e) {
-        if (entities.size() > 0) {
-            for (int i = 0; i < entities.size(); i++) {
-                Entity compareTo = entities.get(i);
-                if (compareTo.getY() > e.getY()) {
-                    entities.add(i, e);
-                    return;
-                } else if (compareTo.getY() == e.getY()) {
-                    entities.add(i, e);
-                    return;
-                }
-            }
-            entities.add(e);
-        } else {
-            entities.add(e);
-        }
+        entities.add(e);
     }
 
     //remove an entity from the world
@@ -227,40 +222,8 @@ public class World implements Land, Serializable{
     }
 
     //add an entity to the list to resort in the entities list
-    public void addMoveEntity(Entity e, double lastY){
-        entityMoveList.add(new moveEntity(e, lastY));
-    }
-
-    //move entity in entities list so it is rendered correctly
-    private void moveEntity(Entity e, double lastY) {
-        int start = entities.indexOf(e);
-        if (lastY < e.getY() && start > 1) {
-            entities.remove(e);
-            for (int i = start; i < entities.size(); i++) {
-                Entity compareTo = entities.get(i);
-                if (compareTo.getY() > e.getY()){
-                    entities.add(i, e);
-                    return;
-                } else if (compareTo.getY() == e.getY()){
-                    entities.add(i, e);
-                    return;
-                }
-            }
-            entities.add(e);
-        } else if (lastY > e.getY() && start < entities.size()){
-            entities.remove(e);
-            for (int i = start-1; i >= 0; i--) {
-                Entity compareTo = entities.get(i);
-                if (compareTo.getY() < e.getY()){
-                    entities.add(i, e);
-                    return;
-                } else if (compareTo.getY() == e.getY()){
-                    entities.add(i, e);
-                    return;
-                }
-            }
-            entities.add(e);
-        }
+    public void addMoveEntity(Entity e){
+        entityMoveList.add(e);
     }
 
     //get the tile at coordinates X, Y, Z

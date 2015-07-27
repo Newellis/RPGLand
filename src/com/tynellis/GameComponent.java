@@ -3,10 +3,6 @@ package com.tynellis;
 import com.tynellis.Entities.NPC.NpcBase;
 import com.tynellis.Entities.NPC.NpcQuestGiver;
 import com.tynellis.Entities.Player;
-import com.tynellis.Events.EventHandler;
-import com.tynellis.Events.KeysEvent;
-import com.tynellis.Events.TurnTrigger;
-import com.tynellis.Events.WorldEvent;
 import com.tynellis.Menus.MainMenu;
 import com.tynellis.Menus.Menu;
 import com.tynellis.Menus.PauseMenu;
@@ -46,7 +42,6 @@ public class GameComponent extends JPanel implements Runnable {
 
     private GameState state = GameState.MENU;
     private Menu menu = new MainMenu(GAME_WIDTH, GAME_HEIGHT);
-    private EventHandler eventHandler;
     private World world;
     private Player player;
     private static final int autoSaveTicks = 60 * 30; //ticks per sec * seconds between saves
@@ -92,8 +87,6 @@ public class GameComponent extends JPanel implements Runnable {
         int max = 0;
         double frameRate = 60;
         double nsPerTick = 1000000000.0 / frameRate;
-        eventHandler = new EventHandler();
-        eventHandler.addEvent(new TurnTrigger(new KeysEvent(keys), 1));
 
         while (running) {
             if (!frame.hasFocus()) {
@@ -190,7 +183,7 @@ public class GameComponent extends JPanel implements Runnable {
     }
 
     private void tick() {
-        eventHandler.tick();
+        keys.tick();
         if (keys.pause.wasReleased()){
             if (menu != null) {
                 state = GameState.SINGLE_PLAYER;
@@ -201,7 +194,6 @@ public class GameComponent extends JPanel implements Runnable {
             }
         }
         if(state == GameState.SINGLE_PLAYER || state == GameState.IN_GAME_MENU) {
-            //eventHandler.addEvent(new TurnTrigger(new WorldEvent(world), eventHandler.getCurrentTurn()));
             world.tick();
             if (ticksToSave == 0) {
                 ticksToSave = autoSaveTicks;

@@ -29,7 +29,6 @@ public class EventHandler {
 
     public static void main(String[] args){
         EventHandler handler = new EventHandler();
-        //handler.addEvent(new TurnTrigger(new TickEvent(), 1));
         for (int i = 0; i < 110; i++){
             handler.tick();
         }
