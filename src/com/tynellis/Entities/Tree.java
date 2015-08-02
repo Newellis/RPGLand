@@ -33,8 +33,8 @@ public class Tree extends Entity {
     public void render(Graphics g, int xOffset, int yOffset) {
         BufferedImage trunkFrame = trunk.getSprite(0).getStill(treeType);
         BufferedImage topFrame = top.getSprite(treeType).getStill(0);
-        g.drawImage(trunkFrame, (int)((posX + 0.5) * Tile.WIDTH) + xOffset - (trunkFrame.getWidth() / 2), (int)(((posY + 0.5) * Tile.HEIGHT) + yOffset - trunkFrame.getHeight() + (1.5 * height)), null);
-        g.drawImage(topFrame, (int)((posX + 0.5) * Tile.WIDTH) + xOffset - (topFrame.getWidth() / 2), (int)(((posY + 0.5) * Tile.HEIGHT) + yOffset - topFrame.getHeight()) - treeHeight, null);
+        g.drawImage(trunkFrame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (trunkFrame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - trunkFrame.getHeight() + (2 * height)), null);
+        g.drawImage(topFrame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (topFrame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - topFrame.getHeight()) - treeHeight + (height / 2), null);
         super.render(g,xOffset,yOffset);
     }
 

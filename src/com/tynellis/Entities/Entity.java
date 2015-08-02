@@ -111,8 +111,18 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
         return posZ;
     }
 
+    public double getSpeed() {
+        return speed;
+    }
+
+    public void setLocation(int x, int y, int z) {
+        posX = x;
+        posY = y;
+        posZ = z;
+    }
+
     public Rectangle getBounds() {
-        return new Rectangle((int)((posX + 0.5) * Tile.WIDTH) - (width / 2), (int)((posY + 0.5) * Tile.HEIGHT) - (height), width, height);
+        return new Rectangle((int) ((posX + 0.5) * Tile.WIDTH) - (width / 2), (int) ((posY + 0.5) * Tile.HEIGHT) - (height / 2), width, height);
     }
 
     public void handleCollision(BoundingBoxOwner bb, double xMove, double yMove){
@@ -191,7 +201,7 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
 
     private boolean tileBlocks(World world, Rectangle rect, int x, int y){
         Tile downTile = world.getTile(x, y, posZ);
-        if (downTile != null && !downTile.isPassableBy(this) && rect.intersects(world.getTileBounds(x, y, (int) posZ))) {
+        if (downTile != null && !downTile.isPassableBy(this) && rect.intersects(world.getTileBounds(x, y, posZ))) {
             return true;
         } else if (downTile == null) {
             return true;

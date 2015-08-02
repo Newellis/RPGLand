@@ -14,6 +14,6 @@ public class EntityComparator implements Comparator<Entity>{
         } else if (t1.getX() > t0.getX()){
             return -1;
         }
-        return 1;
+        return 0;
     }
 }

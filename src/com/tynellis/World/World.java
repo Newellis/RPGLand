@@ -2,7 +2,6 @@ package com.tynellis.World;
 
 import com.tynellis.Entities.Entity;
 import com.tynellis.Entities.EntityComparator;
-import com.tynellis.Entities.moveEntity;
 import com.tynellis.Save.FileHandler;
 import com.tynellis.Save.SavedArea;
 import com.tynellis.Save.StoreLoad;
@@ -15,7 +14,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -32,8 +30,8 @@ public class World implements Land, Serializable{
     private transient Area[][] loadedAreas;
     private transient SortedSet<Entity> entities = new TreeSet<Entity>(new EntityComparator());
     //private transient ArrayList<Entity> entities = new ArrayList<Entity>(); // list of entities sorted by entities posY
+    //private transient int entitiesMoved = 0;
     private transient ArrayList<Entity> entityMoveList = new ArrayList<Entity>();
-    //private transient ArrayList<moveEntity> entityMoveList = new ArrayList<moveEntity>();
 
     public final long seed;
     public final Random WORLD_RAND;
@@ -49,7 +47,6 @@ public class World implements Land, Serializable{
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
         entityMoveList = new ArrayList<Entity>();
-        //entityMoveList = new ArrayList<moveEntity>();
         entities = new TreeSet<Entity>(new EntityComparator());
         //entities = new ArrayList<Entity>();
     }
@@ -88,10 +85,8 @@ public class World implements Land, Serializable{
         if (entities.size() > 0) {
             for (Entity entity : entitiesInView) {
                 entity.render(g, xOffset, yOffset);
-                System.out.println(entity);
             }
         }
-        System.out.println("\n\n");
     }
 
     public void tick() {
@@ -103,7 +98,11 @@ public class World implements Land, Serializable{
         }
 
         //keep entities list sorted by entity posY
-        if (entityMoveList.size() > 0){
+        if (entityMoveList.size() > 0) {
+//            for (Entity entity: entityMoveList){
+//                entities.remove(entity);
+//                entities.add(entity);
+//            }
             SortedSet<Entity> temp = new TreeSet<Entity>(new EntityComparator());
             temp.addAll(entities);
             entities = temp;
@@ -276,6 +275,8 @@ public class World implements Land, Serializable{
         nodeRect.width = rect.width/Tile.WIDTH;
         return getEntitiesNearBounds(rect, 1);
     }
+
+    //get list of Entities in radius of rect
     public ArrayList<Entity> getEntitiesNearBounds(Rectangle rect, int radius) {
         rect.grow(radius * Tile.WIDTH, radius * Tile.HEIGHT);
         return getEntitiesIntersecting(rect);
@@ -321,8 +322,12 @@ public class World implements Land, Serializable{
                     continue;
                 }
                 if (x+i >= 0 || y+j >= 0){
-                    if (getTile(x+i,y+j,z).isPassableBy(e)) {
-                        nodes.add(new Node(x + i, y + j));
+                    if (Math.abs(i) == 1 && Math.abs(j) == 1) {
+                        if (getTile(x + i, y + j, z).isPassableBy(e) && getTile(x + i, y, z).isPassableBy(e) && getTile(x, y + j, z).isPassableBy(e)) {
+                            nodes.add(new Node(x + i, y + j, z));
+                        }
+                    } else if (getTile(x + i, y + j, z).isPassableBy(e)) {
+                        nodes.add(new Node(x + i, y + j, z));
                     }
                 }
             }

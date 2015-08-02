@@ -4,19 +4,20 @@ import com.tynellis.World.Tiles.Tile;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Node {
     private List<NodeRelation> neighbors = new ArrayList<NodeRelation>();
     private double X,Y;
+    private int Z;
     private double scoreFromStart = Double.MAX_VALUE;
     private double fScore;
 
-    public Node(double x, double y) {
+    public Node(double x, double y, int z) {
         X=x;
         Y=y;
+        Z = z;
     }
 
     public void render(Graphics g, int xOffset, int yOffset){
@@ -34,15 +35,13 @@ public class Node {
         neighbors.add(neighbor);
     }
 
-    public boolean removeEndNodes(){
-        boolean success = false;
-        for(NodeRelation nodeRelation: neighbors){
-            if (nodeRelation.node instanceof EndNode){
-                neighbors.remove(nodeRelation);
-                success = true;
-            }
-        }
-        return success;
+    @Override
+    public String toString() {
+        return "Node{" +
+                "X=" + X +
+                ", Y=" + Y +
+                ", Z=" + Z +
+                '}';
     }
 
     public double getX() {
@@ -51,6 +50,10 @@ public class Node {
 
     public double getY() {
         return Y;
+    }
+
+    public int getZ() {
+        return Z;
     }
 
     public boolean setScore(double score) {

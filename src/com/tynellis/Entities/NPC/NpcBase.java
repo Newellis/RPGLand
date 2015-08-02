@@ -12,7 +12,6 @@ import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.World;
 
 import java.awt.Graphics;
-import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,7 +38,7 @@ public abstract class NpcBase extends Mob {
         super(x, y, z, 32, 32);
         this.name = name;
         this.gender = gender;
-        pathfinder = new PathfinderAi(x,y);
+        pathfinder = new PathfinderAi(x, y, z, 48);
         Ai.addTask(1, new FaceClosestPlayerAi(2));
         Ai.addTask(0, pathfinder);
         setSprite(gender);
@@ -108,7 +107,7 @@ public abstract class NpcBase extends Mob {
             animation.play();
         }
         frame = animation.getFrame();
-        g.drawImage(frame, (int)((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int)((posY + 0.5) * Tile.HEIGHT) + yOffset - frame.getHeight(), null);
+        g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 1.5)), null);
         animation.tick();
         //if (World.DEBUG) {
             List<Node> nodes = pathfinder.getPath();

@@ -93,7 +93,7 @@ public class Player extends Mob {
             animation.play();
         }
         frame = animation.getFrame();
-        g.drawImage(frame, (int)((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int)((posY + 0.5) * Tile.HEIGHT) + yOffset - frame.getHeight(), null);
+        g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 1.5)), null);
         animation.tick();
         super.render(g, xOffset, yOffset);
     }

@@ -2,9 +2,10 @@ package com.tynellis.Entities.NPC.AiTasks;
 
 import com.tynellis.Entities.Entity;
 import com.tynellis.World.Nodes.Node;
-import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.World;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,21 +13,24 @@ import java.util.List;
 import java.util.Map;
 
 public class PathfinderAi implements AiTask, Serializable {
-    private static final double errorMargin = 0.1;
     private double destX, destY;
-    private int lastUpdate = 0;
+    private int destZ, range;
     private transient List<Node> path = new ArrayList<Node>();
 
-    public PathfinderAi(double x, double y){
+    public PathfinderAi(int x, int y, int z, int range) {
         destX = x;
         destY = y;
+        destZ = z;
+        this.range = range;
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        path = new ArrayList<Node>();
     }
 
     @Override
     public boolean performTask(World world, Entity e) {
-        lastUpdate++;
-        if ((path.size() == 0 || lastUpdate > 20) && (Math.abs(e.getX() - destX) > errorMargin || Math.abs(e.getY() - destY) > errorMargin)) {
-            lastUpdate = 0;
+        if ((path.size() == 0 || !pathIsValid(world, e)) && (Math.abs(e.getX() - destX) > e.getSpeed() || Math.abs(e.getY() - destY) > e.getSpeed())) {
             return findPath(world, e);
         } else {
             return path.size() > 0 && moveAlongPath(e);
@@ -35,11 +39,11 @@ public class PathfinderAi implements AiTask, Serializable {
 
     private boolean moveAlongPath(Entity e) {
         Node nextNode = path.get(0);
-        if (path.size() == 1 && (Math.abs(e.getX() - nextNode.getX()) < errorMargin && Math.abs(e.getY() - nextNode.getY()) < errorMargin)){
+        if (path.size() == 1 && (Math.abs(e.getX() - nextNode.getX()) < e.getSpeed() && Math.abs(e.getY() - nextNode.getY()) < e.getSpeed())) {
             e.setMoving(false);
             path.clear();
             return false;
-        }else if ((Math.abs(e.getX() - nextNode.getX()) < errorMargin && Math.abs(e.getY() - nextNode.getY()) < errorMargin)){
+        } else if ((Math.abs(e.getX() - nextNode.getX()) < e.getSpeed() && Math.abs(e.getY() - nextNode.getY()) < e.getSpeed())) {
             path.remove(nextNode);
             return true;
         } else {
@@ -51,11 +55,27 @@ public class PathfinderAi implements AiTask, Serializable {
         }
     }
 
+    private boolean pathIsValid(World world, Entity e) {
+        if (path.size() == 0) {
+            return false;
+        }
+        Node nextNode = path.get(0);
+        if ((Math.abs(e.getX() - nextNode.getX()) > 1.4 + e.getSpeed() || Math.abs(e.getY() - nextNode.getY()) > 1.4 + e.getSpeed())) {
+            return false;
+        }
+        for (Node node : path) {
+            if (world.getTile((int) node.getX(), (int) node.getY(), 0).isObstructed()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private boolean findPath(World world, Entity e) {
         List<Node> closedSet = new ArrayList<Node>();// The set of nodes already evaluated.
         List<Node> openSet = new ArrayList<Node>(); // The set of tentative nodes to be evaluated, initially containing the start node
-        Node start = new Node(e.getX(), e.getY());
-        Node goal = new Node(destX, destY);
+        Node start = new Node(e.getX(), e.getY(), e.getZ());
+        Node goal = new Node(destX, destY, destZ);
         if (world.getTile((int) e.getX(), (int) e.getY(), e.getZ()).isObstructed()) {
             return false;
         }
@@ -64,7 +84,9 @@ public class PathfinderAi implements AiTask, Serializable {
         start.setScore(0); // Cost from start along best known path.
         // Estimated total cost from start to goal through y.
         start.setFScore(start.getScore() + heuristicCostEstimate(start, goal));
-
+        if (start.getFScore() > range) {
+            return false;
+        }
         while (openSet.size() > 0) {
             Node current = null;
             for (Node node : openSet) {
@@ -77,12 +99,11 @@ public class PathfinderAi implements AiTask, Serializable {
             assert current != null;
             if (current.equals(goal)) {
                 reconstruct_path(cameFrom, goal);
-                System.out.println("closed Nodes: " + closedSet.size() + "\nopen Nodes: " + openSet.size() + "\npath Nodes: " + path.size());
                 return true;
             }
             openSet.remove(current);
             closedSet.add(current);
-            ArrayList<Node> nodes = world.getAdjacentNodesFromTiles((int)current.getX(), (int)current.getY(),e.getZ(),e);
+            ArrayList<Node> nodes = world.getAdjacentNodesFromTiles((int) current.getX(), (int) current.getY(), current.getZ(), e);
             for (Node node: nodes){
                 current.addNeighbor(node);
             }
@@ -134,9 +155,10 @@ public class PathfinderAi implements AiTask, Serializable {
         return scoreLeft;
     }
 
-    public void setLocation(double x, double y) {
+    public void setLocation(int x, int y, int z) {
         destX = x;
-        destY = y;
+        destY = y - 0.5;
+        destZ = z;
     }
 
     public List<Node> getPath() {
