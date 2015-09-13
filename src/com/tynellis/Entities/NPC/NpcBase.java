@@ -5,7 +5,9 @@ import com.tynellis.Art.SpriteSheet;
 import com.tynellis.Entities.Entity;
 import com.tynellis.Entities.Mob;
 import com.tynellis.Entities.NPC.AiTasks.FaceClosestPlayerAi;
+import com.tynellis.Entities.NPC.AiTasks.FollowEntityAi;
 import com.tynellis.Entities.NPC.AiTasks.PathfinderAi;
+import com.tynellis.Entities.Player;
 import com.tynellis.GameComponent;
 import com.tynellis.World.Nodes.Node;
 import com.tynellis.World.Tiles.Tile;
@@ -38,9 +40,9 @@ public abstract class NpcBase extends Mob {
         super(x, y, z, 32, 32);
         this.name = name;
         this.gender = gender;
-        pathfinder = new PathfinderAi(x, y, z, 48);
-        Ai.addTask(1, new FaceClosestPlayerAi(2));
+        pathfinder = new FollowEntityAi(Player.class, 30, 2);//new PathfinderAi(x, y, z, 48);
         Ai.addTask(0, pathfinder);
+        Ai.addTask(1, new FaceClosestPlayerAi(2));
         setSprite(gender);
     }
 
@@ -109,14 +111,14 @@ public abstract class NpcBase extends Mob {
         frame = animation.getFrame();
         g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 1.5)), null);
         animation.tick();
-        //if (World.DEBUG) {
+        if (World.DEBUG) {
             List<Node> nodes = pathfinder.getPath();
             if (nodes != null) {
                 for (Node node : nodes) {
                     node.render(g, xOffset, yOffset);
                 }
             }
-        //}
+        }
         super.render(g, xOffset, yOffset);
     }
 

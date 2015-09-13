@@ -6,6 +6,7 @@ import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.World;
 import com.tynellis.input.Keys;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -95,6 +96,10 @@ public class Player extends Mob {
         frame = animation.getFrame();
         g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 1.5)), null);
         animation.tick();
+        if (World.DEBUG) {
+            g.setColor(Color.WHITE);
+            g.drawString("X,Y,Z: " + posX + ", " + posY + ", " + posZ, 10, 34);
+        }
         super.render(g, xOffset, yOffset);
     }
 

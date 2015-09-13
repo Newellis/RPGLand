@@ -40,13 +40,16 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
     }
 
     public void tick(World world){
-        double xMove = 0;
-        double yMove = 0;
         facingAngle = (Math.PI / 4 * facing);
         yPushed = xPushed = 0;
         yMoving = xMoving = canBeMoved;
 
 
+        move(world, speed);
+    }
+
+    private void move(World world, double speed) {
+        double xMove = 0, yMove = 0;
         if (moving) {
             xMove += (Math.sin(facingAngle) * speed);
             yMove += (Math.cos(facingAngle) * speed);
@@ -115,7 +118,7 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
         return speed;
     }
 
-    public void setLocation(int x, int y, int z) {
+    public void setLocation(double x, double y, int z) {
         posX = x;
         posY = y;
         posZ = z;
@@ -221,9 +224,21 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
         return facing;
     }
 
+    public double getFacingAngle() {
+        return facingAngle;
+    }
+
     public void setFacing(double facing) {
-        spriteFacing = (int)facing;
         this.facing = (int)(facing * 2.0);
+        if (this.facing == 0) spriteFacing = 0;
+        else if (this.facing > 0 && this.facing < 4) spriteFacing = 1;
+        else if (this.facing == 4) spriteFacing = 2;
+        else if (this.facing > 4 && this.facing < 8) spriteFacing = 3;
+    }
+
+    public void setLooking(double looking) {
+        spriteFacing = (int) looking;
+        this.facing = (int) looking * 2;
     }
 
     @Override

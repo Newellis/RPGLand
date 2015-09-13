@@ -4,10 +4,11 @@ import com.tynellis.World.Tiles.Tile;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Node {
+public class Node implements Serializable {
     private List<NodeRelation> neighbors = new ArrayList<NodeRelation>();
     private double X,Y;
     private int Z;
@@ -91,7 +92,7 @@ public class Node {
         return ((int)X)<<16 ^ (int)Y;
     }
 
-    public class NodeRelation {
+    public class NodeRelation implements Serializable {
         private int distance;
         private Node node;
         public NodeRelation(Node node, int distance){

@@ -335,6 +335,33 @@ public class World implements Land, Serializable{
         return nodes;
     }
 
+    public ArrayList<Node> getAdjacentNodes(Node node, Entity e) {
+        if (node.getX() == Math.floor(node.getX()) && node.getY() == Math.floor(node.getY())) {
+            return getAdjacentNodesFromTiles((int) node.getX(), (int) node.getY(), node.getZ(), e);
+        } else {
+            ArrayList<Node> nodes = new ArrayList<Node>();
+            Node[] adjacent = new Node[4];
+            if (getTile((int) Math.floor(node.getX()), (int) Math.floor(node.getY()), node.getZ()).isPassableBy(e)) {
+                adjacent[0] = new Node((int) Math.floor(node.getX()), (int) Math.floor(node.getY()), node.getZ());
+            }
+            if (getTile((int) Math.floor(node.getX()), (int) Math.ceil(node.getY()), node.getZ()).isPassableBy(e)) {
+                adjacent[1] = new Node((int) Math.floor(node.getX()), (int) Math.ceil(node.getY()), node.getZ());
+            }
+            if (getTile((int) Math.ceil(node.getX()), (int) Math.floor(node.getY()), node.getZ()).isPassableBy(e)) {
+                adjacent[2] = new Node((int) Math.ceil(node.getX()), (int) Math.floor(node.getY()), node.getZ());
+            }
+            if (getTile((int) Math.ceil(node.getX()), (int) Math.ceil(node.getY()), node.getZ()).isPassableBy(e)) {
+                adjacent[3] = new Node((int) Math.ceil(node.getX()), (int) Math.ceil(node.getY()), node.getZ());
+            }
+            for (Node adj : adjacent) {
+                if (adj != null) {
+                    nodes.add(adj);
+                }
+            }
+            return nodes;
+        }
+    }
+
     //set centerArea and calculate areaOffset from it
     public void setAreaOffset(int x, int y) {
         areaOffset = new int[]{x,y};

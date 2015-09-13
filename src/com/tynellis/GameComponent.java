@@ -174,9 +174,6 @@ public class GameComponent extends JPanel implements Runnable {
         }
         screen.setColor(Color.WHITE);
         screen.drawString("FPS: " + fps, 10, 20);
-        if (player != null) {
-            screen.drawString("X,Y: " + player.getX() + ", " + player.getY(), 10, 70);
-        }
         width = getWidth();
         height = getHeight();
         g.drawImage(screenFrame, 0, 0, null);

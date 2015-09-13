@@ -27,7 +27,7 @@ public class FaceClosestPlayerAi implements AiTask, Serializable {
             closest = players.get(0);
             double face = facingEntity(e, closest);
             if (face != e.getFacing()) {
-                e.setFacing(face);
+                e.setLooking(face);
                 return true;
             }
             return false;
@@ -39,7 +39,7 @@ public class FaceClosestPlayerAi implements AiTask, Serializable {
                         closest = (Player) entity;
                         double face = facingEntity(e, closest);
                         if (face != e.getFacing()) {
-                            e.setFacing(face);
+                            e.setLooking(face);
                             return true;
                         }
                         return false;

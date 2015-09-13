@@ -13,14 +13,19 @@ import java.util.List;
 import java.util.Map;
 
 public class PathfinderAi implements AiTask, Serializable {
-    private double destX, destY;
-    private int destZ, range;
-    private transient List<Node> path = new ArrayList<Node>();
+    protected double destX, destY;
+    protected int destZ;
+    protected int range;
+    protected transient List<Node> path = new ArrayList<Node>();
 
     public PathfinderAi(int x, int y, int z, int range) {
         destX = x;
         destY = y;
         destZ = z;
+        this.range = range;
+    }
+
+    public PathfinderAi(int range) {
         this.range = range;
     }
 
@@ -39,18 +44,20 @@ public class PathfinderAi implements AiTask, Serializable {
 
     private boolean moveAlongPath(Entity e) {
         Node nextNode = path.get(0);
-        if (path.size() == 1 && (Math.abs(e.getX() - nextNode.getX()) < e.getSpeed() && Math.abs(e.getY() - nextNode.getY()) < e.getSpeed())) {
+        if (path.size() == 1 && (Math.abs(e.getX() - nextNode.getX()) == 0 && Math.abs(e.getY() - nextNode.getY()) == 0)) {
             e.setMoving(false);
             path.clear();
             return false;
-        } else if ((Math.abs(e.getX() - nextNode.getX()) < e.getSpeed() && Math.abs(e.getY() - nextNode.getY()) < e.getSpeed())) {
+        } else if ((Math.abs(e.getX() - nextNode.getX()) == 0 && Math.abs(e.getY() - nextNode.getY()) == 0)) {
             path.remove(nextNode);
+            return true;
+        } else if ((Math.abs(e.getX() - nextNode.getX()) < (e.getSpeed()) && Math.abs(e.getY() - nextNode.getY()) < (e.getSpeed()))) {
+            e.setMoving(false);
+            e.setLocation(nextNode.getX(), nextNode.getY(), nextNode.getZ());
             return true;
         } else {
             e.setFacing(FaceClosestPlayerAi.facingPoint(e, nextNode.getX(), nextNode.getY()));
-            if (World.DEBUG) {
-                e.setMoving(true);
-            }
+            e.setMoving(true);
             return true;
         }
     }
@@ -60,13 +67,17 @@ public class PathfinderAi implements AiTask, Serializable {
             return false;
         }
         Node nextNode = path.get(0);
-        if ((Math.abs(e.getX() - nextNode.getX()) > 1.4 + e.getSpeed() || Math.abs(e.getY() - nextNode.getY()) > 1.4 + e.getSpeed())) {
+        if ((Math.abs(e.getX() - nextNode.getX()) > 1.1 + e.getSpeed() || Math.abs(e.getY() - nextNode.getY()) > 1.1 + e.getSpeed())) {
             return false;
         }
         for (Node node : path) {
             if (world.getTile((int) node.getX(), (int) node.getY(), 0).isObstructed()) {
                 return false;
             }
+        }
+        Node endNode = new Node(destX, destY, destZ);
+        if (!path.get(path.size() - 1).equals(endNode)) {
+            return false;
         }
         return true;
     }
@@ -76,6 +87,9 @@ public class PathfinderAi implements AiTask, Serializable {
         List<Node> openSet = new ArrayList<Node>(); // The set of tentative nodes to be evaluated, initially containing the start node
         Node start = new Node(e.getX(), e.getY(), e.getZ());
         Node goal = new Node(destX, destY, destZ);
+        if (!world.getTile((int) goal.getX(), (int) goal.getY(), goal.getZ()).isPassableBy(e)) {
+            return false;
+        }
         if (world.getTile((int) e.getX(), (int) e.getY(), e.getZ()).isObstructed()) {
             return false;
         }
@@ -103,7 +117,7 @@ public class PathfinderAi implements AiTask, Serializable {
             }
             openSet.remove(current);
             closedSet.add(current);
-            ArrayList<Node> nodes = world.getAdjacentNodesFromTiles((int) current.getX(), (int) current.getY(), current.getZ(), e);
+            ArrayList<Node> nodes = world.getAdjacentNodes(current, e);
             for (Node node: nodes){
                 current.addNeighbor(node);
             }
@@ -136,7 +150,7 @@ public class PathfinderAi implements AiTask, Serializable {
     }
 
     //uses as strait of a line as can be done using 8 directions to calculate
-    private double heuristicCostEstimate(Node pos, Node goal) {
+    protected double heuristicCostEstimate(Node pos, Node goal) {
         double x,y,scoreLeft = 0;
         x = Math.abs(pos.getX()-goal.getX());
         y = Math.abs(pos.getY()-goal.getY());
@@ -155,7 +169,7 @@ public class PathfinderAi implements AiTask, Serializable {
         return scoreLeft;
     }
 
-    public void setLocation(int x, int y, int z) {
+    public void setLocation(double x, double y, int z) {
         destX = x;
         destY = y - 0.5;
         destZ = z;
