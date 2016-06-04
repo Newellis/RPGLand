@@ -1,6 +1,8 @@
 package com.tynellis;
 
+import com.tynellis.World.Area;
 import com.tynellis.World.World;
+import com.tynellis.World.WorldGen;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -12,9 +14,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Line2D;
+import java.util.Random;
 
 public class WorldComponent extends JComponent{
     private int[][] array;
+    private int[] spawn = new int[3];
     public static void main(String[] args) {
         WorldComponent mc = new WorldComponent();
         JFrame frame = new JFrame();
@@ -30,8 +34,13 @@ public class WorldComponent extends JComponent{
 
     public WorldComponent() {
         this.setPreferredSize(new Dimension(World.WIDTH, World.HEIGHT));
-        long seed = 2000000;
+        Random random = new Random();
+        long seed = random.nextLong();
+        seed = 2000000;
+        System.out.println("Seed: " + seed);
         World world = new World("test", seed);
+        world.genSpawn(seed);
+        spawn = world.getSpawnPoint();
         array = world.gen.getLandAreas(); //world.gen.erodeArea(20 * Area.WIDTH, 10 * Area.HEIGHT, new Random(seed * ((20 * Area.WIDTH * World.WIDTH) + 10 * Area.HEIGHT)));
     }
 
@@ -42,17 +51,19 @@ public class WorldComponent extends JComponent{
 
         for (int x = 0; x < array.length; x++) {
             for (int y = 0; y < array[x].length; y++) {
-                if (array[x][y] > 400) {
+                if (array[x][y] > WorldGen.SNOW_LEVEL) {
                     g2.setColor(new Color(0.95f, 0.95f, 1.0f));
-                }   else if (array[x][y] > 350) {
+                } else if (array[x][y] > WorldGen.TREE_LEVEL) {
+                    g2.setColor(new Color(0.0f, 0.5f, 0.0f));
+                } else if (array[x][y] > WorldGen.SLOPE_LEVEL) {
                     g2.setColor(new Color(0.0f,0.6f,0.0f));
-                } else if (array[x][y] > 300) {
+                } else if (array[x][y] > WorldGen.MOUNTAIN_BASE_LEVEL) {
                     g2.setColor(new Color(0.0f,0.7f,0.0f));
-                } else if (array[x][y] > 200) {
+                } else if (array[x][y] > WorldGen.HILL_LEVEL) {
                     g2.setColor(new Color(0.0f,0.8f,0.0f));
-                } else if (array[x][y] > 30) {
+                } else if (array[x][y] > WorldGen.BEACH_MAX_LEVEL) {
                     g2.setColor(new Color(0.0f,0.9f,0.0f));
-                } else if (array[x][y] > 25) {
+                } else if (array[x][y] > WorldGen.SEA_LEVEL) {
                     g2.setColor(new Color(0.9019608f, 0.8980392f, 0.1882353f));
                 } else if (array[x][y] > 23){
                     g2.setColor(new Color(0.5f,0.5f,1.0f));
@@ -64,5 +75,7 @@ public class WorldComponent extends JComponent{
             }
             //System.out.printf("%3.1f Done\n",((x + 1.0)/World.WIDTH) * 100.0);
         }
+        g2.setColor(Color.RED);
+        g2.fillRect(spawn[0] / Area.WIDTH - 2, spawn[1] / Area.HEIGHT - 2, 5, 5);
     }
 }

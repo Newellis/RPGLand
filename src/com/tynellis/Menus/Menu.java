@@ -3,7 +3,6 @@ package com.tynellis.Menus;
 import com.tynellis.GameComponent;
 import com.tynellis.Menus.MenuComponents.Button;
 import com.tynellis.Menus.MenuComponents.ButtonListener;
-import com.tynellis.Menus.MenuComponents.GuiCompLocations;
 import com.tynellis.Menus.MenuComponents.MenuComponent;
 import com.tynellis.input.MouseInput;
 

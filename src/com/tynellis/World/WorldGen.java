@@ -1,16 +1,29 @@
 package com.tynellis.World;
 
-import com.tynellis.Entities.Tree;
-import com.tynellis.World.Nodes.Node;
-import com.tynellis.World.Tiles.Dirt;
-import com.tynellis.World.Tiles.Grass;
+import com.tynellis.GameComponent;
+import com.tynellis.World.Entities.Tree;
+import com.tynellis.World.Tiles.LandTiles.LandTile;
+import com.tynellis.World.Tiles.LandTiles.ManMade.Ladder;
+import com.tynellis.World.Tiles.LandTiles.Natural.Grass;
+import com.tynellis.World.Tiles.LandTiles.Natural.Sand;
+import com.tynellis.World.Tiles.LandTiles.Natural.Snow;
+import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.Tiles.Water;
 
+import java.awt.Rectangle;
 import java.io.Serializable;
 import java.util.Random;
 
 public class WorldGen implements Serializable{
     private World world;
+    public static final int SEA_LEVEL = 25;
+    public static final int BEACH_MAX_LEVEL = 50;
+    public static final int HILL_LEVEL = 300;//150;
+    public static final int MOUNTAIN_BASE_LEVEL = 500;//235;
+    public static final int SLOPE_LEVEL = 600;//300;
+    public static final int TREE_LEVEL = 700;//350;
+    public static final int SNOW_LEVEL = 800;//400;
+
     private int[][] landAreas;
     private int[][] caveAreas = new int[World.WIDTH][World.HEIGHT];
 
@@ -20,8 +33,34 @@ public class WorldGen implements Serializable{
         genLand();
     }
 
+    public void setSpawn(long seed) {
+        Random rand = new Random(seed);
+        boolean viableArea = false, viable = false;
+        while (!viableArea) {
+            int x = rand.nextInt(World.WIDTH),
+                    y = rand.nextInt(World.HEIGHT);
+            if (landAreas[x][y] > SEA_LEVEL && landAreas[x][y] < TREE_LEVEL) {
+                world.setHalfNumOfAreas(1 + (GameComponent.GAME_WIDTH / (Tile.WIDTH * Area.WIDTH)), 1 + (GameComponent.GAME_HEIGHT / (Tile.HEIGHT * Area.HEIGHT)));
+                world.setAreaOffset(x - 3, y - 4);
+                world.loadAreas();
+                while (!viable) {
+                    int areaX = rand.nextInt(2 * Area.WIDTH) - Area.WIDTH,
+                            areaY = rand.nextInt(2 * Area.HEIGHT) - Area.HEIGHT;
+                    Tile tile = world.getTile((x * Area.WIDTH) + areaX, (y * Area.HEIGHT) + areaY, world.getTopLayerAt((x * Area.WIDTH) + areaX, (y * Area.HEIGHT) + areaY));
+                    Rectangle tileBounds = tile.getBounds();
+                    tileBounds.setLocation((x * Area.WIDTH) + areaX, (y * Area.HEIGHT) + areaY);
+                    if (tile instanceof LandTile && (!tile.isObstructed() || world.getEntitiesInBounds(tileBounds).size() > 0)) {
+                        world.setSpawnPoint(new int[]{(x * Area.WIDTH) + areaX, (y * Area.HEIGHT) + areaY, world.getTopLayerAt((x * Area.WIDTH) + areaX, (y * Area.HEIGHT) + areaY)});
+                        viable = true;
+                    }
+                }
+                viableArea = true;
+            }
+        }
+    }
+
     public void genLand() {
-        int pow = 6;
+        int pow = 5;
         int[][] seedArea = seedArea(pow);
         landAreas = diamondStep(seedArea, World.WIDTH, 2*((World.WIDTH*Area.WIDTH)/(int)Math.pow(2,pow)), world.WORLD_RAND, true);//25
     }
@@ -168,16 +207,12 @@ public class WorldGen implements Serializable{
                 int neighbour_x = x+i;
                 int neighbour_y = y+j;
                 //If we're looking at the middle point
-                if(i == 0 && j == 0){
-                    //Do nothing, we don't want to add ourselves in!
-                }
-                //In case the index we're looking at it off the edge of the map
-                else if(neighbour_x < 0 || neighbour_y < 0 || neighbour_x >= map.length || neighbour_y >= map[0].length){
-                    //count = count + 1;
-                }
-                //Otherwise, a normal check of the neighbour
-                else if(map[neighbour_x][neighbour_y] > 0){
-                    count = count + 1;
+                if (i != 0 || j != 0) {
+                    if (neighbour_x >= 0 && neighbour_y >= 0 && neighbour_x < map.length && neighbour_y < map[0].length) {
+                        if (map[neighbour_x][neighbour_y] > 0) {
+                            count = count + 1;
+                        }
+                    }
                 }
             }
         }
@@ -205,23 +240,37 @@ public class WorldGen implements Serializable{
 
         for (int y = Y; y < Y + Area.HEIGHT; y++) {
             for (int x = X; x < X + Area.WIDTH; x++) {
-                for (int z = 0; z < Area.DEPTH; z++) {
-                    if (z == 0 || world.WORLD_RAND.nextInt(1) == 1 && z == 1) {
-                        int tileNum = (int)Math.round((land[x-X][y-Y] + land[x-X][y-Y + 1] + land[x-X + 1][y-Y] + land[x-X + 1][y-Y + 1]) / 4.0);
-                        if (tileNum < 25) {
-                            world.setTile(new Water(rand), x, y, z);
-                        } else {
-                            int check = rand.nextInt(10);
-                            if (check <= 9) {
-                                world.setTile(new Grass(rand), x, y, z);
-                            } else {
-                                world.setTile(new Dirt(rand), x, y, z);
-                            }
-                        }
+                int tileHeight = (int) Math.round((land[x - X][y - Y] + land[x - X][y - Y + 1] + land[x - X + 1][y - Y] + land[x - X + 1][y - Y + 1]) / 4.0);
+                if (tileHeight < SEA_LEVEL) {
+                    world.setTile(new Water(rand, tileHeight), x, y, 0); // add lakes, oceans
+                } else {
+                    int z = 0;
+                    if (tileHeight >= SNOW_LEVEL) {
+                        z = 5;
+                    } else if (tileHeight >= TREE_LEVEL) {
+                        z = 4;
+                    } else if (tileHeight >= SLOPE_LEVEL) {
+                        z = 3;
+                    } else if (tileHeight >= MOUNTAIN_BASE_LEVEL) {
+                        z = 2;
+                    } else if (tileHeight >= HILL_LEVEL) {
+                        z = 1;
+                    }
+                    if (tileHeight >= SNOW_LEVEL) {
+                        world.setTile(new Snow(rand, tileHeight), x, y, z); // add land
+                    } else {
+                        world.setTile(new Grass(rand, tileHeight), x, y, z); // add land
                     }
                 }
             }
         }
+    }
+
+    public void styleWorld(int X, int Y, long seed) {
+        Random rand = new Random(seed * ((X * World.WIDTH) + Y)); // for location based randoms
+        addBeaches(X, Y, rand);
+        erode(X, Y, rand); // reduces tile art errors by not allowing tiles to stand alone
+        addSlopes(X, Y, rand);
     }
 
     public void populateArea(int X, int Y, long seed){
@@ -230,12 +279,104 @@ public class WorldGen implements Serializable{
 
     }
 
+    private void addBeaches(int X, int Y, Random rand) {
+        for (int x = X; x < X + Area.WIDTH; x++) {
+            for (int y = Y; y < Y + Area.HEIGHT; y++) {
+                Tile tile = world.getTile(x, y, 0);
+                if (tile instanceof LandTile) {
+                    Tile[][] adjacent = world.getAdjacentTiles(x, y, 0);
+                    int low = Integer.MAX_VALUE, high = 0;
+                    for (Tile[] tiles : adjacent) {
+                        for (Tile testTile : tiles) {
+                            if (testTile != null) {
+                                int height = testTile.getHeightInWorld();
+                                if (height > high) {
+                                    high = height;
+                                } else if (height < low) {
+                                    low = height;
+                                }
+                            }
+                        }
+                    }
+                    int slope = high - low,
+                            tileHeight = tile.getHeightInWorld();
+                    if (tileHeight < BEACH_MAX_LEVEL && slope < 2) {
+                        world.setTile(new Sand(rand, tileHeight), x, y, 0);
+                    }
+                }
+            }
+        }
+    }
+
+    private void addSlopes(int X, int Y, Random rand) {
+        for (int x = X; x < X + Area.WIDTH; x++) {
+            for (int y = Y; y < Y + Area.HEIGHT; y++) {
+                int z = world.getTopLayerAt(x, y);
+                Tile tile = world.getTile(x, y, z);
+                if (rand.nextBoolean()) {
+                    if (HILL_LEVEL - tile.getHeightInWorld() < 2 && HILL_LEVEL - tile.getHeightInWorld() > 0) {
+                        world.setTile(new Ladder(rand, tile.getHeightInWorld(), 0, tile, 1, 0), x, y, z);
+                    } else if (MOUNTAIN_BASE_LEVEL - tile.getHeightInWorld() < 2 && MOUNTAIN_BASE_LEVEL - tile.getHeightInWorld() > 0) {
+                        world.setTile(new Ladder(rand, tile.getHeightInWorld(), 0, tile, 2, 1), x, y, z);
+                    } else if (SLOPE_LEVEL - tile.getHeightInWorld() < 2 && SLOPE_LEVEL - tile.getHeightInWorld() > 0) {
+                        world.setTile(new Ladder(rand, tile.getHeightInWorld(), 0, tile, 3, 2), x, y, z);
+                    } else if (TREE_LEVEL - tile.getHeightInWorld() < 2 && TREE_LEVEL - tile.getHeightInWorld() > 0) {
+                        world.setTile(new Ladder(rand, tile.getHeightInWorld(), 0, tile, 4, 3), x, y, z);
+                    } else if (SNOW_LEVEL - tile.getHeightInWorld() < 2 && SNOW_LEVEL - tile.getHeightInWorld() > 0) {
+                        world.setTile(new Ladder(rand, tile.getHeightInWorld(), 0, tile, 5, 4), x, y, z);
+                    }
+                }
+            }
+        }
+    }
+
+    private void erode(int X, int Y, Random rand) {
+        for (int i = 0; i < 2; i++) { //number of times to erode
+            for (int x = X; x < X + Area.WIDTH; x++) {
+                for (int y = Y; y < Y + Area.HEIGHT; y++) {
+                    Tile[][] adjacent = world.getAdjacentTiles(x, y, 0);
+                    Tile tile = world.getTile(x, y, 0), topTile = null;
+                    if (tile == null) {
+                        continue;
+                    }
+                    int rank = tile.getRank(), count = 0;
+                    if (adjacent[2][1] != null && adjacent[2][1].getRank() >= rank) {
+                        count++;
+                    } else if (adjacent[2][1] != null) {
+                        topTile = adjacent[2][1];
+                    }
+                    if (adjacent[0][1] != null && adjacent[0][1].getRank() >= rank) {
+                        count++;
+                    } else if (topTile == null || adjacent[0][1] != null && adjacent[0][1].getRank() < topTile.getRank()) {
+                        topTile = adjacent[0][1];
+                    }
+                    if (adjacent[1][2] != null && adjacent[1][2].getRank() >= rank) {
+                        count++;
+                    } else if (topTile == null || adjacent[1][2] != null && adjacent[1][2].getRank() < topTile.getRank()) {
+                        topTile = adjacent[1][2];
+                    }
+                    if (adjacent[1][0] != null && adjacent[1][0].getRank() >= rank) {
+                        count++;
+                    } else if (topTile == null || adjacent[1][0] != null && adjacent[1][0].getRank() < topTile.getRank()) {
+                        topTile = adjacent[1][0];
+                    }
+                    if (count < 2 && topTile != null) {
+                        Tile newTile = topTile.newTile(rand, tile.getHeightInWorld());
+                        world.setTile(newTile, x, y, 0);
+
+                    }
+                }
+            }
+        }
+    }
+
     private void addTreeClumps(int X, int Y, Random rand, int min, int max) {
         int num = min + rand.nextInt(max - min + 1), count = 0, failed = 0;
         while (count < num) {
             int x = rand.nextInt(Area.WIDTH);
             int y = rand.nextInt(Area.HEIGHT);
-            if (world.getTile(X, Y, 0) instanceof Grass) {
+            int z = world.getTopLayerAt(X, Y);
+            if (world.getTile(X, Y, z) instanceof Grass && world.getTile(X, Y, z).getHeightInWorld() < TREE_LEVEL) {
                 addTreeClump(X + x, Y + y, 5, 5, 3, 10, rand);
                 count++;
             } else {
@@ -255,9 +396,14 @@ public class WorldGen implements Serializable{
         while (count < num) {
             int X = x - width/2 + rand.nextInt(width);
             int Y = y - height/2 + rand.nextInt(height);
-            if (world.getTile(X, Y, 0) instanceof Grass && world.getEntitiesIntersecting(world.getTileBounds(X, Y, 0)).size() == 0) {
-                world.addEntity(new Tree(oak, X, Y, 0, rand));
-                world.getTile(X,Y,0).setObstructed(true);
+            int Z = world.getTopLayerAt(X, Y);
+            if (world.getTile(X, Y, Z) instanceof Grass && world.getTile(X, Y, Z).getHeightInWorld() < TREE_LEVEL && world.getEntitiesIntersecting(world.getTileBounds(X, Y, Z)).size() == 0) {
+                if (oak) {
+                    world.addEntity(new Tree(Tree.Type.Oak, X, Y, Z, rand));
+                } else {
+                    world.addEntity(new Tree(Tree.Type.Pine, X, Y, Z, rand));
+                }
+                //world.getTile(X,Y,Z).setObstructed(true);
                 count++;
                 failed = 0;
             } else {

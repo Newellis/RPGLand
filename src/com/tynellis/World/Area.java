@@ -1,6 +1,7 @@
 package com.tynellis.World;
 
-import com.tynellis.World.Nodes.Node;
+import com.tynellis.Debug;
+import com.tynellis.GameComponent;
 import com.tynellis.World.Tiles.Tile;
 
 import java.awt.Color;
@@ -14,7 +15,7 @@ import java.util.Random;
 public class Area implements Land, Serializable {
     public static final int WIDTH = 16;
     public static final int HEIGHT = 16;
-    public static final int DEPTH = 2;
+    public static final int DEPTH = 6;
     private Layer[] layers = new Layer[DEPTH];
     private boolean updateArt = true, populate = true;
 
@@ -28,15 +29,39 @@ public class Area implements Land, Serializable {
 
     }
 
-    public void render(Graphics g, int topLayer, int xOffset, int yOffset) {
-        if (layers[topLayer] != null) {
-            layers[topLayer].render(g, xOffset, yOffset - (int) (2 * (topLayer / 3.0) * Tile.HEIGHT));
+    public void renderStrip(int row, int height, Graphics g, int xOffset, int yOffset) {
+        layers[height].renderRow(row, g, xOffset, yOffset - (int) (3 * (height / 4.0) * Tile.HEIGHT));
+    }
+
+    public void renderRow(int row, Graphics g, int xOffset, int yOffset) {
+        for (int i = 0; i < layers.length; i++) {
+            if (layers[i] != null) {
+                layers[i].renderRow(row, g, xOffset, yOffset - (int) (3 * (i / 4.0) * Tile.HEIGHT));
+                if (i - 1 >= 0 && layers[i - 1] != null) {
+                    layers[i - 1].renderRowTop(row, g, xOffset, yOffset - (int) (3 * ((i - 1) / 4.0) * Tile.HEIGHT));
+                }
+            }
         }
-        if (World.DEBUG) {
+    }
+
+    public void render(Graphics g, int xOffset, int yOffset) {
+        for (int i = 0; i < Area.HEIGHT; i++) {
+            renderRow(i, g, xOffset, yOffset);
+        }
+//        for (int i = 0; i < layers.length; i++) {
+//            if (layers[i] != null) {
+//                layers[i].render(g, xOffset, yOffset - (int) (3 * (i / 4.0) * Tile.HEIGHT));
+//            }
+//            if (i-1 >= 0 && layers[i-1] != null) {
+//                layers[i-1].renderTop(g, xOffset, yOffset - (int) (3 * ((i - 1) / 4.0) * Tile.HEIGHT));
+//            }
+//        }
+        if (GameComponent.debug.State() && GameComponent.debug.isType(Debug.Type.AREAS)) {
             g.setColor(Color.RED);
             Rectangle bounds = getBounds();
             g.drawRect(xOffset, yOffset, bounds.width, bounds.height);
         }
+
     }
 
     public void updateLayerArt(Area[][] areas) {
@@ -51,6 +76,23 @@ public class Area implements Land, Serializable {
                     }
                 }
                 layers[i].updateTileArt(adjacent);
+            }
+            updateArt = false;
+        }
+    }
+
+    public void updateLayers(Area[][] areas) {
+        if (updateArt) {
+            for (int i = 0; i < layers.length; i++) {
+                Layer[][] adjacent = new Layer[areas.length][areas[0].length];
+                for (int j = 0; j < areas.length; j++) {
+                    for (int k = 0; k < areas[j].length; k++) {
+                        if (areas[j][k] != null) {
+                            adjacent[j][k] = areas[j][k].getLayer(i);
+                        }
+                    }
+                }
+                layers[i].updateTiles(adjacent);
             }
             updateArt = false;
         }
@@ -85,6 +127,11 @@ public class Area implements Land, Serializable {
     public boolean shouldUpdateArt() {
         return updateArt;
     }
+
+    public void shouldUpdateArt(boolean should) {
+        updateArt = should;
+    }
+
 
     public void Populate(){
         populate = false;

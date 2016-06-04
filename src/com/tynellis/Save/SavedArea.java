@@ -1,7 +1,7 @@
 package com.tynellis.Save;
 
-import com.tynellis.Entities.Entity;
 import com.tynellis.World.Area;
+import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.World;
 
 import java.io.Serializable;

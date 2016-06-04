@@ -1,5 +1,6 @@
 package com.tynellis.Save;
 
+import com.tynellis.Debug;
 import com.tynellis.GameComponent;
 import com.tynellis.Save.OSLib.EnumOS2;
 import com.tynellis.Save.OSLib.EnumOSMappingHelper;
@@ -113,7 +114,7 @@ public class FileHandler {
             out.writeObject(o);
             out.close();
             fileOut.close();
-            if (GameComponent.DEBUG) {//@todo change to prevent corruption if interrupted
+            if (GameComponent.debug.isType(Debug.Type.SAVE)) {//@todo change to prevent corruption if interrupted
                 System.out.println("Serialized data is saved in " + file.getPath());
             }
         } catch(IOException i){
@@ -123,9 +124,9 @@ public class FileHandler {
 
     //load an object from File file
     public static Object load(File file) {
-        Object o = null;
         try {
-            if (GameComponent.DEBUG) {
+            Object o = null;
+            if (GameComponent.debug.isType(Debug.Type.SAVE)) {
                 System.out.println("Serialized data is read in from " + file.getPath());
             }
             FileInputStream fileIn = new FileInputStream(file);
@@ -133,8 +134,9 @@ public class FileHandler {
             o = in.readObject();
             in.close();
             fileIn.close();
+            return o;
         }catch(FileNotFoundException i){
-            if (GameComponent.DEBUG) {
+            if (GameComponent.debug.isType(Debug.Type.SAVE)) {
                 System.out.println("File not found");
             }
         }catch(IOException i) {
@@ -143,6 +145,7 @@ public class FileHandler {
             System.out.println("Class not found");
             c.printStackTrace();
         }
-        return o;
+        //System.exit(1);
+        return null; // not reached
     }
 }

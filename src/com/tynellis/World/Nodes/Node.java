@@ -10,20 +10,25 @@ import java.util.List;
 
 public class Node implements Serializable {
     private List<NodeRelation> neighbors = new ArrayList<NodeRelation>();
-    private double X,Y;
-    private int Z;
+    private double X, Y, Z;
     private double scoreFromStart = Double.MAX_VALUE;
     private double fScore;
 
-    public Node(double x, double y, int z) {
+    public Node(double x, double y, double z) {
         X=x;
         Y=y;
         Z = z;
     }
 
     public void render(Graphics g, int xOffset, int yOffset){
-        g.setColor(Color.MAGENTA);
-        g.drawOval((int)(X * Tile.WIDTH)+xOffset, (int)(Y * Tile.HEIGHT)+yOffset, Tile.WIDTH, Tile.HEIGHT);
+        if (Z < 1) {
+            g.setColor(Color.MAGENTA);
+        } else if (Z < 2) {
+            g.setColor(Color.RED);
+        } else if (Z < 3) {
+            g.setColor(Color.ORANGE);
+        }
+        g.drawOval((int) (X * Tile.WIDTH) + xOffset, (int) (Y * Tile.HEIGHT) + yOffset - ((int) (3 * (Z / 4.0) * Tile.HEIGHT)), Tile.WIDTH, Tile.HEIGHT);
     }
 
     public List<NodeRelation> getNeighbors() {
@@ -31,7 +36,7 @@ public class Node implements Serializable {
     }
 
     public void addNeighbor(Node node) {
-        int distance = (int)Math.sqrt(Math.pow(Math.abs(X - node.getX()), 2) + Math.pow(Math.abs(Y - node.getY()), 2));
+        int distance = (int) Math.sqrt(Math.pow(Math.abs(X - node.getX()), 2) + Math.pow(Math.abs(Y - node.getY()), 2));
         NodeRelation neighbor = new NodeRelation(node, distance);
         neighbors.add(neighbor);
     }
@@ -53,7 +58,7 @@ public class Node implements Serializable {
         return Y;
     }
 
-    public int getZ() {
+    public double getZ() {
         return Z;
     }
 

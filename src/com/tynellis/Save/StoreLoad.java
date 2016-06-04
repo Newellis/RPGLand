@@ -1,18 +1,12 @@
 package com.tynellis.Save;
 
-import com.tynellis.Entities.Entity;
-import com.tynellis.Entities.Player;
 import com.tynellis.World.Area;
-import com.tynellis.World.Tiles.Tile;
+import com.tynellis.World.Entities.Entity;
+import com.tynellis.World.Entities.Player;
 import com.tynellis.World.World;
 
 import java.awt.Rectangle;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class StoreLoad {
