@@ -9,14 +9,14 @@ import com.tynellis.World.World;
 import java.io.Serializable;
 
 public abstract class UseUsableEntityAi extends AiTask implements Serializable {
-    protected PathfinderAi pathfinder;
+    public PathfinderAi pathfinder;
     private FaceClosestAi faceClosest;
     protected UsableEntity tool;
     protected Class toolType;
 
     public UseUsableEntityAi(Class<UsableEntity> type, int range) {
         pathfinder = new FollowEntityAi(type, range, 1);
-        faceClosest = new FaceClosestAi(type, 1);
+        faceClosest = new FaceClosestAi(type, 2);
         toolType = type;
     }
 

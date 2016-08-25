@@ -22,7 +22,6 @@ public class CollectItemsAi extends FollowEntityAi {
             closest = null;
         }
         boolean task = super.performTask(world, entity);
-        System.out.println(task + " = follow path");
         if (!task) {
             closest = null;
         }
@@ -54,7 +53,6 @@ public class CollectItemsAi extends FollowEntityAi {
                 }
             }
         }
-        System.out.println("failed to find items");
         return false;
     }
 }

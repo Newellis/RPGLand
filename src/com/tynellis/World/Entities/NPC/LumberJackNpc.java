@@ -37,8 +37,9 @@ public class LumberJackNpc extends NpcBase {
         UseChestAi chestAi = new UseChestAi(chest, new TypeItemFilter(new Class[]{Log.class}, ItemFilter.Type.WhiteList), 400);
         ai.dontInterrupt(items);
         items.dontInterrupt(chestAi);
-        pathfinder = ai;
+        pathfinder = items;
         pathfinder = new RandomWanderAi();
+        pathfinder = chestAi.pathfinder;
         Ai.addTask(0, new FaceClosestAi(Player.class, 0.25));
         Ai.addTask(1, ai);
         Ai.addTask(2, items);

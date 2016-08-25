@@ -38,12 +38,19 @@ public class PathfinderAi extends AiTask implements Serializable {
     }
 
     public boolean performTask(World world, KillableEntity entity) {
+        if (path.size() > 0) {
+        }
         if ((path.size() == 0 || !pathIsValid(world, entity)) && (Math.abs(entity.getX() - destX) > entity.getSpeed() || Math.abs(entity.getY() - destY) > entity.getSpeed())) {
-            System.out.println("find path");
-            return findPath(world, entity);
+            for (int i = 0; i < range / 2; i++) {
+                if (findPath(world, entity, minRange + i)) {
+                    return true;
+                }
+            }
+            return false;
         } else {
             if (path.size() > 0 && world.getTile((int) path.get(0).getX(), (int) path.get(0).getY(), (int) path.get(0).getZ()) == null) {
                 entity.setMoving(false);
+                System.out.println("no next node");
                 return false;
             }
             return path.size() > 0 && moveAlongPath(entity);
@@ -76,6 +83,7 @@ public class PathfinderAi extends AiTask implements Serializable {
 
     protected boolean pathIsValid(World world, Entity e) {
         if (path.size() == 0) {
+            System.out.println("no path");
             return false;
         }
         Node nextNode = path.get(0);
@@ -85,23 +93,26 @@ public class PathfinderAi extends AiTask implements Serializable {
         for (int i = 1; i < path.size() - 1; i++) {
             Node node = path.get(i);
             if (world.getTile((int) node.getX(), (int) node.getY(), (int) node.getZ()) != null && world.isTileObstructed((int) node.getX(), (int) node.getY(), (int) node.getZ())) {
+                System.out.println("node " + i + " is obstructed");
                 return false;
             }
         }
         Node endNode = new Node(destX, destY, destZ);
-        if (!path.get(path.size() - 1).equals(endNode)) {
+        if (!isCloseToGoal(path.get(path.size() - 1), endNode)) {
             return false;
         }
         return true;
     }
 
-    private boolean findPath(World world, Entity e) {
+    private boolean findPath(World world, Entity e, int minRange) {
         List<Node> closedSet = new ArrayList<Node>();// The set of nodes already evaluated.
         List<Node> openSet = new ArrayList<Node>(); // The set of tentative nodes to be evaluated, initially containing the start node
         Node start = new Node(e.getX(), e.getY(), e.getZ());
         Node goal = new Node(destX, destY, destZ);
         if (world.getTile((int) goal.getX(), (int) goal.getY(), (int) goal.getZ()) != null && (!world.getTile((int) goal.getX(), (int) goal.getY(), (int) goal.getZ()).isPassableBy(e) || world.isTileObstructed((int) goal.getX(), (int) goal.getY(), (int) goal.getZ()))) {
-            return false;
+            if (minRange < 1) {
+                return false;
+            }
         }
         if (world.getTile((int) e.getX(), (int) e.getY(), (int) e.getZ()) != null && (!world.getTile((int) e.getX(), (int) e.getY(), (int) e.getZ()).isPassableBy(e) || world.isTileObstructed((int) e.getX(), (int) e.getY(), (int) e.getZ()))) {
             return false;
@@ -115,10 +126,6 @@ public class PathfinderAi extends AiTask implements Serializable {
             return false;
         }
         while (openSet.size() > 0) {
-            if (cameFrom.size() > range * 2) {
-                System.out.println("path is to long");
-                return false;
-            }
             Node current = null;
             for (Node node : openSet) {
                 if (current == null) {
@@ -129,9 +136,8 @@ public class PathfinderAi extends AiTask implements Serializable {
             }
             assert current != null;
 
-            if (current.equals(goal)) {
-                System.out.println("found path");
-                return reconstruct_path(cameFrom, goal);
+            if (isCloseToGoal(current, goal)) {
+                return reconstruct_path(cameFrom, current);
             }
             openSet.remove(current);
             closedSet.add(current);
@@ -157,6 +163,10 @@ public class PathfinderAi extends AiTask implements Serializable {
         }
         System.out.println("didn't find path");
         return false;
+    }
+
+    private boolean isCloseToGoal(Node current, Node goal) {
+        return heuristicCostEstimate(current, goal) <= minRange;
     }
 
     private boolean reconstruct_path(Map<Node, Node> came_from, Node current) {

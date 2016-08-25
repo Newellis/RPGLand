@@ -424,7 +424,7 @@ public class World implements Land, Serializable{
                     Tile tile = getTile(x + i, y + j, z);
                     if (Math.abs(i) == 1 && Math.abs(j) == 1) {
                         if (!(centerTile instanceof ConnectorTile)) {
-                            if (tile != null && tile.isPassableBy(e) && !isTileObstructed(x + i, y + j, z) && getTile(x + i, y, z) != null && getTile(x + i, y, z).isPassableBy(e) && isTileObstructed(x + i, y, z) && !(getTile(x + i, y, z) instanceof ConnectorTile) && getTile(x, y + j, z) != null && !(getTile(x, y + j, z) instanceof ConnectorTile) && getTile(x, y + j, z).isPassableBy(e) && isTileObstructed(x, y + j, z)) {
+                            if (tile != null && tile.isPassableBy(e) && !isTileObstructed(x + i, y + j, z) && getTile(x + i, y, z) != null && getTile(x + i, y, z).isPassableBy(e) && !isTileObstructed(x + i, y, z) && !(getTile(x + i, y, z) instanceof ConnectorTile) && getTile(x, y + j, z) != null && !(getTile(x, y + j, z) instanceof ConnectorTile) && getTile(x, y + j, z).isPassableBy(e) && !isTileObstructed(x, y + j, z)) {
                                 if (!(tile instanceof ConnectorTile)) {
                                     nodes.add(new Node(x + i, y + j, z));
                                 }

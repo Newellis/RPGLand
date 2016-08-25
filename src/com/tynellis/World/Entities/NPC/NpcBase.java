@@ -131,8 +131,8 @@ public abstract class NpcBase extends Humanoid {
         return "NPC{" + getClass().getName() +
                 ", Name= " + name +
                 ", Gender= " + gender +
-                ", posY= " + posY +
                 ", posX= " + posX +
+                ", posY= " + posY +
                 ", posZ= " + posZ +
                 '}';
     }

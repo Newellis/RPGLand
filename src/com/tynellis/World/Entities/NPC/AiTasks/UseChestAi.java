@@ -30,7 +30,6 @@ public class UseChestAi extends UseUsableEntityAi {
         for (int i = 0; i < inventory.getInventory().length; i++) {
             ItemPile pile = inventory.getInventory()[i].getPile();
             if (pile != null && filter.followsFilter(pile) && !((Chest) tool).isFull()) {
-                System.out.println("Should use chest");
                 return true;
             }
         }
