@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.SortedSet;
@@ -423,13 +424,13 @@ public class World implements Land, Serializable{
                     Tile tile = getTile(x + i, y + j, z);
                     if (Math.abs(i) == 1 && Math.abs(j) == 1) {
                         if (!(centerTile instanceof ConnectorTile)) {
-                            if (tile != null && tile.isPassableBy(e) && getTile(x + i, y, z) != null && getTile(x + i, y, z).isPassableBy(e) && !(getTile(x + i, y, z) instanceof ConnectorTile) && getTile(x, y + j, z) != null && !(getTile(x, y + j, z) instanceof ConnectorTile) && getTile(x, y + j, z).isPassableBy(e)) {
+                            if (tile != null && tile.isPassableBy(e) && !isTileObstructed(x + i, y + j, z) && getTile(x + i, y, z) != null && getTile(x + i, y, z).isPassableBy(e) && isTileObstructed(x + i, y, z) && !(getTile(x + i, y, z) instanceof ConnectorTile) && getTile(x, y + j, z) != null && !(getTile(x, y + j, z) instanceof ConnectorTile) && getTile(x, y + j, z).isPassableBy(e) && isTileObstructed(x, y + j, z)) {
                                 if (!(tile instanceof ConnectorTile)) {
                                     nodes.add(new Node(x + i, y + j, z));
                                 }
                             }
                         }
-                    } else if (tile != null && tile.isPassableBy(e)) {
+                    } else if (tile != null && tile.isPassableBy(e) && !isTileObstructed(x + i, y + j, z)) {
                         if (tile instanceof ConnectorTile && ((ConnectorTile) tile).isFull() && ((ConnectorTile) tile).canUse(e) && ((ConnectorTile) tile).getDirection() % 2 == Math.abs(i)) {
                             nodes.add(new Node(x + i, y + j, ((ConnectorTile) tile).getHeight()));
                         } else if (!(tile instanceof ConnectorTile)) {
@@ -457,16 +458,16 @@ public class World implements Land, Serializable{
         } else {
             ArrayList<Node> nodes = new ArrayList<Node>();
             Node[] adjacent = new Node[4];
-            if (getTile((int) Math.floor(node.getX()), (int) Math.floor(node.getY()), (int) Math.floor(node.getZ())) != null && getTile((int) Math.floor(node.getX()), (int) Math.floor(node.getY()), (int) Math.floor(node.getZ())).isPassableBy(e)) {
+            if (getTile((int) Math.floor(node.getX()), (int) Math.floor(node.getY()), (int) Math.floor(node.getZ())) != null && getTile((int) Math.floor(node.getX()), (int) Math.floor(node.getY()), (int) Math.floor(node.getZ())).isPassableBy(e) && !isTileObstructed((int) Math.floor(node.getX()), (int) Math.floor(node.getY()), (int) Math.floor(node.getZ()))) {
                 adjacent[0] = new Node((int) Math.floor(node.getX()), (int) Math.floor(node.getY()), node.getZ());
             }
-            if (getTile((int) Math.floor(node.getX()), (int) Math.ceil(node.getY()), (int) Math.floor(node.getZ())) != null && getTile((int) Math.floor(node.getX()), (int) Math.ceil(node.getY()), (int) Math.floor(node.getZ())).isPassableBy(e)) {
+            if (getTile((int) Math.floor(node.getX()), (int) Math.ceil(node.getY()), (int) Math.floor(node.getZ())) != null && getTile((int) Math.floor(node.getX()), (int) Math.ceil(node.getY()), (int) Math.floor(node.getZ())).isPassableBy(e) && !isTileObstructed((int) Math.floor(node.getX()), (int) Math.ceil(node.getY()), (int) Math.floor(node.getZ()))) {
                 adjacent[1] = new Node((int) Math.floor(node.getX()), (int) Math.ceil(node.getY()), node.getZ());
             }
-            if (getTile((int) Math.ceil(node.getX()), (int) Math.floor(node.getY()), (int) Math.floor(node.getZ())) != null && getTile((int) Math.ceil(node.getX()), (int) Math.floor(node.getY()), (int) Math.floor(node.getZ())).isPassableBy(e)) {
+            if (getTile((int) Math.ceil(node.getX()), (int) Math.floor(node.getY()), (int) Math.floor(node.getZ())) != null && getTile((int) Math.ceil(node.getX()), (int) Math.floor(node.getY()), (int) Math.floor(node.getZ())).isPassableBy(e) && !isTileObstructed((int) Math.ceil(node.getX()), (int) Math.floor(node.getY()), (int) Math.floor(node.getZ()))) {
                 adjacent[2] = new Node((int) Math.ceil(node.getX()), (int) Math.floor(node.getY()), node.getZ());
             }
-            if (getTile((int) Math.ceil(node.getX()), (int) Math.ceil(node.getY()), (int) Math.floor(node.getZ())) != null && getTile((int) Math.ceil(node.getX()), (int) Math.ceil(node.getY()), (int) Math.floor(node.getZ())).isPassableBy(e)) {
+            if (getTile((int) Math.ceil(node.getX()), (int) Math.ceil(node.getY()), (int) Math.floor(node.getZ())) != null && getTile((int) Math.ceil(node.getX()), (int) Math.ceil(node.getY()), (int) Math.floor(node.getZ())).isPassableBy(e) && !isTileObstructed((int) Math.ceil(node.getX()), (int) Math.ceil(node.getY()), (int) Math.floor(node.getZ()))) {
                 adjacent[3] = new Node((int) Math.ceil(node.getX()), (int) Math.ceil(node.getY()), node.getZ());
             }
             for (Node adj : adjacent) {
@@ -476,6 +477,17 @@ public class World implements Land, Serializable{
             }
             return nodes;
         }
+    }
+
+    public boolean isTileObstructed(int x, int y, int z) {
+        ArrayList<Entity> list = getEntitiesIntersecting(getTileBounds(x, y, z));
+        for (Iterator<Entity> it = list.iterator(); it.hasNext(); ) {
+            Entity next = it.next();
+            if (next.isMoveable()) {
+                it.remove();
+            }
+        }
+        return list.size() > 0;
     }
 
     //set centerArea and calculate areaOffset from it

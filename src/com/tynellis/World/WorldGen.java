@@ -49,7 +49,7 @@ public class WorldGen implements Serializable{
                     Tile tile = world.getTile((x * Area.WIDTH) + areaX, (y * Area.HEIGHT) + areaY, world.getTopLayerAt((x * Area.WIDTH) + areaX, (y * Area.HEIGHT) + areaY));
                     Rectangle tileBounds = tile.getBounds();
                     tileBounds.setLocation((x * Area.WIDTH) + areaX, (y * Area.HEIGHT) + areaY);
-                    if (tile instanceof LandTile && (!tile.isObstructed() || world.getEntitiesInBounds(tileBounds).size() > 0)) {
+                    if (tile instanceof LandTile && world.getEntitiesInBounds(tileBounds).size() <= 0) {
                         world.setSpawnPoint(new int[]{(x * Area.WIDTH) + areaX, (y * Area.HEIGHT) + areaY, world.getTopLayerAt((x * Area.WIDTH) + areaX, (y * Area.HEIGHT) + areaY)});
                         viable = true;
                     }
@@ -269,7 +269,7 @@ public class WorldGen implements Serializable{
     public void styleWorld(int X, int Y, long seed) {
         Random rand = new Random(seed * ((X * World.WIDTH) + Y)); // for location based randoms
         addBeaches(X, Y, rand);
-        erode(X, Y, rand); // reduces tile art errors by not allowing tiles to stand alone
+        erode(X, Y, rand); // reduces tile Art errors by not allowing tiles to stand alone
         addSlopes(X, Y, rand);
     }
 

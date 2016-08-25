@@ -25,7 +25,7 @@ public abstract class Tile implements BoundingBoxOwner, Serializable {
     private String name;
     private double altPercent;
     private final double alt;
-    private boolean isObstructed = false, cliff = false;
+    private boolean cliff = false;
 
     private boolean debugRender = false;
     private Color debugColor = Color.GREEN;
@@ -47,7 +47,7 @@ public abstract class Tile implements BoundingBoxOwner, Serializable {
     public void startArt(){
         still = new int[adjacentNum];
         sprite = new Sprite[adjacentNum];
-        if (alt < altPercent){ //use alt art for tiles
+        if (alt < altPercent) { //use alt Art for tiles
             if (top != null) {
                 sprite[0] = top.getSprite(5);
             }
@@ -68,7 +68,7 @@ public abstract class Tile implements BoundingBoxOwner, Serializable {
 
     public void render(Graphics g, int x, int y) {
         if (cliff) {
-            g.drawImage(cliffEdge.getSprite(3).getStill(1), x, y + (3 * (Tile.HEIGHT / 4)), null);//todo add alt cliff art
+            g.drawImage(cliffEdge.getSprite(3).getStill(1), x, y + (3 * (Tile.HEIGHT / 4)), null);//todo add alt cliff Art
         }
         for (int i = sprite.length-1; i >= 0; i-- ){
             if (sprite[i] != null) {
@@ -250,12 +250,6 @@ public abstract class Tile implements BoundingBoxOwner, Serializable {
 
     public void handleCollision(BoundingBoxOwner bb, double xMove, double yMove, boolean isOver) {
 
-    }
-    public void setObstructed(boolean obstructed){
-        isObstructed = obstructed;
-    }
-    public boolean isObstructed() {
-        return isObstructed;
     }
 
     public int getHeightInWorld() {

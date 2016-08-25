@@ -14,7 +14,7 @@ public abstract class LiquidTile extends Tile{
 
     @Override
     public boolean isPassableBy(Entity e) {
-        return !e.isWalking() && !isObstructed();
+        return !e.isWalking();
     }
 
     public boolean isPassableBy(Entity.movementTypes movementType){

@@ -1,7 +1,6 @@
 package com.tynellis.Art;
 
 import java.awt.image.BufferedImage;
-import java.io.Serializable;
 
 public class SpriteSheet extends SpriteImage {
     private Sprite[] sheet;
