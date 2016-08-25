@@ -9,14 +9,45 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ab3d649-fdfe-4863-8a5f-5a792e85c7aa" name="Default" comment="fixing package names">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LiquidTile.java" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LiquidTile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tynellis/Art/Sprite.java" afterPath="$PROJECT_DIR$/src/com/tynellis/Art/Sprite.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tynellis/Art/SpriteImage.java" afterPath="$PROJECT_DIR$/src/com/tynellis/Art/SpriteImage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tynellis/Art/SpriteSheet.java" afterPath="$PROJECT_DIR$/src/com/tynellis/Art/SpriteSheet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/Tile.java" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/Tile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tynellis/World/World.java" afterPath="$PROJECT_DIR$/src/com/tynellis/World/World.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tynellis/World/WorldGen.java" afterPath="$PROJECT_DIR$/src/com/tynellis/World/WorldGen.java" />
+    <list default="true" id="9ab3d649-fdfe-4863-8a5f-5a792e85c7aa" name="Default" comment="changed Tile Obstruction to have less knowledge">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/AiTask.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/BoundingBox/BoundingBoxOwner.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/Chest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/ChestInterface.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/CollectItemsAi.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ConnectorTile.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/Debug.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Dirt.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Entity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Orginization/EntityComparator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Orginization/EntityQuadTree.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/FaceClosestAi.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/FarmerNpc.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/FollowEntityAi.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Grass.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Humanoid.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/ItemEntity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Nodes/KeyNode.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/KillableEntity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/Ladder.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/LandTile.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/LavaRock.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/LayeredTile.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/LumberJackNpc.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcAi.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcBase.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/PathfinderAi.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/PauseMenu.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/RandomWanderAi.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Sand.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Slope.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Snow.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/StayNearPoint.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Tree.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/UsableEntity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/UseChestAi.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/UseUsableEntityAi.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MyGame.iws" />
@@ -136,7 +167,7 @@
       <file leaf-file-name="PathfinderAi.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/PathfinderAi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48165137">
+            <state vertical-scroll-proportion="0.30963302">
               <caret line="104" column="9" selection-start-line="104" selection-start-column="9" selection-end-line="104" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -484,138 +515,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyGameRestart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tynellis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="World" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Entities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UsableEntity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyGameRestart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tynellis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="World" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Entities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NPC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyGameRestart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tynellis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="World" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Entities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NPC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AiTasks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyGameRestart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tynellis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="World" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Entities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NPC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AiTasks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Pathfinding" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -960,7 +859,13 @@
       <option name="project" value="LOCAL" />
       <updated>1465066111209</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="changed Tile Obstruction to have less knowledge">
+      <created>1472090705003</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1472090705003</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -974,7 +879,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -991,7 +896,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23390558" sideWeight="0.79072845" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23390558" sideWeight="0.79072845" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34966886" sideWeight="0.8111588" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1047,7 +952,8 @@
     <MESSAGE value="got pathfinding working better and added pathfinding to other entities" />
     <MESSAGE value="Massive commit after git problems. commit includes: pathfinder tweaks, Containers, inventories, Items, new Ai, and entity drops" />
     <MESSAGE value="fixing package names" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing package names" />
+    <MESSAGE value="changed Tile Obstruction to have less knowledge" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed Tile Obstruction to have less knowledge" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1500,7 +1406,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/PathfinderAi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48165137">
+        <state vertical-scroll-proportion="0.30963302">
           <caret line="104" column="9" selection-start-line="104" selection-start-column="9" selection-end-line="104" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
