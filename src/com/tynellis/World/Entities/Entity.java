@@ -4,6 +4,7 @@ import com.tynellis.BoundingBox.BoundingBoxOwner;
 import com.tynellis.Debug;
 import com.tynellis.GameComponent;
 import com.tynellis.World.Items.ItemPile;
+import com.tynellis.World.Light.LightSource;
 import com.tynellis.World.Tiles.LandTiles.LayeredTile;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.World;
@@ -30,6 +31,8 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
     protected int height;
     protected double posX, posY, posZ;
     private boolean isDead = false;
+    protected LightSource light;
+
 
     public void doDrops(World world) {
         ItemPile[] items = getItemsToDrop(world.getRand());
@@ -415,4 +418,9 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
     public boolean isMoveable() {
         return canBeMoved;
     }
+
+    public LightSource getLight() {
+        return light;
+    }
+
 }

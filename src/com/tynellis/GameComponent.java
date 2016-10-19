@@ -77,6 +77,9 @@ public class GameComponent extends JPanel implements Runnable {
         Thread thread = new Thread(this);
         thread.setPriority(Thread.MAX_PRIORITY);
         thread.start();
+        Thread renderer = new Thread(new GameRenderer());
+        renderer.setPriority(Thread.MAX_PRIORITY);
+        renderer.start();
     }
 
     public GameComponent() {
@@ -105,6 +108,9 @@ public class GameComponent extends JPanel implements Runnable {
 
             boolean shouldRender = false;
 
+            if (unprocessed > 5) {
+                System.out.print("Is the system behind skipping " + (unprocessed / 20.0) + " seconds to catch up");
+            }
             unprocessed %= 5;//drops ticks that where missed so as to not lag for as long
             while (unprocessed >= 1) {
                 toTick++;

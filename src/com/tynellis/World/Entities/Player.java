@@ -8,6 +8,7 @@ import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.Containers.Filters.ItemFilter;
 import com.tynellis.World.Items.Containers.Filters.NameItemFilter;
 import com.tynellis.World.Items.ItemPile;
+import com.tynellis.World.Light.LightSource;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.World;
 import com.tynellis.input.Keys;
@@ -36,6 +37,7 @@ public class Player extends Humanoid {
         inventory = new Container(20);
         inventory.setFilter(new NameItemFilter(new String[]{"Acorn"}, ItemFilter.Type.WhiteList));
         canPickUpItems = false;
+        light = new LightSource(12);
     }
 
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
@@ -110,6 +112,7 @@ public class Player extends Humanoid {
 //        }
         super.tick(world, near);
         animation.setRow(spriteFacing);
+        light.setLocation(posX + 0.5, posY + 0.5, posZ);
     }
 
     public void render(Graphics g, int xOffset, int yOffset) {

@@ -100,6 +100,9 @@ public class World implements Land, Serializable{
         if (entities.size() > 0) {
             for (Entity entity : entitiesToRender) {
                 entity.render(g, xOffset, yOffset);
+                if (entity.getLight() != null) {
+                    entity.getLight().render(g, xOffset, yOffset);
+                }
             }
         }
         if (GameComponent.debug.State() && GameComponent.debug.isType(Debug.Type.COLLISION)) {
@@ -126,6 +129,11 @@ public class World implements Land, Serializable{
                     List<Entity> near = collisionTree.retrieve(new ArrayList<Entity>(), entity.getBounds());
                     near.remove(entity);
                     entity.tick(this, near);
+                    if (entity.getLight() != null) {
+                        near = collisionTree.retrieve(new ArrayList<Entity>(), entity.getLight().getBounds());
+                        near.remove(entity);
+                        entity.getLight().tick(this, near);
+                    }
                 }
             }
         }
@@ -135,7 +143,7 @@ public class World implements Land, Serializable{
 ////                entities.remove(entity);
 ////                entities.add(entity);
 ////            }
-//            SortedSet<Entity> temp = new TreeSet<Entity>(new EntityComparator());
+        SortedSet<Entity> temp = new TreeSet<Entity>(new EntityComparator());
 //            temp.addAll(entities);
 //            entities = temp;
 //            entityMoveList.clear();
