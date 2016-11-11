@@ -26,25 +26,22 @@ import com.tynellis.input.Keys;
 import com.tynellis.input.MouseInput;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.Color;
+import javax.swing.WindowConstants;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 import java.util.Random;
 
-public class GameComponent extends JPanel implements Runnable {
+public class GameComponent implements Runnable {
     public static JFrame frame;
     public static GameComponent active;
+    public static GameRenderer renderer;
+    public static Debug debug = new Debug();
+
     public static final int GAME_WIDTH = 1024;
     public static final int GAME_HEIGHT = GAME_WIDTH * 3 / 4;
     private int height = GAME_HEIGHT;
     private int width = GAME_WIDTH;
-    public static Debug debug = new Debug();
 
-    private BufferedImage screenFrame;
     private boolean running;
-    private int fps;
 
     private static MouseInput mouse = new MouseInput();
     private static Keys keys = new Keys();
@@ -59,15 +56,16 @@ public class GameComponent extends JPanel implements Runnable {
 
     public static void main(String[] args) {
         active = new GameComponent();
+        renderer = new GameRenderer(active);
         frame = new JFrame();
-        frame.setContentPane(active);
+        frame.setContentPane(renderer);
         frame.addKeyListener(new KeyInput(keys));
         frame.addMouseListener(mouse);
         frame.pack();
         frame.setSize(new Dimension(GAME_WIDTH, GAME_HEIGHT));
         frame.setResizable(true);
         frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
         active.start();
     }
@@ -77,13 +75,10 @@ public class GameComponent extends JPanel implements Runnable {
         Thread thread = new Thread(this);
         thread.setPriority(Thread.MAX_PRIORITY);
         thread.start();
-        Thread renderer = new Thread(new GameRenderer());
-        renderer.setPriority(Thread.MAX_PRIORITY);
-        renderer.start();
-    }
 
-    public GameComponent() {
-        this.setSize(new Dimension(width, height));
+        Thread renderThread = new Thread(renderer);
+        renderThread.setPriority(Thread.MAX_PRIORITY);
+        renderThread.start();
     }
 
     @Override
@@ -91,25 +86,17 @@ public class GameComponent extends JPanel implements Runnable {
         double unprocessed = 0;
         int toTick = 0;
         long lastTime = System.nanoTime();
-        int frames = 0;
-        long lastTimer1 = System.currentTimeMillis();
 
-        long lastRenderTime = System.nanoTime();
-        int min = 999999999;
-        int max = 0;
-        double frameRate = 60;
-        double nsPerTick = 1000000000.0 / frameRate;
-
+        double nsPerTick = 1000000000.0 / 60;
+        System.out.println("tick Start");
         while (running) {
             if (!frame.hasFocus()) {
                 keys.release();
                 mouse.releaseAll();
             }
 
-            boolean shouldRender = false;
-
             if (unprocessed > 5) {
-                System.out.print("Is the system behind skipping " + (unprocessed / 20.0) + " seconds to catch up");
+                System.out.println("Is the system behind skipping " + (unprocessed / 20.0) + " seconds to catch up");
             }
             unprocessed %= 5;//drops ticks that where missed so as to not lag for as long
             while (unprocessed >= 1) {
@@ -128,24 +115,6 @@ public class GameComponent extends JPanel implements Runnable {
             for (int i = 0; i < tickCount; i++) {
                 toTick--;
                 tick();
-                shouldRender = true;
-            }
-
-            if (shouldRender) {
-                frames++;
-                Graphics g = getGraphics();
-
-                render(g);
-
-                long renderTime = System.nanoTime();
-                int timePassed = (int) (renderTime - lastRenderTime);
-                if (timePassed < min) {
-                    min = timePassed;
-                }
-                if (timePassed > max) {
-                    max = timePassed;
-                }
-                lastRenderTime = renderTime;
             }
 
             long now = System.nanoTime();
@@ -157,42 +126,9 @@ public class GameComponent extends JPanel implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-            if (System.currentTimeMillis() - lastTimer1 > 1000) {
-                lastTimer1 += 1000;
-                fps = frames;
-                frames = 0;
-            }
         }
     }
 
-
-    private synchronized void render(Graphics g) {
-        if (screenFrame == null || screenFrame.getWidth() != width || screenFrame.getHeight() != height) {
-            screenFrame = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        }
-        Graphics screen = screenFrame.getGraphics();
-        screen.setColor(Color.BLACK);
-        screen.fillRect(0, 0, width, height);
-        //fill screen here
-        if (state == GameState.SINGLE_PLAYER || state == GameState.IN_GAME_MENU || state == GameState.PAUSE_MENU) {
-            world.render(screen, width, height, (int) ((player.getX() + 0.5) * Tile.WIDTH), (int) ((player.getY() + 0.5) * Tile.HEIGHT), (int) (player.getZ() * (Tile.HEIGHT * 3 / 4)));
-        } else if (state == GameState.MENU){
-            menu.render(screen, width, height);
-        }
-        if (state == GameState.IN_GAME_MENU) {
-            menu.render(screen, width, height);
-        } else if (state == GameState.PAUSE_MENU){
-            screen.setColor(new Color(0.0f,0.0f,0.0f,0.5f));
-            screen.fillRect(0, 0, width, height);
-            menu.render(screen, width, height);
-        }
-        screen.setColor(Color.WHITE);
-        screen.drawString("FPS: " + fps, 10, 20);
-        width = getWidth();
-        height = getHeight();
-        g.drawImage(screenFrame, 0, 0, null);
-    }
 
     private void tick() {
         keys.tick();
@@ -207,6 +143,7 @@ public class GameComponent extends JPanel implements Runnable {
         }
         if(state == GameState.SINGLE_PLAYER || state == GameState.IN_GAME_MENU) {
             world.tick();
+            renderer.setXYZ(player.getX(), player.getY(), player.getZ());
             if (ticksToSave == 0) {
                 ticksToSave = autoSaveTicks;
                 saveWorld();
@@ -251,6 +188,8 @@ public class GameComponent extends JPanel implements Runnable {
         world.addEntity(chest);
         //addTestStructure(world, spawn);
         state = GameState.SINGLE_PLAYER;
+        System.out.println("test: " + world);
+        renderer.setWorld(world);
         System.out.println("Done");
         saveWorld();
         //todo add some sort of loading screen
@@ -306,6 +245,24 @@ public class GameComponent extends JPanel implements Runnable {
     }
 
     public void Quit() {
+        running = false;
+        GameRenderer.running = false;
         System.exit(0);
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public GameState getState() {
+        return state;
+    }
+
+    public Menu getMenu() {
+        return menu;
     }
 }
