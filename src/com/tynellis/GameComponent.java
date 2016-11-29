@@ -1,5 +1,8 @@
 package com.tynellis;
 
+import com.tynellis.Events.EventHandler;
+import com.tynellis.Events.TurnTrigger;
+import com.tynellis.Events.WorldTickEvent;
 import com.tynellis.Menus.InGameMenus.PauseMenu;
 import com.tynellis.Menus.MainMenu;
 import com.tynellis.Menus.Menu;
@@ -49,6 +52,7 @@ public class GameComponent implements Runnable {
     private GameState state = GameState.MENU;
     private Menu menu = new MainMenu(GAME_WIDTH, GAME_HEIGHT);
     public static World world;
+    private static EventHandler events;
     private Player player;
     private static final int autoSaveTicks = 60 * 30; //ticks per sec * seconds between saves
     private int ticksToSave = autoSaveTicks;
@@ -89,6 +93,7 @@ public class GameComponent implements Runnable {
 
         double nsPerTick = 1000000000.0 / 60;
         System.out.println("tick Start");
+        events = new EventHandler();
         while (running) {
             if (!frame.hasFocus()) {
                 keys.release();
@@ -142,7 +147,9 @@ public class GameComponent implements Runnable {
             }
         }
         if(state == GameState.SINGLE_PLAYER || state == GameState.IN_GAME_MENU) {
-            world.tick();
+            //synchronized (world) {
+            events.tick();
+            //}
             renderer.setXYZ(player.getX(), player.getY(), player.getZ());
             if (ticksToSave == 0) {
                 ticksToSave = autoSaveTicks;
@@ -169,8 +176,8 @@ public class GameComponent implements Runnable {
     }
 
     public void startGame(String name, long seed) {
-        System.out.print("Loading...");
-        world = new World(name, seed);
+        System.out.print("Loading...");//todo add some sort of loading screen
+        world = new World(name, seed, events);
         world.genSpawn(seed);
         int[] spawn = world.getSpawnPoint();
         //todo add player customization
@@ -187,12 +194,12 @@ public class GameComponent implements Runnable {
         world.addEntity(itemEntity2);
         world.addEntity(chest);
         //addTestStructure(world, spawn);
-        state = GameState.SINGLE_PLAYER;
-        System.out.println("test: " + world);
         renderer.setWorld(world);
+        renderer.setXYZ(player.getX(), player.getY(), player.getZ());
         System.out.println("Done");
         saveWorld();
-        //todo add some sort of loading screen
+        events.addEvent(new TurnTrigger(new WorldTickEvent(world)));
+        state = GameState.SINGLE_PLAYER;
     }
 
     private void addTestStructure(World world, int[] spawn) {
@@ -232,6 +239,7 @@ public class GameComponent implements Runnable {
         SavedWorld save = StoreLoad.LoadWorld();
         if (save != null) {
             world = save.getWorld();
+            world.setEventHandler(events);
             player = StoreLoad.LoadPlayer(save.getPlayerName());
             assert player != null;
             player.setKeys(keys);

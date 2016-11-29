@@ -33,11 +33,6 @@ public class LightSource implements Serializable {
     }
 
     public void render(Graphics g, int xOffset, int yOffset) {
-        System.out.print("rays: ");
-        for (Line2D line : rays) {
-            System.out.print(/*Math.atan*/((line.getY2() - line.getY1()) / (line.getX2() - line.getX1())) + ", ");
-        }
-        System.out.print("\n");
         Rectangle rectangle = getBounds();
         g.setColor(Color.RED);
         g.drawRect(rectangle.x + xOffset, rectangle.y + yOffset, rectangle.width, rectangle.height);
@@ -45,12 +40,15 @@ public class LightSource implements Serializable {
         int r = 0;
         if (rays != null) {
             Polygon shape = new Polygon();
+            //System.out.print("rays: ");
             for (Line2D ray : rays) {
+                //System.out.print(/*Math.atan*/((ray.getY2() - ray.getY1()) / (ray.getX2() - ray.getX1())) + ", ");
                 g.setColor(new Color(r, 0, 0));
                 shape.addPoint((int) (ray.getX2() + xOffset), (int) (ray.getY2() + yOffset));
                 g.drawLine((int) (ray.getX1() + xOffset), (int) (ray.getY1() + yOffset), (int) ray.getX2() + xOffset, (int) ray.getY2() + yOffset);
                 r = (r + 20) % 256;
             }
+            //System.out.print("\n");
             g.setColor(Color.BLUE);
             g.drawPolygon(shape);
         }

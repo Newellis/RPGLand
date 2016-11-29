@@ -6,7 +6,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class LoadScreen extends Menu {
-    private String Flavor = "Saving";
+    private String Flavor = "Generating World";
+    private int percent = 0;
 
     public void render(Graphics g, int width, int height) {
         g.setColor(Color.WHITE);

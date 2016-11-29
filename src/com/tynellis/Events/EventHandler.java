@@ -1,16 +1,16 @@
 package com.tynellis.Events;
 
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 public class EventHandler {
     private int turn = 0;
-    private SortedSet<Trigger> triggers = new TreeSet<Trigger>(new TriggerComparator());
+    //private SortedSet<Trigger> triggers = new TreeSet<Trigger>(new TriggerComparator());
+    private ArrayList<Trigger> triggers = new ArrayList<Trigger>();
 
     public void tick() {
         turn++;
         while (triggers.size() > 0) {
-            Trigger trigger = triggers.first();
+            Trigger trigger = triggers.get(0); //assumes triggers added in order
             if (!trigger.shouldRun(turn)) {
                 break;
             }

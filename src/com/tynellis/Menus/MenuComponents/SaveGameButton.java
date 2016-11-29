@@ -2,6 +2,7 @@ package com.tynellis.Menus.MenuComponents;
 
 import com.tynellis.GameComponent;
 import com.tynellis.GameState;
+import com.tynellis.Menus.LoadScreen;
 import com.tynellis.Save.FileHandler;
 import com.tynellis.Save.InvalidSaveException;
 import com.tynellis.input.MouseInput;
@@ -26,6 +27,8 @@ public class SaveGameButton extends Button {
     }
 
     public void Click(GameComponent game){
+        game.setState(GameState.MENU);
+        game.setMenu(new LoadScreen());
         if (valid){
             try {
                 game.loadWorld(this.game);

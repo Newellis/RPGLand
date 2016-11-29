@@ -90,8 +90,9 @@ public class GameRenderer extends JPanel implements Runnable {
 
         //fill screen here
         if (state == GameState.SINGLE_PLAYER || state == GameState.IN_GAME_MENU || state == GameState.PAUSE_MENU) {
-            System.out.println("render World");
-            world.render(screen, width, height, (int) ((X + 0.5) * Tile.WIDTH), (int) ((Y + 0.5) * Tile.HEIGHT), (int) (Z * (Tile.HEIGHT * 3 / 4)));
+            synchronized (world) {
+                world.render(screen, width, height, (int) ((X + 0.5) * Tile.WIDTH), (int) ((Y + 0.5) * Tile.HEIGHT), (int) (Z * (Tile.HEIGHT * 3 / 4)));
+            }
         } else if (state == GameState.MENU) {
             menu.render(screen, width, height);
         }

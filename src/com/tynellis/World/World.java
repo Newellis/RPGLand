@@ -1,6 +1,9 @@
 package com.tynellis.World;
 
 import com.tynellis.Debug;
+import com.tynellis.Events.EntityTickEvent;
+import com.tynellis.Events.EventHandler;
+import com.tynellis.Events.TurnTrigger;
 import com.tynellis.GameComponent;
 import com.tynellis.Save.FileHandler;
 import com.tynellis.Save.SavedArea;
@@ -43,12 +46,14 @@ public class World implements Land, Serializable{
     public final Random WORLD_RAND;
     private String Name;
     private transient EntityQuadTree collisionTree;
+    private transient EventHandler eventHandler;
 
-    public World(String name, long seed) {
+    public World(String name, long seed, EventHandler events) {
         this.seed = seed;
         WORLD_RAND = new Random(seed);
         gen = new WorldGen(this);
         Name = name;
+        eventHandler = events;
         FileHandler.setGameDir(name);
     }
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
@@ -116,46 +121,48 @@ public class World implements Land, Serializable{
         //tick entities
         if (entities.size() > 0) {
             collisionTree = new EntityQuadTree(0, new Rectangle(areaOffset[X] * Area.WIDTH * Tile.WIDTH, areaOffset[Y] * Area.HEIGHT * Tile.HEIGHT, loadedAreas.length * Area.WIDTH * Tile.WIDTH, loadedAreas[0].length * Area.HEIGHT * Tile.HEIGHT));
-            for (Entity entity : entities) {
-                if (!entity.isDead()) {
-                    collisionTree.insert(entity);
-                }
-            }
-            for (Entity entity : entities) {
-                if (entity.isDead()) {
-                    deadEntities.add(entity);
-                } else {
-
-                    List<Entity> near = collisionTree.retrieve(new ArrayList<Entity>(), entity.getBounds());
-                    near.remove(entity);
-                    entity.tick(this, near);
-                    if (entity.getLight() != null) {
-                        near = collisionTree.retrieve(new ArrayList<Entity>(), entity.getLight().getBounds());
-                        near.remove(entity);
-                        entity.getLight().tick(this, near);
+            synchronized (this) {
+                for (Entity entity : entities) {
+                    if (!entity.isDead()) {
+                        collisionTree.insert(entity);
                     }
                 }
             }
         }
-//        //keep entities list sorted by entity posY
-//        if (entityMoveList.size() > 0) {
-////            for (Entity entity: entityMoveList){
-////                entities.remove(entity);
-////                entities.add(entity);
-////            }
-        SortedSet<Entity> temp = new TreeSet<Entity>(new EntityComparator());
-//            temp.addAll(entities);
-//            entities = temp;
-//            entityMoveList.clear();
+//            for (Entity entity : entities) {
+//                if (entity.isDead()) {
+//                    deadEntities.add(entity);
+//                } else {
+//                    List<Entity> near = collisionTree.retrieve(new ArrayList<Entity>(), entity.getBounds());
+//                    near.remove(entity);
+//                    entity.tick(this, near);
+//                    if (entity.getLight() != null) {
+//                        near = collisionTree.retrieve(new ArrayList<Entity>(), entity.getLight().getBounds());
+//                        near.remove(entity);
+//                        entity.getLight().tick(this, near);
+//                    }
+//                }
+//            }
 //        }
-        //remove entities that have died
-        if (deadEntities.size() > 0) {
-            for (Entity entity : deadEntities) {
-                entity.performDeath(this);
-                entities.remove(entity);
-            }
-            deadEntities.clear();
-        }
+////        //keep entities list sorted by entity posY
+////        if (entityMoveList.size() > 0) {
+//////            for (Entity entity: entityMoveList){
+//////                entities.remove(entity);
+//////                entities.add(entity);
+//////            }
+////        SortedSet<Entity> temp = new TreeSet<Entity>(new EntityComparator());
+////            temp.addAll(entities);
+////            entities = temp;
+////            entityMoveList.clear();
+////        }
+//        //remove entities that have died
+//        if (deadEntities.size() > 0) {
+//            for (Entity entity : deadEntities) {
+//                entity.performDeath(this);
+//                entities.remove(entity);
+//            }
+//            deadEntities.clear();
+//        }
     }
 
     //Load areas around player if center area has changed
@@ -267,6 +274,7 @@ public class World implements Land, Serializable{
     //add an entity to the world
     public void addEntity(Entity e) {
         entities.add(e);
+        eventHandler.addEvent(new TurnTrigger(new EntityTickEvent(e, this)));
     }
 
     //remove an entity from the world
@@ -553,5 +561,11 @@ public class World implements Land, Serializable{
 
     public void genSpawn(long seed) {
         gen.setSpawn(seed);
+    }
+
+    public void setEventHandler(EventHandler eventHandler) {
+        System.out.println("set eventhander to: " + eventHandler);
+        this.eventHandler = eventHandler;
+        System.out.println("eventhander is now: " + this.eventHandler);
     }
 }
