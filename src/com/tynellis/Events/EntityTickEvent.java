@@ -1,10 +1,11 @@
 package com.tynellis.Events;
 
 import com.tynellis.World.Entities.Entity;
+import com.tynellis.World.Entities.Orginization.EntityQuadTree;
 import com.tynellis.World.World;
 
 public class EntityTickEvent extends TickEvent {
-    private World world;
+    private final World world;
     private Entity entity;
 
     public EntityTickEvent(Entity entity, World world) {
@@ -14,9 +15,14 @@ public class EntityTickEvent extends TickEvent {
 
     @Override
     public void run(EventHandler handler) {
-        entity.tick(world, world.getEntitiesIntersecting(entity.getBounds()));
-        //if (!entity.isDead()) {
-        super.run(handler);
-        //}
+        synchronized (world) {
+            EntityQuadTree collisionTree = world.getCollisionTree();
+            collisionTree.remove(entity);
+            entity.tick(world, world.getEntitiesIntersecting(entity.getBounds()));
+            collisionTree.insert(entity);
+            //if (!entity.isDead()) {
+            super.run(handler);
+            //}
+        }
     }
 }

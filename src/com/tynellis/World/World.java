@@ -48,12 +48,13 @@ public class World implements Land, Serializable{
     private transient EntityQuadTree collisionTree;
     private transient EventHandler eventHandler;
 
-    public World(String name, long seed, EventHandler events) {
+    public World(String name, long seed, EventHandler events, GameComponent game) {
         this.seed = seed;
         WORLD_RAND = new Random(seed);
-        gen = new WorldGen(this);
+        gen = new WorldGen(this, game);
         Name = name;
         eventHandler = events;
+        collisionTree = new EntityQuadTree(0, new Rectangle());
         FileHandler.setGameDir(name);
     }
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
@@ -61,6 +62,7 @@ public class World implements Land, Serializable{
         entityMoveList = new ArrayList<Entity>();
         deadEntities = new ArrayList<Entity>();
         entities = new ArrayList<Entity>();
+        collisionTree = new EntityQuadTree(0, new Rectangle(areaOffset[X] * Area.WIDTH * Tile.WIDTH, areaOffset[Y] * Area.HEIGHT * Tile.HEIGHT, loadedAreas.length * Area.WIDTH * Tile.WIDTH, loadedAreas[0].length * Area.HEIGHT * Tile.HEIGHT));
         //entities = new ArrayList<Entity>();
     }
 
@@ -88,7 +90,8 @@ public class World implements Land, Serializable{
             for (int i = Buffer; i <= Buffer + NumOfAreasInWidth; i++) {
                 if (i < 0 || i > loadedAreas.length + Buffer) {
                     continue;
-                }//todo render entitys behind tiles they are behind
+                }
+                //todo render entitys behind tiles they are behind
                 loadedAreas[i][j].render(g, (i + areaOffset[X]) * (Tile.WIDTH * Area.WIDTH) + xOffset, (j + areaOffset[Y]) * (Tile.HEIGHT * Area.HEIGHT) + yOffset);
 
 //                for (int depth = 0; depth < Area.DEPTH; depth++) {
@@ -119,16 +122,20 @@ public class World implements Land, Serializable{
 
     public void tick() {
         //tick entities
-        if (entities.size() > 0) {
-            collisionTree = new EntityQuadTree(0, new Rectangle(areaOffset[X] * Area.WIDTH * Tile.WIDTH, areaOffset[Y] * Area.HEIGHT * Tile.HEIGHT, loadedAreas.length * Area.WIDTH * Tile.WIDTH, loadedAreas[0].length * Area.HEIGHT * Tile.HEIGHT));
-            synchronized (this) {
-                for (Entity entity : entities) {
-                    if (!entity.isDead()) {
-                        collisionTree.insert(entity);
-                    }
-                }
-            }
-        }
+        collisionTree.setBounds(new Rectangle(areaOffset[X] * Area.WIDTH * Tile.WIDTH, areaOffset[Y] * Area.HEIGHT * Tile.HEIGHT, loadedAreas.length * Area.WIDTH * Tile.WIDTH, loadedAreas[0].length * Area.HEIGHT * Tile.HEIGHT));
+
+//        if (entities.size() > 0) {
+//            collisionTree = new EntityQuadTree(0, new Rectangle(areaOffset[X] * Area.WIDTH * Tile.WIDTH, areaOffset[Y] * Area.HEIGHT * Tile.HEIGHT, loadedAreas.length * Area.WIDTH * Tile.WIDTH, loadedAreas[0].length * Area.HEIGHT * Tile.HEIGHT));
+//            synchronized (this) {
+//                for (Entity entity : entities) {
+//                    if (!entity.isDead()) {
+//                        collisionTree.insert(entity);
+//                    }
+//                }
+//            }
+//        }
+
+
 //            for (Entity entity : entities) {
 //                if (entity.isDead()) {
 //                    deadEntities.add(entity);
@@ -175,7 +182,7 @@ public class World implements Land, Serializable{
 
     //initialize all areas around center area
     public void loadAreas(){
-        loadedAreas = new Area[NumOfAreasInWidth + 2*Buffer][NumOfAreasInHeight + 2*Buffer];
+        loadedAreas = new Area[NumOfAreasInWidth + 2 * Buffer][NumOfAreasInHeight + 2 * Buffer];
         setLoadedAreas();
     }
 
@@ -385,7 +392,7 @@ public class World implements Land, Serializable{
     }
 
     //get a list of Entities intersecting Rectangle rect
-    public ArrayList<Entity> getEntitiesIntersecting(Rectangle rect){
+    public synchronized ArrayList<Entity> getEntitiesIntersecting(Rectangle rect) {
         ArrayList<Entity> intersecting = new ArrayList<Entity>();
         if (collisionTree != null) {
             List<Entity> near = collisionTree.retrieve(new ArrayList<Entity>(), rect);
@@ -567,5 +574,9 @@ public class World implements Land, Serializable{
         System.out.println("set eventhander to: " + eventHandler);
         this.eventHandler = eventHandler;
         System.out.println("eventhander is now: " + this.eventHandler);
+    }
+
+    public synchronized EntityQuadTree getCollisionTree() {
+        return collisionTree;
     }
 }

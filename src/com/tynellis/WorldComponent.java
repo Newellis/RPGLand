@@ -38,7 +38,7 @@ public class WorldComponent extends JComponent{
         long seed = random.nextLong();
         seed = 2000000;
         System.out.println("Seed: " + seed);
-        World world = new World("test", seed, null);
+        World world = new World("test", seed, null, null);
         world.genSpawn(seed);
         spawn = world.getSpawnPoint();
         array = world.gen.getLandAreas(); //world.gen.erodeArea(20 * Area.WIDTH, 10 * Area.HEIGHT, new Random(seed * ((20 * Area.WIDTH * World.WIDTH) + 10 * Area.HEIGHT)));

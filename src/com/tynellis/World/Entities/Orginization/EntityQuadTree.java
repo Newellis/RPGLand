@@ -25,7 +25,7 @@ public class EntityQuadTree {
         nodes = new EntityQuadTree[4];
     }
 
-    public void clear() {
+    public synchronized void clear() {
         entities.clear();
 
         for (int i = 0; i < nodes.length; i++) {
@@ -36,7 +36,7 @@ public class EntityQuadTree {
         }
     }
 
-    private void split() {
+    private synchronized void split() {
         int width = (int) (bounds.getWidth() / 2);
         int height = (int) (bounds.getHeight() / 2);
         int x = (int) bounds.getX();
@@ -48,7 +48,7 @@ public class EntityQuadTree {
         nodes[3] = new EntityQuadTree(level + 1, new Rectangle(x + width, y + height, width, height));
     }
 
-    private int getIndex(Rectangle pRect) {
+    private synchronized int getIndex(Rectangle pRect) {
         int index = -1;
 
         int width = (int) (bounds.getWidth() / 2);
@@ -72,7 +72,7 @@ public class EntityQuadTree {
         return index;
     }
 
-    public void insert(Entity entity) {
+    public synchronized void insert(Entity entity) {
         if (nodes[0] != null) {
             int index = getIndex(entity.getBounds());
             if (index != -1) {//fits fully in one quadrant
@@ -96,12 +96,33 @@ public class EntityQuadTree {
                     nodes[index].insert(entityTest);
                     iterator.remove();
                 }
-
             }
         }
     }
 
-    public List<Entity> retrieve(List<Entity> returnObjects, Rectangle pRect) {
+    public synchronized void remove(Entity entity) {
+        if (nodes[0] != null) {
+            int index = getIndex(entity.getBounds());
+            if (index != -1) {//fits fully in one quadrant
+                nodes[index].insert(entity);
+                int newAmount = 0;
+                for (EntityQuadTree node : nodes) {
+                    newAmount += node.entities.size();
+                }
+                if (newAmount <= threshold) {
+                    for (EntityQuadTree node : nodes) {
+                        entities.addAll(node.entities);
+                    }
+                    nodes = new EntityQuadTree[4];
+                }
+                return;
+            }
+        }
+
+        entities.remove(entity);
+    }
+
+    public synchronized List<Entity> retrieve(List<Entity> returnObjects, Rectangle pRect) {
         int index = getIndex(pRect);
 
         if (index != -1 && nodes[index] != null) {
@@ -144,7 +165,7 @@ public class EntityQuadTree {
         return returnObjects;
     }
 
-    public void render(Graphics g, int xOffset, int yOffset) {
+    public synchronized void render(Graphics g, int xOffset, int yOffset) {
         switch (level) {
             case 0:
                 g.setColor(Color.RED);
@@ -177,5 +198,9 @@ public class EntityQuadTree {
                 tree.render(g, xOffset, yOffset);
             }
         }
+    }
+
+    public synchronized void setBounds(Rectangle rectangle) {
+        bounds = rectangle;
     }
 }

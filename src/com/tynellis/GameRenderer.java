@@ -2,6 +2,7 @@ package com.tynellis;
 
 
 import com.tynellis.Menus.Menu;
+import com.tynellis.World.Entities.Player;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.World;
 
@@ -17,8 +18,8 @@ public class GameRenderer extends JPanel implements Runnable {
     private int fps;
     private transient GameComponent game;
     private World world;
+    private Player player;
     private transient BufferedImage screenFrame;
-    private double X, Y, Z;
 
 
     public GameRenderer(GameComponent component) {
@@ -37,16 +38,16 @@ public class GameRenderer extends JPanel implements Runnable {
         int min = 999999999;
         int max = 0;
         System.out.println("render Start");
+        //DrawingTest.createAndShowGui();
         while (running) {
             long nanoSecsBetweenRender = 1000000000 / maxFPS;
             long secsBetweenRender = System.nanoTime() - lastRenderTimeStart;
-
             if (secsBetweenRender >= nanoSecsBetweenRender) {
                 frames++;
                 Graphics g = getGraphics();
                 lastRenderTimeStart = System.nanoTime();
-
-                render(g);
+                //render(g);
+                repaint();
 
                 long renderTime = System.nanoTime();
                 int timePassed = (int) (renderTime - lastRenderTime);
@@ -91,7 +92,7 @@ public class GameRenderer extends JPanel implements Runnable {
         //fill screen here
         if (state == GameState.SINGLE_PLAYER || state == GameState.IN_GAME_MENU || state == GameState.PAUSE_MENU) {
             synchronized (world) {
-                world.render(screen, width, height, (int) ((X + 0.5) * Tile.WIDTH), (int) ((Y + 0.5) * Tile.HEIGHT), (int) (Z * (Tile.HEIGHT * 3 / 4)));
+                world.render(screen, width, height, (int) ((player.getX() + 0.5) * Tile.WIDTH), (int) ((player.getY() + 0.5) * Tile.HEIGHT), (int) (player.getZ() * (Tile.HEIGHT * 3 / 4)));
             }
         } else if (state == GameState.MENU) {
             menu.render(screen, width, height);
@@ -105,17 +106,22 @@ public class GameRenderer extends JPanel implements Runnable {
         }
         screen.setColor(Color.WHITE);
         screen.drawString("FPS: " + fps, 10, 20);
+
         g.drawImage(screenFrame, 0, 0, null);
     }
 
+
     public void setWorld(World world) {
-        System.out.println(world);
         this.world = world;
     }
 
-    public void setXYZ(double x, double y, double z) {
-        X = x;
-        Y = y;
-        Z = z;
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        render(g);
     }
 }

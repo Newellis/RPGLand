@@ -1,6 +1,7 @@
 package com.tynellis.World;
 
 import com.tynellis.GameComponent;
+import com.tynellis.Menus.Menu;
 import com.tynellis.World.Entities.Tree;
 import com.tynellis.World.Tiles.LandTiles.LandTile;
 import com.tynellis.World.Tiles.LandTiles.ManMade.Ladder;
@@ -26,9 +27,11 @@ public class WorldGen implements Serializable{
 
     private int[][] landAreas;
     private int[][] caveAreas = new int[World.WIDTH][World.HEIGHT];
+    private transient GameComponent game;
 
-    public WorldGen(World world) {
+    public WorldGen(World world, GameComponent game) {
         this.world = world;
+        this.game = game;
         genCaves();
         genLand();
     }
@@ -62,6 +65,10 @@ public class WorldGen implements Serializable{
     public void genLand() {
         int pow = 5;
         int[][] seedArea = seedArea(pow);
+        Menu m = game.getMenu();
+        if (m != null) {
+            m.setFlavor("Generating World");
+        }
         landAreas = diamondStep(seedArea, World.WIDTH, 2*((World.WIDTH*Area.WIDTH)/(int)Math.pow(2,pow)), world.WORLD_RAND, true);//25
     }
 
@@ -235,6 +242,11 @@ public class WorldGen implements Serializable{
     }
 
     public void fillArea(int X, int Y, long seed) {
+        Menu m = game.getMenu();
+        if (m != null) {
+            m.setFlavor("Filling area");
+        }
+
         Random rand = new Random(seed * ((X * World.WIDTH) + Y)); // for location based randoms
         int[][] land = erodeArea(X, Y, rand);
 
@@ -267,6 +279,10 @@ public class WorldGen implements Serializable{
     }
 
     public void styleWorld(int X, int Y, long seed) {
+        Menu m = game.getMenu();
+        if (m != null) {
+            m.setFlavor("Styling area");
+        }
         Random rand = new Random(seed * ((X * World.WIDTH) + Y)); // for location based randoms
         addBeaches(X, Y, rand);
         erode(X, Y, rand); // reduces tile Art errors by not allowing tiles to stand alone

@@ -11,7 +11,9 @@ public class WorldTickEvent extends TickEvent {
 
     @Override
     public void run(EventHandler handler) {
-        world.tick();
-        super.run(handler);
+        synchronized (world) {
+            world.tick();
+            super.run(handler);
+        }
     }
 }

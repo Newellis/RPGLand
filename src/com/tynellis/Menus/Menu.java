@@ -12,6 +12,7 @@ import java.util.List;
 
 public abstract class Menu extends MenuComponent implements ButtonListener{
 
+    protected String Flavor = "";
     protected List<Button> buttons = new ArrayList<Button>();
 
     protected Button addButton(Button button) {
@@ -29,6 +30,10 @@ public abstract class Menu extends MenuComponent implements ButtonListener{
 
     public void tick(GameComponent game, MouseInput mouse, int width, int height) {
         tick(mouse);
+    }
+
+    public void setFlavor(String update) {
+        Flavor = update;
     }
 
     @Override

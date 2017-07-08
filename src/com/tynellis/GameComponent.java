@@ -134,6 +134,9 @@ public class GameComponent implements Runnable {
         }
     }
 
+    public static void draw() {
+        frame.invalidate();
+    }
 
     private void tick() {
         keys.tick();
@@ -147,10 +150,7 @@ public class GameComponent implements Runnable {
             }
         }
         if(state == GameState.SINGLE_PLAYER || state == GameState.IN_GAME_MENU) {
-            //synchronized (world) {
             events.tick();
-            //}
-            renderer.setXYZ(player.getX(), player.getY(), player.getZ());
             if (ticksToSave == 0) {
                 ticksToSave = autoSaveTicks;
                 saveWorld();
@@ -176,26 +176,31 @@ public class GameComponent implements Runnable {
     }
 
     public void startGame(String name, long seed) {
-        System.out.print("Loading...");//todo add some sort of loading screen
-        world = new World(name, seed, events);
+        System.out.print("Loading...");//todo change detail text on loading screen as loading
+        world = new World(name, seed, events, this);
         world.genSpawn(seed);
         int[] spawn = world.getSpawnPoint();
+
         //todo add player customization
         player = new Player(keys, NpcBase.getName(NpcBase.NpcGender.MALE, world.getRand()), spawn[0], spawn[1], spawn[2]);
+        world.addEntity(player);
+        renderer.setWorld(world);
+        renderer.setPlayer(player);
+
+        //test stuff for testing purposes
         Chest chest = new Chest(spawn[0] - 5, spawn[1] + 2, spawn[2]);
         NpcBase npc = new LumberJackNpc(spawn[0] - 3, spawn[1] + 2, spawn[2], NpcBase.NpcGender.FEMALE, chest, world.getRand());
         ItemEntity itemEntity = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 1), world.getRand(), spawn[0] + 4, spawn[1], spawn[2]);
         ItemEntity itemEntity1 = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 10), world.getRand(), spawn[0] + 6, spawn[1], spawn[2]);
         ItemEntity itemEntity2 = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 20), world.getRand(), spawn[0] + 8, spawn[1], spawn[2]);
-        world.addEntity(player);
         world.addEntity(npc);
         world.addEntity(itemEntity);
         world.addEntity(itemEntity1);
         world.addEntity(itemEntity2);
         world.addEntity(chest);
         //addTestStructure(world, spawn);
-        renderer.setWorld(world);
-        renderer.setXYZ(player.getX(), player.getY(), player.getZ());
+
+
         System.out.println("Done");
         saveWorld();
         events.addEvent(new TurnTrigger(new WorldTickEvent(world)));
