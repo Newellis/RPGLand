@@ -4,6 +4,6 @@ public abstract class TickEvent implements Event{
 
     @Override
     public void run(EventHandler handler) {
-        handler.addEvent(new TurnTrigger(this, handler.getCurrentTurn() + 1));
+        handler.addEvent(new TurnTrigger(this));
     }
 }

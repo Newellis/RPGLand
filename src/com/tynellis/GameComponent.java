@@ -278,4 +278,8 @@ public class GameComponent implements Runnable {
     public Menu getMenu() {
         return menu;
     }
+
+    public EventHandler getEvents() {
+        return events;
+    }
 }

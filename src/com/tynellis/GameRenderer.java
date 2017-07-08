@@ -38,7 +38,7 @@ public class GameRenderer extends JPanel implements Runnable {
         int min = 999999999;
         int max = 0;
         System.out.println("render Start");
-        //DrawingTest.createAndShowGui();
+
         while (running) {
             long nanoSecsBetweenRender = 1000000000 / maxFPS;
             long secsBetweenRender = System.nanoTime() - lastRenderTimeStart;
@@ -46,8 +46,8 @@ public class GameRenderer extends JPanel implements Runnable {
                 frames++;
                 Graphics g = getGraphics();
                 lastRenderTimeStart = System.nanoTime();
-                //render(g);
                 repaint();
+
 
                 long renderTime = System.nanoTime();
                 int timePassed = (int) (renderTime - lastRenderTime);
@@ -77,6 +77,7 @@ public class GameRenderer extends JPanel implements Runnable {
 
 
     private synchronized void render(Graphics g) {
+        game.getEvents().block();
         int height = game.getHeight();
         int width = game.getWidth();
 
@@ -108,6 +109,7 @@ public class GameRenderer extends JPanel implements Runnable {
         screen.drawString("FPS: " + fps, 10, 20);
 
         g.drawImage(screenFrame, 0, 0, null);
+        game.getEvents().release();
     }
 
 

@@ -15,14 +15,11 @@ public class EntityTickEvent extends TickEvent {
 
     @Override
     public void run(EventHandler handler) {
-        synchronized (world) {
             EntityQuadTree collisionTree = world.getCollisionTree();
             collisionTree.remove(entity);
             entity.tick(world, world.getEntitiesIntersecting(entity.getBounds()));
             collisionTree.insert(entity);
             //if (!entity.isDead()) {
             super.run(handler);
-            //}
-        }
     }
 }

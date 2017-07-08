@@ -1,7 +1,10 @@
 package com.tynellis.Events;
 
-public interface Trigger {
+import java.util.concurrent.Delayed;
+
+public interface Trigger extends Delayed {
     boolean shouldRun(int turn);
     void trigger(EventHandler handler);
-    int executeAtTurn();
+
+    long executeAtTurn();
 }
