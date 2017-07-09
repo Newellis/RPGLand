@@ -19,7 +19,6 @@ public class EntityTickEvent extends TickEvent {
             collisionTree.remove(entity);
             entity.tick(world, world.getEntitiesIntersecting(entity.getBounds()));
             collisionTree.insert(entity);
-            //if (!entity.isDead()) {
             super.run(handler);
     }
 }

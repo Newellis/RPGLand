@@ -54,7 +54,7 @@ public class World implements Land, Serializable{
         gen = new WorldGen(this, game);
         Name = name;
         eventHandler = events;
-        collisionTree = new EntityQuadTree(0, new Rectangle());
+        collisionTree = new EntityQuadTree(0, new Rectangle(0, 0, WIDTH * Area.WIDTH * Tile.WIDTH, HEIGHT * Area.HEIGHT * Tile.HEIGHT));
         FileHandler.setGameDir(name);
     }
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
@@ -62,7 +62,7 @@ public class World implements Land, Serializable{
         entityMoveList = new ArrayList<Entity>();
         deadEntities = new ArrayList<Entity>();
         entities = new ArrayList<Entity>();
-        collisionTree = new EntityQuadTree(0, new Rectangle(areaOffset[X] * Area.WIDTH * Tile.WIDTH, areaOffset[Y] * Area.HEIGHT * Tile.HEIGHT, loadedAreas.length * Area.WIDTH * Tile.WIDTH, loadedAreas[0].length * Area.HEIGHT * Tile.HEIGHT));
+        collisionTree = new EntityQuadTree(0, new Rectangle(0, 0, WIDTH * Area.WIDTH * Tile.WIDTH, HEIGHT * Area.HEIGHT * Tile.HEIGHT));
         //entities = new ArrayList<Entity>();
     }
 
@@ -121,55 +121,7 @@ public class World implements Land, Serializable{
     }
 
     public void tick() {
-        //tick entities
-        collisionTree.setBounds(new Rectangle(areaOffset[X] * Area.WIDTH * Tile.WIDTH, areaOffset[Y] * Area.HEIGHT * Tile.HEIGHT, loadedAreas.length * Area.WIDTH * Tile.WIDTH, loadedAreas[0].length * Area.HEIGHT * Tile.HEIGHT));
 
-//        if (entities.size() > 0) {
-//            collisionTree = new EntityQuadTree(0, new Rectangle(areaOffset[X] * Area.WIDTH * Tile.WIDTH, areaOffset[Y] * Area.HEIGHT * Tile.HEIGHT, loadedAreas.length * Area.WIDTH * Tile.WIDTH, loadedAreas[0].length * Area.HEIGHT * Tile.HEIGHT));
-//            synchronized (this) {
-//                for (Entity entity : entities) {
-//                    if (!entity.isDead()) {
-//                        collisionTree.insert(entity);
-//                    }
-//                }
-//            }
-//        }
-
-
-//            for (Entity entity : entities) {
-//                if (entity.isDead()) {
-//                    deadEntities.add(entity);
-//                } else {
-//                    List<Entity> near = collisionTree.retrieve(new ArrayList<Entity>(), entity.getBounds());
-//                    near.remove(entity);
-//                    entity.tick(this, near);
-//                    if (entity.getLight() != null) {
-//                        near = collisionTree.retrieve(new ArrayList<Entity>(), entity.getLight().getBounds());
-//                        near.remove(entity);
-//                        entity.getLight().tick(this, near);
-//                    }
-//                }
-//            }
-//        }
-////        //keep entities list sorted by entity posY
-////        if (entityMoveList.size() > 0) {
-//////            for (Entity entity: entityMoveList){
-//////                entities.remove(entity);
-//////                entities.add(entity);
-//////            }
-////        SortedSet<Entity> temp = new TreeSet<Entity>(new EntityComparator());
-////            temp.addAll(entities);
-////            entities = temp;
-////            entityMoveList.clear();
-////        }
-//        //remove entities that have died
-//        if (deadEntities.size() > 0) {
-//            for (Entity entity : deadEntities) {
-//                entity.performDeath(this);
-//                entities.remove(entity);
-//            }
-//            deadEntities.clear();
-//        }
     }
 
     //Load areas around player if center area has changed

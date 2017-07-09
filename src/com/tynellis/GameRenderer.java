@@ -5,6 +5,8 @@ import com.tynellis.Menus.Menu;
 import com.tynellis.World.Entities.Player;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.World;
+import com.tynellis.threadManager.RenderAction;
+import com.tynellis.threadManager.SynchronizingManager;
 
 import javax.swing.JPanel;
 import java.awt.Color;
@@ -76,8 +78,7 @@ public class GameRenderer extends JPanel implements Runnable {
     }
 
 
-    private synchronized void render(Graphics g) {
-        game.getEvents().block();
+    public synchronized void render(Graphics g) {
         int height = game.getHeight();
         int width = game.getWidth();
 
@@ -92,9 +93,7 @@ public class GameRenderer extends JPanel implements Runnable {
 
         //fill screen here
         if (state == GameState.SINGLE_PLAYER || state == GameState.IN_GAME_MENU || state == GameState.PAUSE_MENU) {
-            synchronized (world) {
                 world.render(screen, width, height, (int) ((player.getX() + 0.5) * Tile.WIDTH), (int) ((player.getY() + 0.5) * Tile.HEIGHT), (int) (player.getZ() * (Tile.HEIGHT * 3 / 4)));
-            }
         } else if (state == GameState.MENU) {
             menu.render(screen, width, height);
         }
@@ -109,7 +108,7 @@ public class GameRenderer extends JPanel implements Runnable {
         screen.drawString("FPS: " + fps, 10, 20);
 
         g.drawImage(screenFrame, 0, 0, null);
-        game.getEvents().release();
+
     }
 
 
@@ -124,6 +123,7 @@ public class GameRenderer extends JPanel implements Runnable {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        render(g);
+        //render(g);
+        SynchronizingManager.action(new RenderAction(this, g));
     }
 }

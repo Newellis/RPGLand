@@ -25,7 +25,7 @@ public class EntityQuadTree {
         nodes = new EntityQuadTree[4];
     }
 
-    public synchronized void clear() {
+    public void clear() {
         entities.clear();
 
         for (int i = 0; i < nodes.length; i++) {
@@ -36,7 +36,7 @@ public class EntityQuadTree {
         }
     }
 
-    private synchronized void split() {
+    private void split() {
         int width = (int) (bounds.getWidth() / 2);
         int height = (int) (bounds.getHeight() / 2);
         int x = (int) bounds.getX();
@@ -48,7 +48,7 @@ public class EntityQuadTree {
         nodes[3] = new EntityQuadTree(level + 1, new Rectangle(x + width, y + height, width, height));
     }
 
-    private synchronized int getIndex(Rectangle pRect) {
+    private int getIndex(Rectangle pRect) {
         int index = -1;
 
         int width = (int) (bounds.getWidth() / 2);
@@ -72,7 +72,7 @@ public class EntityQuadTree {
         return index;
     }
 
-    public synchronized void insert(Entity entity) {
+    public void insert(Entity entity) {
         if (nodes[0] != null) {
             int index = getIndex(entity.getBounds());
             if (index != -1) {//fits fully in one quadrant
@@ -122,7 +122,7 @@ public class EntityQuadTree {
         entities.remove(entity);
     }
 
-    public synchronized List<Entity> retrieve(List<Entity> returnObjects, Rectangle pRect) {
+    public List<Entity> retrieve(List<Entity> returnObjects, Rectangle pRect) {
         int index = getIndex(pRect);
 
         if (index != -1 && nodes[index] != null) {
@@ -165,7 +165,7 @@ public class EntityQuadTree {
         return returnObjects;
     }
 
-    public synchronized void render(Graphics g, int xOffset, int yOffset) {
+    public void render(Graphics g, int xOffset, int yOffset) {
         switch (level) {
             case 0:
                 g.setColor(Color.RED);
@@ -200,7 +200,18 @@ public class EntityQuadTree {
         }
     }
 
-    public synchronized void setBounds(Rectangle rectangle) {
+    public void setBounds(Rectangle rectangle) {
         bounds = rectangle;
+    }
+
+    public void dumpInto(EntityQuadTree newTree) {
+        for (Entity entity : entities) {
+            newTree.insert(entity);
+        }
+        for (EntityQuadTree subTree : nodes) {
+            if (subTree != null) {
+                subTree.dumpInto(newTree);
+            }
+        }
     }
 }
