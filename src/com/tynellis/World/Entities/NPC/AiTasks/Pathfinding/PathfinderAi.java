@@ -5,6 +5,7 @@ import com.tynellis.World.Entities.KillableEntity;
 import com.tynellis.World.Entities.NPC.AiTasks.AiTask;
 import com.tynellis.World.Entities.NPC.AiTasks.FaceClosestAi;
 import com.tynellis.World.Nodes.Node;
+import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.World;
 
 import java.io.IOException;
@@ -109,12 +110,12 @@ public class PathfinderAi extends AiTask implements Serializable {
         List<Node> openSet = new ArrayList<Node>(); // The set of tentative nodes to be evaluated, initially containing the start node
         Node start = new Node(e.getX(), e.getY(), e.getZ());
         Node goal = new Node(destX, destY, destZ);
-        if (world.getTile((int) goal.getX(), (int) goal.getY(), (int) goal.getZ()) != null && (!world.getTile((int) goal.getX(), (int) goal.getY(), (int) goal.getZ()).isPassableBy(e) || world.isTileObstructed((int) goal.getX(), (int) goal.getY(), (int) goal.getZ()))) {
+        if (isTileAtLocationPassableBy(world, goal, e)) {
             if (minRange < 1) {
                 return false;
             }
         }
-        if (world.getTile((int) e.getX(), (int) e.getY(), (int) e.getZ()) != null && (!world.getTile((int) e.getX(), (int) e.getY(), (int) e.getZ()).isPassableBy(e) || world.isTileObstructed((int) e.getX(), (int) e.getY(), (int) e.getZ()))) {
+        if (isTileAtLocationPassableBy(world, e, e)) {
             return false;
         }
         openSet.add(start);
@@ -163,6 +164,17 @@ public class PathfinderAi extends AiTask implements Serializable {
         }
         System.out.println("didn't find path");
         return false;
+    }
+
+    private boolean isTileAtLocationPassableBy(World world, Entity n, Entity e) {
+        return isTileAtLocationPassableBy(world, new Node(n.getX(), n.getY(), n.getZ()), e);
+    }
+
+    private boolean isTileAtLocationPassableBy(World world, Node n, Entity e) {
+        Tile tile = world.getTile((int) n.getX(), (int) n.getY(), (int) n.getZ());
+        return tile != null &&
+                (!tile.isPassableBy(e) ||
+                        world.isTileObstructed((int) n.getX(), (int) n.getY(), (int) n.getZ()));
     }
 
     private boolean isCloseToGoal(Node current, Node goal) {

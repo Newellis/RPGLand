@@ -67,7 +67,7 @@ public class World implements Land, Serializable{
     }
 
     //render world
-    public void render(Graphics g, int width, int height, int XPos, int YPos, int ZPos) {
+    public synchronized void render(Graphics g, int width, int height, int XPos, int YPos, int ZPos) {
         int xOffset = (width / 2) - XPos;
         int yOffset = ((height / 2) - YPos + ZPos);
 
@@ -108,6 +108,7 @@ public class World implements Land, Serializable{
         if (entities.size() > 0) {
             for (Entity entity : entitiesToRender) {
                 entity.render(g, xOffset, yOffset);
+                System.out.println("Draw: " + entity);
                 if (entity.getLight() != null) {
                     entity.getLight().render(g, xOffset, yOffset);
                 }
@@ -233,12 +234,14 @@ public class World implements Land, Serializable{
     //add an entity to the world
     public void addEntity(Entity e) {
         entities.add(e);
+        collisionTree.insert(e);
         eventHandler.addEvent(new TurnTrigger(new EntityTickEvent(e, this)));
     }
 
     //remove an entity from the world
     public void removeEntity(Entity e) {
         entities.remove(e);
+        collisionTree.remove(e);
     }
 
     //add an entity to the list to resort in the entities list
@@ -368,7 +371,7 @@ public class World implements Land, Serializable{
     }
 
     //get a list of entities in Rectangle rect
-    public ArrayList<Entity> getEntitiesInBounds(Rectangle rect) {
+    public synchronized ArrayList<Entity> getEntitiesInBounds(Rectangle rect) {
         ArrayList<Entity> inBounds = new ArrayList<Entity>();
         if (collisionTree != null) {
             List<Entity> near = collisionTree.retrieve(new ArrayList<Entity>(), rect);
