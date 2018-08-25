@@ -135,7 +135,7 @@ public class GameComponent extends JPanel implements Runnable {
                 frames++;
                 Graphics g = getGraphics();
 
-                render(g);
+                repaint();
 
                 long renderTime = System.nanoTime();
                 int timePassed = (int) (renderTime - lastRenderTime);
@@ -166,6 +166,11 @@ public class GameComponent extends JPanel implements Runnable {
         }
     }
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        render(g);
+    }
 
     private synchronized void render(Graphics g) {
         if (screenFrame == null || screenFrame.getWidth() != width || screenFrame.getHeight() != height) {
