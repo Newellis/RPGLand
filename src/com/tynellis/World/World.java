@@ -7,6 +7,7 @@ import com.tynellis.Save.StoreLoad;
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.Orginization.EntityComparator;
 import com.tynellis.World.Entities.Orginization.EntityQuadTree;
+import com.tynellis.World.Light.LightOverlay;
 import com.tynellis.World.Nodes.Node;
 import com.tynellis.World.Tiles.LandTiles.ConnectorTile;
 import com.tynellis.World.Tiles.LandTiles.LayeredTile;
@@ -44,6 +45,8 @@ public class World implements Land, Serializable{
     private String Name;
     private transient EntityQuadTree collisionTree;
 
+    private transient LightOverlay lighting = new LightOverlay();
+
     public World(String name, long seed) {
         this.seed = seed;
         WORLD_RAND = new Random(seed);
@@ -56,6 +59,7 @@ public class World implements Land, Serializable{
         entityMoveList = new ArrayList<Entity>();
         deadEntities = new ArrayList<Entity>();
         entities = new ArrayList<Entity>();
+        lighting = new LightOverlay();
         //entities = new ArrayList<Entity>();
     }
 
@@ -110,6 +114,8 @@ public class World implements Land, Serializable{
                 collisionTree.render(g, xOffset, yOffset);
             }
         }
+
+        lighting.render(g, width, height, XPos, YPos, ZPos);
     }
 
     public synchronized void tick() {
