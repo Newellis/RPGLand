@@ -98,7 +98,7 @@ public class PathfinderAi extends AiTask implements Serializable {
             }
         }
         Node endNode = new Node(destX, destY, destZ);
-        if (!isCloseToGoal(path.get(path.size() - 1), endNode)) {
+        if (!isCloseToGoal(path.get(path.size() - 1), endNode, minRange)) {
             return false;
         }
         return true;
@@ -109,6 +109,8 @@ public class PathfinderAi extends AiTask implements Serializable {
         List<Node> openSet = new ArrayList<Node>(); // The set of tentative nodes to be evaluated, initially containing the start node
         Node start = new Node(e.getX(), e.getY(), e.getZ());
         Node goal = new Node(destX, destY, destZ);
+        System.out.println("start: " + start);
+        System.out.println("goal: " + goal);
         if (world.getTile((int) goal.getX(), (int) goal.getY(), (int) goal.getZ()) != null && (!world.getTile((int) goal.getX(), (int) goal.getY(), (int) goal.getZ()).isPassableBy(e) || world.isTileObstructed((int) goal.getX(), (int) goal.getY(), (int) goal.getZ()))) {
             if (minRange < 1) {
                 return false;
@@ -135,8 +137,8 @@ public class PathfinderAi extends AiTask implements Serializable {
                 }
             }
             assert current != null;
-
-            if (isCloseToGoal(current, goal)) {
+            System.out.println("distance away: " + heuristicCostEstimate(current, goal) + " minRange: " + minRange);
+            if (isCloseToGoal(current, goal, minRange)) {
                 return reconstruct_path(cameFrom, current);
             }
             openSet.remove(current);
@@ -165,7 +167,7 @@ public class PathfinderAi extends AiTask implements Serializable {
         return false;
     }
 
-    private boolean isCloseToGoal(Node current, Node goal) {
+    private boolean isCloseToGoal(Node current, Node goal, int minRange) {
         return heuristicCostEstimate(current, goal) <= minRange;
     }
 

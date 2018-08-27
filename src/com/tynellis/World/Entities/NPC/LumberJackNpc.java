@@ -44,7 +44,6 @@ public class LumberJackNpc extends NpcBase {
         Ai.addTask(2, items);
         Ai.addTask(3, chestAi);
         Ai.addTask(100, new RandomWanderAi());
-        //Ai.addTask(4, pathfinder);
     }
 
     @Override
