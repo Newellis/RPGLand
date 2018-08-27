@@ -139,7 +139,7 @@ public class Player extends Humanoid {
 
     public void handleCollision(BoundingBoxOwner bb, double xMove, double yMove, boolean isOver) {
         if (bb instanceof KillableEntity) {
-            ((KillableEntity) bb).DamageBy(new DamageSource(new Damage(Damage.Types.SLICING, 1)));
+            ((KillableEntity) bb).DamageBy(new DamageSource(new Damage(Damage.Types.FIRE, 1)));
         }
         super.handleCollision(bb, xMove, yMove, isOver);
     }

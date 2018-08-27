@@ -2,7 +2,7 @@ package com.tynellis.World.Entities;
 
 import com.tynellis.BoundingBox.BoundingBoxOwner;
 import com.tynellis.World.Entities.damage.Damage;
-import com.tynellis.World.Entities.damage.DamageResistor;
+import com.tynellis.World.Entities.damage.DamageModifier;
 import com.tynellis.World.Entities.damage.DamageSource;
 import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.ItemPile;
@@ -16,7 +16,7 @@ import java.util.Random;
 public abstract class KillableEntity extends Entity {
 
     private int health = 20;
-    private DamageResistor resistance;
+    protected DamageModifier resistance;
     private boolean hurt = false;
 
     protected Container inventory;
@@ -44,7 +44,7 @@ public abstract class KillableEntity extends Entity {
         for (Damage d : damage.dealDamage()) {
             double amount;
             if (resistance != null) {
-                amount = resistance.reduceDamage(d);
+                amount = resistance.modifyDamage(d);
             } else {
                 amount = d.amount;
             }

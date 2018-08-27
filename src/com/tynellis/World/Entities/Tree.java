@@ -1,6 +1,8 @@
 package com.tynellis.World.Entities;
 
 import com.tynellis.Art.SpriteSheet;
+import com.tynellis.World.Entities.damage.Damage;
+import com.tynellis.World.Entities.damage.DamageModifier;
 import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Items.Materials.Log;
 import com.tynellis.World.Items.TreeSeeds;
@@ -9,6 +11,7 @@ import com.tynellis.World.World;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -29,6 +32,10 @@ public class Tree extends KillableEntity {
         treeHeight = 20 + rand.nextInt(20);
         speed = 0.0;
         canBeMoved = false;
+        HashMap<Damage.Types, Double> resistances = new HashMap<Damage.Types, Double>();
+        resistances.put(Damage.Types.BLUNT, 1.0);
+        resistances.put(Damage.Types.FIRE, -1.0);
+        resistance = new DamageModifier(resistances);
     }
 
     @Override
