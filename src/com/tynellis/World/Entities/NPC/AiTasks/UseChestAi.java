@@ -26,11 +26,13 @@ public class UseChestAi extends UseUsableEntityAi {
 
     @Override
     protected boolean shouldUse(World world, KillableEntity entity) {
-        Container inventory = entity.getInventory();
-        for (int i = 0; i < inventory.getInventory().length; i++) {
-            ItemPile pile = inventory.getInventory()[i].getPile();
-            if (pile != null && filter.followsFilter(pile) && !((Chest) tool).isFull()) {
-                return true;
+        if (findTarget(world, entity)) {
+            Container inventory = entity.getInventory();
+            for (int i = 0; i < inventory.getInventory().length; i++) {
+                ItemPile pile = inventory.getInventory()[i].getPile();
+                if (pile != null && filter.followsFilter(pile) && !((Chest) tool).isFull()) {
+                    return true;
+                }
             }
         }
         using = false;

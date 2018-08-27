@@ -4,7 +4,6 @@ import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.NPC.AiTasks.FaceClosestAi;
 import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.CollectItemsAi;
 import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.StayNearPoint;
-import com.tynellis.World.Entities.NPC.AiTasks.RandomWanderAi;
 import com.tynellis.World.Entities.NPC.AiTasks.UseChestAi;
 import com.tynellis.World.Entities.Player;
 import com.tynellis.World.Entities.UsableEntity.Chest;
@@ -43,7 +42,9 @@ public class LumberJackNpc extends NpcBase {
         Ai.addTask(1, ai);
         Ai.addTask(2, items);
         Ai.addTask(3, chestAi);
-        Ai.addTask(100, new RandomWanderAi());
+
+        //put all ai above this point
+//        Ai.addTask(1000, new RandomWanderAi());
     }
 
     @Override

@@ -70,7 +70,7 @@ public class Chest extends UsableEntity {
     }
 
     public String toString() {
-        return "Entity{" + getClass().getName() +
+        return "Chest{" + getClass().getName() +
                 ", posY= " + posY +
                 ", posX= " + posX +
                 ", posZ= " + posZ +

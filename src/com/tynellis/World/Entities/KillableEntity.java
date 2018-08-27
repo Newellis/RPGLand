@@ -32,6 +32,7 @@ public abstract class KillableEntity extends Entity {
     }
 
     public ItemPile[] getItemsToDrop(Random rand) {
+        System.out.println("drop " + inventory.toString());
         return inventory.getContents();
     }
 

@@ -137,7 +137,6 @@ public class PathfinderAi extends AiTask implements Serializable {
                 }
             }
             assert current != null;
-            System.out.println("distance away: " + heuristicCostEstimate(current, goal) + " minRange: " + minRange);
             if (isCloseToGoal(current, goal, minRange)) {
                 return reconstruct_path(cameFrom, current);
             }
