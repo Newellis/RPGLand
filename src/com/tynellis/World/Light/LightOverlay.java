@@ -16,7 +16,7 @@ public class LightOverlay {
 
         //add all light sources
 
-        
+
         //invert alpha
 //        DataBufferInt buf = (DataBufferInt) lightOverlay.getRaster().getDataBuffer();
 //        int[] values = buf.getData();

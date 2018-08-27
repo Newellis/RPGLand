@@ -2,7 +2,10 @@ package com.tynellis.World.Entities;
 
 import com.tynellis.Art.Animation;
 import com.tynellis.Art.SpriteSheet;
+import com.tynellis.BoundingBox.BoundingBoxOwner;
 import com.tynellis.GameComponent;
+import com.tynellis.World.Entities.damage.Damage;
+import com.tynellis.World.Entities.damage.DamageSource;
 import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.Containers.Filters.ItemFilter;
 import com.tynellis.World.Items.Containers.Filters.NameItemFilter;
@@ -132,6 +135,13 @@ public class Player extends Humanoid {
             g.drawString("X,Y,Z: " + posX + ", " + posY + ", " + posZ, 10, 34);
         }
         super.render(g, xOffset, yOffset);
+    }
+
+    public void handleCollision(BoundingBoxOwner bb, double xMove, double yMove, boolean isOver) {
+        if (bb instanceof KillableEntity) {
+            ((KillableEntity) bb).DamageBy(new DamageSource(new Damage(Damage.Types.SLICING, 1)));
+        }
+        super.handleCollision(bb, xMove, yMove, isOver);
     }
 
     @Override
