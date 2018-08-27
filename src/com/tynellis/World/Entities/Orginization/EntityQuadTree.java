@@ -25,7 +25,7 @@ public class EntityQuadTree {
         nodes = new EntityQuadTree[4];
     }
 
-    public void clear() {
+    public synchronized void clear() {
         entities.clear();
 
         for (int i = 0; i < nodes.length; i++) {
@@ -72,7 +72,7 @@ public class EntityQuadTree {
         return index;
     }
 
-    public void insert(Entity entity) {
+    public synchronized void insert(Entity entity) {
         if (nodes[0] != null) {
             int index = getIndex(entity.getBounds());
             if (index != -1) {//fits fully in one quadrant
@@ -96,12 +96,11 @@ public class EntityQuadTree {
                     nodes[index].insert(entityTest);
                     iterator.remove();
                 }
-
             }
         }
     }
 
-    public List<Entity> retrieve(List<Entity> returnObjects, Rectangle pRect) {
+    public synchronized List<Entity> retrieve(List<Entity> returnObjects, Rectangle pRect) {
         int index = getIndex(pRect);
 
         if (index != -1 && nodes[index] != null) {

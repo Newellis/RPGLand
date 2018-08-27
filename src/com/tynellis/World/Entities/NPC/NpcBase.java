@@ -2,7 +2,6 @@ package com.tynellis.World.Entities.NPC;
 
 import com.tynellis.Art.Animation;
 import com.tynellis.Art.SpriteSheet;
-import com.tynellis.Debug;
 import com.tynellis.GameComponent;
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.Humanoid;
@@ -10,6 +9,7 @@ import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.PathfinderAi;
 import com.tynellis.World.Nodes.Node;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.World;
+import com.tynellis.debug.Debug;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;

@@ -53,7 +53,7 @@ public class LightSource implements Serializable {
                 r = (r + 20) % 256;
             }
             g.setColor(Color.BLUE);
-            g.drawPolygon(shape);
+            //g.drawPolygon(shape);
         }
     }
 

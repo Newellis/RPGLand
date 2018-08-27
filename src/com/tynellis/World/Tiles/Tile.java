@@ -3,8 +3,8 @@ package com.tynellis.World.Tiles;
 import com.tynellis.Art.Sprite;
 import com.tynellis.Art.SpriteSheet;
 import com.tynellis.BoundingBox.BoundingBoxOwner;
-import com.tynellis.Debug;
 import com.tynellis.GameComponent;
+import com.tynellis.debug.Debug;
 
 import java.awt.Color;
 import java.awt.Graphics;

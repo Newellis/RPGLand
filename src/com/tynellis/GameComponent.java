@@ -21,6 +21,7 @@ import com.tynellis.World.Tiles.LandTiles.Natural.Grass;
 import com.tynellis.World.Tiles.LandTiles.Natural.Slope;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.World;
+import com.tynellis.debug.Debug;
 import com.tynellis.input.KeyInput;
 import com.tynellis.input.Keys;
 import com.tynellis.input.MouseInput;
@@ -77,9 +78,9 @@ public class GameComponent extends JPanel implements Runnable {
         Thread thread = new Thread(this);
         thread.setPriority(Thread.MAX_PRIORITY);
         thread.start();
-        Thread renderer = new Thread(new GameRenderer());
-        renderer.setPriority(Thread.MAX_PRIORITY);
-        renderer.start();
+//        Thread renderer = new Thread(new GameRenderer());
+//        renderer.setPriority(Thread.MAX_PRIORITY);
+//        renderer.start();
     }
 
     public GameComponent() {

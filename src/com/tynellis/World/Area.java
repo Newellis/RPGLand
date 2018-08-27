@@ -1,8 +1,8 @@
 package com.tynellis.World;
 
-import com.tynellis.Debug;
 import com.tynellis.GameComponent;
 import com.tynellis.World.Tiles.Tile;
+import com.tynellis.debug.Debug;
 
 import java.awt.Color;
 import java.awt.Graphics;

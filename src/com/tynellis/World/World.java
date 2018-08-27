@@ -1,6 +1,5 @@
 package com.tynellis.World;
 
-import com.tynellis.Debug;
 import com.tynellis.GameComponent;
 import com.tynellis.Save.FileHandler;
 import com.tynellis.Save.SavedArea;
@@ -12,6 +11,7 @@ import com.tynellis.World.Nodes.Node;
 import com.tynellis.World.Tiles.LandTiles.ConnectorTile;
 import com.tynellis.World.Tiles.LandTiles.LayeredTile;
 import com.tynellis.World.Tiles.Tile;
+import com.tynellis.debug.Debug;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -112,20 +112,19 @@ public class World implements Land, Serializable{
         }
     }
 
-    public void tick() {
+    public synchronized void tick() {
         //tick entities
         if (entities.size() > 0) {
             collisionTree = new EntityQuadTree(0, new Rectangle(areaOffset[X] * Area.WIDTH * Tile.WIDTH, areaOffset[Y] * Area.HEIGHT * Tile.HEIGHT, loadedAreas.length * Area.WIDTH * Tile.WIDTH, loadedAreas[0].length * Area.HEIGHT * Tile.HEIGHT));
             for (Entity entity : entities) {
                 if (!entity.isDead()) {
                     collisionTree.insert(entity);
+                } else {
+                    deadEntities.add(entity);
                 }
             }
             for (Entity entity : entities) {
-                if (entity.isDead()) {
-                    deadEntities.add(entity);
-                } else {
-
+                if (!entity.isDead()) {
                     List<Entity> near = collisionTree.retrieve(new ArrayList<Entity>(), entity.getBounds());
                     near.remove(entity);
                     entity.tick(this, near);
@@ -265,12 +264,12 @@ public class World implements Land, Serializable{
     }
 
     //add an entity to the world
-    public void addEntity(Entity e) {
+    public synchronized void addEntity(Entity e) {
         entities.add(e);
     }
 
     //remove an entity from the world
-    public void removeEntity(Entity e) {
+    public synchronized void removeEntity(Entity e) {
         entities.remove(e);
     }
 

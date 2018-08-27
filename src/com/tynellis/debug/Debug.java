@@ -1,4 +1,4 @@
-package com.tynellis;
+package com.tynellis.debug;
 
 public class Debug {
     private boolean state = false;

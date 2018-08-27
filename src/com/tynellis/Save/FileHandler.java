@@ -1,9 +1,9 @@
 package com.tynellis.Save;
 
-import com.tynellis.Debug;
 import com.tynellis.GameComponent;
 import com.tynellis.Save.OSLib.EnumOS2;
 import com.tynellis.Save.OSLib.EnumOSMappingHelper;
+import com.tynellis.debug.Debug;
 
 import java.io.File;
 import java.io.FileInputStream;

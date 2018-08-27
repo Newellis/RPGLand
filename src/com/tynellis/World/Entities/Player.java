@@ -2,7 +2,6 @@ package com.tynellis.World.Entities;
 
 import com.tynellis.Art.Animation;
 import com.tynellis.Art.SpriteSheet;
-import com.tynellis.Debug;
 import com.tynellis.GameComponent;
 import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.Containers.Filters.ItemFilter;
@@ -11,6 +10,7 @@ import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Light.LightSource;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.World;
+import com.tynellis.debug.Debug;
 import com.tynellis.input.Keys;
 
 import java.awt.Color;

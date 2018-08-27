@@ -1,13 +1,13 @@
 package com.tynellis.World.Entities;
 
 import com.tynellis.BoundingBox.BoundingBoxOwner;
-import com.tynellis.Debug;
 import com.tynellis.GameComponent;
 import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Light.LightSource;
 import com.tynellis.World.Tiles.LandTiles.LayeredTile;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.World;
+import com.tynellis.debug.Debug;
 
 import java.awt.Color;
 import java.awt.Graphics;
