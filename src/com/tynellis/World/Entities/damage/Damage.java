@@ -1,5 +1,7 @@
 package com.tynellis.World.Entities.damage;
 
+import java.awt.Color;
+
 public class Damage {
     public enum Types {
         //Physical
@@ -7,8 +9,10 @@ public class Damage {
         //Environmental
         FIRE, FREEZING,
         //Magical
-        ARCANE,
+        ARCANE, POISON
     }
+
+    public static final Color BLEED = new Color(190, 40, 40);
 
     public Types type;
     public double amount;

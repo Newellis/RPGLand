@@ -6,6 +6,7 @@ import com.tynellis.GameComponent;
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.Humanoid;
 import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.PathfinderAi;
+import com.tynellis.World.Entities.damage.Damage;
 import com.tynellis.World.Nodes.Node;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.World;
@@ -112,7 +113,7 @@ public abstract class NpcBase extends Humanoid {
         } else {
             animation.play();
         }
-        frame = animation.getFrame();
+        frame = Tint(animation.getFrame(), Damage.BLEED);
         g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 1.5)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
         animation.tick();
         if (GameComponent.debug.State() && GameComponent.debug.isType(Debug.Type.PATH)) {
