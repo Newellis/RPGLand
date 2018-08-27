@@ -38,12 +38,12 @@ public class LumberJackNpc extends NpcBase {
         ai.dontInterrupt(items);
         items.dontInterrupt(chestAi);
         pathfinder = items;
-        pathfinder = new RandomWanderAi();
-        pathfinder = chestAi.pathfinder;
+        //pathfinder = chestAi.pathfinder;
         Ai.addTask(0, new FaceClosestAi(Player.class, 0.25));
         Ai.addTask(1, ai);
         Ai.addTask(2, items);
         Ai.addTask(3, chestAi);
+        Ai.addTask(100, new RandomWanderAi());
         //Ai.addTask(4, pathfinder);
     }
 

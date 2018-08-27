@@ -1,6 +1,7 @@
 package com.tynellis.World.Entities.NPC;
 
 import com.tynellis.Art.Animation;
+import com.tynellis.Art.SpriteImage;
 import com.tynellis.Art.SpriteSheet;
 import com.tynellis.GameComponent;
 import com.tynellis.World.Entities.Entity;
@@ -113,7 +114,10 @@ public abstract class NpcBase extends Humanoid {
         } else {
             animation.play();
         }
-        frame = Tint(animation.getFrame(), Damage.BLEED);
+        frame = animation.getFrame();
+        if (hurt) {
+            frame = SpriteImage.Tint(frame, Damage.BLEED_COLOR);
+        }
         g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 1.5)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
         animation.tick();
         if (GameComponent.debug.State() && GameComponent.debug.isType(Debug.Type.PATH)) {

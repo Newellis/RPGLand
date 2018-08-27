@@ -12,7 +12,8 @@ public class Damage {
         ARCANE, POISON
     }
 
-    public static final Color BLEED = new Color(190, 40, 40);
+    public static final Color BLEED_COLOR = new Color(190, 40, 40);
+    public static final Color HEAL_COLOR = new Color(40, 190, 40);
 
     public Types type;
     public double amount;

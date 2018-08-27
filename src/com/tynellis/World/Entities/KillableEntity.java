@@ -8,20 +8,20 @@ import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.World;
 
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 import java.util.List;
 import java.util.Random;
 
 public abstract class KillableEntity extends Entity {
 
-    private int health = 20;
+    private final int maxHealth = 20;
+    private int health = maxHealth;
     protected DamageModifier resistance;
-    private boolean hurt = false;
+    protected boolean hurt = false;
+    protected boolean heal = false;
     private int hurtCooldown = 0;
-    private int hurtCooldownMax = 10;
+    private int healCooldown = 0;
+    private int healthCooldownMax = 10;
 
     protected Container inventory;
     protected boolean canPickUpItems = false;
@@ -42,9 +42,8 @@ public abstract class KillableEntity extends Entity {
         }
     }
 
-    public void DamageBy(DamageSource damage) {
+    public void DamageBy(DamageSource damage, Random rand) {
         if (hurtCooldown <= 0) {
-            System.out.println("health: " + health);
 
             for (Damage d : damage.dealDamage()) {
                 double amount;
@@ -55,49 +54,39 @@ public abstract class KillableEntity extends Entity {
                 }
                 if (amount > 0) {
                     hurt = true;
-                    hurtCooldown = hurtCooldownMax;
+                    hurtCooldown = healthCooldownMax;
                 }
-                System.out.println("health: " + health);
-                health -= amount;
-            }
-        }
-    }
+                if (amount < 0) {
+                    heal = true;
+                    healCooldown = healthCooldownMax;
+                }
 
-    protected BufferedImage Tint(BufferedImage image, Color color) {
-        if (hurt) {
-            image.getRaster();
-            BufferedImage tinted = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
-            Graphics2D graphics = tinted.createGraphics();
-            graphics.drawImage(image, 0, 0, null);
-            graphics.dispose();
-
-            for (int i = 0; i < tinted.getWidth(); i++) {
-                for (int j = 0; j < tinted.getHeight(); j++) {
-                    int ax = tinted.getColorModel().getAlpha(tinted.getRaster().getDataElements(i, j, null));
-                    int rx = tinted.getColorModel().getRed(tinted.getRaster().getDataElements(i, j, null));
-                    int gx = tinted.getColorModel().getGreen(tinted.getRaster().getDataElements(i, j, null));
-                    int bx = tinted.getColorModel().getBlue(tinted.getRaster().getDataElements(i, j, null));
-                    rx = (color.getRed() + rx) / 2;
-                    gx = (color.getGreen() + gx) / 2;
-                    bx = (color.getBlue() + bx) / 2;
-                    tinted.setRGB(i, j, (ax << 24) | (rx << 16) | (gx << 8) | (bx));
+                //adjust damage fractions to percent of taking 1 damage
+                if (!((Double) amount).equals(Math.floor(amount))) {
+                    if (rand.nextDouble() <= amount % 1.0) {
+                        amount++;
+                    }
+                }
+                health -= (int) amount;
+                if (health > maxHealth) {
+                    health = maxHealth;
                 }
             }
-
-//            //Gray Scale Image
-//            BufferedImageOp op = new ColorConvertOp(  ColorSpace.getInstance(ColorSpace.CS_GRAY), null);
-//            op.filter(image, colored);
-            return tinted;
         }
-        return image;
     }
 
     public void render(Graphics g, int xOffset, int yOffset) {
         if (hurtCooldown > 0) {
             hurtCooldown--;
         }
-        if (hurtCooldown < hurtCooldownMax - 2) {
+        if (hurtCooldown < healthCooldownMax - 2) {
             hurt = false;
+        }
+        if (healCooldown > 0) {
+            healCooldown--;
+        }
+        if (healCooldown < healthCooldownMax - 2) {
+            heal = false;
         }
         super.render(g, xOffset, yOffset);
     }

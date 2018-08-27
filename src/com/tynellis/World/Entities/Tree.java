@@ -1,5 +1,6 @@
 package com.tynellis.World.Entities;
 
+import com.tynellis.Art.SpriteImage;
 import com.tynellis.Art.SpriteSheet;
 import com.tynellis.World.Entities.damage.Damage;
 import com.tynellis.World.Entities.damage.DamageModifier;
@@ -58,8 +59,16 @@ public class Tree extends KillableEntity {
         int treeNum = 0;
         if (treeType == Type.Oak) treeNum = 0;
         if (treeType == Type.Pine) treeNum = 1;
-        BufferedImage trunkFrame = Tint(trunk.getSprite(0).getStill(treeNum), Damage.BLEED);
-        BufferedImage topFrame = Tint(top.getSprite(treeNum).getStill(0), Damage.BLEED);
+        BufferedImage trunkFrame = trunk.getSprite(0).getStill(treeNum);
+        BufferedImage topFrame = top.getSprite(treeNum).getStill(0);
+        if (heal) {
+            trunkFrame = SpriteImage.Tint(trunkFrame, Damage.HEAL_COLOR);
+            topFrame = SpriteImage.Tint(topFrame, Damage.HEAL_COLOR);
+        }
+        if (hurt) {
+            trunkFrame = SpriteImage.Tint(trunkFrame, Damage.BLEED_COLOR);
+            topFrame = SpriteImage.Tint(topFrame, Damage.BLEED_COLOR);
+        }
         g.drawImage(trunkFrame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (trunkFrame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - trunkFrame.getHeight() + (2 * height)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
         g.drawImage(topFrame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (topFrame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - topFrame.getHeight()) - treeHeight + (height / 2) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
         super.render(g, xOffset, yOffset);
