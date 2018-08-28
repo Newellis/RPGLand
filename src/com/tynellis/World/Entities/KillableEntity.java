@@ -17,11 +17,13 @@ public abstract class KillableEntity extends Entity {
     private final int maxHealth = 20;
     private int health = maxHealth;
     protected DamageModifier resistance;
+
     protected boolean hurt = false;
     protected boolean heal = false;
     private int hurtCooldown = 0;
     private int healCooldown = 0;
-    private int healthCooldownMax = 10;
+    private int healthCooldownMax = 6;
+    private int flashDuration = healthCooldownMax / 2;
 
     protected Container inventory;
     protected boolean canPickUpItems = false;
@@ -80,13 +82,13 @@ public abstract class KillableEntity extends Entity {
         if (hurtCooldown > 0) {
             hurtCooldown--;
         }
-        if (hurtCooldown < healthCooldownMax - 2) {
+        if (hurtCooldown < healthCooldownMax - flashDuration) {
             hurt = false;
         }
         if (healCooldown > 0) {
             healCooldown--;
         }
-        if (healCooldown < healthCooldownMax - 2) {
+        if (healCooldown < healthCooldownMax - flashDuration) {
             heal = false;
         }
         super.render(g, xOffset, yOffset);

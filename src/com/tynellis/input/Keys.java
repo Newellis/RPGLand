@@ -43,6 +43,7 @@ public class Keys {
     public Key right = new Key();
     public Key debug = new Key();
     public Key pause = new Key();
+    public Key attack = new Key();
 
     public void tick() {
         for (Key key : all)

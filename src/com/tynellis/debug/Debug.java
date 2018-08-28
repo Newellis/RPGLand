@@ -2,7 +2,7 @@ package com.tynellis.debug;
 
 public class Debug {
     private boolean state = false;
-    Type types[] = new Type[]{Type.PATH, Type.AREAS, Type.TILES};
+    Type types[] = new Type[]{Type.PATH, Type.AREAS, Type.COLLISION, Type.ATTACK};
 
     public enum Type {
         COLLISION, //shows hitboxes of entities
@@ -11,6 +11,7 @@ public class Debug {
         SAVE,   //prints info about saving to and loading from a file
         FLY,    //sets player to flying
         PATH,   //shows pathfinding paths
+        ATTACK,   //shows attack area
     }
 
     public boolean State() {

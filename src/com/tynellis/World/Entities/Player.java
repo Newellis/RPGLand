@@ -2,7 +2,6 @@ package com.tynellis.World.Entities;
 
 import com.tynellis.Art.Animation;
 import com.tynellis.Art.SpriteSheet;
-import com.tynellis.BoundingBox.BoundingBoxOwner;
 import com.tynellis.GameComponent;
 import com.tynellis.World.Entities.damage.Damage;
 import com.tynellis.World.Entities.damage.DamageSource;
@@ -18,6 +17,7 @@ import com.tynellis.input.Keys;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -28,12 +28,18 @@ public class Player extends Humanoid {
     private transient Keys keys;
     private transient SpriteSheet spriteSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_walkcycle.png", 64, 64, 1);
     private transient Animation animation = new Animation(spriteSheet, 5);
+    private transient SpriteSheet attackSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_slash.png", 64, 64, 1);
+    private transient Animation attackAnimation = new Animation(attackSheet, 1);
+    private transient SpriteSheet swordSheet = new SpriteSheet("tempArt/lpc/submission_daneeklu 2/character/sword_sheet_128.png", 128, 126, 1);
+    private transient Animation swordAnimation = new Animation(swordSheet, 1);
     private String name;
 
     public Player(Keys keys, String name, int x, int y, int z) {
         super(x, y, z, 32, 32);
         this.keys = keys;
         animation.playInRange(spriteFacing, 1, 8);
+        attackAnimation.playFromStart(spriteFacing);
+        swordAnimation.playFromStart(spriteFacing);
         this.name = name;
         speed = 0.08;
         movementType = movementTypes.Walking;
@@ -47,7 +53,14 @@ public class Player extends Humanoid {
         in.defaultReadObject();
         spriteSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_walkcycle.png", 64, 64, 1);
         animation = new Animation(spriteSheet, 5);
+        attackSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_slash.png", 64, 64, 1);
+        attackAnimation = new Animation(attackSheet, 1);
+        swordSheet = new SpriteSheet("tempArt/lpc/submission_daneeklu 2/character/sword_sheet_128.png", 128, 126, 1);
+        swordAnimation = new Animation(swordSheet, 1);
         animation.playInRange(spriteFacing, 1, 8);
+        attackAnimation.playFromStart(spriteFacing);
+        swordAnimation.playFromStart(spriteFacing);
+        attacking = false;
     }
 
     @Override
@@ -108,6 +121,9 @@ public class Player extends Humanoid {
         } else if (keys.left.isDown) {
             spriteFacing = 1;
         }
+        if (keys.attack.wasPressed()) {
+            meleeAttack(facing, 1.5, new DamageSource(new Damage(Damage.Types.SLICING, 7)), world);
+        }
 //        if (World.DEBUG) {
 //            speed = 0.32;
 //        } else {
@@ -115,6 +131,8 @@ public class Player extends Humanoid {
 //        }
         super.tick(world, near);
         animation.setRow(spriteFacing);
+        attackAnimation.setRow(spriteFacing);
+        swordAnimation.setRow(spriteFacing);
         light.setLocation(posX + 0.5, posY + 0.5, posZ);
     }
 
@@ -127,21 +145,47 @@ public class Player extends Humanoid {
         } else {
             animation.play();
         }
-        frame = animation.getFrame();
-        g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 1.5)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
-        animation.tick();
+        if (!attacking) {
+            frame = animation.getFrame();
+            g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 1.5)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
+            animation.tick();
+        }
+
+        if (!attacking) {
+            attackAnimation.pause();
+            attackAnimation.skipToFrame(0);
+            swordAnimation.pause();
+            swordAnimation.skipToFrame(0);
+        } else {
+            swordAnimation.play();
+            attackAnimation.play();
+            if (attackAnimation.getFrameNum() == 5) {
+                attacking = false;
+            }
+            System.out.println("frame: " + attackAnimation.getFrameNum());
+            frame = attackAnimation.getFrame();
+            g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 1.5)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
+            attackAnimation.tick();
+            frame = swordAnimation.getFrame();
+            g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 2.5)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
+            swordAnimation.tick();
+        }
         if (GameComponent.debug.State()) {
             g.setColor(Color.WHITE);
             g.drawString("X,Y,Z: " + posX + ", " + posY + ", " + posZ, 10, 34);
-        }
-        super.render(g, xOffset, yOffset);
-    }
+            if (GameComponent.debug.isType(Debug.Type.ATTACK)) {
+                double breadth = 1.5;
+                double attackDirection = (Math.PI / 4 * facing);
+                double AttackXOffset = posX - (Math.sin(attackDirection) * (breadth / 2.0)) - ((breadth - 1) / 2.0);
+                double AttackYOffset = posY - (Math.cos(attackDirection) * (breadth / 2.0)) - ((breadth - 1) / 2.0);
+                Rectangle rectangle = new Rectangle((int) ((AttackXOffset) * Tile.WIDTH), (int) ((AttackYOffset) * Tile.WIDTH), (int) (breadth * Tile.WIDTH), (int) (breadth * Tile.HEIGHT));
+                g.setColor(Color.RED);
+                g.drawRect(rectangle.x + xOffset, rectangle.y + yOffset, rectangle.width, rectangle.height);
 
-    public void handleCollision(BoundingBoxOwner bb, double xMove, double yMove, boolean isOver) {
-        if (bb instanceof KillableEntity) {
-            ((KillableEntity) bb).DamageBy(new DamageSource(new Damage(Damage.Types.FIRE, 1)), new Random());//Todo make world random
+            }
         }
-        super.handleCollision(bb, xMove, yMove, isOver);
+
+        super.render(g, xOffset, yOffset);
     }
 
     @Override
