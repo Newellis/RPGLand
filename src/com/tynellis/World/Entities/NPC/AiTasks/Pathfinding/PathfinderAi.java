@@ -113,8 +113,6 @@ public class PathfinderAi extends AiTask implements Serializable {
         List<Node> openSet = new ArrayList<Node>(); // The set of tentative nodes to be evaluated, initially containing the start node
         Node start = new Node(e.getX(), e.getY(), e.getZ());
         Node goal = new Node(destX, destY, destZ);
-        System.out.println("start: " + start);
-        System.out.println("goal: " + goal);
         if (world.getTile((int) goal.getX(), (int) goal.getY(), (int) goal.getZ()) != null && (!world.getTile((int) goal.getX(), (int) goal.getY(), (int) goal.getZ()).isPassableBy(e) || world.isTileObstructed((int) goal.getX(), (int) goal.getY(), (int) goal.getZ()))) {
             if (minRange < 1) {
                 return false;

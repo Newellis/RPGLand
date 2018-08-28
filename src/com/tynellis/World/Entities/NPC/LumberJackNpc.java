@@ -2,10 +2,13 @@ package com.tynellis.World.Entities.NPC;
 
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.NPC.AiTasks.FaceClosestAi;
+import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.AttackEntityAi;
 import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.CollectItemsAi;
 import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.StayNearPoint;
+import com.tynellis.World.Entities.NPC.AiTasks.RandomWanderAi;
 import com.tynellis.World.Entities.NPC.AiTasks.UseChestAi;
 import com.tynellis.World.Entities.Player;
+import com.tynellis.World.Entities.Tree;
 import com.tynellis.World.Entities.UsableEntity.Chest;
 import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.Containers.Filters.ItemFilter;
@@ -36,15 +39,17 @@ public class LumberJackNpc extends NpcBase {
         UseChestAi chestAi = new UseChestAi(chest, new TypeItemFilter(new Class[]{Log.class}, ItemFilter.Type.WhiteList), 400);
         ai.dontInterrupt(items);
         items.dontInterrupt(chestAi);
-        pathfinder = items;
+        pathfinder = new AttackEntityAi(Tree.class, 150, 1);
+        pathfinder.dontInterrupt(chestAi);
         //pathfinder = chestAi.pathfinder;
         Ai.addTask(0, new FaceClosestAi(Player.class, 0.25));
         Ai.addTask(1, ai);
         Ai.addTask(2, items);
         Ai.addTask(3, chestAi);
+        Ai.addTask(4, pathfinder);
 
         //put all ai above this point
-//        Ai.addTask(1000, new RandomWanderAi());
+        Ai.addTask(1000, new RandomWanderAi());
     }
 
     @Override
