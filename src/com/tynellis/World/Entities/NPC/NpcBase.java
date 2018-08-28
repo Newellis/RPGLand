@@ -8,17 +8,20 @@ import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.Humanoid;
 import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.PathfinderAi;
 import com.tynellis.World.Entities.damage.Damage;
+import com.tynellis.World.Entities.damage.DamageSource;
 import com.tynellis.World.Nodes.Node;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.World;
 import com.tynellis.debug.Debug;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -129,6 +132,23 @@ public abstract class NpcBase extends Humanoid {
             }
         }
         super.render(g, xOffset, yOffset);
+    }
+
+    private double breadth = 1.5;//todo add weapons
+
+    public boolean canHit(World world, Entity target) {
+        double attackDirection = (Math.PI / 4 * facing);
+        double AttackXOffset = posX - (Math.sin(attackDirection) * (breadth / 2.0)) - ((breadth - 1) / 2.0);
+        double AttackYOffset = posY - (Math.cos(attackDirection) * (breadth / 2.0)) - ((breadth - 1) / 2.0);
+        Rectangle area = new Rectangle((int) ((AttackXOffset) * Tile.WIDTH), (int) ((AttackYOffset) * Tile.WIDTH), (int) (breadth * Tile.WIDTH), (int) (breadth * Tile.HEIGHT));
+
+        ArrayList<Entity> hit = world.getEntitiesIntersecting(area);
+        return hit.size() > 0 && hit.contains(target);
+    }
+
+    public void attack(World world) {
+        System.out.println("attack");
+        meleeAttack(facing, breadth, new DamageSource(new Damage(Damage.Types.SLICING, 5)), world);
     }
 
     @Override

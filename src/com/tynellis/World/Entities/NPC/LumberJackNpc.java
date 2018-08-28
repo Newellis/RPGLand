@@ -14,7 +14,6 @@ import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.Containers.Filters.ItemFilter;
 import com.tynellis.World.Items.Containers.Filters.NameItemFilter;
 import com.tynellis.World.Items.Containers.Filters.TypeItemFilter;
-import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Items.Materials.Log;
 
 import java.util.Random;
@@ -39,7 +38,7 @@ public class LumberJackNpc extends NpcBase {
         UseChestAi chestAi = new UseChestAi(chest, new TypeItemFilter(new Class[]{Log.class}, ItemFilter.Type.WhiteList), 400);
         ai.dontInterrupt(items);
         items.dontInterrupt(chestAi);
-        pathfinder = new AttackEntityAi(Tree.class, 150, 1);
+        pathfinder = new AttackEntityAi(Tree.class, 50, 1);
         pathfinder.dontInterrupt(chestAi);
         //pathfinder = chestAi.pathfinder;
         Ai.addTask(0, new FaceClosestAi(Player.class, 0.25));
@@ -50,11 +49,6 @@ public class LumberJackNpc extends NpcBase {
 
         //put all ai above this point
         Ai.addTask(1000, new RandomWanderAi());
-    }
-
-    @Override
-    public ItemPile[] getItemsToDrop(Random rand) {
-        return new ItemPile[0];
     }
 
     @Override

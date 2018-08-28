@@ -23,6 +23,7 @@ public abstract class Humanoid extends KillableEntity {
 
         ArrayList<Entity> hit = world.getEntitiesIntersecting(area);
         hit.remove(this);
+        System.out.println("hit: " + hit);
         for (Entity e : hit) {
             if (e instanceof KillableEntity) {
                 ((KillableEntity) e).DamageBy(source, world.getRand());
