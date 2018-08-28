@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class PathfinderAi extends AiTask implements Serializable {
     protected double destX, destY, destZ;
-    protected int range, minRange;
+    protected int range, minRange, tempMinRangeMod = 0;
     protected transient List<Node> path = new ArrayList<Node>();
 
     public PathfinderAi(int x, int y, int z, int range) {
@@ -41,12 +41,16 @@ public class PathfinderAi extends AiTask implements Serializable {
         if (path.size() > 0) {
         }
         if ((path.size() == 0 || !pathIsValid(world, entity)) && (Math.abs(entity.getX() - destX) > entity.getSpeed() || Math.abs(entity.getY() - destY) > entity.getSpeed())) {
-            for (int i = 0; i < range / 2; i++) {
-                if (findPath(world, entity, minRange + i)) {
-                    return true;
+            if (findPath(world, entity, minRange + tempMinRangeMod)) {
+                tempMinRangeMod = 0;
+                return true;
+            } else {
+                tempMinRangeMod++;
+                if (tempMinRangeMod > range / 2) {
+                    tempMinRangeMod = 0;
                 }
+                return false;
             }
-            return false;
         } else {
             if (path.size() > 0 && world.getTile((int) path.get(0).getX(), (int) path.get(0).getY(), (int) path.get(0).getZ()) == null) {
                 entity.setMoving(false);
