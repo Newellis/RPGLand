@@ -9,12 +9,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ab3d649-fdfe-4863-8a5f-5a792e85c7aa" name="Default" comment="fixed up attack ai to use melee attack">
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/CollectItemsFromEntityAi.java" afterDir="false" />
+    <list default="true" id="9ab3d649-fdfe-4863-8a5f-5a792e85c7aa" name="Default" comment="added farm entities for drops ai">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/LumberJackNpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/LumberJackNpc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/AttackEntityAi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/AttackEntityAi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/WorldGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/WorldGen.java" afterDir="false" />
     </list>
     <ignored path="MyGame.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -77,26 +75,26 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="103" />
+          <entry key="java" value="107" />
           <entry key="png" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Image" value="1" />
-          <entry key="JAVA" value="103" />
+          <entry key="JAVA" value="107" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="5922" />
-          <entry key="txt" value="962" />
+          <entry key="java" value="5989" />
+          <entry key="txt" value="1001" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="5922" />
-          <entry key="PLAIN_TEXT" value="962" />
+          <entry key="JAVA" value="5989" />
+          <entry key="PLAIN_TEXT" value="1001" />
         </counts>
       </usages-collector>
     </session>
@@ -110,19 +108,45 @@
         <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/LumberJackNpc.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
-              <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
+              <caret line="39" column="27" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/CollectItemsFromEntityAi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="45" lean-forward="true" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+            <state relative-caret-position="225">
+              <caret line="15" column="36" lean-forward="true" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcBase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="217">
+              <caret line="153" column="47" lean-forward="true" selection-start-line="153" selection-start-column="47" selection-end-line="153" selection-end-column="47" />
+              <folding>
+                <element signature="e#8741#8742#0" expanded="true" />
+                <element signature="e#8768#8769#0" expanded="true" />
+                <element signature="e#8827#8828#0" expanded="true" />
+                <element signature="e#8855#8856#0" expanded="true" />
+                <element signature="e#8932#8933#0" expanded="true" />
+                <element signature="e#8960#8961#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="32" column="61" lean-forward="true" selection-start-line="32" selection-end-line="33" />
             </state>
           </provider>
         </entry>
@@ -149,13 +173,37 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/AttackEntityAi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+            <state relative-caret-position="285">
+              <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/FaceClosestAi.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="236">
+              <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Entity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="130">
+              <caret line="361" column="16" selection-start-line="361" selection-start-column="16" selection-end-line="361" selection-end-column="16" />
+              <folding>
+                <element signature="e#1619#1620#0" expanded="true" />
+                <element signature="e#1649#1650#0" expanded="true" />
+                <element signature="e#14469#14470#0" expanded="true" />
+                <element signature="e#14498#14499#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -175,7 +223,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>node</find>
       <find>didn</find>
       <find>current</find>
       <find>goal</find>
@@ -187,9 +234,7 @@
       <find>tool</find>
       <find>UsableEntity</find>
       <find>spriteFacing</find>
-      <find>animation</find>
       <find>lastFrame</find>
-      <find>attackAnimation</find>
       <find>facingAngle</find>
       <find>addE</find>
       <find>treeHeight</find>
@@ -205,6 +250,9 @@
       <find>tick</find>
       <find>tree</find>
       <find>render</find>
+      <find>attackAnimation</find>
+      <find>swordAnimation</find>
+      <find>animation</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -271,11 +319,11 @@
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/UseUsableEntityAi.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/UseChestAi.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/Humanoid.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/AttackEntityAi.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/WorldGen.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcBase.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/CollectItemsFromEntityAi.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/LumberJackNpc.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/CollectItemsFromEntityAi.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcBase.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/AttackEntityAi.java" />
       </list>
     </option>
   </component>
@@ -443,7 +491,7 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/tyler/Documents/Java Projects/MyGameRestart/src/com/tynellis/Entities/Mob.java" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535440014562" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535441509433" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
     <property name="dynamic.classpath" value="false" />
@@ -836,7 +884,14 @@
       <option name="project" value="LOCAL" />
       <updated>1535438155634</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="added farm entities for drops ai">
+      <created>1535440911443</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1535440911443</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TodoView">
@@ -852,7 +907,7 @@
     <frame x="0" y="23" width="1680" height="1023" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.79072845" visible="true" weight="0.24236874" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.79072845" visible="true" weight="0.24236874" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Favorites" order="3" sideWeight="0.20927152" side_tool="true" weight="0.1991404" />
@@ -861,7 +916,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49713057" weight="0.31057268" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5989011" visible="true" weight="0.48237884" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5989011" visible="true" weight="0.48237884" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4856528" weight="0.49669603" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -975,7 +1030,8 @@
     <MESSAGE value="added basic move to and attack entity ai" />
     <MESSAGE value="fixed useChestAi so it fully completes before being interrupted by lower priority tasks" />
     <MESSAGE value="fixed up attack ai to use melee attack" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed up attack ai to use melee attack" />
+    <MESSAGE value="added farm entities for drops ai" />
+    <option name="LAST_COMMIT_MESSAGE" value="added farm entities for drops ai" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1008,13 +1064,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/Save/StoreLoad.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home/lib/src.zip!/java.desktop/javax/swing/RepaintManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1245,19 +1294,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Entity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
-          <folding>
-            <element signature="e#1619#1620#0" expanded="true" />
-            <element signature="e#1649#1650#0" expanded="true" />
-            <element signature="e#14469#14470#0" expanded="true" />
-            <element signature="e#14498#14499#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Orginization/EntityQuadTree.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-898">
@@ -1406,34 +1442,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="183" column="13" lean-forward="true" selection-start-line="183" selection-start-column="13" selection-end-line="183" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="141" lean-forward="true" selection-start-line="141" selection-end-line="141" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/AttackEntityAi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/LumberJackNpc.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
+          <caret line="39" column="27" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -1457,8 +1469,60 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/CollectItemsFromEntityAi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="45" lean-forward="true" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+        <state relative-caret-position="225">
+          <caret line="15" column="36" lean-forward="true" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="32" column="61" lean-forward="true" selection-start-line="32" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="153" column="47" lean-forward="true" selection-start-line="153" selection-start-column="47" selection-end-line="153" selection-end-column="47" />
+          <folding>
+            <element signature="e#8741#8742#0" expanded="true" />
+            <element signature="e#8768#8769#0" expanded="true" />
+            <element signature="e#8827#8828#0" expanded="true" />
+            <element signature="e#8855#8856#0" expanded="true" />
+            <element signature="e#8932#8933#0" expanded="true" />
+            <element signature="e#8960#8961#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/FaceClosestAi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Entity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="361" column="16" selection-start-line="361" selection-start-column="16" selection-end-line="361" selection-end-column="16" />
+          <folding>
+            <element signature="e#1619#1620#0" expanded="true" />
+            <element signature="e#1649#1650#0" expanded="true" />
+            <element signature="e#14469#14470#0" expanded="true" />
+            <element signature="e#14498#14499#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/AttackEntityAi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

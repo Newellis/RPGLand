@@ -17,7 +17,7 @@ public class AttackEntityAi extends FollowEntityAi {
     public boolean performTask(World world, KillableEntity entity) {
         if (findTarget(world, entity)) {
             if (((NpcBase) entity).canHit(world, closest)) {
-                faceClosest.performTask(world, entity);
+                //faceClosest.performTask(world, entity);
                 return attack(world, entity);
             }
         }

@@ -31,6 +31,10 @@ public abstract class NpcBase extends Humanoid {
     private String name;
     private transient SpriteSheet spriteSheet;
     private transient Animation animation;
+    private transient SpriteSheet attackSheet;
+    private transient Animation attackAnimation;
+    private transient SpriteSheet swordSheet;
+    private transient Animation swordAnimation;
     private NpcGender gender;
     protected NpcAi Ai = new NpcAi();
     protected PathfinderAi pathfinder;
@@ -66,13 +70,21 @@ public abstract class NpcBase extends Humanoid {
     private void setSprite(NpcGender gender) {
         if (gender == NpcGender.MALE) {
             spriteSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_walkcycle.png", 64, 64, 1);
+            attackSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_slash.png", 64, 64, 1);
         } else if (gender == NpcGender.FEMALE) {
             spriteSheet = new SpriteSheet("tempArt/lpc/core/char/female/female_walkcycle.png", 64, 64, 1);
+            attackSheet = new SpriteSheet("tempArt/lpc/core/char/female/female_slash.png", 64, 64, 1);
         } else {
             spriteSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_walkcycle.png", 64, 64, 1);
+            attackSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_slash.png", 64, 64, 1);
         }
+        swordSheet = new SpriteSheet("tempArt/lpc/submission_daneeklu 2/character/sword_sheet_128.png", 128, 126, 1);
         animation = new Animation(spriteSheet, 5);
         animation.playInRange(spriteFacing, 1, 8);
+        attackAnimation = new Animation(attackSheet, 2);
+        attackAnimation.playFromStart(spriteFacing);
+        swordAnimation = new Animation(swordSheet, 2);
+        swordAnimation.playFromStart(spriteFacing);
     }
 
     public static String getName(NpcGender gender, Random random) {
@@ -108,6 +120,8 @@ public abstract class NpcBase extends Humanoid {
 //        }
         super.tick(world, near);
         animation.setRow(spriteFacing);
+        attackAnimation.setRow(spriteFacing);
+        swordAnimation.setRow(spriteFacing);
     }
 
     public void render(Graphics g, int xOffset, int yOffset) {
@@ -118,12 +132,35 @@ public abstract class NpcBase extends Humanoid {
         } else {
             animation.play();
         }
-        frame = animation.getFrame();
-        if (hurt) {
-            frame = SpriteImage.Tint(frame, Damage.BLEED_COLOR);
+        if (!attacking) {
+            frame = animation.getFrame();
+            if (hurt) {
+                frame = SpriteImage.Tint(frame, Damage.BLEED_COLOR);
+            }
+            g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 1.5)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
+            animation.tick();
         }
-        g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 1.5)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
-        animation.tick();
+        if (!attacking) {
+            attackAnimation.pause();
+            attackAnimation.skipToFrame(0);
+            swordAnimation.pause();
+            swordAnimation.skipToFrame(0);
+        } else {
+            swordAnimation.play();
+            attackAnimation.play();
+            if (attackAnimation.getFrameNum() == 5) {
+                attacking = false;
+            }
+            frame = attackAnimation.getFrame();
+            if (hurt) {
+                frame = SpriteImage.Tint(frame, Damage.BLEED_COLOR);
+            }
+            g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 1.5)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
+            attackAnimation.tick();
+            frame = swordAnimation.getFrame();
+            g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 2.5)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
+            swordAnimation.tick();
+        }
         if (GameComponent.debug.State() && GameComponent.debug.isType(Debug.Type.PATH)) {
             List<Node> nodes = pathfinder.getPath();
             if (nodes != null) {
