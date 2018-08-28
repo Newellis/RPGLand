@@ -63,7 +63,6 @@ public class UseChestAi extends UseUsableEntityAi {
             delay--;
             ((ChestInterface) o).closeChest();
         }
-        System.out.println("using = " + using + " delay: " + delay);
         return using;
     }
 

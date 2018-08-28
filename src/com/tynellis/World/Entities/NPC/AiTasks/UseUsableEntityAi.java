@@ -36,13 +36,11 @@ public abstract class UseUsableEntityAi extends AiTask implements Serializable {
     public boolean performTask(World world, KillableEntity entity) {
         if (shouldUse(world, entity)) {
             boolean moving = pathfinder.performTask(world, entity);
-            if (pathfinder.getPathLength() < 1.5) {
+            if (tool.canUse(entity)) {
                 faceClosest.performTask(world, entity);
                 boolean using = using(tool.use(entity), entity);
-                System.out.println("using chest: " + using);
                 return using;
             }
-            System.out.println("moving to chest: " + moving);
             return moving;
         }
         return false;
