@@ -59,6 +59,7 @@ public class World implements Land, Serializable{
         entityMoveList = new ArrayList<Entity>();
         deadEntities = new ArrayList<Entity>();
         entities = new ArrayList<Entity>();
+        collisionTree = new EntityQuadTree(0, new Rectangle(areaOffset[X] * Area.WIDTH * Tile.WIDTH, areaOffset[Y] * Area.HEIGHT * Tile.HEIGHT, loadedAreas.length * Area.WIDTH * Tile.WIDTH, loadedAreas[0].length * Area.HEIGHT * Tile.HEIGHT));
         lighting = new LightOverlay();
         //entities = new ArrayList<Entity>();
     }
@@ -272,6 +273,10 @@ public class World implements Land, Serializable{
     //add an entity to the world
     public synchronized void addEntity(Entity e) {
         entities.add(e);
+        if (collisionTree == null) {
+            collisionTree = new EntityQuadTree(0, new Rectangle(areaOffset[X] * Area.WIDTH * Tile.WIDTH, areaOffset[Y] * Area.HEIGHT * Tile.HEIGHT, loadedAreas.length * Area.WIDTH * Tile.WIDTH, loadedAreas[0].length * Area.HEIGHT * Tile.HEIGHT));
+        }
+        collisionTree.insert(e);
     }
 
     //remove an entity from the world

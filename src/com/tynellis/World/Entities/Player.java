@@ -29,9 +29,9 @@ public class Player extends Humanoid {
     private transient SpriteSheet spriteSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_walkcycle.png", 64, 64, 1);
     private transient Animation animation = new Animation(spriteSheet, 5);
     private transient SpriteSheet attackSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_slash.png", 64, 64, 1);
-    private transient Animation attackAnimation = new Animation(attackSheet, 1);
+    private transient Animation attackAnimation = new Animation(attackSheet, 2);
     private transient SpriteSheet swordSheet = new SpriteSheet("tempArt/lpc/submission_daneeklu 2/character/sword_sheet_128.png", 128, 126, 1);
-    private transient Animation swordAnimation = new Animation(swordSheet, 1);
+    private transient Animation swordAnimation = new Animation(swordSheet, 2);
     private String name;
 
     public Player(Keys keys, String name, int x, int y, int z) {
@@ -54,9 +54,9 @@ public class Player extends Humanoid {
         spriteSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_walkcycle.png", 64, 64, 1);
         animation = new Animation(spriteSheet, 5);
         attackSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_slash.png", 64, 64, 1);
-        attackAnimation = new Animation(attackSheet, 1);
+        attackAnimation = new Animation(attackSheet, 2);
         swordSheet = new SpriteSheet("tempArt/lpc/submission_daneeklu 2/character/sword_sheet_128.png", 128, 126, 1);
-        swordAnimation = new Animation(swordSheet, 1);
+        swordAnimation = new Animation(swordSheet, 2);
         animation.playInRange(spriteFacing, 1, 8);
         attackAnimation.playFromStart(spriteFacing);
         swordAnimation.playFromStart(spriteFacing);
@@ -162,7 +162,6 @@ public class Player extends Humanoid {
             if (attackAnimation.getFrameNum() == 5) {
                 attacking = false;
             }
-            System.out.println("frame: " + attackAnimation.getFrameNum());
             frame = attackAnimation.getFrame();
             g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 1.5)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
             attackAnimation.tick();
