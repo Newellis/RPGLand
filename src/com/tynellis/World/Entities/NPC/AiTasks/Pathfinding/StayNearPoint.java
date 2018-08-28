@@ -1,7 +1,7 @@
 package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding;
 
 import com.tynellis.World.Entities.Entity;
-import com.tynellis.World.Entities.KillableEntity;
+import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.World;
 
 public class StayNearPoint extends PathfinderAi {
@@ -14,13 +14,13 @@ public class StayNearPoint extends PathfinderAi {
     }
 
     @Override
-    public boolean performTask(World world, KillableEntity entity) {
+    public boolean performTask(World world, NpcBase entity) {
         super.performTask(world, entity);
         double pathLength = getPathLength();
         if (pathLength < range / 2) {
             returning = false;
             entity.setMoving(false);
-        } else if (pathLength > range && doesntInterrupt()) {
+        } else if (pathLength > range && doesntInterrupt(entity)) {
             returning = true;
         }
         return returning;//(path.size() == 0 || !pathIsValid(world, entity));
@@ -38,7 +38,7 @@ public class StayNearPoint extends PathfinderAi {
     }
 
     @Override
-    public boolean isFinished() {
+    public boolean isFinished(NpcBase entity) {
         return !returning;
     }
 }

@@ -1,7 +1,6 @@
-package com.tynellis.World.Entities.NPC.AiTasks;
+package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding;
 
-import com.tynellis.World.Entities.KillableEntity;
-import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.PathfinderAi;
+import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.World;
 
 import java.util.Random;
@@ -18,7 +17,7 @@ public class RandomWanderAi extends PathfinderAi {
 
 
     @Override
-    public boolean performTask(World world, KillableEntity entity) {
+    public boolean performTask(World world, NpcBase entity) {
         if (newDes || timer <= 0) {
             path.clear();
             double x = Math.round(entity.getX()) + (10 - random.nextInt(21)), y = Math.round(entity.getY()) + 0.5 + (10 - random.nextInt(21));
@@ -35,7 +34,7 @@ public class RandomWanderAi extends PathfinderAi {
     }
 
     @Override
-    public boolean isFinished() {
+    public boolean isFinished(NpcBase entity) {
         return true;
     }
 }

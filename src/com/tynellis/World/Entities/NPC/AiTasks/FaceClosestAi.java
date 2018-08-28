@@ -1,7 +1,7 @@
 package com.tynellis.World.Entities.NPC.AiTasks;
 
 import com.tynellis.World.Entities.Entity;
-import com.tynellis.World.Entities.KillableEntity;
+import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.World;
 
 import java.io.Serializable;
@@ -16,7 +16,7 @@ public class FaceClosestAi extends AiTask implements Serializable {
         entityType = type;
     }
 
-    public boolean performTask(World world, KillableEntity mob) {
+    public boolean performTask(World world, NpcBase mob) {
         ArrayList<Entity> entities = world.getEntitiesNearEntity(mob, r);
         ArrayList<Entity> entitiesOfType = new ArrayList<Entity>();
         Entity closest;
@@ -55,7 +55,7 @@ public class FaceClosestAi extends AiTask implements Serializable {
     }
 
     @Override
-    public boolean isFinished() {
+    public boolean isFinished(NpcBase entity) {
         return true;
     }
 

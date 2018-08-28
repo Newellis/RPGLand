@@ -1,45 +1,48 @@
-package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding;
+package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.toEntity;
 
 import com.tynellis.World.Entities.Entity;
-import com.tynellis.World.Entities.KillableEntity;
+import com.tynellis.World.Entities.NPC.AiTasks.AiTask;
+import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.PathfinderAi;
+import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.Nodes.Node;
 import com.tynellis.World.World;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
-public class FollowEntityAi extends PathfinderAi {
+public class FollowEntityAi extends AiTask {
     private Class entityType;
     protected Entity closest;
+    protected int range, minRange;
 
     public FollowEntityAi(Class type, int range, int minRange) {
-        super(range, minRange);
+        this.range = range;
+        this.minRange = minRange;
         entityType = type;
     }
 
     public FollowEntityAi(Entity guide, int range, int minRange) {
-        super(range, minRange);
+        this.range = range;
+        this.minRange = minRange;
         closest = guide;
         entityType = guide.getClass();
     }
 
-    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
-        in.defaultReadObject();
-    }
-
     @Override
-    public boolean performTask(World world, KillableEntity entity) {
-        if (closest != null && getPathLength() > range) {
-            closest = null;
-        }
+    public boolean performTask(World world, NpcBase entity) {
+        PathfinderAi pathfinder = entity.getPathfinder();
         if (findTarget(world, entity)) {
-            setLocation(Math.round(closest.getX()), Math.round(closest.getY()) + 0.5, Math.round(closest.getZ()));
-            if (heuristicCostEstimate(new Node(entity.getX(), entity.getY(), entity.getZ()), new Node(destX, destY, destZ)) > minRange) {
-                return super.performTask(world, entity);
+            double x = Math.round(closest.getX()),
+                    y = Math.round(closest.getY()),
+                    z = Math.round(closest.getZ());
+            if (pathfinder.getCurrentActivity() != this) {
+                pathfinder.setCurrentActivity(this);
+                pathfinder.setRanges(range, minRange);
+            }
+            if (pathfinder.heuristicCostEstimate(new Node(entity.getX(), entity.getY(), entity.getZ()), new Node(x, y, z)) > minRange) {
+                pathfinder.setLocation(x, y, z);
+                return pathfinder.performTask(world, entity);
             } else {
                 entity.setMoving(false);
-                path.clear();
                 return false;
             }
         }
@@ -48,11 +51,12 @@ public class FollowEntityAi extends PathfinderAi {
     }
 
     @Override
-    public boolean isFinished() {
-        return closest == null || closest.isDead() || path.size() <= 0 || getPathLength() < minRange;
+    public boolean isFinished(NpcBase entity) {
+        PathfinderAi pathfinder = entity.getPathfinder();
+        return closest == null || closest.isDead() || pathfinder.getPath().size() <= 0 || pathfinder.getPathLength() < minRange;
     }
 
-    public boolean findTarget(World world, KillableEntity e) {
+    public boolean findTarget(World world, NpcBase e) {
         if (closest != null && !closest.isDead()) {
             return true;
         }

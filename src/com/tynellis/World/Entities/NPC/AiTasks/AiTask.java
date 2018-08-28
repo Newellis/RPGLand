@@ -1,29 +1,36 @@
 package com.tynellis.World.Entities.NPC.AiTasks;
 
-import com.tynellis.World.Entities.KillableEntity;
+import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.World;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AiTask {
+public abstract class AiTask implements Serializable {
     private List<AiTask> noInterrupt = new ArrayList<AiTask>();
 
-    public abstract boolean performTask(World world, KillableEntity entity);
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+    }
 
-    public abstract boolean isFinished();
+    public abstract boolean performTask(World world, NpcBase entity);
 
-    public boolean tryTask(World world, KillableEntity entity) {
-        if (doesntInterrupt()) {
+    public abstract boolean isFinished(NpcBase entity);
+
+    public boolean tryTask(World world, NpcBase entity) {
+        if (doesntInterrupt(entity)) {
             return performTask(world, entity);
         }
         return false;
     }
 
-    protected boolean doesntInterrupt() {
+    protected boolean doesntInterrupt(NpcBase entity) {
         boolean goodToGo = true;
         for (AiTask task : noInterrupt) {
-            goodToGo &= task.isFinished();
+            goodToGo &= task.isFinished(entity);
         }
         return goodToGo;
     }

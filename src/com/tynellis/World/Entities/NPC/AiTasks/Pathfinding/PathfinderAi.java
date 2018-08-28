@@ -1,24 +1,24 @@
 package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding;
 
 import com.tynellis.World.Entities.Entity;
-import com.tynellis.World.Entities.KillableEntity;
 import com.tynellis.World.Entities.NPC.AiTasks.AiTask;
 import com.tynellis.World.Entities.NPC.AiTasks.FaceClosestAi;
+import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.Nodes.Node;
 import com.tynellis.World.World;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class PathfinderAi extends AiTask implements Serializable {
+public class PathfinderAi extends AiTask {
     protected double destX, destY, destZ;
     protected int range, minRange, tempMinRangeMod = 0;
     protected transient List<Node> path = new ArrayList<Node>();
+    private AiTask currentActivity;
 
     public PathfinderAi(int x, int y, int z, int range) {
         destX = x;
@@ -32,14 +32,16 @@ public class PathfinderAi extends AiTask implements Serializable {
         this.minRange = minRange;
     }
 
+    public PathfinderAi() {
+        this(100, 0);
+    }
+
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
         path = new ArrayList<Node>();
     }
 
-    public boolean performTask(World world, KillableEntity entity) {
-        if (path.size() > 0) {
-        }
+    public boolean performTask(World world, NpcBase entity) {
         if ((path.size() == 0 || !pathIsValid(world, entity)) && (Math.abs(entity.getX() - destX) > entity.getSpeed() || Math.abs(entity.getY() - destY) > entity.getSpeed())) {
             if (findPath(world, entity, minRange + tempMinRangeMod)) {
                 tempMinRangeMod = 0;
@@ -61,7 +63,7 @@ public class PathfinderAi extends AiTask implements Serializable {
         }
     }
 
-    public boolean isFinished() {
+    public boolean isFinished(NpcBase entity) {
         return path.size() == 0;
     }
 
@@ -102,7 +104,7 @@ public class PathfinderAi extends AiTask implements Serializable {
             }
         }
         Node endNode = new Node(destX, destY, destZ);
-        if (!isCloseToGoal(path.get(path.size() - 1), endNode, minRange)) {
+        if (!isCloseToGoal(path.get(path.size() - 1), endNode, minRange + tempMinRangeMod)) {
             return false;
         }
         return true;
@@ -129,7 +131,8 @@ public class PathfinderAi extends AiTask implements Serializable {
         if (start.getFScore() > range) {
             return false;
         }
-        while (openSet.size() > 0) {
+        int nodesSearched = 0;
+        while (openSet.size() > 0 && nodesSearched < range * 10) {
             Node current = null;
             for (Node node : openSet) {
                 if (current == null) {
@@ -138,6 +141,7 @@ public class PathfinderAi extends AiTask implements Serializable {
                     current = node;
                 }
             }
+            nodesSearched++;
             assert current != null;
             if (isCloseToGoal(current, goal, minRange)) {
                 return reconstruct_path(cameFrom, current);
@@ -164,7 +168,7 @@ public class PathfinderAi extends AiTask implements Serializable {
                 }
             }
         }
-        System.out.println("didn't find path");
+        System.out.println("didn't find path to " + destX + ", " + destY + ", " + destZ + " for " + currentActivity);
         return false;
     }
 
@@ -183,7 +187,7 @@ public class PathfinderAi extends AiTask implements Serializable {
     }
 
     //uses as strait of a line as can be done using 8 directions to calculate
-    protected double heuristicCostEstimate(Node pos, Node goal) {//todo get a better cost estimate
+    public double heuristicCostEstimate(Node pos, Node goal) {//todo get a better cost estimate
         double x, y, z, scoreLeft = 0;
         x = Math.abs(pos.getX() - goal.getX());
         y = Math.abs(pos.getY() - goal.getY());
@@ -208,8 +212,25 @@ public class PathfinderAi extends AiTask implements Serializable {
 
     public void setLocation(double x, double y, double z) {
         destX = x;
-        destY = y - 0.5;
+        destY = y;
         destZ = z;
+    }
+
+    public void setRanges(int range, int minRange) {
+        this.range = range;
+        this.minRange = minRange;
+    }
+
+    public AiTask getCurrentActivity() {
+        return currentActivity;
+    }
+
+    public void setCurrentActivity(AiTask task) {
+        if (currentActivity == null || currentActivity != task) {
+            currentActivity = task;
+            path.clear();
+            tempMinRangeMod = 0;
+        }
     }
 
     public List<Node> getPath() {

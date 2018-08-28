@@ -1,6 +1,7 @@
-package com.tynellis.World.Entities.NPC.AiTasks;
+package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding;
 
 import com.tynellis.World.Entities.KillableEntity;
+import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.Entities.UsableEntity.Chest;
 import com.tynellis.World.Entities.UsableEntity.ChestInterface;
 import com.tynellis.World.Entities.UsableEntity.UsableEntity;
@@ -25,7 +26,7 @@ public class UseChestAi extends UseUsableEntityAi {
     }
 
     @Override
-    protected boolean shouldUse(World world, KillableEntity entity) {
+    protected boolean shouldUse(World world, NpcBase entity) {
         if (findTarget(world, entity)) {
             Container inventory = entity.getInventory();
             for (int i = 0; i < inventory.getInventory().length; i++) {
@@ -67,7 +68,7 @@ public class UseChestAi extends UseUsableEntityAi {
     }
 
     @Override
-    public boolean isFinished() {
+    public boolean isFinished(NpcBase entity) {
         return !using;
     }
 }

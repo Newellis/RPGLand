@@ -1,6 +1,6 @@
-package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding;
+package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.toEntity;
 
-import com.tynellis.World.Entities.KillableEntity;
+import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.World;
 
 public class CollectItemsFromEntityAi extends AttackEntityAi {
@@ -11,7 +11,7 @@ public class CollectItemsFromEntityAi extends AttackEntityAi {
         gatherItems = new CollectItemsAi(range);
     }
 
-    public boolean performTask(World world, KillableEntity entity) {
+    public boolean performTask(World world, NpcBase entity) {
         if (entity.getInventory().isFull()) {
             entity.setMoving(false);
             return false;

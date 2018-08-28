@@ -1,31 +1,32 @@
-package com.tynellis.World.Entities.NPC.AiTasks;
+package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding;
 
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.KillableEntity;
-import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.FollowEntityAi;
-import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.PathfinderAi;
+import com.tynellis.World.Entities.NPC.AiTasks.FaceClosestAi;
+import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.toEntity.FollowEntityAi;
+import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.Entities.UsableEntity.UsableEntity;
 import com.tynellis.World.World;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class UseUsableEntityAi extends AiTask implements Serializable {
-    public PathfinderAi pathfinder;
+public abstract class UseUsableEntityAi extends FollowEntityAi implements Serializable {
+    //public FollowEntityAi pathfinder;
     private FaceClosestAi faceClosest;
     protected UsableEntity tool;
     protected Class toolType;
     private int range;
 
     public UseUsableEntityAi(Class<UsableEntity> type, int range) {
-        pathfinder = new FollowEntityAi(type, range, 1);
+        super(type, range, 1);
         faceClosest = new FaceClosestAi(type, 2);
         toolType = type;
         this.range = range;
     }
 
     public UseUsableEntityAi(UsableEntity entity, int range) {
-        pathfinder = new FollowEntityAi(entity, range, 1);
+        super(entity, range, 1);
         tool = entity;
         toolType = entity.getClass();
         faceClosest = new FaceClosestAi(toolType, 1);
@@ -33,9 +34,10 @@ public abstract class UseUsableEntityAi extends AiTask implements Serializable {
     }
 
     @Override
-    public boolean performTask(World world, KillableEntity entity) {
+    public boolean performTask(World world, NpcBase entity) {
         if (shouldUse(world, entity)) {
-            boolean moving = pathfinder.performTask(world, entity);
+            System.out.println("should use " + entity.getInventory());
+            boolean moving = super.performTask(world, entity);
             if (tool.canUse(entity)) {
                 faceClosest.performTask(world, entity);
                 boolean using = using(tool.use(entity), entity);
@@ -46,7 +48,7 @@ public abstract class UseUsableEntityAi extends AiTask implements Serializable {
         return false;
     }
 
-    protected boolean findTarget(World world, KillableEntity e) {
+    public boolean findTarget(World world, NpcBase e) {
         if (tool != null && !tool.isDead()) {
             return true;
         }
@@ -74,7 +76,7 @@ public abstract class UseUsableEntityAi extends AiTask implements Serializable {
         return false;
     }
 
-    protected abstract boolean shouldUse(World world, KillableEntity entity);
+    protected abstract boolean shouldUse(World world, NpcBase entity);
 
     protected boolean using(Object o, KillableEntity entity) {
         return false;

@@ -1,8 +1,8 @@
-package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding;
+package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.toEntity;
 
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.ItemEntity;
-import com.tynellis.World.Entities.KillableEntity;
+import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.World;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class CollectItemsAi extends FollowEntityAi {
         super(ItemEntity.class, range, 0);
     }
 
-    public boolean performTask(World world, KillableEntity entity) {
+    public boolean performTask(World world, NpcBase entity) {
         if (entity.getInventory().isFull()) {
             entity.setMoving(false);
             return false;
@@ -28,7 +28,7 @@ public class CollectItemsAi extends FollowEntityAi {
         return task;
     }
 
-    public boolean findTarget(World world, KillableEntity mob) {
+    public boolean findTarget(World world, NpcBase mob) {
         if (closest != null && !closest.isDead()) {
             return true;
         }

@@ -110,7 +110,7 @@ public class GameComponent extends JPanel implements Runnable {
             boolean shouldRender = false;
 
             if (unprocessed > 5) {
-                System.out.print("Is the system behind skipping " + (unprocessed / 20.0) + " seconds to catch up");
+                System.out.println("Is the system behind skipping " + (unprocessed / 20.0) + " seconds to catch up");
             }
             unprocessed %= 5;//drops ticks that where missed so as to not lag for as long
             while (unprocessed >= 1) {

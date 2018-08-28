@@ -37,7 +37,7 @@ public abstract class NpcBase extends Humanoid {
     private transient Animation swordAnimation;
     private NpcGender gender;
     protected NpcAi Ai = new NpcAi();
-    protected PathfinderAi pathfinder;
+    protected PathfinderAi pathfinder = new PathfinderAi();
 
     public enum NpcGender {
         MALE,
@@ -181,6 +181,10 @@ public abstract class NpcBase extends Humanoid {
         super.render(g, xOffset, yOffset);
     }
 
+    public PathfinderAi getPathfinder() {
+        return pathfinder;
+    }
+
     private double breadth = 1.5;//todo add weapons
 
     public boolean canHit(World world, Entity target) {
@@ -194,7 +198,6 @@ public abstract class NpcBase extends Humanoid {
     }
 
     public void attack(World world) {
-        System.out.println("attack");
         meleeAttack(facing, breadth, new DamageSource(new Damage(Damage.Types.SLICING, 5)), world);
     }
 

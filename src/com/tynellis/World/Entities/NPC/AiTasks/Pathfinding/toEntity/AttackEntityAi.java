@@ -1,6 +1,5 @@
-package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding;
+package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.toEntity;
 
-import com.tynellis.World.Entities.KillableEntity;
 import com.tynellis.World.Entities.NPC.AiTasks.FaceClosestAi;
 import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.World;
@@ -14,10 +13,10 @@ public class AttackEntityAi extends FollowEntityAi {
 
     }
 
-    public boolean performTask(World world, KillableEntity entity) {
+    public boolean performTask(World world, NpcBase entity) {
         if (findTarget(world, entity)) {
-            if (((NpcBase) entity).canHit(world, closest)) {
-                //faceClosest.performTask(world, entity);
+            faceClosest.performTask(world, entity);
+            if (entity.canHit(world, closest)) {
                 return attack(world, entity);
             }
         }
@@ -28,10 +27,9 @@ public class AttackEntityAi extends FollowEntityAi {
         return task;
     }
 
-    private boolean attack(World world, KillableEntity entity) {
+    private boolean attack(World world, NpcBase entity) {
         if (!closest.isDead()) {
-            ((NpcBase) entity).attack(world);
-            //((KillableEntity) closest).DamageBy(new DamageSource(new Damage(Damage.Types.SLICING, 5)), world.getRand());
+            entity.attack(world);
             return true;
         }
         return false;
