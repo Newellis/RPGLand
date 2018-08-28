@@ -14,6 +14,7 @@ import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.World;
 import com.tynellis.debug.Debug;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -130,6 +131,15 @@ public abstract class NpcBase extends Humanoid {
                     node.render(g, xOffset, yOffset);
                 }
             }
+        }
+        if (GameComponent.debug.State() && GameComponent.debug.isType(Debug.Type.ATTACK)) {
+            double attackDirection = (Math.PI / 4 * facing);
+            double AttackXOffset = posX - (Math.sin(attackDirection) * (breadth / 2.0)) - ((breadth - 1) / 2.0);
+            double AttackYOffset = posY - (Math.cos(attackDirection) * (breadth / 2.0)) - ((breadth - 1) / 2.0);
+            Rectangle rectangle = new Rectangle((int) ((AttackXOffset) * Tile.WIDTH), (int) ((AttackYOffset) * Tile.WIDTH), (int) (breadth * Tile.WIDTH), (int) (breadth * Tile.HEIGHT));
+            g.setColor(Color.RED);
+            g.drawRect(rectangle.x + xOffset, rectangle.y + yOffset, rectangle.width, rectangle.height);
+
         }
         super.render(g, xOffset, yOffset);
     }
