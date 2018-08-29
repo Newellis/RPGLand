@@ -11,6 +11,7 @@ import com.tynellis.World.Area;
 import com.tynellis.World.Entities.ItemEntity;
 import com.tynellis.World.Entities.NPC.LumberJackNpc;
 import com.tynellis.World.Entities.NPC.NpcBase;
+import com.tynellis.World.Entities.NPC.monsters.Skeleton;
 import com.tynellis.World.Entities.Player;
 import com.tynellis.World.Entities.Tree;
 import com.tynellis.World.Entities.UsableEntity.Chest;
@@ -250,11 +251,15 @@ public class GameComponent extends JPanel implements Runnable {
         ItemEntity itemEntity1 = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 10), world.getRand(), spawn[0] + 6, spawn[1], spawn[2]);
         ItemEntity itemEntity2 = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 20), world.getRand(), spawn[0] + 8, spawn[1], spawn[2]);
         world.addEntity(player);
-        world.addEntity(npc);
-        world.addEntity(itemEntity);
-        world.addEntity(itemEntity1);
-        world.addEntity(itemEntity2);
+//        world.addEntity(npc);
+//        world.addEntity(itemEntity);
+//        world.addEntity(itemEntity1);
+//        world.addEntity(itemEntity2);
         world.addEntity(chest);
+
+        Skeleton skeleton = new Skeleton(spawn[0] - 6, spawn[1] - 4, spawn[2], world.getRand());
+        world.addEntity(skeleton);
+
         //addTestStructure(world, spawn);
         state = GameState.SINGLE_PLAYER;
         System.out.println("Done");

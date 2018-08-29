@@ -29,12 +29,12 @@ import java.util.Scanner;
 
 public abstract class NpcBase extends Humanoid {
     private String name;
-    private transient SpriteSheet spriteSheet;
-    private transient Animation animation;
-    private transient SpriteSheet attackSheet;
-    private transient Animation attackAnimation;
-    private transient SpriteSheet swordSheet;
-    private transient Animation swordAnimation;
+    protected transient SpriteSheet spriteSheet;
+    protected transient Animation animation;
+    protected transient SpriteSheet attackSheet;
+    protected transient Animation attackAnimation;
+    protected transient SpriteSheet swordSheet;
+    protected transient Animation swordAnimation;
     private NpcGender gender;
     protected NpcAi Ai = new NpcAi();
     protected PathfinderAi pathfinder = new PathfinderAi();
@@ -58,6 +58,10 @@ public abstract class NpcBase extends Humanoid {
         setSprite(gender);
     }
 
+    public NpcBase(int x, int y, int z, Random random) {
+        this(x, y, z, NpcGender.values()[random.nextInt(NpcGender.values().length)], random);
+    }
+
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
         setSprite(gender);
@@ -67,7 +71,7 @@ public abstract class NpcBase extends Humanoid {
         out.defaultWriteObject();
     }
 
-    private void setSprite(NpcGender gender) {
+    protected void setSprite(NpcGender gender) {
         if (gender == NpcGender.MALE) {
             spriteSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_walkcycle.png", 64, 64, 1);
             attackSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_slash.png", 64, 64, 1);

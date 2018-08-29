@@ -94,6 +94,14 @@ public abstract class KillableEntity extends Entity {
         super.render(g, xOffset, yOffset);
     }
 
+    public void Heal(int amount) {
+        if (amount >= maxHealth || health + amount >= maxHealth) {
+            health = maxHealth;
+        } else {
+            health += amount;
+        }
+    }
+
     private void pickUpItem(ItemPile pile) {
         if (canPickUpItems) {
             inventory.addItemPile(pile);

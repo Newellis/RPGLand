@@ -30,7 +30,7 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
     protected int width;
     protected int height;
     protected double posX, posY, posZ;
-    private boolean isDead = false;
+    protected boolean isDead = false;
     protected LightSource light;
 
 
@@ -49,7 +49,7 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
         doDrops(world);
     }
 
-    public abstract int compareTo(Entity entity);
+    public abstract int compareTo(Entity entity);//add comparison for how an entity should be compared to others of the same type
 
     public enum movementTypes {
         Flying,

@@ -399,9 +399,9 @@ public class WorldGen implements Serializable{
             int Z = world.getTopLayerAt(X, Y);
             if (world.getTile(X, Y, Z) instanceof Grass && world.getTile(X, Y, Z).getHeightInWorld() < TREE_LEVEL && world.getEntitiesIntersecting(world.getTileBounds(X, Y, Z)).size() == 0) {
                 if (oak) {
-                    world.addEntity(new Tree(Tree.Type.Oak, X + (rand.nextDouble() / 2), Y + (rand.nextDouble() / 2), Z, rand));
+                    world.addEntity(new Tree(Tree.Type.Oak, X, Y, Z, rand));
                 } else {
-                    world.addEntity(new Tree(Tree.Type.Pine, X + (rand.nextDouble() / 2), Y + (rand.nextDouble() / 2), Z, rand));
+                    world.addEntity(new Tree(Tree.Type.Pine, X, Y, Z, rand));
                 }
                 //world.getTile(X,Y,Z).setObstructed(true);
                 count++;

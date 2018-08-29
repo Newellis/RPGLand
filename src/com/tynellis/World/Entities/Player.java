@@ -1,6 +1,7 @@
 package com.tynellis.World.Entities;
 
 import com.tynellis.Art.Animation;
+import com.tynellis.Art.SpriteImage;
 import com.tynellis.Art.SpriteSheet;
 import com.tynellis.GameComponent;
 import com.tynellis.World.Entities.damage.Damage;
@@ -147,6 +148,9 @@ public class Player extends Humanoid {
         }
         if (!attacking) {
             frame = animation.getFrame();
+            if (hurt) {
+                frame = SpriteImage.Tint(frame, Damage.BLEED_COLOR);
+            }
             g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 1.5)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
             animation.tick();
         }
@@ -163,6 +167,9 @@ public class Player extends Humanoid {
                 attacking = false;
             }
             frame = attackAnimation.getFrame();
+            if (hurt) {
+                frame = SpriteImage.Tint(frame, Damage.BLEED_COLOR);
+            }
             g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 1.5)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
             attackAnimation.tick();
             frame = swordAnimation.getFrame();
@@ -185,6 +192,14 @@ public class Player extends Humanoid {
         }
 
         super.render(g, xOffset, yOffset);
+    }
+
+    public void performDeath(World world) {
+        super.performDeath(world);
+        isDead = false;
+        setLocation(world.getSpawnPoint()[0], world.getSpawnPoint()[1], world.getSpawnPoint()[2]);
+        Heal(20);
+        world.addEntity(this);
     }
 
     @Override
