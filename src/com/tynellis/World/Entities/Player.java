@@ -5,11 +5,12 @@ import com.tynellis.Art.SpriteImage;
 import com.tynellis.Art.SpriteSheet;
 import com.tynellis.GameComponent;
 import com.tynellis.World.Entities.damage.Damage;
-import com.tynellis.World.Entities.damage.DamageSource;
 import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.Containers.Filters.ItemFilter;
 import com.tynellis.World.Items.Containers.Filters.NameItemFilter;
 import com.tynellis.World.Items.ItemPile;
+import com.tynellis.World.Items.weapons.Sword;
+import com.tynellis.World.Items.weapons.Weapon;
 import com.tynellis.World.Light.LightSource;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.World;
@@ -34,6 +35,8 @@ public class Player extends Humanoid {
     private transient SpriteSheet swordSheet = new SpriteSheet("tempArt/lpc/submission_daneeklu 2/character/sword_sheet_128.png", 128, 126, 1);
     private transient Animation swordAnimation = new Animation(swordSheet, 2);
     private String name;
+
+    private Weapon weapon = new Sword("Awesome Sauce", 6, 5, 1);
 
     public Player(Keys keys, String name, int x, int y, int z) {
         super(x, y, z, 32, 32);
@@ -123,8 +126,11 @@ public class Player extends Humanoid {
             spriteFacing = 1;
         }
         if (keys.attack.wasPressed()) {
-            meleeAttack(facing, 1.5, new DamageSource(new Damage(Damage.Types.SLICING, 7)), world);
+            if (weapon.canUse(world, this)) {
+                meleeAttack(weapon, world);
+            }
         }
+        weapon.coolDownTick();
 //        if (World.DEBUG) {
 //            speed = 0.32;
 //        } else {
@@ -180,14 +186,9 @@ public class Player extends Humanoid {
             g.setColor(Color.WHITE);
             g.drawString("X,Y,Z: " + posX + ", " + posY + ", " + posZ, 10, 34);
             if (GameComponent.debug.isType(Debug.Type.ATTACK)) {
-                double breadth = 1.5;
-                double attackDirection = (Math.PI / 4 * facing);
-                double AttackXOffset = posX - (Math.sin(attackDirection) * (breadth / 2.0)) - ((breadth - 1) / 2.0);
-                double AttackYOffset = posY - (Math.cos(attackDirection) * (breadth / 2.0)) - ((breadth - 1) / 2.0);
-                Rectangle rectangle = new Rectangle((int) ((AttackXOffset) * Tile.WIDTH), (int) ((AttackYOffset) * Tile.WIDTH), (int) (breadth * Tile.WIDTH), (int) (breadth * Tile.HEIGHT));
+                Rectangle rectangle = weapon.getAttackArea(this);
                 g.setColor(Color.RED);
                 g.drawRect(rectangle.x + xOffset, rectangle.y + yOffset, rectangle.width, rectangle.height);
-
             }
         }
 

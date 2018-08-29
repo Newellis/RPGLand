@@ -8,7 +8,8 @@ import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.Humanoid;
 import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.PathfinderAi;
 import com.tynellis.World.Entities.damage.Damage;
-import com.tynellis.World.Entities.damage.DamageSource;
+import com.tynellis.World.Items.weapons.Sword;
+import com.tynellis.World.Items.weapons.Weapon;
 import com.tynellis.World.Nodes.Node;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.World;
@@ -28,6 +29,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 public abstract class NpcBase extends Humanoid {
+    public enum NpcGender {
+        MALE,
+        FEMALE,
+        OTHER,
+        BOTH,
+    }
     private String name;
     protected transient SpriteSheet spriteSheet;
     protected transient Animation animation;
@@ -39,12 +46,9 @@ public abstract class NpcBase extends Humanoid {
     protected NpcAi Ai = new NpcAi();
     protected PathfinderAi pathfinder = new PathfinderAi();
 
-    public enum NpcGender {
-        MALE,
-        FEMALE,
-        OTHER,
-        BOTH,
-    }
+
+    private Weapon weapon = new Sword("Murder Town", 25, 5, 2);
+
 
     private NpcBase(String name, int x, int y, int z, NpcGender gender) {
         super(x, y, z, 32, 32);
@@ -126,6 +130,7 @@ public abstract class NpcBase extends Humanoid {
         animation.setRow(spriteFacing);
         attackAnimation.setRow(spriteFacing);
         swordAnimation.setRow(spriteFacing);
+        weapon.coolDownTick();
     }
 
     public void render(Graphics g, int xOffset, int yOffset) {
@@ -174,10 +179,7 @@ public abstract class NpcBase extends Humanoid {
             }
         }
         if (GameComponent.debug.State() && GameComponent.debug.isType(Debug.Type.ATTACK)) {
-            double attackDirection = (Math.PI / 4 * facing);
-            double AttackXOffset = posX - (Math.sin(attackDirection) * (breadth / 2.0)) - ((breadth - 1) / 2.0);
-            double AttackYOffset = posY - (Math.cos(attackDirection) * (breadth / 2.0)) - ((breadth - 1) / 2.0);
-            Rectangle rectangle = new Rectangle((int) ((AttackXOffset) * Tile.WIDTH), (int) ((AttackYOffset) * Tile.WIDTH), (int) (breadth * Tile.WIDTH), (int) (breadth * Tile.HEIGHT));
+            Rectangle rectangle = weapon.getAttackArea(this);
             g.setColor(Color.RED);
             g.drawRect(rectangle.x + xOffset, rectangle.y + yOffset, rectangle.width, rectangle.height);
 
@@ -192,17 +194,17 @@ public abstract class NpcBase extends Humanoid {
     private double breadth = 1.5;//todo add weapons
 
     public boolean canHit(World world, Entity target) {
-        double attackDirection = (Math.PI / 4 * facing);
-        double AttackXOffset = posX - (Math.sin(attackDirection) * (breadth / 2.0)) - ((breadth - 1) / 2.0);
-        double AttackYOffset = posY - (Math.cos(attackDirection) * (breadth / 2.0)) - ((breadth - 1) / 2.0);
-        Rectangle area = new Rectangle((int) ((AttackXOffset) * Tile.WIDTH), (int) ((AttackYOffset) * Tile.WIDTH), (int) (breadth * Tile.WIDTH), (int) (breadth * Tile.HEIGHT));
+        if (weapon.canUse(world, this)) {
 
-        ArrayList<Entity> hit = world.getEntitiesIntersecting(area);
-        return hit.size() > 0 && hit.contains(target);
+            Rectangle area = weapon.getAttackArea(this);
+            ArrayList<Entity> hit = world.getEntitiesIntersecting(area);
+            return hit.size() > 0 && hit.contains(target);
+        }
+        return false;
     }
 
     public void attack(World world) {
-        meleeAttack(facing, breadth, new DamageSource(new Damage(Damage.Types.SLICING, 5)), world);
+        meleeAttack(weapon, world);
     }
 
     @Override

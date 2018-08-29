@@ -1,10 +1,11 @@
 package com.tynellis.World.Entities.damage;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DamageSource {
+public class DamageSource implements Serializable {
     private List<Damage> damageTypes;
 
     public DamageSource(List<Damage> DamageTypes) {

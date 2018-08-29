@@ -1,8 +1,9 @@
 package com.tynellis.World.Entities.damage;
 
 import java.awt.Color;
+import java.io.Serializable;
 
-public class Damage {
+public class Damage implements Serializable {
     public enum Types {
         //Physical
         BLUNT, SLICING, PIERCING,

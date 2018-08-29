@@ -79,7 +79,9 @@ public class World implements Land, Serializable{
         loadAreas(lastOffsetX, lastOffsetY);
         //find Entities that are on the screen
         SortedSet<Entity> entitiesToRender = new TreeSet<Entity>(new EntityComparator());
-        entitiesToRender.addAll(getEntitiesNearBounds(new Rectangle(XPos - ((width + Area.WIDTH * Tile.WIDTH) / 2), YPos - ((height + Area.HEIGHT * Tile.HEIGHT) / 2), width + Area.WIDTH * Tile.WIDTH, height + Area.HEIGHT * Tile.HEIGHT)));
+        synchronized (collisionTree) {
+            entitiesToRender.addAll(getEntitiesNearBounds(new Rectangle(XPos - ((width + Area.WIDTH * Tile.WIDTH) / 2), YPos - ((height + Area.HEIGHT * Tile.HEIGHT) / 2), width + Area.WIDTH * Tile.WIDTH, height + Area.HEIGHT * Tile.HEIGHT)));
+        }
         //render areas
         for (int j = Buffer + NumOfAreasInHeight; j >= Buffer; j--) {
             if (j < 0 || j > loadedAreas[0].length + Buffer) {
