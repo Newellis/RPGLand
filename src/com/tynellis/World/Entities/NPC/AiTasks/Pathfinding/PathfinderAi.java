@@ -237,6 +237,10 @@ public class PathfinderAi extends AiTask {
         return path;
     }
 
+    public void setPath(List<Node> path) {
+        this.path = path;
+    }
+
     public double getPathLength() {
         double length = 0.0;
         if (path.size() > 1) {
