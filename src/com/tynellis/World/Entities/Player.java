@@ -36,7 +36,7 @@ public class Player extends Humanoid {
     private transient Animation swordAnimation = new Animation(swordSheet, 2);
     private String name;
 
-    private Weapon weapon = new Sword("Awesome Sauce", 6, 5, 1);
+    private Weapon weapon = new Sword("Awesome Sauce", 20, 5, 1);
 
     public Player(Keys keys, String name, int x, int y, int z) {
         super(x, y, z, 32, 32);
@@ -131,6 +131,7 @@ public class Player extends Humanoid {
             }
         }
         weapon.coolDownTick();
+
 //        if (World.DEBUG) {
 //            speed = 0.32;
 //        } else {
@@ -197,8 +198,19 @@ public class Player extends Humanoid {
 
     public void performDeath(World world) {
         super.performDeath(world);
+        respawn(world);
+    }
+
+    private void respawn(World world) {
         isDead = false;
-        setLocation(world.getSpawnPoint()[0], world.getSpawnPoint()[1], world.getSpawnPoint()[2]);
+        int x, y, z;
+        do {
+            x = world.getSpawnPoint()[0] + (world.getRand().nextInt(20) - 10);
+            y = world.getSpawnPoint()[1] + (world.getRand().nextInt(20) - 10);
+            z = world.getTopLayerAt(x, y);
+        } while (world.isTileObstructed(x, y, z) && !world.getTile(x, y, z).isPassableBy(this));
+
+        setLocation(x, y, z);
         Heal(20);
         world.addEntity(this);
     }

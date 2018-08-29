@@ -9,17 +9,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ab3d649-fdfe-4863-8a5f-5a792e85c7aa" name="Default" comment="Added Skeleton that attacks the player and respawn mechanics">
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/UsableItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Sword.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Weapon.java" afterDir="false" />
+    <list default="true" id="9ab3d649-fdfe-4863-8a5f-5a792e85c7aa" name="Default" comment="Added Weapon items and an attack cooldown system">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Humanoid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Humanoid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/damage/Damage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/damage/Damage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/damage/DamageSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/damage/DamageSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/World.java" afterDir="false" />
     </list>
     <ignored path="MyGame.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -82,26 +74,26 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="156" />
+          <entry key="java" value="157" />
           <entry key="png" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Image" value="1" />
-          <entry key="JAVA" value="156" />
+          <entry key="JAVA" value="157" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="9076" />
-          <entry key="txt" value="1162" />
+          <entry key="java" value="9327" />
+          <entry key="txt" value="1217" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="9076" />
-          <entry key="PLAIN_TEXT" value="1162" />
+          <entry key="JAVA" value="9327" />
+          <entry key="PLAIN_TEXT" value="1217" />
         </counts>
       </usages-collector>
     </session>
@@ -112,10 +104,42 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/World.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="959">
+              <caret line="501" column="19" selection-start-line="501" selection-start-column="19" selection-end-line="501" selection-end-column="19" />
+              <folding>
+                <element signature="e#1403#1411#0" expanded="true" />
+                <element signature="e#12941#12942#0" expanded="true" />
+                <element signature="e#12975#12976#0" expanded="true" />
+                <element signature="e#13080#13081#0" expanded="true" />
+                <element signature="e#13117#13118#0" expanded="true" />
+                <element signature="e#16606#16607#0" expanded="true" />
+                <element signature="e#16656#16657#0" expanded="true" />
+                <element signature="e#24940#24941#0" expanded="true" />
+                <element signature="e#24983#24984#0" expanded="true" />
+                <element signature="e#25351#25352#0" expanded="true" />
+                <element signature="e#25378#25379#0" expanded="true" />
+                <element signature="e#25409#25410#0" expanded="true" />
+                <element signature="e#25442#25443#0" expanded="true" />
+                <element signature="e#25488#25489#0" expanded="true" />
+                <element signature="e#25547#25548#0" expanded="true" />
+                <element signature="e#26191#26192#0" expanded="true" />
+                <element signature="e#26224#26225#0" expanded="true" />
+                <element signature="e#26275#26276#0" expanded="true" />
+                <element signature="e#26319#26320#0" expanded="true" />
+                <element signature="e#26358#26359#0" expanded="true" />
+                <element signature="e#26392#26393#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="133" column="30" lean-forward="true" selection-start-line="133" selection-start-column="30" selection-end-line="133" selection-end-column="30" />
+            <state relative-caret-position="253">
+              <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
               <folding>
                 <element signature="e#8872#8873#0" expanded="true" />
                 <element signature="e#8914#8915#0" expanded="true" />
@@ -146,7 +170,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Weapon.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="58">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
               <folding>
                 <element signature="e#727#728#0" expanded="true" />
                 <element signature="e#768#769#0" expanded="true" />
@@ -159,29 +183,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Sword.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" column="21" lean-forward="true" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
+            <state relative-caret-position="168">
+              <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/damage/DamageSource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#215#216#0" expanded="true" />
-                <element signature="e#261#262#0" expanded="true" />
-                <element signature="e#387#388#0" expanded="true" />
-                <element signature="e#432#433#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -191,7 +199,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/UsableItem.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
-              <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+              <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -220,8 +228,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Humanoid.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="17" column="26" lean-forward="true" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+            <state relative-caret-position="150">
+              <caret line="12" column="26" lean-forward="true" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -229,20 +237,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="129" column="27" selection-start-line="129" selection-start-column="27" selection-end-line="129" selection-end-column="27" />
+            <state relative-caret-position="206">
+              <caret line="133" column="8" selection-start-line="133" selection-start-column="8" selection-end-line="133" selection-end-column="8" />
               <folding>
-                <element signature="e#8269#8270#0" expanded="true" />
-                <element signature="e#8304#8305#0" expanded="true" />
-                <element signature="e#8381#8382#0" expanded="true" />
-                <element signature="e#8440#8441#0" expanded="true" />
-                <element signature="e#8471#8472#0" expanded="true" />
-                <element signature="e#8498#8499#0" expanded="true" />
-                <element signature="e#8536#8537#0" expanded="true" />
-                <element signature="e#8568#8569#0" expanded="true" />
+                <element signature="e#8438#8439#0" expanded="true" />
+                <element signature="e#8473#8474#0" expanded="true" />
+                <element signature="e#8550#8551#0" expanded="true" />
+                <element signature="e#8609#8610#0" expanded="true" />
+                <element signature="e#8640#8641#0" expanded="true" />
+                <element signature="e#8667#8668#0" expanded="true" />
+                <element signature="e#8705#8706#0" expanded="true" />
+                <element signature="e#8737#8738#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -290,8 +298,8 @@
       <find>player</find>
       <find>heal</find>
       <find>hurt</find>
-      <find>render</find>
       <find>tick</find>
+      <find>render</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -359,10 +367,10 @@
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/UsableItem.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/Humanoid.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/damage/Damage.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Sword.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Weapon.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcBase.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Sword.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java" />
       </list>
     </option>
   </component>
@@ -528,7 +536,7 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/tyler/Documents/Java Projects/MyGameRestart/src/com/tynellis/Entities/Mob.java" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535583780893" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535584691826" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
     <property name="dynamic.classpath" value="false" />
@@ -949,7 +957,14 @@
       <option name="project" value="LOCAL" />
       <updated>1535562421001</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Added Weapon items and an attack cooldown system">
+      <created>1535583888876</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1535583888876</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TodoView">
@@ -965,7 +980,7 @@
     <frame x="0" y="23" width="1680" height="1023" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.79072845" visible="true" weight="0.24236874" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.79072845" visible="true" weight="0.24236874" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Favorites" order="3" sideWeight="0.20927152" side_tool="true" weight="0.1991404" />
@@ -974,7 +989,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49713057" weight="0.31057268" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5989011" visible="true" weight="0.53634363" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5989011" visible="true" weight="0.53634363" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4856528" weight="0.49669603" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1065,7 +1080,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="got pathfinding working better and added pathfinding to other entities" />
     <MESSAGE value="Massive commit after git problems. commit includes: pathfinder tweaks, Containers, inventories, Items, new Ai, and entity drops" />
     <MESSAGE value="fixing package names" />
     <MESSAGE value="changed Tile Obstruction to have less knowledge" />
@@ -1090,7 +1104,8 @@
     <MESSAGE value="added npc attack animation" />
     <MESSAGE value="fixed some pathfinder freezing up problems" />
     <MESSAGE value="Added Skeleton that attacks the player and respawn mechanics" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Skeleton that attacks the player and respawn mechanics" />
+    <MESSAGE value="Added Weapon items and an attack cooldown system" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Weapon items and an attack cooldown system" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1468,36 +1483,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/World.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="77" column="61" lean-forward="true" selection-start-line="77" selection-start-column="61" selection-end-line="77" selection-end-column="61" />
-          <folding>
-            <element signature="e#1403#1411#0" expanded="true" />
-            <element signature="e#12941#12942#0" expanded="true" />
-            <element signature="e#12975#12976#0" expanded="true" />
-            <element signature="e#13080#13081#0" expanded="true" />
-            <element signature="e#13117#13118#0" expanded="true" />
-            <element signature="e#16606#16607#0" expanded="true" />
-            <element signature="e#16656#16657#0" expanded="true" />
-            <element signature="e#24940#24941#0" expanded="true" />
-            <element signature="e#24983#24984#0" expanded="true" />
-            <element signature="e#25351#25352#0" expanded="true" />
-            <element signature="e#25378#25379#0" expanded="true" />
-            <element signature="e#25409#25410#0" expanded="true" />
-            <element signature="e#25442#25443#0" expanded="true" />
-            <element signature="e#25488#25489#0" expanded="true" />
-            <element signature="e#25547#25548#0" expanded="true" />
-            <element signature="e#26191#26192#0" expanded="true" />
-            <element signature="e#26224#26225#0" expanded="true" />
-            <element signature="e#26275#26276#0" expanded="true" />
-            <element signature="e#26319#26320#0" expanded="true" />
-            <element signature="e#26358#26359#0" expanded="true" />
-            <element signature="e#26392#26393#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/toEntity/AttackEntityAi.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -1548,27 +1533,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Humanoid.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="17" column="26" lean-forward="true" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+        <state relative-caret-position="150">
+          <caret line="12" column="26" lean-forward="true" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="129" column="27" selection-start-line="129" selection-start-column="27" selection-end-line="129" selection-end-column="27" />
-          <folding>
-            <element signature="e#8269#8270#0" expanded="true" />
-            <element signature="e#8304#8305#0" expanded="true" />
-            <element signature="e#8381#8382#0" expanded="true" />
-            <element signature="e#8440#8441#0" expanded="true" />
-            <element signature="e#8471#8472#0" expanded="true" />
-            <element signature="e#8498#8499#0" expanded="true" />
-            <element signature="e#8536#8537#0" expanded="true" />
-            <element signature="e#8568#8569#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1576,7 +1544,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/UsableItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
-          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1586,7 +1554,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Weapon.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="58">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
           <folding>
             <element signature="e#727#728#0" expanded="true" />
             <element signature="e#768#769#0" expanded="true" />
@@ -1600,8 +1568,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="133" column="30" lean-forward="true" selection-start-line="133" selection-start-column="30" selection-end-line="133" selection-end-column="30" />
+        <state relative-caret-position="253">
+          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
           <folding>
             <element signature="e#8872#8873#0" expanded="true" />
             <element signature="e#8914#8915#0" expanded="true" />
@@ -1617,10 +1585,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Sword.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="21" lean-forward="true" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
+        <state relative-caret-position="168">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/World.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="959">
+          <caret line="501" column="19" selection-start-line="501" selection-start-column="19" selection-end-line="501" selection-end-column="19" />
+          <folding>
+            <element signature="e#1403#1411#0" expanded="true" />
+            <element signature="e#12941#12942#0" expanded="true" />
+            <element signature="e#12975#12976#0" expanded="true" />
+            <element signature="e#13080#13081#0" expanded="true" />
+            <element signature="e#13117#13118#0" expanded="true" />
+            <element signature="e#16606#16607#0" expanded="true" />
+            <element signature="e#16656#16657#0" expanded="true" />
+            <element signature="e#24940#24941#0" expanded="true" />
+            <element signature="e#24983#24984#0" expanded="true" />
+            <element signature="e#25351#25352#0" expanded="true" />
+            <element signature="e#25378#25379#0" expanded="true" />
+            <element signature="e#25409#25410#0" expanded="true" />
+            <element signature="e#25442#25443#0" expanded="true" />
+            <element signature="e#25488#25489#0" expanded="true" />
+            <element signature="e#25547#25548#0" expanded="true" />
+            <element signature="e#26191#26192#0" expanded="true" />
+            <element signature="e#26224#26225#0" expanded="true" />
+            <element signature="e#26275#26276#0" expanded="true" />
+            <element signature="e#26319#26320#0" expanded="true" />
+            <element signature="e#26358#26359#0" expanded="true" />
+            <element signature="e#26392#26393#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="133" column="8" selection-start-line="133" selection-start-column="8" selection-end-line="133" selection-end-column="8" />
+          <folding>
+            <element signature="e#8438#8439#0" expanded="true" />
+            <element signature="e#8473#8474#0" expanded="true" />
+            <element signature="e#8550#8551#0" expanded="true" />
+            <element signature="e#8609#8610#0" expanded="true" />
+            <element signature="e#8640#8641#0" expanded="true" />
+            <element signature="e#8667#8668#0" expanded="true" />
+            <element signature="e#8705#8706#0" expanded="true" />
+            <element signature="e#8737#8738#0" expanded="true" />
           </folding>
         </state>
       </provider>
