@@ -32,8 +32,6 @@ public class Player extends Humanoid {
     private transient Animation animation = new Animation(spriteSheet, 5);
     private transient SpriteSheet attackSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_slash.png", 64, 64, 1);
     private transient Animation attackAnimation = new Animation(attackSheet, 2);
-    private transient SpriteSheet swordSheet = new SpriteSheet("tempArt/lpc/submission_daneeklu 2/character/sword_sheet_128.png", 128, 126, 1);
-    private transient Animation swordAnimation = new Animation(swordSheet, 2);
     private String name;
 
     private Weapon weapon = new Sword("Awesome Sauce", 20, 5, 1);
@@ -43,7 +41,6 @@ public class Player extends Humanoid {
         this.keys = keys;
         animation.playInRange(spriteFacing, 1, 8);
         attackAnimation.playFromStart(spriteFacing);
-        swordAnimation.playFromStart(spriteFacing);
         this.name = name;
         speed = 0.08;
         movementType = movementTypes.Walking;
@@ -59,11 +56,8 @@ public class Player extends Humanoid {
         animation = new Animation(spriteSheet, 5);
         attackSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_slash.png", 64, 64, 1);
         attackAnimation = new Animation(attackSheet, 2);
-        swordSheet = new SpriteSheet("tempArt/lpc/submission_daneeklu 2/character/sword_sheet_128.png", 128, 126, 1);
-        swordAnimation = new Animation(swordSheet, 2);
         animation.playInRange(spriteFacing, 1, 8);
         attackAnimation.playFromStart(spriteFacing);
-        swordAnimation.playFromStart(spriteFacing);
         attacking = false;
     }
 
@@ -140,7 +134,6 @@ public class Player extends Humanoid {
         super.tick(world, near);
         animation.setRow(spriteFacing);
         attackAnimation.setRow(spriteFacing);
-        swordAnimation.setRow(spriteFacing);
         light.setLocation(posX + 0.5, posY + 0.5, posZ);
     }
 
@@ -165,10 +158,7 @@ public class Player extends Humanoid {
         if (!attacking) {
             attackAnimation.pause();
             attackAnimation.skipToFrame(0);
-            swordAnimation.pause();
-            swordAnimation.skipToFrame(0);
         } else {
-            swordAnimation.play();
             attackAnimation.play();
             if (attackAnimation.getFrameNum() == 5) {
                 attacking = false;
@@ -179,9 +169,7 @@ public class Player extends Humanoid {
             }
             g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 1.5)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
             attackAnimation.tick();
-            frame = swordAnimation.getFrame();
-            g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 2.5)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
-            swordAnimation.tick();
+            weapon.renderAttack(g, xOffset, yOffset, this);
         }
         if (GameComponent.debug.State()) {
             g.setColor(Color.WHITE);

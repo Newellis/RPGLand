@@ -1,5 +1,7 @@
 package com.tynellis.World.Items.weapons;
 
+import com.tynellis.Art.Animation;
+import com.tynellis.Art.SpriteSheet;
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.KillableEntity;
 import com.tynellis.World.Entities.damage.Damage;
@@ -14,6 +16,8 @@ public class Sword extends Weapon {
 
     public Sword(String name, int coolDown, int artCol, int artRow) {
         super(name, 1.5, coolDown, new DamageSource(new Damage(Damage.Types.SLICING, 5)), artCol, artRow);
+        weaponSheet = new SpriteSheet("tempArt/lpc/submission_daneeklu 2/character/sword_sheet_128.png", 128, 126, 1);
+        weaponAnimation = new Animation(weaponSheet, 2);
     }
 
     @Override

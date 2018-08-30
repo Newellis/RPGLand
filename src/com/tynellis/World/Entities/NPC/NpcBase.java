@@ -40,8 +40,6 @@ public abstract class NpcBase extends Humanoid {
     protected transient Animation animation;
     protected transient SpriteSheet attackSheet;
     protected transient Animation attackAnimation;
-    protected transient SpriteSheet swordSheet;
-    protected transient Animation swordAnimation;
     private NpcGender gender;
     protected NpcAi Ai = new NpcAi();
     protected PathfinderAi pathfinder = new PathfinderAi();
@@ -86,13 +84,10 @@ public abstract class NpcBase extends Humanoid {
             spriteSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_walkcycle.png", 64, 64, 1);
             attackSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_slash.png", 64, 64, 1);
         }
-        swordSheet = new SpriteSheet("tempArt/lpc/submission_daneeklu 2/character/sword_sheet_128.png", 128, 126, 1);
         animation = new Animation(spriteSheet, 5);
         animation.playInRange(spriteFacing, 1, 8);
         attackAnimation = new Animation(attackSheet, 2);
         attackAnimation.playFromStart(spriteFacing);
-        swordAnimation = new Animation(swordSheet, 2);
-        swordAnimation.playFromStart(spriteFacing);
     }
 
     public static String getName(NpcGender gender, Random random) {
@@ -129,7 +124,6 @@ public abstract class NpcBase extends Humanoid {
         super.tick(world, near);
         animation.setRow(spriteFacing);
         attackAnimation.setRow(spriteFacing);
-        swordAnimation.setRow(spriteFacing);
         weapon.coolDownTick();
     }
 
@@ -152,11 +146,9 @@ public abstract class NpcBase extends Humanoid {
         if (!attacking) {
             attackAnimation.pause();
             attackAnimation.skipToFrame(0);
-            swordAnimation.pause();
-            swordAnimation.skipToFrame(0);
         } else {
-            swordAnimation.play();
             attackAnimation.play();
+            System.out.println("attack with " + weapon.getName() + " frame " + attackAnimation.getFrameNum());
             if (attackAnimation.getFrameNum() == 5) {
                 attacking = false;
             }
@@ -166,9 +158,7 @@ public abstract class NpcBase extends Humanoid {
             }
             g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 1.5)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
             attackAnimation.tick();
-            frame = swordAnimation.getFrame();
-            g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 2.5)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
-            swordAnimation.tick();
+            weapon.renderAttack(g, xOffset, yOffset, this);
         }
         if (GameComponent.debug.State() && GameComponent.debug.isType(Debug.Type.PATH)) {
             List<Node> nodes = pathfinder.getPath();
@@ -190,8 +180,6 @@ public abstract class NpcBase extends Humanoid {
     public PathfinderAi getPathfinder() {
         return pathfinder;
     }
-
-    private double breadth = 1.5;//todo add weapons
 
     public boolean canHit(World world, Entity target) {
         if (weapon.canUse(world, this)) {

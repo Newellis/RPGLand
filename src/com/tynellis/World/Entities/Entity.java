@@ -343,8 +343,16 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
         return isDead;
     }
 
+    public int getHeight() {
+        return height;
+    }
+
     public int getFacing() {
         return facing;
+    }
+
+    public int getSpriteFacing() {
+        return spriteFacing;
     }
 
     public double getFacingAngle() {

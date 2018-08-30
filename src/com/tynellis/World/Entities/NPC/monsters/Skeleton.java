@@ -22,13 +22,10 @@ public class Skeleton extends NpcBase {
     protected void setSprite(NpcGender gender) {
         spriteSheet = new SpriteSheet("tempArt/lpc/lpc_entry/png/walkcycle/BODY_skeleton.png", 64, 64, 1);
         attackSheet = new SpriteSheet("tempArt/lpc/lpc_entry/png/slash/BODY_skeleton.png", 64, 64, 1);
-        swordSheet = new SpriteSheet("tempArt/lpc/submission_daneeklu 2/character/sword_sheet_128.png", 128, 126, 1);
         animation = new Animation(spriteSheet, 5);
         animation.playInRange(spriteFacing, 1, 8);
         attackAnimation = new Animation(attackSheet, 2);
         attackAnimation.playFromStart(spriteFacing);
-        swordAnimation = new Animation(swordSheet, 2);
-        swordAnimation.playFromStart(spriteFacing);
     }
 
     @Override
