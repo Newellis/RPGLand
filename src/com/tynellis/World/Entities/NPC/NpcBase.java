@@ -50,7 +50,7 @@ public abstract class NpcBase extends Humanoid {
     private Weapon weapon = new Sword("Murder Town", 25, 5, 2);
 
 
-    private NpcBase(String name, int x, int y, int z, NpcGender gender) {
+    protected NpcBase(String name, int x, int y, int z, NpcGender gender) {
         super(x, y, z, 32, 32);
         this.name = name;
         this.gender = gender;
@@ -218,6 +218,10 @@ public abstract class NpcBase extends Humanoid {
                 '}';
     }
 
+
+    public void equipWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
     public String getName() {
         return name;
     }

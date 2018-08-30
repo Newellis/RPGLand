@@ -6,13 +6,15 @@ import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.toEntity.AttackEntityAi;
 import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.Entities.Player;
+import com.tynellis.World.Items.weapons.Daggar;
 
 import java.util.Random;
 
 public class Skeleton extends NpcBase {
     public Skeleton(int x, int y, int z, Random random) {
-        super(x, y, z, NpcGender.BOTH, random);
-        Ai.addTask(1, new AttackEntityAi(Player.class, 100, 1));
+        super("Skeleton", x, y, z, NpcGender.BOTH);
+        equipWeapon(new Daggar("Pin Pricker", 25, 5, 3));
+        Ai.addTask(1, new AttackEntityAi(Player.class, 10, 1));
     }
 
     @Override

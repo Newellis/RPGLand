@@ -36,7 +36,6 @@ public abstract class UseUsableEntityAi extends FollowEntityAi implements Serial
     @Override
     public boolean performTask(World world, NpcBase entity) {
         if (shouldUse(world, entity)) {
-            System.out.println("should use " + entity.getInventory());
             boolean moving = super.performTask(world, entity);
             if (tool.canUse(entity)) {
                 faceClosest.performTask(world, entity);

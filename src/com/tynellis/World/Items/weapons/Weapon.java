@@ -9,7 +9,7 @@ import java.awt.Rectangle;
 
 public abstract class Weapon extends UsableItem {
     private double range;
-    private DamageSource damage;
+    protected DamageSource damage;
     protected int coolDown, coolDownTimer;
 
     public Weapon(String name, double range, int coolDown, DamageSource damage, int artCol, int artRow) {

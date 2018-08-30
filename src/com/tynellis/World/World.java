@@ -37,9 +37,7 @@ public class World implements Land, Serializable{
     private static final int X = 0,Y = 1;
     private transient Area[][] loadedAreas;
     private transient ArrayList<Entity> entities = new ArrayList<Entity>();
-    //private transient ArrayList<Entity> entities = new ArrayList<Entity>(); // list of entities sorted by entities posY
-    //private transient int entitiesMoved = 0;
-    private transient ArrayList<Entity> entityMoveList = new ArrayList<Entity>(), deadEntities = new ArrayList<Entity>();
+    private transient ArrayList<Entity> entityMoveList = new ArrayList<Entity>(), deadEntities = new ArrayList<Entity>(), newEntities = new ArrayList<Entity>();
     public final long seed;
     public final Random WORLD_RAND;
     private String Name;
@@ -123,6 +121,10 @@ public class World implements Land, Serializable{
 
     public synchronized void tick() {
         //tick entities
+        if (newEntities.size() > 0) {
+            entities.addAll(newEntities);
+            newEntities.clear();
+        }
         if (entities.size() > 0) {
             collisionTree = new EntityQuadTree(0, new Rectangle(areaOffset[X] * Area.WIDTH * Tile.WIDTH, areaOffset[Y] * Area.HEIGHT * Tile.HEIGHT, loadedAreas.length * Area.WIDTH * Tile.WIDTH, loadedAreas[0].length * Area.HEIGHT * Tile.HEIGHT));
             for (Entity entity : entities) {
@@ -270,6 +272,10 @@ public class World implements Land, Serializable{
             }
         }
         return adjacentAreas;
+    }
+
+    public void queueAdditionOfEntity(Entity e) {
+        newEntities.add(e);
     }
 
     //add an entity to the world
