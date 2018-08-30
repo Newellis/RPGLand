@@ -33,7 +33,7 @@ public class Chest extends UsableEntity {
         canBeMoved = false;
         inventory = new Container(40);
 
-        spawnerArea = new Rectangle(((int) x - 5) * Tile.WIDTH, ((int) y - 5) * Tile.WIDTH, 10 * Tile.WIDTH, 10 * Tile.WIDTH);
+        spawnerArea = new Rectangle(((int) x - 5) * Tile.WIDTH, ((int) y - 5) * Tile.WIDTH, 11 * Tile.WIDTH, 11 * Tile.WIDTH);
         spawner = new Spawner(50, spawnerArea, Skeleton.class, 5);
     }
 

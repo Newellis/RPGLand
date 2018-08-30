@@ -1,6 +1,8 @@
 package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.toEntity;
 
+import com.tynellis.World.Entities.KillableEntity;
 import com.tynellis.World.Entities.NPC.NpcBase;
+import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Nodes.Node;
 import com.tynellis.World.World;
 
@@ -33,5 +35,18 @@ public class CollectItemsFromEntityAi extends AttackEntityAi {
             return attack;
         }
         return true;
+    }
+
+    public boolean findTarget(World world, NpcBase e) {
+        boolean foundTarget = super.findTarget(world, e);
+
+        if (foundTarget) {
+            for (ItemPile item : ((KillableEntity) closest).getInventory().getContents()) {
+                if (e.getInventory().canAddItem(item)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

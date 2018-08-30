@@ -250,10 +250,10 @@ public class GameComponent extends JPanel implements Runnable {
         ItemEntity itemEntity1 = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 10), world.getRand(), spawn[0] + 6, spawn[1], spawn[2]);
         ItemEntity itemEntity2 = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 20), world.getRand(), spawn[0] + 8, spawn[1], spawn[2]);
         world.addEntity(player);
-//        world.addEntity(npc);
-//        world.addEntity(itemEntity);
-//        world.addEntity(itemEntity1);
-//        world.addEntity(itemEntity2);
+        world.addEntity(npc);
+        world.addEntity(itemEntity);
+        world.addEntity(itemEntity1);
+        world.addEntity(itemEntity2);
         world.addEntity(chest);
 
         //addTestStructure(world, spawn);

@@ -78,7 +78,7 @@ public class Container implements Serializable {
     }
 
     public boolean canAddItem(ItemPile pile) {
-        if (filter != null && !filter.followsFilter(pile)) {
+        if (pile == null || filter != null && !filter.followsFilter(pile)) {
             return false;
         }
         for (ContainerSlot slot : inventory) {

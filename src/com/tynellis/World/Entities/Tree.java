@@ -4,6 +4,7 @@ import com.tynellis.Art.SpriteImage;
 import com.tynellis.Art.SpriteSheet;
 import com.tynellis.World.Entities.damage.Damage;
 import com.tynellis.World.Entities.damage.DamageModifier;
+import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Items.Materials.Log;
 import com.tynellis.World.Items.TreeSeeds;
@@ -37,15 +38,10 @@ public class Tree extends KillableEntity {
         resistances.put(Damage.Types.BLUNT, 1.0);
         resistances.put(Damage.Types.FIRE, -1.0);
         resistance = new DamageModifier(resistances);
-    }
-
-    @Override
-    public ItemPile[] getItemsToDrop(Random rand) {
-        ItemPile[] piles = new ItemPile[2];
+        inventory = new Container(2);
         int amount = ((treeHeight) / (5 + rand.nextInt(6)));
-        piles[0] = new ItemPile(new Log(treeType), amount);
-        piles[1] = new ItemPile(new TreeSeeds(treeType), rand.nextInt(5));
-        return piles;
+        inventory.addItemPile(new ItemPile(new Log(treeType), amount));
+        inventory.addItemPile(new ItemPile(new TreeSeeds(treeType), rand.nextInt(5)));
     }
 
     public void tick(World world, List<Entity> near) {
