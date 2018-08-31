@@ -5,6 +5,7 @@ import com.tynellis.Save.FileHandler;
 import com.tynellis.Save.SavedArea;
 import com.tynellis.Save.StoreLoad;
 import com.tynellis.World.Entities.Entity;
+import com.tynellis.World.Entities.NPC.monsters.Skeleton;
 import com.tynellis.World.Entities.Orginization.EntityComparator;
 import com.tynellis.World.Entities.Orginization.EntityQuadTree;
 import com.tynellis.World.Light.LightOverlay;
@@ -12,8 +13,10 @@ import com.tynellis.World.Nodes.Node;
 import com.tynellis.World.Tiles.LandTiles.ConnectorTile;
 import com.tynellis.World.Tiles.LandTiles.LayeredTile;
 import com.tynellis.World.Tiles.Tile;
+import com.tynellis.World.spawners.WorldSpawner;
 import com.tynellis.debug.Debug;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.io.IOException;
@@ -43,6 +46,10 @@ public class World implements Land, Serializable{
     private String Name;
     private transient EntityQuadTree collisionTree;
 
+    private WorldSpawner worldSpawner = new WorldSpawner(5);
+    private final Rectangle screenArea = new Rectangle();
+    private ArrayList<Rectangle> spawnFreeAreas = new ArrayList<Rectangle>();
+
     private transient LightOverlay lighting = new LightOverlay();
 
     public World(String name, long seed) {
@@ -51,21 +58,35 @@ public class World implements Land, Serializable{
         gen = new WorldGen(this);
         Name = name;
         FileHandler.setGameDir(name);
+        spawnFreeAreas.add(screenArea);
+        addEntitiesToSpawn();
     }
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
         entityMoveList = new ArrayList<Entity>();
         deadEntities = new ArrayList<Entity>();
         entities = new ArrayList<Entity>();
-        collisionTree = new EntityQuadTree(0, new Rectangle(areaOffset[X] * Area.WIDTH * Tile.WIDTH, areaOffset[Y] * Area.HEIGHT * Tile.HEIGHT, loadedAreas.length * Area.WIDTH * Tile.WIDTH, loadedAreas[0].length * Area.HEIGHT * Tile.HEIGHT));
+        collisionTree = new EntityQuadTree(0, getLoadedAreaBounds());
         lighting = new LightOverlay();
+        spawnFreeAreas.add(screenArea);
+        addEntitiesToSpawn();
         //entities = new ArrayList<Entity>();
+    }
+
+    private void addEntitiesToSpawn() {
+        worldSpawner.addEntitySpawn(Skeleton.class, 50);
+    }
+
+    public Rectangle getLoadedAreaBounds() {
+        return new Rectangle(areaOffset[X] * Area.WIDTH * Tile.WIDTH, areaOffset[Y] * Area.HEIGHT * Tile.HEIGHT, loadedAreas.length * Area.WIDTH * Tile.WIDTH, loadedAreas[0].length * Area.HEIGHT * Tile.HEIGHT);
     }
 
     //render world
     public void render(Graphics g, int width, int height, int XPos, int YPos, int ZPos) {
         int xOffset = (width / 2) - XPos;
         int yOffset = ((height / 2) - YPos + ZPos);
+
+        screenArea.setBounds(((XPos - (width / 2)) / Tile.WIDTH) - 2, ((YPos - (height / 2)) / Tile.WIDTH) - 2, (width / Tile.WIDTH) + 4, (height / Tile.WIDTH) + 4);
 
         //calculate how many areas across to just past the edge
         NumOfAreasInWidth = 2 + (width / (Tile.WIDTH * Area.WIDTH));
@@ -116,11 +137,15 @@ public class World implements Land, Serializable{
             }
         }
 
+        g.setColor(Color.green);
+        g.drawRect(xOffset + (screenArea.x * Tile.WIDTH), yOffset + (screenArea.y * Tile.WIDTH), screenArea.width * Tile.WIDTH, screenArea.height * Tile.WIDTH);
+
         lighting.render(g, width, height, XPos, YPos, ZPos);
     }
 
     public synchronized void tick() {
         //tick entities
+        worldSpawner.tick(this);
         if (newEntities.size() > 0) {
             entities.addAll(newEntities);
             newEntities.clear();
@@ -506,6 +531,9 @@ public class World implements Land, Serializable{
     }
 
     public boolean isTileObstructed(int x, int y, int z) {
+        if (getTile(x, y, z) == null) {
+            return true;
+        }
         ArrayList<Entity> list = getEntitiesIntersecting(getTileBounds(x, y, z));
         for (Iterator<Entity> it = list.iterator(); it.hasNext(); ) {
             Entity next = it.next();
@@ -520,6 +548,7 @@ public class World implements Land, Serializable{
     public void setAreaOffset(int x, int y) {
         areaOffset = new int[]{x,y};
     }
+
 
     //save loaded Areas
     public void saveLoadedAreas() {
@@ -571,5 +600,9 @@ public class World implements Land, Serializable{
 
     public void genSpawn(long seed) {
         gen.setSpawn(seed);
+    }
+
+    public ArrayList<Rectangle> getSpawnFreeAreas() {
+        return spawnFreeAreas;
     }
 }

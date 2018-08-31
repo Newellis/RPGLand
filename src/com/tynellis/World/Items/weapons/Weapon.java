@@ -49,7 +49,7 @@ public abstract class Weapon extends UsableItem {
         BufferedImage frame;
         weaponAnimation.setRow(user.getSpriteFacing());
         weaponAnimation.play();
-        System.out.println("attacking with " + getName() + " frame " + weaponAnimation.getFrameNum());
+        //System.out.println("attacking with " + getName() + " frame " + weaponAnimation.getFrameNum());
         frame = weaponAnimation.getFrame();
         g.drawImage(frame, (int) ((user.getX() + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((user.getY() + 0.5) * Tile.HEIGHT) + yOffset - (user.getHeight() * 2.5)) - (int) (3 * (user.getZ() / 4.0) * Tile.HEIGHT), null);
         weaponAnimation.tick();

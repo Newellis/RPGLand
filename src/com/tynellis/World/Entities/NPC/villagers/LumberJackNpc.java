@@ -1,4 +1,4 @@
-package com.tynellis.World.Entities.NPC;
+package com.tynellis.World.Entities.NPC.villagers;
 
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.NPC.AiTasks.AiTask;
@@ -6,6 +6,7 @@ import com.tynellis.World.Entities.NPC.AiTasks.FaceClosestAi;
 import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.StayNearPoint;
 import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.UseChestAi;
 import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.toEntity.CollectItemsFromEntityAi;
+import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.Entities.Player;
 import com.tynellis.World.Entities.Tree;
 import com.tynellis.World.Entities.UsableEntity.Chest;
@@ -17,7 +18,7 @@ import com.tynellis.World.Items.Materials.Log;
 
 import java.util.Random;
 
-public class LumberJackNpc extends NpcBase {
+public class LumberJackNpc extends Villager {
     public LumberJackNpc(int x, int y, int z, NpcBase.NpcGender gender, Chest chest, Random random) {
         super(x, y, z, gender, random);
         ItemFilter log, acorn, pineCone;

@@ -15,7 +15,6 @@ public class Skeleton extends NpcBase {
         super("Skeleton", x, y, z, NpcGender.BOTH);
         equipWeapon(new Daggar("Pin Pricker", 25, 5, 3));
         Ai.addTask(1, new AttackEntityAi(Player.class, 10, 1));
-        setLooking(random.nextInt(4));
     }
 
     @Override

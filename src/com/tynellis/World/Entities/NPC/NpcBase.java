@@ -57,7 +57,7 @@ public abstract class NpcBase extends Humanoid {
 
     public NpcBase(int x, int y, int z, NpcGender gender, Random random) {
         this(getName(gender, random), x, y, z, gender);
-        setSprite(gender);
+        setLooking(random.nextInt(4));
     }
 
     public NpcBase(int x, int y, int z, Random random) {

@@ -15,7 +15,7 @@ import java.util.Random;
 public class Spawner implements Serializable {
     private int spawnTime, spawnCoolDown;
     private Map<Class, Integer> creatures;
-    private Rectangle spawnArea;
+    protected Rectangle spawnArea;
 
     public Spawner(int speed, Rectangle area, Map<Class, Integer> spawnables) {
         spawnTime = speed;
@@ -28,6 +28,12 @@ public class Spawner implements Serializable {
         creatures = new HashMap<Class, Integer>();
         creatures.put(entity, amount);
         spawnArea = area;
+    }
+
+    public Spawner(int speed, Rectangle area) {
+        spawnTime = speed;
+        spawnArea = area;
+        creatures = new HashMap<Class, Integer>();
     }
 
     public void tick(World world) {
@@ -68,7 +74,7 @@ public class Spawner implements Serializable {
                         z = world.getTopLayerAt(x, y);
                         attempts++;
                     }
-                    while (attempts <= 10 && world.isTileObstructed(x, y, z) && !world.getTile(x, y, z).isPassableBy(entity));
+                    while (attempts <= 10 && !validSpawnLocationFor(world, entity, x, y, z));
                     if (attempts <= 10) {
                         entity.setLocation(x, y, z);
                         world.queueAdditionOfEntity(entity);
@@ -91,6 +97,15 @@ public class Spawner implements Serializable {
         }
     }
 
-//    Constructor<?> ctor = clazz.getConstructor(String.class);
-//    Object object = ctor.newInstance(new Object[] { ctorArgument });
+    protected boolean validSpawnLocationFor(World world, Entity entity, int x, int y, int z) {
+        return !(world.isTileObstructed(x, y, z) && !world.getTile(x, y, z).isPassableBy(entity));
+    }
+
+    public boolean addEntitySpawn(Class spawn, int maxAmount) {
+        if (!creatures.containsKey(spawn)) {
+            creatures.put(spawn, maxAmount);
+            return true;
+        }
+        return false;
+    }
 }

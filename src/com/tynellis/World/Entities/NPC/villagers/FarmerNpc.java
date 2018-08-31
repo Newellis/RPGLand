@@ -1,11 +1,11 @@
-package com.tynellis.World.Entities.NPC;
+package com.tynellis.World.Entities.NPC.villagers;
 
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Items.ItemPile;
 
 import java.util.Random;
 
-public class FarmerNpc extends NpcBase {
+public class FarmerNpc extends Villager {
     public FarmerNpc(int x, int y, int z, NpcGender gender, Random random) {
         super(x, y, z, gender, random);
         canPickUpItems = true;
