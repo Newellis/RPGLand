@@ -27,9 +27,7 @@ public class WorldSpawner extends Spawner {
 
     protected boolean validSpawnLocationFor(World world, Entity entity, int x, int y, int z) {
         for (Rectangle area : exclusionAreas) {
-            System.out.println(area + " contains " + x + ", " + y);
             if (area.contains(new Point(x, y))) {
-                System.out.println("Block Spawn at " + x + ", " + y);
                 return false;
             }
         }

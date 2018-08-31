@@ -2,7 +2,6 @@ package com.tynellis.World.Entities;
 
 import com.tynellis.BoundingBox.BoundingBoxOwner;
 import com.tynellis.GameComponent;
-import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Light.LightSource;
 import com.tynellis.World.Tiles.LandTiles.LayeredTile;
 import com.tynellis.World.Tiles.Tile;
@@ -15,7 +14,6 @@ import java.awt.Rectangle;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public abstract class Entity implements BoundingBoxOwner, Serializable {
     protected double speed = 0.06;
@@ -33,21 +31,7 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
     protected boolean isDead = false;
     protected LightSource light;
 
-
-    public void doDrops(World world) {
-        ItemPile[] items = getItemsToDrop(world.getRand());
-        for (ItemPile pile : items) {
-            if (pile != null && pile.getSize() > 0) {
-                world.addEntity(new ItemEntity(pile, world.getRand(), posX - 0.25 + (world.getRand().nextDouble() / 2), posY - 0.25 + (world.getRand().nextDouble() / 2), posZ));
-            }
-        }
-    }
-
-    public abstract ItemPile[] getItemsToDrop(Random rand);
-
-    public void performDeath(World world) {
-        doDrops(world);
-    }
+    public abstract void performDeath(World world);
 
     public abstract int compareTo(Entity entity);//add comparison for how an entity should be compared to others of the same type
 

@@ -74,7 +74,7 @@ public class World implements Land, Serializable{
     }
 
     private void addEntitiesToSpawn() {
-        worldSpawner.addEntitySpawn(Skeleton.class, 50);
+        worldSpawner.addEntitySpawn(Skeleton.class, 100);
     }
 
     public Rectangle getLoadedAreaBounds() {

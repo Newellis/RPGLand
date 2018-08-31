@@ -59,12 +59,9 @@ public class Spawner implements Serializable {
                         typeInArea++;
                     }
                 }
-                System.out.println("found " + typeInArea + " of " + type.getSimpleName() + " in area");
                 if (typeInArea >= creatures.get(type)) {
                     continue;
                 }
-                System.out.println("Spawn new: " + type.getSimpleName());
-
                 try {
                     Entity entity = (Entity) type.getDeclaredConstructor(new Class[]{int.class, int.class, int.class, Random.class}).newInstance(spawnArea.x / Tile.WIDTH, spawnArea.y / Tile.HEIGHT, world.getTopLayerAt(spawnArea.x / Tile.WIDTH, spawnArea.y / Tile.HEIGHT), world.getRand());
                     int x, y, z, attempts = 0;
@@ -77,6 +74,7 @@ public class Spawner implements Serializable {
                     while (attempts <= 10 && !validSpawnLocationFor(world, entity, x, y, z));
                     if (attempts <= 10) {
                         entity.setLocation(x, y, z);
+                        System.out.println("Spawn new: " + type.getSimpleName() + " at " + x + ", " + y + ", " + z);
                         world.queueAdditionOfEntity(entity);
                         sucessful = true;
                     }

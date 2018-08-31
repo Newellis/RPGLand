@@ -83,8 +83,8 @@ public class ItemEntity extends Entity {
     }
 
     @Override
-    public ItemPile[] getItemsToDrop(Random rand) {
-        return new ItemPile[0];
+    public void performDeath(World world) {
+
     }
 
     @Override

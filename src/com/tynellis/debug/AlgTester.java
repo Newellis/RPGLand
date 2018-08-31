@@ -2,6 +2,7 @@ package com.tynellis.debug;
 
 
 import com.tynellis.debug.algs.AlgTest;
+import com.tynellis.debug.algs.BuildingGeneratorTest;
 import com.tynellis.debug.algs.WorldGenTest;
 
 import javax.swing.BoxLayout;
@@ -33,7 +34,11 @@ public class AlgTester extends JPanel implements ActionListener {
     }
 
     private void init() {
+        //Algs you can test
         algs.add(new WorldGenTest());
+        algs.add(new BuildingGeneratorTest());
+
+
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         List<String> algNames = new ArrayList<String>();

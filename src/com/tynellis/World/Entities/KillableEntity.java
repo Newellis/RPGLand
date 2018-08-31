@@ -121,4 +121,17 @@ public abstract class KillableEntity extends Entity {
     public Container getInventory() {
         return inventory;
     }
+
+    public void performDeath(World world) {
+        doDrops(world);
+    }
+
+    private void doDrops(World world) {
+        ItemPile[] items = getItemsToDrop(world.getRand());
+        for (ItemPile pile : items) {
+            if (pile != null && pile.getSize() > 0) {
+                world.addEntity(new ItemEntity(pile, world.getRand(), posX - 0.25 + (world.getRand().nextDouble() / 2), posY - 0.25 + (world.getRand().nextDouble() / 2), posZ));
+            }
+        }
+    }
 }
