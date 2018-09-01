@@ -1,7 +1,7 @@
 package com.tynellis.World;
 
 import com.tynellis.GameComponent;
-import com.tynellis.World.Entities.Tree;
+import com.tynellis.World.Entities.Plants.Tree;
 import com.tynellis.World.Tiles.LandTiles.LandTile;
 import com.tynellis.World.Tiles.LandTiles.ManMade.Ladder;
 import com.tynellis.World.Tiles.LandTiles.Natural.Grass;

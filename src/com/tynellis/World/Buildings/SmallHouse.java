@@ -26,7 +26,7 @@ public class SmallHouse extends Building {
     private ArrayList<Integer> windowLocations;
 
     public SmallHouse(double x, double y, double z, int width, int height, Random random) {
-        super(x, y, z, width * Tile.WIDTH, height * Tile.HEIGHT);
+        super(x + (((width + 1) / 2.0) % 1), y + .5, z, width * Tile.WIDTH, height * Tile.HEIGHT);
         foundationType = wallType = random.nextInt(3);
         if (random.nextBoolean()) {
             foundationType = 2;

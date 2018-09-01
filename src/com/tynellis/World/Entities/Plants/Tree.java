@@ -1,7 +1,8 @@
-package com.tynellis.World.Entities;
+package com.tynellis.World.Entities.Plants;
 
 import com.tynellis.Art.SpriteImage;
 import com.tynellis.Art.SpriteSheet;
+import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.damage.Damage;
 import com.tynellis.World.Entities.damage.DamageModifier;
 import com.tynellis.World.Items.Containers.Container;
@@ -17,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-public class Tree extends KillableEntity {
+public class Tree extends Plant {
     private static final SpriteSheet trunk = new SpriteSheet("tempArt/lpc/core/tiles/trunk.png", 96, 96, 1);
     private static final SpriteSheet top = new SpriteSheet("tempArt/lpc/core/tiles/treetop.png", 96, 96, 1);
     private Type treeType;

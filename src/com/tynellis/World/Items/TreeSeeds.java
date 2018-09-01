@@ -1,6 +1,6 @@
 package com.tynellis.World.Items;
 
-import com.tynellis.World.Entities.Tree;
+import com.tynellis.World.Entities.Plants.Tree;
 
 public class TreeSeeds extends Item {
     private Tree.Type seedType;

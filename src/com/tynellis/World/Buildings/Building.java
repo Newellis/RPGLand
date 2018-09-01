@@ -2,10 +2,13 @@ package com.tynellis.World.Buildings;
 
 import com.tynellis.BoundingBox.BoundingBoxOwner;
 import com.tynellis.World.Entities.Entity;
+import com.tynellis.World.Entities.ItemEntity;
+import com.tynellis.World.Entities.Plants.Plant;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.World;
 
 import java.awt.Rectangle;
+import java.util.List;
 import java.util.Random;
 
 public abstract class Building extends Entity implements BoundingBoxOwner {
@@ -22,6 +25,16 @@ public abstract class Building extends Entity implements BoundingBoxOwner {
         }
         int height = (int) Math.ceil(width / 2.0) + random.nextInt(width);
         return new SmallHouse(x, y, z, width, height, random);
+    }
+
+    @Override
+    public void tick(World world, List<Entity> near) {
+        for (Entity e : world.getEntitiesIntersecting(getBounds())) {
+            if (e instanceof Plant || e instanceof ItemEntity) {
+                e.kill();
+            }
+        }
+        super.tick(world, near);
     }
 
     @Override

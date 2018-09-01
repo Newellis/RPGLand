@@ -1,6 +1,6 @@
 package com.tynellis.World.Items.Materials;
 
-import com.tynellis.World.Entities.Tree;
+import com.tynellis.World.Entities.Plants.Tree;
 import com.tynellis.World.Items.Item;
 
 public class Log extends Item {

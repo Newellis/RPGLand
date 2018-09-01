@@ -12,8 +12,8 @@ import com.tynellis.World.Buildings.Building;
 import com.tynellis.World.Entities.ItemEntity;
 import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.Entities.NPC.villagers.LumberJackNpc;
+import com.tynellis.World.Entities.Plants.Tree;
 import com.tynellis.World.Entities.Player;
-import com.tynellis.World.Entities.Tree;
 import com.tynellis.World.Entities.UsableEntity.Chest;
 import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Items.Materials.Log;
@@ -257,7 +257,7 @@ public class GameComponent extends JPanel implements Runnable {
 //        world.addEntity(itemEntity2);
         world.addEntity(chest);
         world.addEntity(Building.makeRandomHouse(spawn[0] - 6, spawn[1] - 5, spawn[2], world.getRand()));
-//        world.addEntity(Building.makeRandomHouse(spawn[0], spawn[1] - 5, spawn[2], world.getRand()));
+        world.addEntity(Building.makeRandomHouse(spawn[0], spawn[1] - 5, spawn[2], world.getRand()));
 
         //addTestStructure(world, spawn);
         state = GameState.SINGLE_PLAYER;
