@@ -7,9 +7,9 @@ import java.util.Comparator;
 public class EntityComparator implements Comparator<Entity> {
     @Override
     public int compare(Entity t0, Entity t1) {
-        if (t1.getY() - t1.getZ() > t0.getY() - t0.getZ()) {
+        if (t1.getY() > t0.getY()) {
             return -1;
-        } else if (t1.getY() - t1.getZ() < t0.getY() - t0.getZ()) {
+        } else if (t1.getY() < t0.getY()) {
             return 1;
         } else if (t1.getZ() < t0.getZ()) {
             return 1;

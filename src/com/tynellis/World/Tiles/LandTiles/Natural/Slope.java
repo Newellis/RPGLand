@@ -16,7 +16,7 @@ public class Slope extends ConnectorTile {
     private static final SpriteSheet SHEET = new SpriteSheet("tempArt/lpc/core/tiles/terain/lavarock.png", 32, 32, 1);
     private static final double altPercent = 0.10;
 
-    public Slope(Random rand, int height, int direction, Tile base, int top, int bottom) {
+    public Slope(Random rand, int height, int direction, Tile base, double top, double bottom) {
         super("Slope", SHEET, rand, altPercent, base.getRank(), height, base);
         this.direction = direction % 4;
         this.height = top;

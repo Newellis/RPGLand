@@ -9,7 +9,8 @@ import java.util.Random;
 
 public abstract class ConnectorTile extends LayeredTile {
 
-    protected int direction, height, bottom;
+    protected int direction;
+    protected double height, bottom;
 
     public ConnectorTile(String name, SpriteSheet sheet, Random rand, double altPercent, int rank, int height, Tile base) {
         super(name, sheet, rand, altPercent, rank, height, base);

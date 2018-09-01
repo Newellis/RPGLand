@@ -220,7 +220,6 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
                         Rectangle nextOverlap = next.intersection(entity.getBounds());
 
                         if (nextOverlap.width >= overlap.width && overlap.width < overlap.height) {
-                            System.out.println("overlapping on x");
                             if (entity.canBeMoved) {
                                 double xMoveEntity = (Math.sin(entity.facingAngle) * entity.speed);
                                 if (((int) (entity.facingAngle - Math.PI) ^ (int) (bounds.getCenterX() - entity.getBounds().getCenterX())) >= 0) {

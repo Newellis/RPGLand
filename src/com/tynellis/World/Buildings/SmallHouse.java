@@ -3,7 +3,11 @@ package com.tynellis.World.Buildings;
 import com.tynellis.Art.Sprite;
 import com.tynellis.Art.SpriteSheet;
 import com.tynellis.World.Entities.Entity;
+import com.tynellis.World.Entities.UsableEntity.Door;
+import com.tynellis.World.Tiles.LandTiles.ManMade.Stairs;
+import com.tynellis.World.Tiles.LandTiles.Natural.Grass;
 import com.tynellis.World.Tiles.Tile;
+import com.tynellis.World.World;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -14,7 +18,6 @@ public class SmallHouse extends Building {
 
     protected static transient SpriteSheet wallSheet = new SpriteSheet("tempArt/lpc/buildings/cottage.png", 32, 32, 1);
     protected static transient SpriteSheet roofSheet = new SpriteSheet("tempArt/lpc/buildings/thatched-roof.png", 32, 32, 1);
-    protected static transient SpriteSheet doorSheet = new SpriteSheet("tempArt/lpc/buildings/doors.png", 64, 64, 1);
     protected static transient SpriteSheet windowSheet = new SpriteSheet("tempArt/lpc/buildings/windows.png", 32, 32, 1);
 
     private int foundationType;
@@ -23,6 +26,7 @@ public class SmallHouse extends Building {
     private boolean wallReinforcements;
     private int roofColor;
     private int doorLocation;
+    private Door door;
     private ArrayList<Integer> windowLocations;
 
     public SmallHouse(double x, double y, double z, int width, int height, Random random) {
@@ -37,6 +41,7 @@ public class SmallHouse extends Building {
         if (width >= 3) {
             doorLocation = 1 + random.nextInt(width - 2);
         }
+        door = new Door(posX - ((width) / 2.0) + (doorLocation) + .5, posY + (1.0 / 64), z + .66, 1);
         int leftSpaces = doorLocation;
         int rightSpaces = width - doorLocation - 1;
         windowLocations = new ArrayList<Integer>();
@@ -57,9 +62,26 @@ public class SmallHouse extends Building {
                 windowLocations.add((leftSpaces / 2));
             }
         }
-        for (Integer num : windowLocations) {
-            System.out.println("Window space " + num);
+    }
+
+    public static void buildSmallHouse(World world, double x, double y, double z) {
+        int width = world.getRand().nextInt(7) + 3;
+        if (world.getRand().nextBoolean() && width > 6) {
+            width /= 2;
         }
+        int height = (int) Math.ceil(width / 2.0) + world.getRand().nextInt(width);
+        SmallHouse house = new SmallHouse(x, y, z, width, height, world.getRand());
+        world.addEntity(house);
+        System.out.println("add door " + house.getDoor());
+        world.addEntity(house.getDoor());
+        world.setTile(new Stairs(world.getRand(), (int) house.posZ, 0,
+                world.getTile((int) house.getDoor().getX(), (int) house.getDoor().getY(), (int) house.getDoor().getZ()),
+                (int) house.posZ + .66, (int) house.posZ), (int) house.getDoor().getX(), (int) house.getDoor().getY() + 1, (int) house.getDoor().getZ());
+        world.setTile(new Grass(world.getRand(), 100), (int) house.getDoor().getX(), (int) house.getDoor().getY(), (int) house.getDoor().getZ() + 1);
+    }
+
+    private Entity getDoor() {
+        return door;
     }
 
     @Override
@@ -93,9 +115,6 @@ public class SmallHouse extends Building {
             }
         }
         g.drawImage(wallSheet.getSprite(15).getStill(7), lowerRightX + (doorLocation * Tile.WIDTH), lowerRightY, null);
-        Sprite doorSprite = doorSheet.getSprite(4);
-        BufferedImage door = doorSprite.getStill(0);
-        g.drawImage(door, lowerRightX + (doorLocation * Tile.WIDTH) - (Tile.WIDTH / 2) - 1, lowerRightY - Tile.HEIGHT, null);
 
         for (Integer windowLocation : windowLocations) {
             for (int i = 0; i < 3; i++) {

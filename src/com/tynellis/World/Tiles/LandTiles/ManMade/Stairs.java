@@ -14,11 +14,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.Random;
 
-public class Ladder extends ConnectorTile {
-    private static final SpriteSheet TOP = new SpriteSheet("tempArt/lpc/mine/ladder.png", 32, 64, 1);
+public class Stairs extends ConnectorTile {
+    private static final SpriteSheet TOP = new SpriteSheet("tempArt/lpc/buildings/cottage.png", 32, 32, 1);
     private static final double altPercent = 0.10;
 
-    public Ladder(Random rand, int heightinWorld, int faceing, Tile base, double top, double bottom) {
+    public Stairs(Random rand, int heightinWorld, int faceing, Tile base, double top, double bottom) {
         super("Ladder", null, rand, altPercent, base.getRank(), heightinWorld, base);
         direction = faceing % 4;
         height = top;
@@ -37,17 +37,16 @@ public class Ladder extends ConnectorTile {
         getBase().render(g, x, y);
     }
 
-
     @Override
     public void renderTop(Graphics g, int x, int y) {
         int yoffset = 0;
-        int picNum = 0;
-        Sprite image = TOP.getSprite(0);
+        int picNum = 8;
+        Sprite image = TOP.getSprite(15);
         if (direction % 2 == 1) {
-            picNum = 1;
-            yoffset = 2 * Tile.HEIGHT / 4;
+            picNum = 2;
+            yoffset = 0;//2 * Tile.HEIGHT / 4;
         } else if (direction == 0) {
-            yoffset = Tile.HEIGHT;
+            yoffset = (int) (Tile.HEIGHT * height);//Tile.HEIGHT;
         }
         if (direction > 1) {
             image.flipHoriz(true);
@@ -90,17 +89,13 @@ public class Ladder extends ConnectorTile {
                         ((Entity) bb).setCanMove(true, false);
                     }
                 }
-                if (!((Double) ((Entity) bb).getZ()).equals(bottom * 1.0)) {
-                    ((Entity) bb).setLooking(direction);
-                }
-
             }
         }
     }
 
     @Override
     public LandTile newTile(Random rand, int height) {
-        return new Ladder(rand, height, direction, getBase(), this.height, bottom);
+        return new Stairs(rand, height, direction, getBase(), this.height, bottom);
     }
 
     @Override

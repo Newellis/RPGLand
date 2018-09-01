@@ -23,7 +23,6 @@ public class Sword extends Weapon {
     @Override
     public boolean use(World world, KillableEntity user) {
         if (canUse(world, user)) {
-            System.out.println(user.getClass().getSimpleName() + " attacking with " + getName());
             Rectangle area = getAttackArea(user);
             ArrayList<Entity> hit = world.getEntitiesIntersecting(area);
             hit.remove(user);

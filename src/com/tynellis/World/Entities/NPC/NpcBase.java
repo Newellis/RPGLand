@@ -148,7 +148,6 @@ public abstract class NpcBase extends Humanoid {
             attackAnimation.skipToFrame(0);
         } else {
             attackAnimation.play();
-            System.out.println("attack with " + weapon.getName() + " frame " + attackAnimation.getFrameNum());
             if (attackAnimation.getFrameNum() == 5) {
                 attacking = false;
             }
