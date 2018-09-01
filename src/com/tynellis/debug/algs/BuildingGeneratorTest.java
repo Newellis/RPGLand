@@ -16,6 +16,7 @@ import java.util.Random;
 
 public class BuildingGeneratorTest extends AlgTest implements ActionListener {
 
+    JPanel infoPanel;
     Building building;
     JTextField width, height, floors;
 
@@ -27,7 +28,7 @@ public class BuildingGeneratorTest extends AlgTest implements ActionListener {
     @Override
     public boolean Start() {
         setLayout(new BorderLayout());
-        JPanel infoPanel = new JPanel();
+        infoPanel = new JPanel();
         infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.PAGE_AXIS));
         width = new JTextField("width");
         height = new JTextField("height");
@@ -56,7 +57,7 @@ public class BuildingGeneratorTest extends AlgTest implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        building = new SmallHouse((getWidth() / Tile.WIDTH) / 3.0, (getHeight() / Tile.HEIGHT) / 2, 0, Integer.parseInt(width.getText()), Integer.parseInt(height.getText()), new Random());
+        building = new SmallHouse(((getWidth() - infoPanel.getWidth()) / Tile.WIDTH) / 2.0, ((getHeight() / Tile.HEIGHT) + Integer.parseInt(height.getText())) / 2, 0, Integer.parseInt(width.getText()), Integer.parseInt(height.getText()), new Random());
         repaint();
     }
 }

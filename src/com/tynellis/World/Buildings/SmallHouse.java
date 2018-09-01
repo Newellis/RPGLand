@@ -5,21 +5,25 @@ import com.tynellis.Art.SpriteSheet;
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Tiles.Tile;
 
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class SmallHouse extends Building {
 
     protected static transient SpriteSheet wallSheet = new SpriteSheet("tempArt/lpc/buildings/cottage.png", 32, 32, 1);
     protected static transient SpriteSheet roofSheet = new SpriteSheet("tempArt/lpc/buildings/thatched-roof.png", 32, 32, 1);
+    protected static transient SpriteSheet doorSheet = new SpriteSheet("tempArt/lpc/buildings/doors.png", 64, 64, 1);
+    protected static transient SpriteSheet windowSheet = new SpriteSheet("tempArt/lpc/buildings/windows.png", 32, 32, 1);
 
     private int foundationType;
     private int foundationStyle;
     private int wallType;
+    private boolean wallReinforcements;
     private int roofColor;
+    private int doorLocation;
+    private ArrayList<Integer> windowLocations;
 
     public SmallHouse(double x, double y, double z, int width, int height, Random random) {
         super(x, y, z, width * Tile.WIDTH, height * Tile.HEIGHT);
@@ -27,8 +31,35 @@ public class SmallHouse extends Building {
         if (random.nextBoolean()) {
             foundationType = 2;
         }
+        wallReinforcements = wallType != 2 && random.nextBoolean();
         foundationStyle = random.nextInt(2);
         roofColor = random.nextInt(2);
+        if (width >= 3) {
+            doorLocation = 1 + random.nextInt(width - 2);
+        }
+        int leftSpaces = doorLocation;
+        int rightSpaces = width - doorLocation - 1;
+        windowLocations = new ArrayList<Integer>();
+        if (rightSpaces == leftSpaces && width > 3 && width < 10) {
+            windowLocations.add((leftSpaces / 2));
+            windowLocations.add((width - 1) - (rightSpaces / 2));
+        } else {
+            if (rightSpaces > 4) {
+                windowLocations.add((width - 1) - (int) (rightSpaces / 3.0));
+                windowLocations.add((width - 1) - (int) (2 * (rightSpaces / 3.0)));
+            } else if (rightSpaces >= 3) {
+                windowLocations.add((width - 1) - (rightSpaces / 2));
+            }
+            if (leftSpaces > 4) {
+                windowLocations.add((int) (leftSpaces / 3.0));
+                windowLocations.add((int) (2 * (leftSpaces / 3.0)));
+            } else if (leftSpaces >= 3) {
+                windowLocations.add((leftSpaces / 2));
+            }
+        }
+        for (Integer num : windowLocations) {
+            System.out.println("Window space " + num);
+        }
     }
 
     @Override
@@ -40,7 +71,7 @@ public class SmallHouse extends Building {
     public void render(Graphics g, int xOffset, int yOffset) {
 
         int lowerRightX = (int) (((posX + 0.5) * Tile.WIDTH) + xOffset - (width / 2.0));
-        int lowerRightY = (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset + (height / 2.0) - Tile.HEIGHT);
+        int lowerRightY = (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - Tile.HEIGHT);
         Sprite foundationTypeSprite = wallSheet.getSprite((foundationType * 4) + 2);
 
         for (int i = 0; i < width / Tile.WIDTH; i++) {
@@ -49,20 +80,35 @@ public class SmallHouse extends Building {
             if (i == (width / Tile.WIDTH) - 1) section = 2;
             BufferedImage foundation = foundationTypeSprite.getStill((foundationStyle * 3) + section);
             g.drawImage(foundation, lowerRightX + (i * Tile.WIDTH), lowerRightY, null);
+            if (section != 1 && wallReinforcements) section = 3;
+            if (i == doorLocation) section += 9;
+            for (Integer windowLocation : windowLocations) {
+                if (i == windowLocation) section += 9;
+            }
             for (int j = 0; j < 2; j++) {
                 Sprite wallTypeSprite = wallSheet.getSprite((wallType * 4) + (1 - j));
+                wallTypeSprite.flipHoriz(i == (width / Tile.WIDTH) - 1 && wallReinforcements);
                 BufferedImage wall = wallTypeSprite.getStill(section);
                 g.drawImage(wall, lowerRightX + (i * Tile.WIDTH), lowerRightY - (j * Tile.HEIGHT) - Tile.HEIGHT, null);
             }
         }
+        g.drawImage(wallSheet.getSprite(15).getStill(7), lowerRightX + (doorLocation * Tile.WIDTH), lowerRightY, null);
+        Sprite doorSprite = doorSheet.getSprite(4);
+        BufferedImage door = doorSprite.getStill(0);
+        g.drawImage(door, lowerRightX + (doorLocation * Tile.WIDTH) - (Tile.WIDTH / 2) - 1, lowerRightY - Tile.HEIGHT, null);
+
+        for (Integer windowLocation : windowLocations) {
+            for (int i = 0; i < 3; i++) {
+                Sprite windowSprite = windowSheet.getSprite(i);
+                BufferedImage window = windowSprite.getStill(10);
+                g.drawImage(window, lowerRightX + (windowLocation * Tile.WIDTH), lowerRightY + (i * Tile.HEIGHT) - (int) (2.5 * Tile.HEIGHT), null);
+            }
+        }
 
         drawRoofEdge(g, lowerRightX, lowerRightY, width / Tile.WIDTH, height / Tile.HEIGHT, roofColor);
-
         drawRoof(g, lowerRightX, lowerRightY, width / Tile.WIDTH, height / Tile.HEIGHT, 3, roofColor);
 
-        Rectangle rectangle = getBounds();
-        g.setColor(Color.ORANGE);
-        g.drawRect(rectangle.x + xOffset, rectangle.y + yOffset, rectangle.width, rectangle.height);
+        super.render(g, xOffset, yOffset);
     }
 
     private void drawRoofEdge(Graphics g, int lowerRightX, int lowerRightY, int width, int height, int roofColor) {

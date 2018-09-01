@@ -8,6 +8,7 @@ import com.tynellis.Save.InvalidSaveException;
 import com.tynellis.Save.SavedWorld;
 import com.tynellis.Save.StoreLoad;
 import com.tynellis.World.Area;
+import com.tynellis.World.Buildings.Building;
 import com.tynellis.World.Entities.ItemEntity;
 import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.Entities.NPC.villagers.LumberJackNpc;
@@ -254,7 +255,9 @@ public class GameComponent extends JPanel implements Runnable {
 //        world.addEntity(itemEntity);
 //        world.addEntity(itemEntity1);
 //        world.addEntity(itemEntity2);
-        world.addEntity(chest);
+//        world.addEntity(chest);
+        world.addEntity(Building.makeRandomHouse(spawn[0] - 6, spawn[1] - 5, spawn[2], world.getRand()));
+        world.addEntity(Building.makeRandomHouse(spawn[0], spawn[1] - 5, spawn[2], world.getRand()));
 
         //addTestStructure(world, spawn);
         state = GameState.SINGLE_PLAYER;
