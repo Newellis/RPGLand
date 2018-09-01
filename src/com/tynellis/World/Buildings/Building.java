@@ -11,6 +11,7 @@ import java.util.Random;
 public abstract class Building extends Entity implements BoundingBoxOwner {
     public Building(double x, double y, double z, int width, int height) {
         super(x, y, z, width, height);
+        speed = 0.0;
         canBeMoved = false;
     }
 

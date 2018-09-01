@@ -44,6 +44,7 @@ public class ItemEntity extends Entity {
             }
             age++;
         }
+        super.tick(world, near);
     }
 
     public ItemPile getItem() {
@@ -80,6 +81,7 @@ public class ItemEntity extends Entity {
                 }
             }
         }
+        //todo push out of immovable entities hitboxes
     }
 
     @Override

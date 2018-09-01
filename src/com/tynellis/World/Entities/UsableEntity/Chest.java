@@ -3,10 +3,11 @@ package com.tynellis.World.Entities.UsableEntity;
 import com.tynellis.Art.SpriteSheet;
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.KillableEntity;
-import com.tynellis.World.Entities.NPC.villagers.Soldier;
+import com.tynellis.World.Entities.NPC.monsters.Skeleton;
 import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Tiles.Tile;
+import com.tynellis.World.World;
 import com.tynellis.World.spawners.Spawner;
 
 import java.awt.Color;
@@ -16,6 +17,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Chest extends UsableEntity {
     public static final SpriteSheet SHEET = new SpriteSheet("tempArt/lpc/core/tiles/chests.png", 32, 32, 1);
@@ -32,7 +34,7 @@ public class Chest extends UsableEntity {
         inventory = new Container(40);
 
         spawnerArea = new Rectangle(((int) x - 5) * Tile.WIDTH, ((int) y - 5) * Tile.WIDTH, 11 * Tile.WIDTH, 11 * Tile.WIDTH);
-        spawner = new Spawner(50, spawnerArea, Soldier.class, 5);
+        spawner = new Spawner(50, spawnerArea, Skeleton.class, 5);
     }
 
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
@@ -54,11 +56,11 @@ public class Chest extends UsableEntity {
         }
     }
 
-//    @Override
-//    public void tick(World world, List<Entity> near) {
-//        super.tick(world, near);
-//        spawner.tick(world);
-//    }
+    @Override
+    public void tick(World world, List<Entity> near) {
+        super.tick(world, near);
+        spawner.tick(world);
+    }
 
     @Override
     public int compareTo(Entity entity) {

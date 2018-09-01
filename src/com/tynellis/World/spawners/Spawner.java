@@ -37,7 +37,7 @@ public class Spawner implements Serializable {
     }
 
     public void tick(World world) {
-        if (spawnCoolDown <= 0) {
+        if (spawnCoolDown <= 0 && creatures.size() > 0) {
 
             boolean sucessful = false;
             Object[] keys = creatures.keySet().toArray();

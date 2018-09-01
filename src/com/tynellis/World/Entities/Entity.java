@@ -216,19 +216,25 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
                 //push this by bb speed or block if entity.canBeMoved
                 if (canBeMoved) {
                     if (bounds.intersects(entity.getBounds())) {
-                        Rectangle rectangle = bounds.intersection(entity.getBounds()); //todo make not pull
-                        if (rectangle.width < rectangle.height && rectangle.height > entity.height / 3 && next.intersection(entity.getBounds()).width >= rectangle.width) {
+                        Rectangle overlap = bounds.intersection(entity.getBounds());
+                        Rectangle nextOverlap = next.intersection(entity.getBounds());
+
+                        if (nextOverlap.width >= overlap.width && overlap.width < overlap.height) {
+                            System.out.println("overlapping on x");
                             if (entity.canBeMoved) {
                                 double xMoveEntity = (Math.sin(entity.facingAngle) * entity.speed);
-                                xPushed += xMoveEntity;
+                                if (((int) (entity.facingAngle - Math.PI) ^ (int) (bounds.getCenterX() - entity.getBounds().getCenterX())) >= 0) {
+                                    xPushed += xMoveEntity;
+                                }
                             } else {
                                 xMoving = false;
                             }
-                        }
-                        if (rectangle.width > rectangle.height && rectangle.width > entity.width / 3 && next.intersection(entity.getBounds()).height >= rectangle.height) {
+                        } else if (nextOverlap.height >= overlap.height && overlap.width > overlap.height) {
                             if (entity.canBeMoved) {
                                 double yMoveEntity = (Math.cos(entity.facingAngle) * entity.speed);
-                                yPushed += yMoveEntity;
+                                if (((int) (entity.facingAngle - Math.PI) ^ (int) (bounds.getCenterY() - entity.getBounds().getCenterY())) >= 0) {
+                                    yPushed += yMoveEntity;
+                                }
                             } else {
                                 yMoving = false;
                             }

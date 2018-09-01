@@ -34,6 +34,7 @@ public class Tree extends KillableEntity {
         treeHeight = 20 + rand.nextInt(20);
         speed = 0.0;
         canBeMoved = false;
+
         HashMap<Damage.Types, Double> resistances = new HashMap<Damage.Types, Double>();
         resistances.put(Damage.Types.BLUNT, 1.0);
         resistances.put(Damage.Types.FIRE, -1.0);
