@@ -43,6 +43,6 @@ public class Sword extends Weapon {
         double AttackXOffset = user.getX() - (Math.sin(attackDirection) * (getRange() / 2.0)) - ((getRange() - 1) / 2.0);
         double AttackYOffset = user.getY() - (Math.cos(attackDirection) * (getRange() / 2.0)) - ((getRange() - 1) / 2.0);
 
-        return new Rectangle((int) ((AttackXOffset) * Tile.WIDTH), (int) ((AttackYOffset) * Tile.WIDTH), (int) (getRange() * Tile.WIDTH), (int) (getRange() * Tile.HEIGHT));
+        return new Rectangle((int) ((AttackXOffset) * Tile.WIDTH), (int) ((AttackYOffset) * Tile.WIDTH) - (int) (3 * (user.getZ() / 4.0) * Tile.HEIGHT), (int) (getRange() * Tile.WIDTH), (int) (getRange() * Tile.HEIGHT));
     }
 }

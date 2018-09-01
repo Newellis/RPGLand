@@ -15,7 +15,6 @@ import com.tynellis.World.Entities.NPC.villagers.LumberJackNpc;
 import com.tynellis.World.Entities.Plants.Tree;
 import com.tynellis.World.Entities.Player;
 import com.tynellis.World.Entities.UsableEntity.Chest;
-import com.tynellis.World.Entities.UsableEntity.Door;
 import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Items.Materials.Log;
 import com.tynellis.World.Tiles.LandTiles.ManMade.Ladder;
@@ -257,7 +256,6 @@ public class GameComponent extends JPanel implements Runnable {
 //        world.addEntity(itemEntity1);
 //        world.addEntity(itemEntity2);
         world.addEntity(chest);
-        world.addEntity(new Door(spawn[0] - 2, spawn[1] - 3, spawn[2], 1));
         SmallHouse.buildSmallHouse(world, spawn[0] - 6, spawn[1] - 5, spawn[2]);
         SmallHouse.buildSmallHouse(world, spawn[0], spawn[1] - 5, spawn[2]);
 
