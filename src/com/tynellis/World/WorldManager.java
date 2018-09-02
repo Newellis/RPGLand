@@ -59,8 +59,6 @@ public class WorldManager implements Land, Serializable {
 
     public void tick() {
 //        overRegionRegion.setAreaOffset(areaOffset);
-        //load areas if old and new area offset are different
-        loadAreas();
 
         overRegionRegion.tick(getRand());
     }
@@ -90,12 +88,18 @@ public class WorldManager implements Land, Serializable {
 
     //set centerArea and calculate areaOffset from it
     public void setAreaOffset(int x, int y) {
-        if (areaOffset != null) oldAreaOffset = new int[]{areaOffset[X], areaOffset[Y]};
+        if (areaOffset != null) {
+            oldAreaOffset = new int[]{areaOffset[X], areaOffset[Y]};
+        } else {
+            oldAreaOffset = new int[]{x, y};
+        }
         areaOffset = new int[]{x, y};
         for (Region region : loadedRegions) {
             region.setAreaOffset(areaOffset);
         }
         loadedArea.setBounds(areaOffset[X], areaOffset[Y], NumOfAreasInWidth, NumOfAreasInHeight);
+        //load areas if old and new area offset are different
+        loadAreas();
     }
 
     public void addEntity(Region region, Entity entity) {

@@ -72,9 +72,7 @@ public class SmallHouse extends Building {
         int height = (int) Math.ceil(width / 2.0) + random.nextInt(width);
         SmallHouse house = new SmallHouse(x, y, z, width, height, random);
         world.addEntity(house);
-        System.out.println("add door " + house.getDoor());
         world.addEntity(house.getDoor());
-        System.out.println("add Stairs at " + (int) house.getDoor().getX() + ", " + ((int) house.getDoor().getY() + 1) + ", " + (int) house.getDoor().getZ());
         world.setTile(new Stairs(random, (int) house.posZ, 0, world.getTile((int) house.getDoor().getX(), (int) house.getDoor().getY(), (int) house.getDoor().getZ()), (int) house.posZ + .66, (int) house.posZ), (int) house.getDoor().getX(), (int) house.getDoor().getY() + 1, (int) house.getDoor().getZ());
         world.setTile(new Grass(random, 100), (int) house.getDoor().getX(), (int) house.getDoor().getY(), (int) house.getDoor().getZ() + 1);
     }
