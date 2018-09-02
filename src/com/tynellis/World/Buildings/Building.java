@@ -5,10 +5,11 @@ import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.ItemEntity;
 import com.tynellis.World.Entities.Plants.Plant;
 import com.tynellis.World.Tiles.Tile;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Region;
 
 import java.awt.Rectangle;
 import java.util.List;
+import java.util.Random;
 
 public abstract class Building extends Entity implements BoundingBoxOwner {
     public Building(double x, double y, double z, int width, int height) {
@@ -18,17 +19,17 @@ public abstract class Building extends Entity implements BoundingBoxOwner {
     }
 
     @Override
-    public void tick(World world, List<Entity> near) {
-        for (Entity e : world.getEntitiesIntersecting(getBounds())) {
+    public void tick(Region region, Random random, List<Entity> near) {
+        for (Entity e : region.getEntitiesIntersecting(getBounds())) {
             if (e instanceof Plant || e instanceof ItemEntity) {
                 e.kill();
             }
         }
-        super.tick(world, near);
+        super.tick(region, random, near);
     }
 
     @Override
-    public void performDeath(World world) {
+    public void performDeath(Region region, Random random) {
         //use if want to ever add ability to destroy buildings
     }
 

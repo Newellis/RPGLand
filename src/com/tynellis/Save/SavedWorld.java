@@ -1,20 +1,20 @@
 package com.tynellis.Save;
 
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Region;
 
 import java.io.Serializable;
 
 public class SavedWorld implements Serializable {
-    private World world;
+    private Region region;
     private String playerName;
 
-    public SavedWorld(World world, String playerName) {
-        this.world = world;
+    public SavedWorld(Region region, String playerName) {
+        this.region = region;
         this.playerName = playerName;
     }
 
-    public World getWorld() {
-        return world;
+    public Region getRegion() {
+        return region;
     }
 
     public String getPlayerName() {

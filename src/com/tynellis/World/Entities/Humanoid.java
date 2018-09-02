@@ -1,7 +1,9 @@
 package com.tynellis.World.Entities;
 
 import com.tynellis.World.Items.weapons.Weapon;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Region;
+
+import java.util.Random;
 
 public abstract class Humanoid extends KillableEntity {
     protected boolean attacking = false;
@@ -10,8 +12,8 @@ public abstract class Humanoid extends KillableEntity {
         super(x, y, z, width, height);
     }
 
-    protected void meleeAttack(Weapon weapon, World world) {
+    protected void meleeAttack(Weapon weapon, Random random, Region region) {
         attacking = true;
-        weapon.use(world, this);
+        weapon.use(region, random, this);
     }
 }

@@ -1,4 +1,4 @@
-package com.tynellis.World;
+package com.tynellis.World.world_parts;
 
 import com.tynellis.World.Tiles.Tile;
 

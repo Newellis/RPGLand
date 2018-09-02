@@ -6,7 +6,7 @@ import com.tynellis.World.Entities.damage.DamageModifier;
 import com.tynellis.World.Entities.damage.DamageSource;
 import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.ItemPile;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Region;
 
 import java.awt.Graphics;
 import java.util.List;
@@ -37,8 +37,8 @@ public abstract class KillableEntity extends Entity {
         return inventory.getContents();
     }
 
-    public void tick(World world, List<Entity> near) {
-        super.tick(world, near);
+    public void tick(Region region, Random random, List<Entity> near) {
+        super.tick(region, random, near);
         if (health <= 0) {
             kill();
         }
@@ -121,15 +121,15 @@ public abstract class KillableEntity extends Entity {
         return inventory;
     }
 
-    public void performDeath(World world) {
-        doDrops(world);
+    public void performDeath(Region region, Random random) {
+        doDrops(region, random);
     }
 
-    private void doDrops(World world) {
-        ItemPile[] items = getItemsToDrop(world.getRand());
+    private void doDrops(Region region, Random random) {
+        ItemPile[] items = getItemsToDrop(random);
         for (ItemPile pile : items) {
             if (pile != null && pile.getSize() > 0) {
-                world.addEntity(new ItemEntity(pile, world.getRand(), posX - 0.25 + (world.getRand().nextDouble() / 2), posY - 0.25 + (world.getRand().nextDouble() / 2), posZ));
+                region.addEntity(new ItemEntity(pile, random, posX - 0.25 + (random.nextDouble() / 2), posY - 0.25 + (random.nextDouble() / 2), posZ));
             }
         }
     }

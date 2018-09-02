@@ -1,8 +1,8 @@
 package com.tynellis.Save;
 
-import com.tynellis.World.Area;
 import com.tynellis.World.Entities.Entity;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Area;
+import com.tynellis.World.world_parts.Region;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,10 +20,10 @@ public class SavedArea implements Serializable {
         return area;
     }
 
-    public void addEntitiesTo(World world) {
+    public void addEntitiesTo(Region region) {
         if (entities.size() > 0) {
             for(Entity e: entities){
-                world.addEntity(e);
+                region.addEntity(e);
             }
         }
     }

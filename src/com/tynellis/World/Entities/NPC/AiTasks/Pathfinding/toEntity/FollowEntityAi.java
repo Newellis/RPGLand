@@ -5,9 +5,10 @@ import com.tynellis.World.Entities.NPC.AiTasks.AiTask;
 import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.PathfinderAi;
 import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.Nodes.Node;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Region;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class FollowEntityAi extends AiTask {
     private Class entityType;
@@ -28,9 +29,9 @@ public class FollowEntityAi extends AiTask {
     }
 
     @Override
-    public boolean performTask(World world, NpcBase entity) {
+    public boolean performTask(Region region, Random random, NpcBase entity) {
         PathfinderAi pathfinder = entity.getPathfinder();
-        if (findTarget(world, entity)) {
+        if (findTarget(region, entity)) {
             double x = Math.round(closest.getX()),
                     y = Math.round(closest.getY()),
                     z = Math.round(closest.getZ());
@@ -40,7 +41,7 @@ public class FollowEntityAi extends AiTask {
             }
             if (pathfinder.heuristicCostEstimate(new Node(entity.getX(), entity.getY(), entity.getZ()), new Node(x, y, z)) > minRange) {
                 pathfinder.setLocation(x, y, z);
-                return pathfinder.performTask(world, entity);
+                return pathfinder.performTask(region, random, entity);
             } else {
                 entity.setMoving(false);
                 return false;
@@ -56,11 +57,11 @@ public class FollowEntityAi extends AiTask {
         return closest == null || closest.isDead() || pathfinder.getPath().size() <= 0 || pathfinder.getPathLength() < minRange;
     }
 
-    public boolean findTarget(World world, NpcBase e) {
+    public boolean findTarget(Region region, NpcBase e) {
         if (closest != null && !closest.isDead()) {
             return true;
         }
-        ArrayList<Entity> entities = world.getEntitiesNearEntity(e, range);
+        ArrayList<Entity> entities = region.getEntitiesNearEntity(e, range);
         ArrayList<Entity> closestType = new ArrayList<Entity>();
         for (Entity entity : entities) {
             if (entityType.isInstance(entity)) {
@@ -72,7 +73,7 @@ public class FollowEntityAi extends AiTask {
             return true;
         } else if (closestType.size() > 1) {
             for (int i = 0; i <= range; i++) {
-                ArrayList<Entity> testEntities = world.getEntitiesNearEntity(e, i);
+                ArrayList<Entity> testEntities = region.getEntitiesNearEntity(e, i);
                 for (Entity entity : testEntities) {
                     if (entityType.isInstance(entity)) {
                         closest = entity;

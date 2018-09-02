@@ -14,7 +14,8 @@ import com.tynellis.World.Items.weapons.Sword;
 import com.tynellis.World.Items.weapons.Weapon;
 import com.tynellis.World.Light.LightSource;
 import com.tynellis.World.Tiles.Tile;
-import com.tynellis.World.World;
+import com.tynellis.World.WorldManager;
+import com.tynellis.World.world_parts.Region;
 import com.tynellis.debug.Debug;
 import com.tynellis.input.Keys;
 
@@ -76,7 +77,7 @@ public class Player extends Humanoid {
         return 0;
     }
 
-    public void tick(World world, List<Entity> near) {
+    public void tick(Region region, Random random, List<Entity> near) {
         moving = false;
         if (keys.debug.wasPressed()) {
             GameComponent.debug.setState(!GameComponent.debug.State());
@@ -84,7 +85,7 @@ public class Player extends Humanoid {
                 movementType = movementTypes.Flying;
             } else if (!GameComponent.debug.State() && GameComponent.debug.isType(Debug.Type.FLY)) {
                 movementType = movementTypes.Walking;
-                posZ = world.getTopLayerAt((int) posX, (int) posY);
+                posZ = region.getTopLayerAt((int) posX, (int) posY);
             }
         }
         if (keys.down.isDown && keys.right.isDown) {
@@ -122,24 +123,24 @@ public class Player extends Humanoid {
             spriteFacing = 1;
         }
         if (keys.attack.wasPressed()) {
-            if (weapon.canUse(world, this)) {
-                meleeAttack(weapon, world);
+            if (weapon.canUse(region, this)) {
+                meleeAttack(weapon, random, region);
             }
         }
         weapon.coolDownTick();
         if (keys.use.wasPressed()) {
-            UsableEntity usable = findUsableTarget(world);
+            UsableEntity usable = findUsableTarget(region);
             if (usable != null && usable.canBeUsedBy(this)) {
                 usable.use(this);
             }
         }
 
-//        if (World.DEBUG) {
+//        if (Region.DEBUG) {
 //            speed = 0.32;
 //        } else {
 //            speed = 0.08;
 //        }
-        super.tick(world, near);
+        super.tick(region, random, near);
         animation.setRow(spriteFacing);
         attackAnimation.setRow(spriteFacing);
         light.setLocation(posX + 0.5, posY + 0.5, posZ);
@@ -192,7 +193,7 @@ public class Player extends Humanoid {
         super.render(g, xOffset, yOffset);
     }
 
-    private UsableEntity findUsableTarget(World world) {
+    private UsableEntity findUsableTarget(Region region) {
         double range = 1.5;
 
         double useDirection = (Math.PI / 4 * getFacing());
@@ -201,7 +202,7 @@ public class Player extends Humanoid {
 
         Rectangle useArea = new Rectangle((int) ((AttackXOffset) * Tile.WIDTH), (int) ((AttackYOffset) * Tile.WIDTH) - (int) (3 * (getZ() / 4.0) * Tile.HEIGHT), (int) (range * Tile.WIDTH), (int) (range * Tile.HEIGHT));
 
-        ArrayList<Entity> reach = world.getEntitiesIntersecting(useArea);
+        ArrayList<Entity> reach = region.getEntitiesIntersecting(useArea);
         double distance = Integer.MAX_VALUE;
         UsableEntity useable = null;
         for (Entity entity : reach) {
@@ -216,23 +217,23 @@ public class Player extends Humanoid {
         return useable;
     }
 
-    public void performDeath(World world) {
-        super.performDeath(world);
-        respawn(world);
+    public void performDeath(Region region, Random random) {
+        super.performDeath(region, random);
+        respawn(region, random);
     }
 
-    private void respawn(World world) {
+    private void respawn(Region region, Random random) {
         isDead = false;
         int x, y, z;
         do {
-            x = world.getSpawnPoint()[0] + (world.getRand().nextInt(20) - 10);
-            y = world.getSpawnPoint()[1] + (world.getRand().nextInt(20) - 10);
-            z = world.getTopLayerAt(x, y);
-        } while (world.isTileObstructed(x, y, z) && !world.getTile(x, y, z).isPassableBy(this));
+            x = WorldManager.getSpawnPoint()[0] + (random.nextInt(20) - 10);
+            y = WorldManager.getSpawnPoint()[1] + (random.nextInt(20) - 10);
+            z = region.getTopLayerAt(x, y);
+        } while (region.isTileObstructed(x, y, z) && !region.getTile(x, y, z).isPassableBy(this));
 
         setLocation(x, y, z);
         Heal(20);
-        world.addEntity(this);
+        region.addEntity(this);
     }
 
     @Override

@@ -1,28 +1,29 @@
 package com.tynellis.Save;
 
-import com.tynellis.World.Area;
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.Player;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Area;
+import com.tynellis.World.world_parts.Region;
 
 import java.awt.Rectangle;
 import java.io.File;
 import java.util.ArrayList;
 
 public class StoreLoad {
-    public static void StoreRemovedArea(Area area, World world, int X, int Y) {
-        Rectangle bounds = world.getAreaBounds(X, Y);
-        ArrayList<Entity> entities = world.getEntitiesInBounds(bounds);
+    public static void StoreRemovedArea(Area area, Region region, int X, int Y) {
+        Rectangle bounds = region.getAreaBounds(X, Y);
+        ArrayList<Entity> entities = region.getEntitiesInBounds(bounds);
         for (Entity e: entities){
-            world.removeEntity(e);
+            region.removeEntity(e);
         }
         SavedArea save = new SavedArea(area, entities);
         File file = new File(FileHandler.getGameDir(),"x" + X + "y" + Y + FileHandler.extension);
         FileHandler.store(save, file);
     }
-    public static void StoreArea(Area area, World world, int X, int Y){
-        Rectangle bounds = world.getAreaBounds(X, Y);
-        ArrayList<Entity> entities = world.getEntitiesInBounds(bounds);
+
+    public static void StoreArea(Area area, Region region, int X, int Y) {
+        Rectangle bounds = region.getAreaBounds(X, Y);
+        ArrayList<Entity> entities = region.getEntitiesInBounds(bounds);
         SavedArea save = new SavedArea(area, entities);
         File file = new File(FileHandler.getGameDir(),"x" + X + "y" + Y + FileHandler.extension);
         FileHandler.store(save, file);
@@ -44,9 +45,9 @@ public class StoreLoad {
         return (Player)o;
     }
 
-    public static void StoreWorld(World world, String playerName) {
-        File file = new File(FileHandler.getGameDir(),"world" + FileHandler.extension);
-        SavedWorld save = new SavedWorld(world, playerName);
+    public static void StoreWorld(Region region, String playerName) {
+        File file = new File(FileHandler.getGameDir(), "region" + FileHandler.extension);
+        SavedWorld save = new SavedWorld(region, playerName);
         FileHandler.store(save, file);
     }
 

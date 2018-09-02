@@ -10,7 +10,7 @@ import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Items.Materials.Log;
 import com.tynellis.World.Items.TreeSeeds;
 import com.tynellis.World.Tiles.Tile;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Region;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -46,8 +46,8 @@ public class Tree extends Plant {
         inventory.addItemPile(new ItemPile(new TreeSeeds(treeType), rand.nextInt(5)));
     }
 
-    public void tick(World world, List<Entity> near) {
-        super.tick(world, near);
+    public void tick(Region region, Random random, List<Entity> near) {
+        super.tick(region, random, near);
 //        if (GameComponent.debug.State()) {
 //            kill();
 //        }

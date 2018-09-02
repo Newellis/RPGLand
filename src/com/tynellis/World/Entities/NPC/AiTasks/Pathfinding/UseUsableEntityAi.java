@@ -6,10 +6,11 @@ import com.tynellis.World.Entities.NPC.AiTasks.FaceClosestAi;
 import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.toEntity.FollowEntityAi;
 import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.Entities.UsableEntity.UsableEntity;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Region;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class UseUsableEntityAi extends FollowEntityAi implements Serializable {
     //public FollowEntityAi pathfinder;
@@ -34,11 +35,11 @@ public abstract class UseUsableEntityAi extends FollowEntityAi implements Serial
     }
 
     @Override
-    public boolean performTask(World world, NpcBase entity) {
-        if (shouldUse(world, entity)) {
-            boolean moving = super.performTask(world, entity);
+    public boolean performTask(Region region, Random random, NpcBase entity) {
+        if (shouldUse(region, entity)) {
+            boolean moving = super.performTask(region, random, entity);
             if (tool.canBeUsedBy(entity)) {
-                faceClosest.performTask(world, entity);
+                faceClosest.performTask(region, random, entity);
                 boolean using = using(tool.use(entity), entity);
                 return using;
             }
@@ -47,11 +48,11 @@ public abstract class UseUsableEntityAi extends FollowEntityAi implements Serial
         return false;
     }
 
-    public boolean findTarget(World world, NpcBase e) {
+    public boolean findTarget(Region region, NpcBase e) {
         if (tool != null && !tool.isDead()) {
             return true;
         }
-        ArrayList<Entity> entities = world.getEntitiesNearEntity(e, range);
+        ArrayList<Entity> entities = region.getEntitiesNearEntity(e, range);
         ArrayList<UsableEntity> closestType = new ArrayList<UsableEntity>();
         for (Entity entity : entities) {
             if (toolType.isInstance(entity)) {
@@ -63,7 +64,7 @@ public abstract class UseUsableEntityAi extends FollowEntityAi implements Serial
             return true;
         } else if (closestType.size() > 1) {
             for (int i = 0; i <= range; i++) {
-                ArrayList<Entity> testEntities = world.getEntitiesNearEntity(e, i);
+                ArrayList<Entity> testEntities = region.getEntitiesNearEntity(e, i);
                 for (Entity entity : testEntities) {
                     if (toolType.isInstance(entity)) {
                         tool = (UsableEntity) entity;
@@ -75,7 +76,7 @@ public abstract class UseUsableEntityAi extends FollowEntityAi implements Serial
         return false;
     }
 
-    protected abstract boolean shouldUse(World world, NpcBase entity);
+    protected abstract boolean shouldUse(Region region, NpcBase entity);
 
     protected boolean using(Object o, KillableEntity entity) {
         return false;

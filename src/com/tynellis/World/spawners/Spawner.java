@@ -2,7 +2,7 @@ package com.tynellis.World.spawners;
 
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Tiles.Tile;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Region;
 
 import java.awt.Rectangle;
 import java.io.Serializable;
@@ -36,7 +36,7 @@ public class Spawner implements Serializable {
         creatures = new HashMap<Class, Integer>();
     }
 
-    public void tick(World world) {
+    public void tick(Region region, Random random) {
         if (spawnCoolDown <= 0 && creatures.size() > 0) {
 
             boolean sucessful = false;
@@ -45,14 +45,14 @@ public class Spawner implements Serializable {
             do {
                 Class<?> type;
                 do {
-                    type = (Class) keys[world.getRand().nextInt(keys.length)];
+                    type = (Class) keys[random.nextInt(keys.length)];
                     if (attempted.size() >= creatures.size()) {
                         spawnCoolDown = spawnTime;
                         return;
                     }
                 } while (attempted.contains(type));
                 attempted.add(type);
-                ArrayList<Entity> inArea = world.getEntitiesIntersecting(spawnArea);
+                ArrayList<Entity> inArea = region.getEntitiesIntersecting(spawnArea);
                 int typeInArea = 0;
                 for (Entity e : inArea) {
                     if (type.isInstance(e)) {
@@ -63,18 +63,18 @@ public class Spawner implements Serializable {
                     continue;
                 }
                 try {
-                    Entity entity = (Entity) type.getDeclaredConstructor(new Class[]{int.class, int.class, int.class, Random.class}).newInstance(spawnArea.x / Tile.WIDTH, spawnArea.y / Tile.HEIGHT, world.getTopLayerAt(spawnArea.x / Tile.WIDTH, spawnArea.y / Tile.HEIGHT), world.getRand());
+                    Entity entity = (Entity) type.getDeclaredConstructor(new Class[]{int.class, int.class, int.class, Random.class}).newInstance(spawnArea.x / Tile.WIDTH, spawnArea.y / Tile.HEIGHT, region.getTopLayerAt(spawnArea.x / Tile.WIDTH, spawnArea.y / Tile.HEIGHT), random);
                     int x, y, z, attempts = 0;
                     do {
-                        x = (spawnArea.x / Tile.WIDTH) + (world.getRand().nextInt(spawnArea.width / Tile.WIDTH));
-                        y = (spawnArea.y / Tile.HEIGHT) + (world.getRand().nextInt(spawnArea.height / Tile.HEIGHT));
-                        z = world.getTopLayerAt(x, y);
+                        x = (spawnArea.x / Tile.WIDTH) + (random.nextInt(spawnArea.width / Tile.WIDTH));
+                        y = (spawnArea.y / Tile.HEIGHT) + (random.nextInt(spawnArea.height / Tile.HEIGHT));
+                        z = region.getTopLayerAt(x, y);
                         attempts++;
                     }
-                    while (attempts <= 10 && !validSpawnLocationFor(world, entity, x, y, z));
+                    while (attempts <= 10 && !validSpawnLocationFor(region, entity, x, y, z));
                     if (attempts <= 10) {
                         entity.setLocation(x, y, z);
-                        world.queueAdditionOfEntity(entity);
+                        region.queueAdditionOfEntity(entity);
                         sucessful = true;
                     }
 
@@ -94,8 +94,8 @@ public class Spawner implements Serializable {
         }
     }
 
-    protected boolean validSpawnLocationFor(World world, Entity entity, int x, int y, int z) {
-        return !(world.isTileObstructed(x, y, z) && !world.getTile(x, y, z).isPassableBy(entity));
+    protected boolean validSpawnLocationFor(Region region, Entity entity, int x, int y, int z) {
+        return !(region.isTileObstructed(x, y, z) && !region.getTile(x, y, z).isPassableBy(entity));
     }
 
     public boolean addEntitySpawn(Class spawn, int maxAmount) {

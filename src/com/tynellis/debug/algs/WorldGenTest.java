@@ -1,8 +1,9 @@
 package com.tynellis.debug.algs;
 
-import com.tynellis.World.Area;
-import com.tynellis.World.World;
 import com.tynellis.World.WorldGen;
+import com.tynellis.World.WorldManager;
+import com.tynellis.World.world_parts.Area;
+import com.tynellis.World.world_parts.Region;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -17,19 +18,20 @@ public class WorldGenTest extends AlgTest {
     private int[] spawn;
 
     public WorldGenTest() {
-        Name = "World Gen";
+        Name = "Region Gen";
     }
 
     @Override
     public boolean Start() {
-        this.setPreferredSize(new Dimension(World.WIDTH, World.HEIGHT));
+        this.setPreferredSize(new Dimension(Region.WIDTH, Region.HEIGHT));
         Random random = new Random();
         long seed = 2000000; //random.nextLong();
         System.out.println("Seed: " + seed);
-        World world = new World("test", seed);
+        WorldManager world = new WorldManager("test", seed);
+//        Region world = new Region("test", seed);
         world.genSpawn(seed);
         spawn = world.getSpawnPoint();
-        array = world.gen.getLandAreas(); //world.gen.erodeArea(20 * Area.WIDTH, 10 * Area.HEIGHT, new Random(seed * ((20 * Area.WIDTH * World.WIDTH) + 10 * Area.HEIGHT)));
+        array = world.gen.getLandAreas(); //world.gen.erodeArea(20 * Area.WIDTH, 10 * Area.HEIGHT, new Random(seed * ((20 * Area.WIDTH * Region.WIDTH) + 10 * Area.HEIGHT)));
         return true;
     }
 
@@ -72,7 +74,7 @@ public class WorldGenTest extends AlgTest {
                 g2.fillRect((int) Math.round(x * scale), (int) Math.round(y * scale), (int) Math.round((x + 1) * scale), (int) Math.round((y + 1) * scale));
 
             }
-            //System.out.printf("%3.1f Done\n",((x + 1.0)/World.WIDTH) * 100.0);
+            //System.out.printf("%3.1f Done\n",((x + 1.0)/Region.WIDTH) * 100.0);
         }
         g2.setColor(Color.RED);
         g2.fillRect((int) ((spawn[0] / Area.WIDTH - 2) * scale), (int) ((spawn[1] / Area.HEIGHT - 2) * scale), 5, 5);

@@ -1,7 +1,7 @@
 package com.tynellis.World.spawners;
 
 import com.tynellis.World.Entities.Entity;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Region;
 
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -19,7 +19,7 @@ public class MinMaxRangeSpawner extends Spawner {
         super(speed, maxArea);
     }
 
-    protected boolean validSpawnLocationFor(World world, Entity entity, int x, int y, int z) {
-        return !(world.isTileObstructed(x, y, z) && !world.getTile(x, y, z).isPassableBy(entity)) && !exclusionArea.contains(new Point(x, y));
+    protected boolean validSpawnLocationFor(Region region, Entity entity, int x, int y, int z) {
+        return !(region.isTileObstructed(x, y, z) && !region.getTile(x, y, z).isPassableBy(entity)) && !exclusionArea.contains(new Point(x, y));
     }
 }

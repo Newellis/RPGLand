@@ -7,21 +7,15 @@ import com.tynellis.Save.FileHandler;
 import com.tynellis.Save.InvalidSaveException;
 import com.tynellis.Save.SavedWorld;
 import com.tynellis.Save.StoreLoad;
-import com.tynellis.World.Area;
-import com.tynellis.World.Buildings.SmallHouse;
-import com.tynellis.World.Entities.ItemEntity;
 import com.tynellis.World.Entities.NPC.NpcBase;
-import com.tynellis.World.Entities.NPC.villagers.LumberJackNpc;
-import com.tynellis.World.Entities.Plants.Tree;
 import com.tynellis.World.Entities.Player;
-import com.tynellis.World.Entities.UsableEntity.Chest;
-import com.tynellis.World.Items.ItemPile;
-import com.tynellis.World.Items.Materials.Log;
 import com.tynellis.World.Tiles.LandTiles.ManMade.Ladder;
 import com.tynellis.World.Tiles.LandTiles.Natural.Grass;
 import com.tynellis.World.Tiles.LandTiles.Natural.Slope;
 import com.tynellis.World.Tiles.Tile;
-import com.tynellis.World.World;
+import com.tynellis.World.WorldManager;
+import com.tynellis.World.world_parts.Area;
+import com.tynellis.World.world_parts.Region;
 import com.tynellis.debug.Debug;
 import com.tynellis.input.KeyInput;
 import com.tynellis.input.Keys;
@@ -53,7 +47,7 @@ public class GameComponent extends JPanel implements Runnable {
 
     private GameState state = GameState.MENU;
     private Menu menu = new MainMenu(GAME_WIDTH, GAME_HEIGHT);
-    public static World world;
+    public static WorldManager world;
     private Player player;
     private static final int autoSaveTicks = 60 * 30; //ticks per sec * seconds between saves
     private int ticksToSave = autoSaveTicks;
@@ -240,24 +234,14 @@ public class GameComponent extends JPanel implements Runnable {
 
     public void startGame(String name, long seed) {
         System.out.print("Loading...");
-        world = new World(name, seed);
+        world = new WorldManager(name, seed);
         world.genSpawn(seed);
         int[] spawn = world.getSpawnPoint();
         //todo add player customization
         player = new Player(keys, NpcBase.getName(NpcBase.NpcGender.MALE, world.getRand()), spawn[0], spawn[1], spawn[2]);
-        Chest chest = new Chest(spawn[0] - 10, spawn[1] - 5, spawn[2]);
-        NpcBase npc = new LumberJackNpc(spawn[0] - 3, spawn[1] + 2, spawn[2], NpcBase.NpcGender.FEMALE, chest, world.getRand());
-        ItemEntity itemEntity = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 1), world.getRand(), spawn[0] + 4, spawn[1], spawn[2]);
-        ItemEntity itemEntity1 = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 10), world.getRand(), spawn[0] + 6, spawn[1], spawn[2]);
-        ItemEntity itemEntity2 = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 20), world.getRand(), spawn[0] + 8, spawn[1], spawn[2]);
-        world.addEntity(player);
-        world.addEntity(npc);
-//        world.addEntity(itemEntity);
-//        world.addEntity(itemEntity1);
-//        world.addEntity(itemEntity2);
-        world.addEntity(chest);
-        SmallHouse.buildSmallHouse(world, spawn[0] - 6, spawn[1] - 5, spawn[2]);
-        SmallHouse.buildSmallHouse(world, spawn[0], spawn[1] - 5, spawn[2]);
+        world.addPlayer(player);
+
+        world.addTestEntities();
 
         //addTestStructure(world, spawn);
         state = GameState.SINGLE_PLAYER;
@@ -266,34 +250,35 @@ public class GameComponent extends JPanel implements Runnable {
         //todo add some sort of loading screen
     }
 
-    private void addTestStructure(World world, int[] spawn) {
+    private void addTestStructure(Region region, int[] spawn) {
         Random random = new Random();
         for (int i = -1; i < 2; i++) {
             for (int j = -1; j < 2; j++) {
-                world.setTile(new Grass(random, 100), spawn[0] + i, spawn[1] - 10 + j, spawn[2] + 1);
-                world.setTile(null, spawn[0] + i, spawn[1] - 10 + j, spawn[2]);
+                region.setTile(new Grass(random, 100), spawn[0] + i, spawn[1] - 10 + j, spawn[2] + 1);
+                region.setTile(null, spawn[0] + i, spawn[1] - 10 + j, spawn[2]);
 
-                world.setTile(new Grass(random, 100), spawn[0] + i - 7, spawn[1] - 10 + j, spawn[2] + 1);
-                world.setTile(null, spawn[0] + i - 7, spawn[1] - 10 + j, spawn[2]);
+                region.setTile(new Grass(random, 100), spawn[0] + i - 7, spawn[1] - 10 + j, spawn[2] + 1);
+                region.setTile(null, spawn[0] + i - 7, spawn[1] - 10 + j, spawn[2]);
             }
         }
-        world.setTile(new Ladder(random, 100, 0, world.getTile(spawn[0], spawn[1] - 10 + 2, spawn[2]), spawn[2] + 1, spawn[2]), spawn[0], spawn[1] - 10 + 2, spawn[2]);
-        world.setTile(new Ladder(random, 100, 1, world.getTile(spawn[0] + 2, spawn[1] - 10, spawn[2]), spawn[2] + 1, spawn[2]), spawn[0] + 2, spawn[1] - 10, spawn[2]);
-        world.setTile(new Ladder(random, 100, 2, world.getTile(spawn[0], spawn[1] - 10 - 2, spawn[2]), spawn[2] + 1, spawn[2]), spawn[0], spawn[1] - 10 - 2, spawn[2]);
-        world.setTile(new Ladder(random, 100, 3, world.getTile(spawn[0] - 2, spawn[1] - 10, spawn[2]), spawn[2] + 1, spawn[2]), spawn[0] - 2, spawn[1] - 10, spawn[2]);
+        region.setTile(new Ladder(random, 100, 0, region.getTile(spawn[0], spawn[1] - 10 + 2, spawn[2]), spawn[2] + 1, spawn[2]), spawn[0], spawn[1] - 10 + 2, spawn[2]);
+        region.setTile(new Ladder(random, 100, 1, region.getTile(spawn[0] + 2, spawn[1] - 10, spawn[2]), spawn[2] + 1, spawn[2]), spawn[0] + 2, spawn[1] - 10, spawn[2]);
+        region.setTile(new Ladder(random, 100, 2, region.getTile(spawn[0], spawn[1] - 10 - 2, spawn[2]), spawn[2] + 1, spawn[2]), spawn[0], spawn[1] - 10 - 2, spawn[2]);
+        region.setTile(new Ladder(random, 100, 3, region.getTile(spawn[0] - 2, spawn[1] - 10, spawn[2]), spawn[2] + 1, spawn[2]), spawn[0] - 2, spawn[1] - 10, spawn[2]);
 
-        world.setTile(new Slope(random, 100, 0, world.getTile(spawn[0] - 7, spawn[1] - 10 + 2, spawn[2]), spawn[2] + 1, spawn[2]), spawn[0] - 7, spawn[1] - 10 + 2, spawn[2]);
-        world.setTile(new Slope(random, 100, 1, world.getTile(spawn[0] + 2 - 7, spawn[1] - 10, spawn[2]), spawn[2] + 1, spawn[2]), spawn[0] + 2 - 7, spawn[1] - 10, spawn[2]);
-        world.setTile(new Slope(random, 100, 2, world.getTile(spawn[0] - 7, spawn[1] - 10 - 2, spawn[2]), spawn[2] + 1, spawn[2]), spawn[0] - 7, spawn[1] - 10 - 2, spawn[2]);
-        world.setTile(new Slope(random, 100, 3, world.getTile(spawn[0] - 2 - 7, spawn[1] - 10, spawn[2]), spawn[2] + 1, spawn[2]), spawn[0] - 2 - 7, spawn[1] - 10, spawn[2]);
+        region.setTile(new Slope(random, 100, 0, region.getTile(spawn[0] - 7, spawn[1] - 10 + 2, spawn[2]), spawn[2] + 1, spawn[2]), spawn[0] - 7, spawn[1] - 10 + 2, spawn[2]);
+        region.setTile(new Slope(random, 100, 1, region.getTile(spawn[0] + 2 - 7, spawn[1] - 10, spawn[2]), spawn[2] + 1, spawn[2]), spawn[0] + 2 - 7, spawn[1] - 10, spawn[2]);
+        region.setTile(new Slope(random, 100, 2, region.getTile(spawn[0] - 7, spawn[1] - 10 - 2, spawn[2]), spawn[2] + 1, spawn[2]), spawn[0] - 7, spawn[1] - 10 - 2, spawn[2]);
+        region.setTile(new Slope(random, 100, 3, region.getTile(spawn[0] - 2 - 7, spawn[1] - 10, spawn[2]), spawn[2] + 1, spawn[2]), spawn[0] - 2 - 7, spawn[1] - 10, spawn[2]);
     }
 
+    //todo fix save load
     public void saveWorld() {
         String playerName = player.getName();
         StoreLoad.StorePlayer(player);
         world.removeEntity(player);
         world.saveLoadedAreas();
-        StoreLoad.StoreWorld(world, playerName);
+//        StoreLoad.StoreWorld(world, playerName);
         world.addEntity(player);
         player.setKeys(keys);
     }
@@ -302,7 +287,7 @@ public class GameComponent extends JPanel implements Runnable {
         FileHandler.setGameDir(worldName);
         SavedWorld save = StoreLoad.LoadWorld();
         if (save != null) {
-            world = save.getWorld();
+//            world = save.getRegion();
             player = StoreLoad.LoadPlayer(save.getPlayerName());
             assert player != null;
             player.setKeys(keys);

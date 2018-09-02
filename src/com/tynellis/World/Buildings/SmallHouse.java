@@ -4,10 +4,8 @@ import com.tynellis.Art.Sprite;
 import com.tynellis.Art.SpriteSheet;
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.UsableEntity.Door;
-import com.tynellis.World.Tiles.LandTiles.ManMade.Stairs;
-import com.tynellis.World.Tiles.LandTiles.Natural.Grass;
 import com.tynellis.World.Tiles.Tile;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Region;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -64,20 +62,18 @@ public class SmallHouse extends Building {
         }
     }
 
-    public static void buildSmallHouse(World world, double x, double y, double z) {
-        int width = world.getRand().nextInt(7) + 3;
-        if (world.getRand().nextBoolean() && width > 6) {
+    public static void buildSmallHouse(Region world, Random random, double x, double y, double z) {
+        int width = random.nextInt(7) + 3;
+        if (random.nextBoolean() && width > 6) {
             width /= 2;
         }
-        int height = (int) Math.ceil(width / 2.0) + world.getRand().nextInt(width);
-        SmallHouse house = new SmallHouse(x, y, z, width, height, world.getRand());
+        int height = (int) Math.ceil(width / 2.0) + random.nextInt(width);
+        SmallHouse house = new SmallHouse(x, y, z, width, height, random);
         world.addEntity(house);
         System.out.println("add door " + house.getDoor());
         world.addEntity(house.getDoor());
-        world.setTile(new Stairs(world.getRand(), (int) house.posZ, 0,
-                world.getTile((int) house.getDoor().getX(), (int) house.getDoor().getY(), (int) house.getDoor().getZ()),
-                (int) house.posZ + .66, (int) house.posZ), (int) house.getDoor().getX(), (int) house.getDoor().getY() + 1, (int) house.getDoor().getZ());
-        world.setTile(new Grass(world.getRand(), 100), (int) house.getDoor().getX(), (int) house.getDoor().getY(), (int) house.getDoor().getZ() + 1);
+//        world.setTile(new Stairs(random, (int) house.posZ, 0, world.getTile((int) house.getDoor().getX(), (int) house.getDoor().getY(), (int) house.getDoor().getZ()), (int) house.posZ + .66, (int) house.posZ), (int) house.getDoor().getX(), (int) house.getDoor().getY() + 1, (int) house.getDoor().getZ());
+//        world.setTile(new Grass(random, 100), (int) house.getDoor().getX(), (int) house.getDoor().getY(), (int) house.getDoor().getZ() + 1);
     }
 
     public Entity getDoor() {

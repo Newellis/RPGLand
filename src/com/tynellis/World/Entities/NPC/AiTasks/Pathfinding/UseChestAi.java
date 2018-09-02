@@ -8,7 +8,7 @@ import com.tynellis.World.Entities.UsableEntity.UsableEntity;
 import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.Containers.Filters.ItemFilter;
 import com.tynellis.World.Items.ItemPile;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Region;
 
 public class UseChestAi extends UseUsableEntityAi {
     private ItemFilter filter;
@@ -26,8 +26,8 @@ public class UseChestAi extends UseUsableEntityAi {
     }
 
     @Override
-    protected boolean shouldUse(World world, NpcBase entity) {
-        if (findTarget(world, entity)) {
+    protected boolean shouldUse(Region region, NpcBase entity) {
+        if (findTarget(region, entity)) {
             Container inventory = entity.getInventory();
             for (int i = 0; i < inventory.getInventory().length; i++) {
                 ItemPile pile = inventory.getInventory()[i].getPile();

@@ -2,7 +2,9 @@ package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding;
 
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.NPC.NpcBase;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Region;
+
+import java.util.Random;
 
 public class StayNearPoint extends PathfinderAi {
     private int range;
@@ -14,8 +16,8 @@ public class StayNearPoint extends PathfinderAi {
     }
 
     @Override
-    public boolean performTask(World world, NpcBase entity) {
-        super.performTask(world, entity);
+    public boolean performTask(Region region, Random random, NpcBase entity) {
+        super.performTask(region, random, entity);
         double pathLength = getPathLength();
         if (pathLength < range / 2) {
             returning = false;

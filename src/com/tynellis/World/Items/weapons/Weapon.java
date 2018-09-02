@@ -6,7 +6,7 @@ import com.tynellis.World.Entities.KillableEntity;
 import com.tynellis.World.Entities.damage.DamageSource;
 import com.tynellis.World.Items.UsableItem;
 import com.tynellis.World.Tiles.Tile;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Region;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -27,7 +27,7 @@ public abstract class Weapon extends UsableItem {
         this.range = range;
     }
 
-    public boolean canUse(World world, KillableEntity user) {
+    public boolean canUse(Region region, KillableEntity user) {
         if (coolDownTimer <= 0) {
             weaponAnimation.playFromStart(user.getSpriteFacing());
             return true;

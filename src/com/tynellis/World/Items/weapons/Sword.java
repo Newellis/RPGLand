@@ -7,10 +7,11 @@ import com.tynellis.World.Entities.KillableEntity;
 import com.tynellis.World.Entities.damage.Damage;
 import com.tynellis.World.Entities.damage.DamageSource;
 import com.tynellis.World.Tiles.Tile;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Region;
 
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Sword extends Weapon {
 
@@ -21,14 +22,14 @@ public class Sword extends Weapon {
     }
 
     @Override
-    public boolean use(World world, KillableEntity user) {
-        if (canUse(world, user)) {
+    public boolean use(Region region, Random random, KillableEntity user) {
+        if (canUse(region, user)) {
             Rectangle area = getAttackArea(user);
-            ArrayList<Entity> hit = world.getEntitiesIntersecting(area);
+            ArrayList<Entity> hit = region.getEntitiesIntersecting(area);
             hit.remove(user);
             for (Entity e : hit) {
                 if (e instanceof KillableEntity) {
-                    ((KillableEntity) e).DamageBy(getAttackDamage(), world.getRand());
+                    ((KillableEntity) e).DamageBy(getAttackDamage(), random);
                 }
             }
             coolDownTimer = coolDown;

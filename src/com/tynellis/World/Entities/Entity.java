@@ -5,7 +5,7 @@ import com.tynellis.GameComponent;
 import com.tynellis.World.Light.LightSource;
 import com.tynellis.World.Tiles.LandTiles.LayeredTile;
 import com.tynellis.World.Tiles.Tile;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Region;
 import com.tynellis.debug.Debug;
 
 import java.awt.Color;
@@ -14,6 +14,7 @@ import java.awt.Rectangle;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public abstract class Entity implements BoundingBoxOwner, Serializable {
     protected double speed = 0.06;
@@ -31,7 +32,7 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
     protected boolean isDead = false;
     protected LightSource light;
 
-    public abstract void performDeath(World world);
+    public abstract void performDeath(Region region, Random random);
 
     public abstract int compareTo(Entity entity);//add comparison for how an entity should be compared to others of the same type
 
@@ -51,16 +52,16 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
         this.height = height;
     }
 
-    public void tick(World world, List<Entity> near) {
+    public void tick(Region region, Random random, List<Entity> near) {
         facingAngle = (Math.PI / 4 * facing);
         yPushed = xPushed = zFalling = 0;
         yMoving = xMoving = canBeMoved;
 
 
-        move(world, speed, near);
+        move(region, speed, near);
     }
 
-    private void move(World world, double speed, List<Entity> near) {
+    private void move(Region region, double speed, List<Entity> near) {
         double xMove = 0, yMove = 0;
         double[] centerPoint = isOverPoint();
         Rectangle rect = getBounds();
@@ -77,7 +78,7 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
         }
         if (canBeMoved) {
             if (movementType == movementTypes.Walking) {
-                double groundLevel = world.getTileHeightAt(centerPoint[0] + xMove, centerPoint[1] + yMove, centerPoint[2] - zFalling);
+                double groundLevel = region.getTileHeightAt(centerPoint[0] + xMove, centerPoint[1] + yMove, centerPoint[2] - zFalling);
                 //System.out.println(groundLevel + ": player " + posZ);
 //                if (groundLevel < posZ - zFalling) {
 //                    zFalling += 0.1;
@@ -104,8 +105,8 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
             } else {
                 movingDir = facing;
             }
-            setCanMove(canMoveX(world, movingDir, xMove, yMove), canMoveY(world, movingDir, xMove, yMove));
-            collideWithTiles(world, rect, xMove, yMove);
+            setCanMove(canMoveX(region, movingDir, xMove, yMove), canMoveY(region, movingDir, xMove, yMove));
+            collideWithTiles(region, rect, xMove, yMove);
             if (!(((Double) (xMove + xPushed)).equals(0.0)) && xMoving) {
                 posX -= (xMove + xPushed);
             }
@@ -113,7 +114,7 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
                 double lastPosY = posY;
                 posY -= (yMove + yPushed);
                 if (posY - lastPosY != 0.0) {
-                    world.addMoveEntity(this);
+                    region.addMoveEntity(this);
                 }
             }
             if (!(((Double) zFalling).equals(0.0))) {
@@ -124,14 +125,14 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
         }
     }
 
-    private void collideWithTiles(World world, Rectangle rect, double xMove, double yMove) {
+    private void collideWithTiles(Region region, Rectangle rect, double xMove, double yMove) {
         rect.setSize(width * 2 / 3, height * 2 / 3);
         rect.setLocation((int) (rect.getX() + width / 6), (int) (rect.getY() + height / 6));
-        ArrayList<Tile> downTiles = world.getTilesIntersectingRect(rect, (int) Math.floor(getZ()));
+        ArrayList<Tile> downTiles = region.getTilesIntersectingRect(rect, (int) Math.floor(getZ()));
         for (Tile tile : downTiles) {
             if (tile != null) {
                 double[] point = isOverPoint();
-                tile.handleCollision(this, xMove, yMove, tile.equals(world.getTile((int) point[0], (int) point[1], (int) point[2])));
+                tile.handleCollision(this, xMove, yMove, tile.equals(region.getTile((int) point[0], (int) point[1], (int) point[2])));
             }
         }
     }
@@ -247,7 +248,7 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
     public abstract boolean isPassableBy(Entity e);
 
 
-    private boolean canMoveX(World world, int direction, double xMove, double yMove) {
+    private boolean canMoveX(Region region, int direction, double xMove, double yMove) {
         boolean canMove = true;
         Rectangle rect = getBounds();
         int y1 = (int) Math.floor(posY + .1);
@@ -256,17 +257,17 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
             for (int y = y1; y <= y2; y++) {
                 if (direction < 4) {
                     int x = (int) posX;
-                    canMove &= !tileBlocks(world, rect, x, y, xMove, yMove);
+                    canMove &= !tileBlocks(region, rect, x, y, xMove, yMove);
                 } else if (direction < 8) {
                     int x = (int) (posX + (rect.width / Tile.WIDTH));
-                    canMove &= !tileBlocks(world, rect, x, y, xMove, yMove);
+                    canMove &= !tileBlocks(region, rect, x, y, xMove, yMove);
                 }
             }
         }
         return canMove;
     }
 
-    private boolean canMoveY(World world, int direction, double xMove, double yMove) {
+    private boolean canMoveY(Region region, int direction, double xMove, double yMove) {
         boolean canMove = true;
         Rectangle rect = getBounds();
         int x1 = (int) Math.floor(posX + .1);
@@ -276,19 +277,19 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
             for (int x = x1; x <= x2; x++) {
                 if (direction < 2 || direction > 6) {
                     int y = (int) posY;
-                    canMove &= !tileBlocks(world, rect, x, y, xMove, yMove);
+                    canMove &= !tileBlocks(region, rect, x, y, xMove, yMove);
                 } else if (direction < 6) {
                     int y = (int) (posY + (rect.height / Tile.HEIGHT));
-                    canMove &= !tileBlocks(world, rect, x, y, xMove, yMove);
+                    canMove &= !tileBlocks(region, rect, x, y, xMove, yMove);
                 }
             }
         }
         return canMove;
     }
 
-    private boolean tileBlocks(World world, Rectangle rect, int x, int y, double xMove, double yMove) {
-        Tile downTile = world.getTile(x, y, (int) posZ);
-        Tile upTile = world.getTile(x, y, (int) posZ + 1);
+    private boolean tileBlocks(Region region, Rectangle rect, int x, int y, double xMove, double yMove) {
+        Tile downTile = region.getTile(x, y, (int) posZ);
+        Tile upTile = region.getTile(x, y, (int) posZ + 1);
         Rectangle next = (Rectangle) rect.clone();
         next.setLocation(next.x - (int) (2 * xMove * Tile.WIDTH), next.y - (int) (2 * yMove * Tile.HEIGHT));
         if (upTile != null && !(upTile instanceof LayeredTile && !((LayeredTile) upTile).isBlocked())) {
@@ -301,13 +302,13 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
             posY = (double) Math.round(posY * 100d) / 100d;
             posZ = (double) Math.round(posZ * 100d) / 100d;
             return true;
-        } else if (downTile != null && !downTile.isPassableBy(this) && next.intersects(world.getTileBounds(x, y, (int) posZ))) {
+        } else if (downTile != null && !downTile.isPassableBy(this) && next.intersects(region.getTileBounds(x, y, (int) posZ))) {
             posX = (double) Math.round(posX * 100d) / 100d;
             posY = (double) Math.round(posY * 100d) / 100d;
             posZ = (double) Math.round(posZ * 100d) / 100d;
             return true;
         } else if (downTile == null) {
-            Tile belowTile = world.getTile(x, y, (int) posZ - 1);
+            Tile belowTile = region.getTile(x, y, (int) posZ - 1);
             if ((belowTile != null && belowTile instanceof LayeredTile && ((LayeredTile) belowTile).isFull())) {
                 return false;
             }

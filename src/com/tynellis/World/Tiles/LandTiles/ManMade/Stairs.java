@@ -19,7 +19,7 @@ public class Stairs extends ConnectorTile {
     private static final double altPercent = 0.10;
 
     public Stairs(Random rand, int heightinWorld, int faceing, Tile base, double top, double bottom) {
-        super("Ladder", null, rand, altPercent, base.getRank(), heightinWorld, base);
+        super("Stairs", null, rand, altPercent, base.getRank(), heightinWorld, base);
         direction = faceing % 4;
         height = top;
         this.bottom = bottom;

@@ -12,7 +12,7 @@ import com.tynellis.World.Items.weapons.Sword;
 import com.tynellis.World.Items.weapons.Weapon;
 import com.tynellis.World.Nodes.Node;
 import com.tynellis.World.Tiles.Tile;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Region;
 import com.tynellis.debug.Debug;
 
 import java.awt.Color;
@@ -116,12 +116,12 @@ public abstract class NpcBase extends Humanoid {
         return result;
     }
 
-    public void tick(World world, List<Entity> near) {
-        Ai.tick(world, this);
+    public void tick(Region region, Random random, List<Entity> near) {
+        Ai.tick(region, random, this);
 //        if (GameComponent.debug.State() && GameComponent.debug.isType(Debug.Type.PATH)) {
 //            moving = false;
 //        }
-        super.tick(world, near);
+        super.tick(region, random, near);
         animation.setRow(spriteFacing);
         attackAnimation.setRow(spriteFacing);
         weapon.coolDownTick();
@@ -180,18 +180,18 @@ public abstract class NpcBase extends Humanoid {
         return pathfinder;
     }
 
-    public boolean canHit(World world, Entity target) {
-        if (weapon.canUse(world, this)) {
+    public boolean canHit(Region region, Entity target) {
+        if (weapon.canUse(region, this)) {
 
             Rectangle area = weapon.getAttackArea(this);
-            ArrayList<Entity> hit = world.getEntitiesIntersecting(area);
+            ArrayList<Entity> hit = region.getEntitiesIntersecting(area);
             return hit.size() > 0 && hit.contains(target);
         }
         return false;
     }
 
-    public void attack(World world) {
-        meleeAttack(weapon, world);
+    public void attack(Region region, Random random) {
+        meleeAttack(weapon, random, region);
     }
 
     @Override

@@ -5,7 +5,7 @@ import com.tynellis.World.Entities.NPC.AiTasks.AiTask;
 import com.tynellis.World.Entities.NPC.AiTasks.FaceClosestAi;
 import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.Nodes.Node;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Region;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class PathfinderAi extends AiTask {
     protected double destX, destY, destZ;
@@ -41,9 +42,9 @@ public class PathfinderAi extends AiTask {
         path = new ArrayList<Node>();
     }
 
-    public boolean performTask(World world, NpcBase entity) {
-        if ((path.size() == 0 || !pathIsValid(world, entity)) && (Math.abs(entity.getX() - destX) > entity.getSpeed() || Math.abs(entity.getY() - destY) > entity.getSpeed())) {
-            if (findPath(world, entity, minRange + tempMinRangeMod)) {
+    public boolean performTask(Region region, Random random, NpcBase entity) {
+        if ((path.size() == 0 || !pathIsValid(region, entity)) && (Math.abs(entity.getX() - destX) > entity.getSpeed() || Math.abs(entity.getY() - destY) > entity.getSpeed())) {
+            if (findPath(region, entity, minRange + tempMinRangeMod)) {
                 tempMinRangeMod = 0;
                 return true;
             } else {
@@ -54,7 +55,7 @@ public class PathfinderAi extends AiTask {
                 return false;
             }
         } else {
-            if (path.size() > 0 && world.getTile((int) path.get(0).getX(), (int) path.get(0).getY(), (int) path.get(0).getZ()) == null) {
+            if (path.size() > 0 && region.getTile((int) path.get(0).getX(), (int) path.get(0).getY(), (int) path.get(0).getZ()) == null) {
                 entity.setMoving(false);
                 System.out.println("no next node");
                 return false;
@@ -87,7 +88,7 @@ public class PathfinderAi extends AiTask {
         }
     }
 
-    protected boolean pathIsValid(World world, Entity e) {
+    protected boolean pathIsValid(Region region, Entity e) {
         if (path.size() == 0) {
             System.out.println("no path");
             return false;
@@ -98,7 +99,7 @@ public class PathfinderAi extends AiTask {
         }
         for (int i = 1; i < path.size() - 1; i++) {
             Node node = path.get(i);
-            if (world.getTile((int) node.getX(), (int) node.getY(), (int) node.getZ()) != null && world.isTileObstructed((int) node.getX(), (int) node.getY(), (int) node.getZ())) {
+            if (region.getTile((int) node.getX(), (int) node.getY(), (int) node.getZ()) != null && region.isTileObstructed((int) node.getX(), (int) node.getY(), (int) node.getZ())) {
                 System.out.println("node " + i + " is obstructed");
                 return false;
             }
@@ -110,17 +111,17 @@ public class PathfinderAi extends AiTask {
         return true;
     }
 
-    private boolean findPath(World world, Entity e, int minRange) {
+    private boolean findPath(Region region, Entity e, int minRange) {
         List<Node> closedSet = new ArrayList<Node>();// The set of nodes already evaluated.
         List<Node> openSet = new ArrayList<Node>(); // The set of tentative nodes to be evaluated, initially containing the start node
         Node start = new Node(e.getX(), e.getY(), e.getZ());
         Node goal = new Node(destX, destY, destZ);
-        if (world.getTile((int) goal.getX(), (int) goal.getY(), (int) goal.getZ()) != null && (!world.getTile((int) goal.getX(), (int) goal.getY(), (int) goal.getZ()).isPassableBy(e) || world.isTileObstructed((int) goal.getX(), (int) goal.getY(), (int) goal.getZ()))) {
+        if (region.getTile((int) goal.getX(), (int) goal.getY(), (int) goal.getZ()) != null && (!region.getTile((int) goal.getX(), (int) goal.getY(), (int) goal.getZ()).isPassableBy(e) || region.isTileObstructed((int) goal.getX(), (int) goal.getY(), (int) goal.getZ()))) {
             if (minRange < 1) {
                 return false;
             }
         }
-        if (world.getTile((int) e.getX(), (int) e.getY(), (int) e.getZ()) != null && (!world.getTile((int) e.getX(), (int) e.getY(), (int) e.getZ()).isPassableBy(e) || world.isTileObstructed((int) e.getX(), (int) e.getY(), (int) e.getZ()))) {
+        if (region.getTile((int) e.getX(), (int) e.getY(), (int) e.getZ()) != null && (!region.getTile((int) e.getX(), (int) e.getY(), (int) e.getZ()).isPassableBy(e) || region.isTileObstructed((int) e.getX(), (int) e.getY(), (int) e.getZ()))) {
             return false;
         }
         openSet.add(start);
@@ -148,7 +149,7 @@ public class PathfinderAi extends AiTask {
             }
             openSet.remove(current);
             closedSet.add(current);
-            ArrayList<Node> nodes = world.getAdjacentNodes(current, e);
+            ArrayList<Node> nodes = region.getAdjacentNodes(current, e);
             for (Node node : nodes) {
                 current.addNeighbor(node);
             }

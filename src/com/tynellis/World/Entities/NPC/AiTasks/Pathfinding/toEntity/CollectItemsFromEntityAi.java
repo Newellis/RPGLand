@@ -4,10 +4,11 @@ import com.tynellis.World.Entities.KillableEntity;
 import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Nodes.Node;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Region;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class CollectItemsFromEntityAi extends AttackEntityAi {
     private CollectItemsAi gatherItems;
@@ -18,17 +19,17 @@ public class CollectItemsFromEntityAi extends AttackEntityAi {
         gatherItems = new CollectItemsAi(range);
     }
 
-    public boolean performTask(World world, NpcBase entity) {
+    public boolean performTask(Region region, Random random, NpcBase entity) {
         if (entity.getInventory().isFull()) {
             entity.setMoving(false);
             return false;
         }
-        if (!gatherItems.performTask(world, entity)) {
+        if (!gatherItems.performTask(region, random, entity)) {
             if (path != null) {
                 entity.getPathfinder().setCurrentActivity(this);
                 entity.getPathfinder().setPath(path);
             }
-            boolean attack = super.performTask(world, entity);
+            boolean attack = super.performTask(region, random, entity);
 
             path = (attack) ? entity.getPathfinder().getPath() : null;
 
@@ -37,8 +38,8 @@ public class CollectItemsFromEntityAi extends AttackEntityAi {
         return true;
     }
 
-    public boolean findTarget(World world, NpcBase e) {
-        boolean foundTarget = super.findTarget(world, e);
+    public boolean findTarget(Region region, NpcBase e) {
+        boolean foundTarget = super.findTarget(region, e);
 
         if (foundTarget) {
             for (ItemPile item : ((KillableEntity) closest).getInventory().getContents()) {

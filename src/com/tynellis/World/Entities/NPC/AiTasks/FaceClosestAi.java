@@ -2,10 +2,11 @@ package com.tynellis.World.Entities.NPC.AiTasks;
 
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.NPC.NpcBase;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Region;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class FaceClosestAi extends AiTask implements Serializable {
     private Class entityType;
@@ -16,8 +17,8 @@ public class FaceClosestAi extends AiTask implements Serializable {
         entityType = type;
     }
 
-    public boolean performTask(World world, NpcBase mob) {
-        ArrayList<Entity> entities = world.getEntitiesNearEntity(mob, r);
+    public boolean performTask(Region region, Random random, NpcBase mob) {
+        ArrayList<Entity> entities = region.getEntitiesNearEntity(mob, r);
         ArrayList<Entity> entitiesOfType = new ArrayList<Entity>();
         Entity closest;
         for (Entity entity : entities) {
@@ -36,7 +37,7 @@ public class FaceClosestAi extends AiTask implements Serializable {
             return false;
         } else if (entitiesOfType.size() > 1) {
             for (int i = 0; i <= r; i++) {
-                ArrayList<Entity> testEntities = world.getEntitiesNearEntity(mob, i);
+                ArrayList<Entity> testEntities = region.getEntitiesNearEntity(mob, i);
                 for (Entity entity : testEntities) {
                     if (entityType.isInstance(entity)) {
                         closest = entity;

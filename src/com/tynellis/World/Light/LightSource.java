@@ -2,7 +2,7 @@ package com.tynellis.World.Light;
 
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Tiles.Tile;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Region;
 
 import java.awt.Graphics;
 import java.awt.Polygon;
@@ -56,7 +56,7 @@ public class LightSource implements Serializable {
 //        }
     }
 
-    public void tick(World world, List<Entity> near) {
+    public void tick(Region region, List<Entity> near) {
         rays = new TreeSet<Line2D>(new RayComparator());
         for (Entity e : near) {
             Rectangle eBounds = e.getBounds();

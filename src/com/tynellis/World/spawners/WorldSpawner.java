@@ -1,12 +1,13 @@
 package com.tynellis.World.spawners;
 
 import com.tynellis.World.Entities.Entity;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Region;
 
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Random;
 
 public class WorldSpawner extends Spawner {
     private ArrayList<Rectangle> exclusionAreas;
@@ -19,18 +20,18 @@ public class WorldSpawner extends Spawner {
         super(speed, new Rectangle());
     }
 
-    public void tick(World world) {
-        spawnArea = world.getLoadedAreaBounds();
-        exclusionAreas = world.getSpawnFreeAreas();
-        super.tick(world);
+    public void tick(Region region, Random random) {
+        spawnArea = region.getLoadedAreaBounds();
+        exclusionAreas = region.getSpawnFreeAreas();
+        super.tick(region, random);
     }
 
-    protected boolean validSpawnLocationFor(World world, Entity entity, int x, int y, int z) {
+    protected boolean validSpawnLocationFor(Region region, Entity entity, int x, int y, int z) {
         for (Rectangle area : exclusionAreas) {
             if (area.contains(new Point(x, y))) {
                 return false;
             }
         }
-        return !(world.isTileObstructed(x, y, z) && (world.getTile(x, y, z) != null && !world.getTile(x, y, z).isPassableBy(entity)));
+        return !(region.isTileObstructed(x, y, z) && (region.getTile(x, y, z) != null && !region.getTile(x, y, z).isPassableBy(entity)));
     }
 }

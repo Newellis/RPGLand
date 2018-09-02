@@ -3,7 +3,7 @@ package com.tynellis.World.Entities;
 import com.tynellis.BoundingBox.BoundingBoxOwner;
 import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Tiles.Tile;
-import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Region;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -30,11 +30,11 @@ public class ItemEntity extends Entity {
         this.floatChange = -0.25;
     }
 
-    public void tick(World world, List<Entity> near) {
+    public void tick(Region region, Random random, List<Entity> near) {
         if (item.getSize() <= 0 || age == 60 * 60 * 5) {
             kill();
         } else {
-            super.tick(world, near);
+            super.tick(region, random, near);
             Rectangle rect = getBounds();
             double[] centerPoint = isOverPoint();
             for (Entity entity : near) {
@@ -44,7 +44,7 @@ public class ItemEntity extends Entity {
             }
             age++;
         }
-        super.tick(world, near);
+        super.tick(region, random, near);
     }
 
     public ItemPile getItem() {
@@ -85,7 +85,7 @@ public class ItemEntity extends Entity {
     }
 
     @Override
-    public void performDeath(World world) {
+    public void performDeath(Region region, Random random) {
 
     }
 

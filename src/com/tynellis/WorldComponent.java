@@ -1,8 +1,8 @@
 package com.tynellis;
 
-import com.tynellis.World.Area;
-import com.tynellis.World.World;
 import com.tynellis.World.WorldGen;
+import com.tynellis.World.world_parts.Area;
+import com.tynellis.World.world_parts.Region;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -33,15 +33,15 @@ public class WorldComponent extends JComponent{
     }
 
     public WorldComponent() {
-        this.setPreferredSize(new Dimension(World.WIDTH, World.HEIGHT));
+        this.setPreferredSize(new Dimension(Region.WIDTH, Region.HEIGHT));
         Random random = new Random();
         long seed = random.nextLong();
         seed = 2000000;
         System.out.println("Seed: " + seed);
-        World world = new World("test", seed);
-        world.genSpawn(seed);
-        spawn = world.getSpawnPoint();
-        array = world.gen.getLandAreas(); //world.gen.erodeArea(20 * Area.WIDTH, 10 * Area.HEIGHT, new Random(seed * ((20 * Area.WIDTH * World.WIDTH) + 10 * Area.HEIGHT)));
+        Region region = new Region("test", seed);
+//        region.genSpawn(seed);
+//        spawn = region.getSpawnPoint();
+//        array = region.gen.getLandAreas(); //region.gen.erodeArea(20 * Area.WIDTH, 10 * Area.HEIGHT, new Random(seed * ((20 * Area.WIDTH * Region.WIDTH) + 10 * Area.HEIGHT)));
     }
 
     @Override
@@ -73,7 +73,7 @@ public class WorldComponent extends JComponent{
                 //g2.setColor(new Color((int)(((array[x][y]-50.0)/100)*255), (int)(((array[x][y]-50.0)/100)*255), (int)(((array[x][y]-50.0)/100)*255)));
                 g2.draw(new Line2D.Double(x, y, x+1, y+1));
             }
-            //System.out.printf("%3.1f Done\n",((x + 1.0)/World.WIDTH) * 100.0);
+            //System.out.printf("%3.1f Done\n",((x + 1.0)/Region.WIDTH) * 100.0);
         }
         g2.setColor(Color.RED);
         g2.fillRect(spawn[0] / Area.WIDTH - 2, spawn[1] / Area.HEIGHT - 2, 5, 5);
