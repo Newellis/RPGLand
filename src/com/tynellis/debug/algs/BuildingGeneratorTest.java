@@ -1,6 +1,5 @@
 package com.tynellis.debug.algs;
 
-import com.tynellis.World.Buildings.Building;
 import com.tynellis.World.Buildings.SmallHouse;
 import com.tynellis.World.Tiles.Tile;
 
@@ -17,11 +16,11 @@ import java.util.Random;
 public class BuildingGeneratorTest extends AlgTest implements ActionListener {
 
     JPanel infoPanel;
-    Building building;
+    SmallHouse building;
     JTextField width, height, floors;
 
     public BuildingGeneratorTest() {
-        Name = "Building Gen";
+        Name = "Small Building Gen";
 
     }
 
@@ -52,6 +51,7 @@ public class BuildingGeneratorTest extends AlgTest implements ActionListener {
     protected void render(Graphics g) {
         if (building != null) {
             building.render(g, 0, 0);
+            building.getDoor().render(g, 0, 0);
         }
     }
 

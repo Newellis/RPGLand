@@ -74,7 +74,6 @@ public class Spawner implements Serializable {
                     while (attempts <= 10 && !validSpawnLocationFor(world, entity, x, y, z));
                     if (attempts <= 10) {
                         entity.setLocation(x, y, z);
-                        System.out.println("Spawn new: " + type.getSimpleName() + " at " + x + ", " + y + ", " + z);
                         world.queueAdditionOfEntity(entity);
                         sucessful = true;
                     }

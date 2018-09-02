@@ -324,6 +324,12 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
         return !notBlocks;
     }
 
+    public double getDistanceTo(Entity entity) {
+        Rectangle eBounds = entity.getBounds();
+        Rectangle bounds = getBounds();
+        return Math.sqrt(Math.pow(eBounds.getCenterX() - bounds.getCenterX(), 2) + Math.pow(eBounds.getCenterY() - bounds.getCenterY(), 2));
+    }
+
     public void kill() {
         isDead = true;
     }

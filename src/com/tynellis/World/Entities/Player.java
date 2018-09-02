@@ -4,6 +4,7 @@ import com.tynellis.Art.Animation;
 import com.tynellis.Art.SpriteImage;
 import com.tynellis.Art.SpriteSheet;
 import com.tynellis.GameComponent;
+import com.tynellis.World.Entities.UsableEntity.UsableEntity;
 import com.tynellis.World.Entities.damage.Damage;
 import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.Containers.Filters.ItemFilter;
@@ -23,6 +24,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -125,6 +127,12 @@ public class Player extends Humanoid {
             }
         }
         weapon.coolDownTick();
+        if (keys.use.wasPressed()) {
+            UsableEntity usable = findUsableTarget(world);
+            if (usable != null && usable.canBeUsedBy(this)) {
+                usable.use(this);
+            }
+        }
 
 //        if (World.DEBUG) {
 //            speed = 0.32;
@@ -182,6 +190,30 @@ public class Player extends Humanoid {
         }
 
         super.render(g, xOffset, yOffset);
+    }
+
+    private UsableEntity findUsableTarget(World world) {
+        double range = 1.5;
+
+        double useDirection = (Math.PI / 4 * getFacing());
+        double AttackXOffset = getX() - (Math.sin(useDirection) * (range / 2.0)) - ((range - 1) / 2.0);
+        double AttackYOffset = getY() - (Math.cos(useDirection) * (range / 2.0)) - ((range - 1) / 2.0);
+
+        Rectangle useArea = new Rectangle((int) ((AttackXOffset) * Tile.WIDTH), (int) ((AttackYOffset) * Tile.WIDTH) - (int) (3 * (getZ() / 4.0) * Tile.HEIGHT), (int) (range * Tile.WIDTH), (int) (range * Tile.HEIGHT));
+
+        ArrayList<Entity> reach = world.getEntitiesIntersecting(useArea);
+        double distance = Integer.MAX_VALUE;
+        UsableEntity useable = null;
+        for (Entity entity : reach) {
+            if (entity instanceof UsableEntity) {
+                double newDist = getDistanceTo(entity);
+                if (newDist < distance) {
+                    useable = (UsableEntity) entity;
+                    distance = newDist;
+                }
+            }
+        }
+        return useable;
     }
 
     public void performDeath(World world) {

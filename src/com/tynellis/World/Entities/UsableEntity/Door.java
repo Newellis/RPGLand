@@ -31,7 +31,7 @@ public class Door extends UsableEntity {
 
     @Override
     public Object use(KillableEntity entity) {
-        if (canUse(entity)) {
+        if (canBeUsedBy(entity)) {
             System.out.println(entity.getClass().getSimpleName() + " using door");
             Open(!open);
             return true;

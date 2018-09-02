@@ -37,7 +37,7 @@ public abstract class UseUsableEntityAi extends FollowEntityAi implements Serial
     public boolean performTask(World world, NpcBase entity) {
         if (shouldUse(world, entity)) {
             boolean moving = super.performTask(world, entity);
-            if (tool.canUse(entity)) {
+            if (tool.canBeUsedBy(entity)) {
                 faceClosest.performTask(world, entity);
                 boolean using = using(tool.use(entity), entity);
                 return using;

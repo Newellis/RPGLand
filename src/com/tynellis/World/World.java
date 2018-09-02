@@ -5,6 +5,7 @@ import com.tynellis.Save.FileHandler;
 import com.tynellis.Save.SavedArea;
 import com.tynellis.Save.StoreLoad;
 import com.tynellis.World.Entities.Entity;
+import com.tynellis.World.Entities.NPC.monsters.Skeleton;
 import com.tynellis.World.Entities.Orginization.EntityComparator;
 import com.tynellis.World.Entities.Orginization.EntityQuadTree;
 import com.tynellis.World.Light.LightOverlay;
@@ -73,7 +74,7 @@ public class World implements Land, Serializable{
     }
 
     private void addEntitiesToSpawn() {
-        //worldSpawner.addEntitySpawn(Skeleton.class, 100);
+        worldSpawner.addEntitySpawn(Skeleton.class, 100);
     }
 
     public Rectangle getLoadedAreaBounds() {

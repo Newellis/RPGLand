@@ -80,7 +80,7 @@ public class SmallHouse extends Building {
         world.setTile(new Grass(world.getRand(), 100), (int) house.getDoor().getX(), (int) house.getDoor().getY(), (int) house.getDoor().getZ() + 1);
     }
 
-    private Entity getDoor() {
+    public Entity getDoor() {
         return door;
     }
 

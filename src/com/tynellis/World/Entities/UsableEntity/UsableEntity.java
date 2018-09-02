@@ -13,7 +13,7 @@ public abstract class UsableEntity extends KillableEntity {
 
     public abstract Object use(KillableEntity entity);
 
-    public boolean canUse(KillableEntity entity) {
+    public boolean canBeUsedBy(KillableEntity entity) {
         double x, y, z, scoreLeft = 0;
         x = Math.abs(entity.getX() - getX());
         y = Math.abs(entity.getY() - getY());

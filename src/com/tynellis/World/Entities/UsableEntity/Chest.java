@@ -62,7 +62,7 @@ public class Chest extends UsableEntity {
     }
 
     public String toString() {
-        return "Chest{" + getClass().getName() +
+        return "Chest{" + getClass().getSimpleName() +
                 ", posY= " + posY +
                 ", posX= " + posX +
                 ", posZ= " + posZ +
@@ -72,7 +72,8 @@ public class Chest extends UsableEntity {
 
     @Override
     public Object use(KillableEntity entity) {
-        if (canUse(entity)) {
+        if (canBeUsedBy(entity)) {
+            System.out.println("Being used by " + entity.getClass().getSimpleName());
             ChestInterface chestInterface = new ChestInterface(this);
             interfaces.add(chestInterface);
             isOpen = true;
