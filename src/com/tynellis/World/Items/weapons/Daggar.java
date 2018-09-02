@@ -9,12 +9,20 @@ import com.tynellis.World.Tiles.Tile;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 
 public class Daggar extends Sword {
 
     public Daggar(String name, int coolDown, int artCol, int artRow) {
         super(name, coolDown, artCol, artRow);
         damage = new DamageSource(new Damage(Damage.Types.SLICING, .5));
+        weaponSheet = new SpriteSheet("tempArt/lpc/lpc_entry/png/slash/WEAPON_dagger.png", 64, 64, 1);
+        weaponAnimation = new Animation(weaponSheet, 2);
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
         weaponSheet = new SpriteSheet("tempArt/lpc/lpc_entry/png/slash/WEAPON_dagger.png", 64, 64, 1);
         weaponAnimation = new Animation(weaponSheet, 2);
     }

@@ -14,7 +14,7 @@ import com.tynellis.World.Items.weapons.Sword;
 import com.tynellis.World.Items.weapons.Weapon;
 import com.tynellis.World.Light.LightSource;
 import com.tynellis.World.Tiles.Tile;
-import com.tynellis.World.WorldManager;
+import com.tynellis.World.World;
 import com.tynellis.World.world_parts.Region;
 import com.tynellis.debug.Debug;
 import com.tynellis.input.Keys;
@@ -62,6 +62,7 @@ public class Player extends Humanoid {
         animation.playInRange(spriteFacing, 1, 8);
         attackAnimation.playFromStart(spriteFacing);
         attacking = false;
+        System.out.println("load player " + hashCode() + " with " + keys);
     }
 
     @Override
@@ -79,62 +80,63 @@ public class Player extends Humanoid {
 
     public void tick(Region region, Random random, List<Entity> near) {
         moving = false;
-        if (keys.debug.wasPressed()) {
-            GameComponent.debug.setState(!GameComponent.debug.State());
-            if (GameComponent.debug.State() && GameComponent.debug.isType(Debug.Type.FLY)) {
-                movementType = movementTypes.Flying;
-            } else if (!GameComponent.debug.State() && GameComponent.debug.isType(Debug.Type.FLY)) {
-                movementType = movementTypes.Walking;
-                posZ = region.getTopLayerAt((int) posX, (int) posY);
+        if (keys != null) {
+            if (keys.debug.wasPressed()) {
+                GameComponent.debug.setState(!GameComponent.debug.State());
+                if (GameComponent.debug.State() && GameComponent.debug.isType(Debug.Type.FLY)) {
+                    movementType = movementTypes.Flying;
+                } else if (!GameComponent.debug.State() && GameComponent.debug.isType(Debug.Type.FLY)) {
+                    movementType = movementTypes.Walking;
+                    posZ = region.getTopLayerAt((int) posX, (int) posY);
+                }
+            }
+            if (keys.down.isDown && keys.right.isDown) {
+                facing = 5;
+                moving = true;
+            } else if (keys.up.isDown && keys.right.isDown) {
+                facing = 7;
+                moving = true;
+            } else if (keys.up.isDown && keys.left.isDown) {
+                facing = 1;
+                moving = true;
+            } else if (keys.down.isDown && keys.left.isDown) {
+                facing = 3;
+                moving = true;
+            } else if (keys.down.isDown) {
+                facing = 4;
+                moving = true;
+                spriteFacing = 2;
+            } else if (keys.up.isDown) {
+                facing = 0;
+                moving = true;
+                spriteFacing = 0;
+            } else if (keys.right.isDown) {
+                facing = 6;
+                moving = true;
+                //testPlayer.flipHoriz(true);
+            } else if (keys.left.isDown) {
+                facing = 2;
+                moving = true;
+                //testPlayer.flipHoriz(false);
+            }
+            if (keys.right.isDown) {
+                spriteFacing = 3;
+            } else if (keys.left.isDown) {
+                spriteFacing = 1;
+            }
+            if (keys.attack.wasPressed()) {
+                if (weapon.canUse(region, this)) {
+                    meleeAttack(weapon, random, region);
+                }
+            }
+            weapon.coolDownTick();
+            if (keys.use.wasPressed()) {
+                UsableEntity usable = findUsableTarget(region);
+                if (usable != null && usable.canBeUsedBy(this)) {
+                    usable.use(this);
+                }
             }
         }
-        if (keys.down.isDown && keys.right.isDown) {
-            facing = 5;
-            moving = true;
-        } else if (keys.up.isDown && keys.right.isDown) {
-            facing = 7;
-            moving = true;
-        } else if (keys.up.isDown && keys.left.isDown) {
-            facing = 1;
-            moving = true;
-        } else if (keys.down.isDown && keys.left.isDown) {
-            facing = 3;
-            moving = true;
-        } else if (keys.down.isDown) {
-            facing = 4;
-            moving = true;
-            spriteFacing = 2;
-        } else if (keys.up.isDown) {
-            facing = 0;
-            moving = true;
-            spriteFacing = 0;
-        } else if (keys.right.isDown) {
-            facing = 6;
-            moving = true;
-            //testPlayer.flipHoriz(true);
-        } else if (keys.left.isDown) {
-            facing = 2;
-            moving = true;
-            //testPlayer.flipHoriz(false);
-        }
-        if (keys.right.isDown) {
-            spriteFacing = 3;
-        } else if (keys.left.isDown) {
-            spriteFacing = 1;
-        }
-        if (keys.attack.wasPressed()) {
-            if (weapon.canUse(region, this)) {
-                meleeAttack(weapon, random, region);
-            }
-        }
-        weapon.coolDownTick();
-        if (keys.use.wasPressed()) {
-            UsableEntity usable = findUsableTarget(region);
-            if (usable != null && usable.canBeUsedBy(this)) {
-                usable.use(this);
-            }
-        }
-
 //        if (Region.DEBUG) {
 //            speed = 0.32;
 //        } else {
@@ -226,8 +228,8 @@ public class Player extends Humanoid {
         isDead = false;
         int x, y, z;
         do {
-            x = WorldManager.getSpawnPoint()[0] + (random.nextInt(20) - 10);
-            y = WorldManager.getSpawnPoint()[1] + (random.nextInt(20) - 10);
+            x = World.getSpawnPoint()[0] + (random.nextInt(20) - 10);
+            y = World.getSpawnPoint()[1] + (random.nextInt(20) - 10);
             z = region.getTopLayerAt(x, y);
         } while (region.isTileObstructed(x, y, z) && !region.getTile(x, y, z).isPassableBy(this));
 
@@ -251,6 +253,7 @@ public class Player extends Humanoid {
     }
 
     public void setKeys(Keys keys) {
+        System.out.println("Set Keys " + keys);
         this.keys = keys;
     }
 }

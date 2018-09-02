@@ -17,7 +17,7 @@ import java.io.Serializable;
 import java.util.Random;
 
 public class WorldGen implements Serializable{
-    private WorldManager world;
+    private World world;
     public static final int SEA_LEVEL = 25;
     public static final int BEACH_MAX_LEVEL = 50;
     public static final int HILL_LEVEL = 300;//150;
@@ -29,7 +29,7 @@ public class WorldGen implements Serializable{
     private int[][] landAreas;
     private int[][] caveAreas = new int[Region.WIDTH][Region.HEIGHT];
 
-    public WorldGen(WorldManager world) {
+    public WorldGen(World world) {
         this.world = world;
         genCaves();
         genLand();
@@ -42,7 +42,7 @@ public class WorldGen implements Serializable{
             int x = rand.nextInt(Region.WIDTH),
                     y = rand.nextInt(Region.HEIGHT);
             if (landAreas[x][y] > SEA_LEVEL && landAreas[x][y] < TREE_LEVEL) {
-                world.setHalfNumOfAreas((GameComponent.GAME_WIDTH / (Tile.WIDTH * Area.WIDTH)) + (3 * WorldManager.Buffer), (GameComponent.GAME_HEIGHT / (Tile.HEIGHT * Area.HEIGHT)) + (3 * WorldManager.Buffer));
+                world.setHalfNumOfAreas((GameComponent.GAME_WIDTH / (Tile.WIDTH * Area.WIDTH)) + (3 * World.Buffer), (GameComponent.GAME_HEIGHT / (Tile.HEIGHT * Area.HEIGHT)) + (3 * World.Buffer));
                 world.setAreaOffset(x - 3, y - 4);
                 region.loadAreas(world.getLoadedAreaRect(), this, world.getRand(), seed);
                 while (!viable) {

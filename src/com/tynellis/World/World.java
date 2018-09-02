@@ -22,7 +22,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class WorldManager implements Land, Serializable {
+public class World implements Land, Serializable {
 
     private Region overRegionRegion;
     private Region currentRegion;
@@ -44,13 +44,13 @@ public class WorldManager implements Land, Serializable {
     private final Rectangle screenArea = new Rectangle();
     private Rectangle loadedArea = new Rectangle();
 
-    public WorldManager(String name, long seed) {
+    public World(String name, long seed) {
         this.seed = seed;
         WORLD_RAND = new Random(seed);
         Name = name;
         FileHandler.setGameDir(Name);
         gen = new WorldGen(this);
-        overRegionRegion = new Region(name, seed);
+        overRegionRegion = new Region("Surface");
         overRegionRegion.addSpawnFreeArea(screenArea);
         currentRegion = overRegionRegion;
         loadedRegions = new ArrayList<Region>();
@@ -115,7 +115,9 @@ public class WorldManager implements Land, Serializable {
     }
 
     public void removeEntity(Entity entity) {
-        currentRegion.removeEntity(entity);
+        for (Region region : loadedRegions) {
+            region.removeEntity(entity);
+        }
     }
 
     public Tile getTile(Region region, int X, int Y, int Z) {

@@ -13,7 +13,7 @@ import com.tynellis.World.Tiles.LandTiles.ManMade.Ladder;
 import com.tynellis.World.Tiles.LandTiles.Natural.Grass;
 import com.tynellis.World.Tiles.LandTiles.Natural.Slope;
 import com.tynellis.World.Tiles.Tile;
-import com.tynellis.World.WorldManager;
+import com.tynellis.World.World;
 import com.tynellis.World.world_parts.Area;
 import com.tynellis.World.world_parts.Region;
 import com.tynellis.debug.Debug;
@@ -47,7 +47,7 @@ public class GameComponent extends JPanel implements Runnable {
 
     private GameState state = GameState.MENU;
     private Menu menu = new MainMenu(GAME_WIDTH, GAME_HEIGHT);
-    public static WorldManager world;
+    public static World world;
     private Player player;
     private static final int autoSaveTicks = 60 * 30; //ticks per sec * seconds between saves
     private int ticksToSave = autoSaveTicks;
@@ -234,7 +234,7 @@ public class GameComponent extends JPanel implements Runnable {
 
     public void startGame(String name, long seed) {
         System.out.print("Loading...");
-        world = new WorldManager(name, seed);
+        world = new World(name, seed);
         world.genSpawn(seed);
         int[] spawn = world.getSpawnPoint();
         //todo add player customization
@@ -278,7 +278,7 @@ public class GameComponent extends JPanel implements Runnable {
         StoreLoad.StorePlayer(player);
         world.removeEntity(player);
         world.saveLoadedAreas();
-//        StoreLoad.StoreWorld(world, playerName);
+        StoreLoad.StoreWorld(world, playerName);
         world.addEntity(player);
         player.setKeys(keys);
     }
@@ -287,7 +287,7 @@ public class GameComponent extends JPanel implements Runnable {
         FileHandler.setGameDir(worldName);
         SavedWorld save = StoreLoad.LoadWorld();
         if (save != null) {
-//            world = save.getRegion();
+            world = save.getWorld();
             player = StoreLoad.LoadPlayer(save.getPlayerName());
             assert player != null;
             player.setKeys(keys);

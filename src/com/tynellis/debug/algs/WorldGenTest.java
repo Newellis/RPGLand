@@ -1,7 +1,7 @@
 package com.tynellis.debug.algs;
 
+import com.tynellis.World.World;
 import com.tynellis.World.WorldGen;
-import com.tynellis.World.WorldManager;
 import com.tynellis.World.world_parts.Area;
 import com.tynellis.World.world_parts.Region;
 
@@ -27,7 +27,7 @@ public class WorldGenTest extends AlgTest {
         Random random = new Random();
         long seed = 2000000; //random.nextLong();
         System.out.println("Seed: " + seed);
-        WorldManager world = new WorldManager("test", seed);
+        World world = new World("test", seed);
 //        Region world = new Region("test", seed);
         world.genSpawn(seed);
         spawn = world.getSpawnPoint();

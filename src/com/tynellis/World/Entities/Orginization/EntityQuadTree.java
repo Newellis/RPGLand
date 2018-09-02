@@ -177,4 +177,16 @@ public class EntityQuadTree {
             }
         }
     }
+
+    public synchronized void remove(Entity entity) {
+        if (nodes[0] != null) {
+            int index = getIndex(entity.getBounds());
+            if (index != -1) {//fits fully in one quadrant
+                nodes[index].remove(entity);
+                return;
+            }
+        }
+
+        entities.remove(entity);
+    }
 }

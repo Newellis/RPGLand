@@ -11,13 +11,15 @@ import com.tynellis.World.world_parts.Region;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 
 public abstract class Weapon extends UsableItem {
     private double range;
     protected DamageSource damage;
     protected int coolDown, coolDownTimer;
-    protected transient SpriteSheet weaponSheet = new SpriteSheet("tempArt/lpc/submission_daneeklu 2/character/sword_sheet_128.png", 128, 126, 1);
-    protected transient Animation weaponAnimation = new Animation(weaponSheet, 2);
+    protected transient SpriteSheet weaponSheet;
+    protected transient Animation weaponAnimation;
 
 
     public Weapon(String name, double range, int coolDown, DamageSource damage, int artCol, int artRow) {
@@ -25,6 +27,14 @@ public abstract class Weapon extends UsableItem {
         this.damage = damage;
         this.coolDown = coolDown;
         this.range = range;
+        weaponSheet = new SpriteSheet("tempArt/lpc/submission_daneeklu 2/character/sword_sheet_128.png", 128, 126, 1);
+        weaponAnimation = new Animation(weaponSheet, 2);
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+        weaponSheet = new SpriteSheet("tempArt/lpc/submission_daneeklu 2/character/sword_sheet_128.png", 128, 126, 1);
+        weaponAnimation = new Animation(weaponSheet, 2);
     }
 
     public boolean canUse(Region region, KillableEntity user) {

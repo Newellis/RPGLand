@@ -3,6 +3,7 @@ package com.tynellis.Save;
 import com.tynellis.GameComponent;
 import com.tynellis.Save.OSLib.EnumOS2;
 import com.tynellis.Save.OSLib.EnumOSMappingHelper;
+import com.tynellis.World.world_parts.Region;
 import com.tynellis.debug.Debug;
 
 import java.io.File;
@@ -45,6 +46,14 @@ public class FileHandler {
     //get active Game Directory
     public static File getGameDir() {
         return GameDir;
+    }
+
+    public static File getRegionDir(Region region) {
+        File RegionDir = new File(GameDir, region.getName());
+        if (!RegionDir.exists()) {
+            RegionDir.mkdir();
+        }
+        return RegionDir;
     }
 
     //get the Games Directory in the App Directory
