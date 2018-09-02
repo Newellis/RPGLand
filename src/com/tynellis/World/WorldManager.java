@@ -16,7 +16,6 @@ import com.tynellis.World.world_parts.Area;
 import com.tynellis.World.world_parts.Land;
 import com.tynellis.World.world_parts.Region;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.io.Serializable;
@@ -52,13 +51,14 @@ public class WorldManager implements Land, Serializable {
         FileHandler.setGameDir(Name);
         gen = new WorldGen(this);
         overRegionRegion = new Region(name, seed);
+        overRegionRegion.addSpawnFreeArea(screenArea);
         currentRegion = overRegionRegion;
         loadedRegions = new ArrayList<Region>();
         loadedRegions.add(overRegionRegion);
     }
 
     public void tick() {
-        overRegionRegion.setAreaOffset(areaOffset);
+//        overRegionRegion.setAreaOffset(areaOffset);
         //load areas if old and new area offset are different
         loadAreas();
 
@@ -69,23 +69,18 @@ public class WorldManager implements Land, Serializable {
         int xOffset = (width / 2) - XPos;
         int yOffset = ((height / 2) - YPos + ZPos);
 
-//        screenArea.setBounds(((XPos - (width / 2)) / Tile.WIDTH) - 2, ((YPos - (height / 2)) / Tile.WIDTH) - 2, (width / Tile.WIDTH) + 4, (height / Tile.WIDTH) + 4);
-        screenArea.setBounds((XPos - (width / 2)), (YPos - (height / 2)), (width), (height));
+        Rectangle screen = new Rectangle((XPos - (width / 2)), (YPos - (height / 2)), (width), (height));
+        Rectangle renderArea = new Rectangle(screen.x - ((Area.WIDTH * Tile.WIDTH) / 2), screen.y - ((Area.HEIGHT * Tile.HEIGHT) / 2), screen.width + (Area.WIDTH * Tile.WIDTH), screen.height + (Area.HEIGHT * Tile.HEIGHT));
+        screenArea.setBounds(screen.x / Tile.WIDTH, screen.y / Tile.HEIGHT, screen.width / Tile.WIDTH, screen.height / Tile.HEIGHT);
 
         //calculate how many areas across to just past the edge
         NumOfAreasInWidth = (width / (Tile.WIDTH * Area.WIDTH)) + (3 * Buffer);
         NumOfAreasInHeight = (height / (Tile.HEIGHT * Area.HEIGHT)) + (3 * Buffer);
         //store old and find area offset
-//        setAreaOffset((XPos / (Tile.WIDTH * Area.WIDTH) - (NumOfAreasInWidth / 2)) - Buffer, (YPos / (Tile.HEIGHT * Area.HEIGHT) - (NumOfAreasInHeight / 2)) - Buffer);
-//        setAreaOffset((XPos / (Tile.WIDTH * Area.WIDTH)) - Buffer, (YPos / (Tile.HEIGHT * Area.HEIGHT)) - Buffer);
-        setAreaOffset((int) (screenArea.getX() / (Tile.WIDTH * Area.WIDTH)) - Buffer, (int) (screenArea.getY() / (Tile.HEIGHT * Area.HEIGHT)) - Buffer);
+        setAreaOffset((int) (screen.getX() / (Tile.WIDTH * Area.WIDTH)) - Buffer, (int) (screen.getY() / (Tile.HEIGHT * Area.HEIGHT)) - Buffer);
         loadedArea.setBounds(areaOffset[X], areaOffset[Y], NumOfAreasInWidth, NumOfAreasInHeight);
 
-        currentRegion.render(g, xOffset, yOffset, screenArea);
-
-        g.setColor(Color.BLUE);
-        g.drawRect(screenArea.x + xOffset, screenArea.y + yOffset, screenArea.width, screenArea.height);
-
+        currentRegion.render(g, xOffset, yOffset, renderArea);
     }
 
     public void setHalfNumOfAreas(int width, int height) {
@@ -151,7 +146,6 @@ public class WorldManager implements Land, Serializable {
 
     public void genSpawn(long seed) {
         gen.setSpawn(overRegionRegion, seed);
-//        setSpawnPoint(overRegionRegion, new int[]{1000, 4000, 0});
     }
 
     public static int[] getSpawnPoint() {
@@ -162,7 +156,7 @@ public class WorldManager implements Land, Serializable {
         this.spawnPoint = spawnPoint;
         spawnRegion = region;
 
-        setAreaOffset(spawnPoint[X] - 3, spawnPoint[Y] - 4);
+        setAreaOffset(areaOffset[X], areaOffset[Y]);//to set up old area offset
         loadedArea.setBounds(areaOffset[X], areaOffset[Y], NumOfAreasInWidth, NumOfAreasInHeight);
         loadAreas();
     }
@@ -180,7 +174,7 @@ public class WorldManager implements Land, Serializable {
 
     public void loadAreas() {
         for (Region region : loadedRegions) {
-            region.loadAreas(loadedArea, gen, getRand(), seed);
+            region.loadAreas(oldAreaOffset[X], oldAreaOffset[Y], loadedArea, gen, getRand(), seed);
         }
     }
 

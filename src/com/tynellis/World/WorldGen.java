@@ -42,16 +42,13 @@ public class WorldGen implements Serializable{
             int x = rand.nextInt(Region.WIDTH),
                     y = rand.nextInt(Region.HEIGHT);
             if (landAreas[x][y] > SEA_LEVEL && landAreas[x][y] < TREE_LEVEL) {
-//                world.setHalfNumOfAreas(1 + (GameComponent.GAME_WIDTH / (Tile.WIDTH * Area.WIDTH)), 1 + (GameComponent.GAME_HEIGHT / (Tile.HEIGHT * Area.HEIGHT)));
                 world.setHalfNumOfAreas((GameComponent.GAME_WIDTH / (Tile.WIDTH * Area.WIDTH)) + (3 * WorldManager.Buffer), (GameComponent.GAME_HEIGHT / (Tile.HEIGHT * Area.HEIGHT)) + (3 * WorldManager.Buffer));
                 world.setAreaOffset(x - 3, y - 4);
                 region.loadAreas(world.getLoadedAreaRect(), this, world.getRand(), seed);
-                System.out.println("find spawn -------------------------");
                 while (!viable) {
                     int areaX = rand.nextInt(2 * Area.WIDTH) - Area.WIDTH,
                             areaY = rand.nextInt(2 * Area.HEIGHT) - Area.HEIGHT;
                     Tile tile = region.getTile((x * Area.WIDTH) + areaX, (y * Area.HEIGHT) + areaY, region.getTopLayerAt((x * Area.WIDTH) + areaX, (y * Area.HEIGHT) + areaY));
-                    System.out.println("Tile " + tile);
                     Rectangle tileBounds = tile.getBounds();
                     tileBounds.setLocation((x * Area.WIDTH) + areaX, (y * Area.HEIGHT) + areaY);
                     if (tile instanceof LandTile && region.getEntitiesInBounds(tileBounds).size() <= 0) {

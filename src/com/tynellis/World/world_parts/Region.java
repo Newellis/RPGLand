@@ -4,6 +4,7 @@ import com.tynellis.GameComponent;
 import com.tynellis.Save.SavedArea;
 import com.tynellis.Save.StoreLoad;
 import com.tynellis.World.Entities.Entity;
+import com.tynellis.World.Entities.NPC.monsters.Skeleton;
 import com.tynellis.World.Entities.Orginization.EntityComparator;
 import com.tynellis.World.Entities.Orginization.EntityQuadTree;
 import com.tynellis.World.Light.LightOverlay;
@@ -58,13 +59,15 @@ public class Region implements Serializable, Land {
     }
 
     private void addEntitiesToSpawn() {
-//        worldSpawner.addEntitySpawn(Skeleton.class, 100);
+        worldSpawner.addEntitySpawn(Skeleton.class, 100);
+    }
+
+    public void addSpawnFreeArea(Rectangle area) {
+        spawnFreeAreas.add(area);
     }
 
     //render world
     public void render(Graphics g, int xOffset, int yOffset, Rectangle screen) {
-
-        if (!spawnFreeAreas.contains(screen)) spawnFreeAreas.add(screen);
 
         //find Entities that are on the screen
         SortedSet<Entity> entitiesToRender = new TreeSet<Entity>(new EntityComparator());
@@ -72,16 +75,18 @@ public class Region implements Serializable, Land {
             entitiesToRender.addAll(getEntitiesNearBounds(screen));
         }
         //render areas
-        for (int j = WorldManager.Buffer + (screen.height / (Tile.HEIGHT * Area.HEIGHT)); j >= WorldManager.Buffer; j--) {
+        for (int j = 2 * WorldManager.Buffer + (screen.height / (Tile.HEIGHT * Area.HEIGHT)); j >= WorldManager.Buffer; j--) {
             if (j < 0 || j > loadedAreas[0].length - 1) {
                 continue;
             }
-            for (int i = WorldManager.Buffer; i <= WorldManager.Buffer + (screen.width / (Tile.WIDTH * Area.WIDTH)); i++) {
+            for (int i = WorldManager.Buffer; i <= 2 * WorldManager.Buffer + (screen.width / (Tile.WIDTH * Area.WIDTH)); i++) {
                 if (i < 0 || i > loadedAreas.length - 1) {
                     continue;
                 }//todo render entities behind tiles they are behind
-                if (loadedAreas[i][j] != null) {
-                    loadedAreas[i][j].render(g, (i + areaOffset[WorldManager.X]) * (Tile.WIDTH * Area.WIDTH) + xOffset, (j + areaOffset[WorldManager.Y]) * (Tile.HEIGHT * Area.HEIGHT) + yOffset);
+                synchronized (loadedAreas) {
+                    if (loadedAreas[i][j] != null) {
+                        loadedAreas[i][j].render(g, (i + areaOffset[WorldManager.X]) * (Tile.WIDTH * Area.WIDTH) + xOffset, (j + areaOffset[WorldManager.Y]) * (Tile.HEIGHT * Area.HEIGHT) + yOffset);
+                    }
                 }
 //                for (int depth = 0; depth < Area.DEPTH; depth++) {
 //                    for (int row = Area.HEIGHT - 1; row >= 0; row--) {
@@ -167,14 +172,15 @@ public class Region implements Serializable, Land {
     //Load areas around player if center area has changed
     public synchronized void loadAreas(int lastX, int lastY, Rectangle loadedArea, WorldGen gen, Random rand, long seed) {
         if (lastX != areaOffset[WorldManager.X] || lastY != areaOffset[WorldManager.Y]) { //if new areas need to be loaded
-            shiftAreas(loadedArea, lastX - areaOffset[WorldManager.X], lastY - areaOffset[WorldManager.Y]);
-            setLoadedAreas(this, gen, rand, seed);
+            synchronized (loadedAreas) {
+                shiftAreas(loadedArea, lastX - areaOffset[WorldManager.X], lastY - areaOffset[WorldManager.Y]);
+                setLoadedAreas(this, gen, rand, seed);
+            }
         }
     }
 
     //initialize all areas around center area
     public synchronized void loadAreas(Rectangle loadedArea, WorldGen gen, Random rand, long seed) {
-        System.out.println("loaded area: " + loadedArea.width + ", " + loadedArea.height);
         synchronized (loadedAreas) {
             loadedAreas = new Area[loadedArea.width][loadedArea.height];
             setLoadedAreas(this, gen, rand, seed);
@@ -204,8 +210,8 @@ public class Region implements Serializable, Land {
             for (int j = 1; j < length; j++){
                 if (loadedAreas[i][j] != null) {
                     if (loadedAreas[i][j].shouldPopulate()){
-//                        gen.styleWorld(this,(i + areaOffset[WorldManager.X]) * Area.WIDTH, (j + areaOffset[WorldManager.Y]) * Area.HEIGHT, seed);
-//                        gen.populateArea(this,(i + areaOffset[WorldManager.X]) * Area.WIDTH, (j + areaOffset[WorldManager.Y]) * Area.HEIGHT, seed);
+                        gen.styleWorld(this, (i + areaOffset[WorldManager.X]) * Area.WIDTH, (j + areaOffset[WorldManager.Y]) * Area.HEIGHT, seed);
+                        gen.populateArea(this, (i + areaOffset[WorldManager.X]) * Area.WIDTH, (j + areaOffset[WorldManager.Y]) * Area.HEIGHT, seed);
                         loadedAreas[i][j].Populate();
                         for (Area[] areas : getAdjacentAreas(i, j)) {
                             for (Area area : areas) {
