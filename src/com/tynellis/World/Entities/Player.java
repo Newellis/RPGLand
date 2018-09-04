@@ -8,6 +8,7 @@ import com.tynellis.GameState;
 import com.tynellis.Menus.InGameMenus.InGameMenu;
 import com.tynellis.Menus.InGameMenus.Inventory;
 import com.tynellis.World.Entities.UsableEntity.UsableEntity;
+import com.tynellis.World.Entities.UsableEntity.UsingInterface;
 import com.tynellis.World.Entities.damage.Damage;
 import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.ItemPile;
@@ -148,7 +149,12 @@ public class Player extends Humanoid {
                 if (keys.use.wasPressed()) {
                     UsableEntity usable = findUsableTarget(region);
                     if (usable != null && usable.canBeUsedBy(this)) {
-                        usable.use(this);
+                        UsingInterface usableInterface = usable.use(this);
+                        if (usableInterface != null) {
+                            Inventory = usableInterface.getMenu(this);
+                            GameComponent.active.setMenu(Inventory);
+                            GameComponent.active.setState(GameState.IN_GAME_MENU);
+                        }
                     }
                 }
             }
@@ -272,5 +278,9 @@ public class Player extends Humanoid {
     public void setKeys(Keys keys) {
         System.out.println("Set Keys " + keys);
         this.keys = keys;
+    }
+
+    public void removeMenu() {
+        Inventory = null;
     }
 }

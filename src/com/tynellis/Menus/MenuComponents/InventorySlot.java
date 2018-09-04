@@ -20,8 +20,8 @@ public class InventorySlot extends MenuComponent {
         offsetY = yOffset;
         X = x;
         Y = y;
-        bounds = new Rectangle(32, 32);
-        over = new Rectangle(32, 32);
+        bounds = new Rectangle(48, 48);
+        over = new Rectangle(48, 48);
         item = pile;
     }
 
@@ -30,23 +30,24 @@ public class InventorySlot extends MenuComponent {
         super.render(g, width, height);
 
         g.setColor(new Color(0.0f, 0.0f, 0.0f, 0.25f));
-        g.fillRect(bounds.x - (bounds.width / 4), bounds.y - (2 * (bounds.height / 5)), (int) (bounds.width * 1.5), (int) (bounds.height * 1.5));
+//        g.fillRect(bounds.x - (bounds.width / 4), bounds.y - (2 * (bounds.height / 5)), (int) (bounds.width * 1.5), (int) (bounds.height * 1.5));
+        g.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
 
         if (item != null) {
             BufferedImage image = item.getItem().getImage();
             if (item.getSize() >= item.getItem().getMaxStackSize() / 2) {
-                g.drawImage(image, bounds.x - (image.getWidth() / 6), bounds.y - (2 * image.getHeight() / 15), null);
-                g.drawImage(image, bounds.x + (image.getWidth() / 6), bounds.y, null);
+                g.drawImage(image, bounds.x - (image.getWidth() / 6) + (bounds.width / 6), bounds.y - (2 * image.getHeight() / 15) + (4 * (bounds.height / 15)), null);
+                g.drawImage(image, bounds.x + (image.getWidth() / 6) + (bounds.width / 6), bounds.y + (4 * (bounds.height / 15)), null);
                 if (item.getSize() >= item.getItem().getMaxStackSize()) {
-                    g.drawImage(image, bounds.x, bounds.y - (image.getHeight() / 3), null);
+                    g.drawImage(image, bounds.x + (bounds.width / 6), bounds.y - (image.getHeight() / 3) + (4 * (bounds.height / 15)), null);
                 }
             } else {
-                g.drawImage(image, bounds.x, bounds.y, null);
+                g.drawImage(image, bounds.x + (bounds.width / 6), bounds.y + (4 * (bounds.height / 15)), null);
             }
         }
         if (mouseOver) {
             g.setColor(new Color(1.0f, 1.0f, 1.0f, 0.25f));
-            g.fillRect(bounds.x - (bounds.width / 4), bounds.y - (2 * (bounds.height / 5)), (int) (bounds.width * 1.5), (int) (bounds.height * 1.5));
+            g.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
         }
     }
 
@@ -79,5 +80,9 @@ public class InventorySlot extends MenuComponent {
 
     public ItemPile getPile() {
         return item;
+    }
+
+    public void setPile(ItemPile pile) {
+        item = pile;
     }
 }

@@ -208,6 +208,7 @@ public class GameComponent extends JPanel implements Runnable {
                 state = GameState.SINGLE_PLAYER;
                 if (menu instanceof InGameMenu) {
                     ((InGameMenu) menu).closeMenu();
+                    player.removeMenu();
                 }
                 menu = null;
             } else {

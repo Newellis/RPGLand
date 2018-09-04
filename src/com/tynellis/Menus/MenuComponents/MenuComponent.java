@@ -27,13 +27,13 @@ public abstract class MenuComponent {
         if (Y != null){
             if (Y == GuiCompLocations.CENTER) {
                 bounds.setLocation(bounds.x, (height / 2 - (bounds.height / 2)) + offsetY);
-                over.setLocation(over.x, (height / 2 - (over.height / 2) + 32) + offsetY);
+                over.setLocation(over.x, (height / 2 - (over.height / 2) + 24) + offsetY);
             } else if (Y == GuiCompLocations.START){
                 bounds.setLocation(bounds.x, padding + offsetY);
-                over.setLocation(over.x, padding + 32 + offsetY);
+                over.setLocation(over.x, padding + 24 + offsetY);
             } else if (Y == GuiCompLocations.END){
                 bounds.setLocation(bounds.x, (height - (bounds.height + padding)) + offsetY);
-                over.setLocation(over.x, (height - (over.height + padding) + 32) + offsetY);
+                over.setLocation(over.x, (height - (over.height + padding) + 24) + offsetY);
             }
         }
     }

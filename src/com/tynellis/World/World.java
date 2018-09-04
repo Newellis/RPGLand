@@ -210,16 +210,16 @@ public class World implements Land, Serializable {
 
     public void addTestEntities() {
         //Testing entities
-        Chest chest = new Chest(spawnPoint[0] - 10, spawnPoint[1] - 5, spawnPoint[2]);
+        Chest chest = new Chest(spawnPoint[0] - 6, spawnPoint[1] - 2, spawnPoint[2]);
         NpcBase npc = new LumberJackNpc(spawnPoint[0] - 3, spawnPoint[1] + 2, spawnPoint[2], NpcBase.NpcGender.FEMALE, chest, getRand());
         ItemEntity itemEntity = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 1), getRand(), spawnPoint[0] + 4, spawnPoint[1], spawnPoint[2]);
         ItemEntity itemEntity1 = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 10), getRand(), spawnPoint[0] + 6, spawnPoint[1], spawnPoint[2]);
         ItemEntity itemEntity2 = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 20), getRand(), spawnPoint[0] + 8, spawnPoint[1], spawnPoint[2]);
-//        overRegionRegion.addEntity(npc);
+        overRegionRegion.addEntity(npc);
         overRegionRegion.addEntity(itemEntity);
         overRegionRegion.addEntity(itemEntity1);
         overRegionRegion.addEntity(itemEntity2);
-//        overRegionRegion.addEntity(chest);
+        overRegionRegion.addEntity(chest);
 //        SmallHouse.buildSmallHouse(overRegionRegion, getRand(), spawnPoint[0] - 6, spawnPoint[1] - 5, spawnPoint[2]);
 //        SmallHouse.buildSmallHouse(overRegionRegion, getRand(), spawnPoint[0], spawnPoint[1] - 5, spawnPoint[2]);
     }

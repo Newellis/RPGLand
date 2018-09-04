@@ -9,70 +9,18 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ab3d649-fdfe-4863-8a5f-5a792e85c7aa" name="Default" comment="Fixed remaining issues with Region addition">
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/InGameMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/Inventory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/Menus/MenuComponents/InventorySlot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Buildings/Interior/SmallHouseGen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/UsingInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Generator/IWorldGen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/Wall.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/WoodFloor.java" afterDir="false" />
+    <list default="true" id="9ab3d649-fdfe-4863-8a5f-5a792e85c7aa" name="Default" comment="added building interiors and player inventory UI">
+      <change afterPath="$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/ChestInventory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/GameComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/GameComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/PauseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/PauseMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/Menus/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/Menus/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/Menus/MenuComponents/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/Menus/MenuComponents/Button.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/Menus/MenuComponents/ButtonListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/Menus/MenuComponents/ButtonListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/Menus/MenuComponents/InventorySlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/Menus/MenuComponents/InventorySlot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/Menus/MenuComponents/MenuComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/Menus/MenuComponents/MenuComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/Save/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/Save/FileHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/Save/SavedArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/Save/SavedArea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/Save/SavedRegion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/Save/SavedRegion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/Save/StoreLoad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/Save/StoreLoad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Buildings/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Buildings/Building.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Buildings/SmallHouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Buildings/SmallHouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Humanoid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Humanoid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/ItemEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/ItemEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/KillableEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/KillableEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/AiTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/AiTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/FaceClosestAi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/FaceClosestAi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/PathfinderAi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/PathfinderAi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/RandomWanderAi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/RandomWanderAi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/StayNearPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/StayNearPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/UseChestAi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/UseChestAi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/UseUsableEntityAi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/UseUsableEntityAi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/toEntity/AttackEntityAi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/toEntity/AttackEntityAi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/toEntity/CollectItemsAi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/toEntity/CollectItemsAi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/toEntity/CollectItemsFromEntityAi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/toEntity/CollectItemsFromEntityAi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/toEntity/FollowEntityAi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/toEntity/FollowEntityAi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcAi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcAi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Tree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/Chest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/Chest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/ChestInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/ChestInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/Door.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/Door.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/UsableEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/UsableEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/Containers/Container.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Containers/Container.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/UsableItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/UsableItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Sword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Sword.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Weapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Light/LightSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Light/LightSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/UsingInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/UsingInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/World.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/WorldGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Generator/WorldGen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/spawners/MinMaxRangeSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/spawners/MinMaxRangeSpawner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/spawners/Spawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/spawners/Spawner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/spawners/WorldSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/spawners/WorldSpawner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Region.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/WorldComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/WorldComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/debug/Debug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/debug/Debug.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/debug/algs/BuildingGeneratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/debug/algs/BuildingGeneratorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/debug/algs/WorldGenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/debug/algs/WorldGenTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/input/KeyInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/input/KeyInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/input/Keys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/input/Keys.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/input/MouseInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/input/MouseInput.java" afterDir="false" />
     </list>
     <ignored path="MyGame.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -136,27 +84,27 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="479" />
+          <entry key="java" value="497" />
           <entry key="png" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Image" value="1" />
-          <entry key="JAVA" value="479" />
+          <entry key="JAVA" value="497" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="6" />
-          <entry key="java" value="27290" />
-          <entry key="txt" value="2202" />
+          <entry key="java" value="28461" />
+          <entry key="txt" value="2253" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="27290" />
-          <entry key="PLAIN_TEXT" value="2208" />
+          <entry key="JAVA" value="28461" />
+          <entry key="PLAIN_TEXT" value="2259" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -171,97 +119,48 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="143" selection-start-line="143" selection-end-line="143" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/Inventory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="88" column="160" lean-forward="true" selection-start-line="88" selection-start-column="160" selection-end-line="88" selection-end-column="160" />
+            <state relative-caret-position="267">
+              <caret line="69" column="25" lean-forward="true" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#758#773#0" expanded="true" />
-                <element signature="e#3191#3192#0" expanded="true" />
-                <element signature="e#3231#3232#0" expanded="true" />
+                <element signature="e#1092#1103#0" expanded="true" />
+                <element signature="e#1526#1527#0" expanded="true" />
+                <element signature="e#1545#1546#0" expanded="true" />
+                <element signature="e#5143#5144#0" expanded="true" />
+                <element signature="e#5183#5184#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/ItemEntity.java">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/PauseMenu.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="38" column="9" lean-forward="true" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
+            <state relative-caret-position="-1047">
+              <caret line="20" column="23" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="23" />
               <folding>
-                <element signature="e#1001#1002#0" expanded="true" />
-                <element signature="e#1047#1048#0" expanded="true" />
+                <element signature="e#11270#11271#0" expanded="true" />
+                <element signature="e#11302#11303#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/InGameMenu.java">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Entity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="37" lean-forward="true" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+            <state relative-caret-position="327">
+              <caret line="140" column="39" selection-start-line="140" selection-start-column="12" selection-end-line="140" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/World.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="228" column="29" lean-forward="true" selection-start-line="228" selection-start-column="29" selection-end-line="228" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#5115#5116#0" expanded="true" />
-                <element signature="e#5155#5156#0" expanded="true" />
-                <element signature="e#5199#5200#0" expanded="true" />
-                <element signature="e#5246#5247#0" expanded="true" />
-                <element signature="e#5308#5309#0" expanded="true" />
-                <element signature="e#5351#5352#0" expanded="true" />
-                <element signature="e#5564#5565#0" expanded="true" />
-                <element signature="e#5610#5611#0" expanded="true" />
-                <element signature="e#5684#5685#0" expanded="true" />
-                <element signature="e#5729#5730#0" expanded="true" />
-                <element signature="e#5791#5792#0" expanded="true" />
-                <element signature="e#5844#5845#0" expanded="true" />
-                <element signature="e#5917#5918#0" expanded="true" />
-                <element signature="e#5969#5970#0" expanded="true" />
-                <element signature="e#6000#6001#0" expanded="true" />
-                <element signature="e#6027#6028#0" expanded="true" />
-                <element signature="e#6058#6059#0" expanded="true" />
-                <element signature="e#6091#6092#0" expanded="true" />
-                <element signature="e#6135#6136#0" expanded="true" />
-                <element signature="e#6168#6169#0" expanded="true" />
-                <element signature="e#6207#6208#0" expanded="true" />
-                <element signature="e#6259#6260#0" expanded="true" />
-                <element signature="e#6302#6303#0" expanded="true" />
-                <element signature="e#6335#6336#0" expanded="true" />
-                <element signature="e#8383#8384#0" expanded="true" />
-                <element signature="e#8419#8420#0" expanded="true" />
+                <element signature="e#14725#14726#0" expanded="true" />
+                <element signature="e#14754#14755#0" expanded="true" />
+                <element signature="e#14784#14785#0" expanded="true" />
+                <element signature="e#14813#14814#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -274,53 +173,97 @@
               <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
               <folding>
                 <element signature="e#540#555#0" expanded="true" />
-                <element signature="e#1205#1206#0" expanded="true" />
-                <element signature="e#1232#1233#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/GameComponent.java">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Containers/ContainerSlot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="232" column="13" lean-forward="true" selection-start-line="232" selection-start-column="13" selection-end-line="232" selection-end-column="13" />
+            <state relative-caret-position="75">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Containers/Container.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1365">
+              <caret line="99" column="19" selection-start-line="99" selection-start-column="19" selection-end-line="99" selection-end-column="19" />
+              <folding>
+                <element signature="e#3199#3200#0" expanded="true" />
+                <element signature="e#3241#3242#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/ChestInventory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="56" column="25" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#8044#8045#0" expanded="true" />
-                <element signature="e#8078#8079#0" expanded="true" />
-                <element signature="e#8116#8117#0" expanded="true" />
-                <element signature="e#8148#8149#0" expanded="true" />
-                <element signature="e#11905#11906#0" expanded="true" />
-                <element signature="e#11944#11945#0" expanded="true" />
-                <element signature="e#11970#11971#0" expanded="true" />
-                <element signature="e#12000#12001#0" expanded="true" />
+                <element signature="e#450#465#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/ChestInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1098">
-              <caret line="77" column="5" lean-forward="true" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Entity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="235" column="59" lean-forward="true" selection-start-line="235" selection-start-column="59" selection-end-line="235" selection-end-column="59" />
+            <state relative-caret-position="113">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
               <folding>
-                <element signature="e#14725#14726#0" expanded="true" />
-                <element signature="e#14754#14755#0" expanded="true" />
-                <element signature="e#14784#14785#0" expanded="true" />
-                <element signature="e#14813#14814#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#215#216#0" expanded="true" />
+                <element signature="e#249#250#0" expanded="true" />
+                <element signature="e#291#292#0" expanded="true" />
+                <element signature="e#326#327#0" expanded="true" />
+                <element signature="e#358#359#0" expanded="true" />
+                <element signature="e#394#395#0" expanded="true" />
+                <element signature="e#572#573#0" expanded="true" />
+                <element signature="e#636#637#0" expanded="true" />
+                <element signature="e#678#679#0" expanded="true" />
+                <element signature="e#730#731#0" expanded="true" />
+                <element signature="e#821#822#0" expanded="true" />
+                <element signature="e#869#870#0" expanded="true" />
+                <element signature="e#738#739#0" expanded="true" />
+                <element signature="e#791#792#0" expanded="true" />
+                <element signature="e#823#824#0" expanded="true" />
+                <element signature="e#862#863#0" expanded="true" />
+                <element signature="e#910#911#0" expanded="true" />
+                <element signature="e#955#956#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/Menus/MenuComponents/InventorySlot.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2836#2837#0" expanded="true" />
+                <element signature="e#2863#2864#0" expanded="true" />
+                <element signature="e#2905#2906#0" expanded="true" />
+                <element signature="e#2932#2933#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/Menus/MenuComponents/MenuComponent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="24" column="85" lean-forward="true" selection-start-line="24" selection-start-column="85" selection-end-line="24" selection-end-column="85" />
             </state>
           </provider>
         </entry>
@@ -339,12 +282,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>falling</find>
-      <find>getHei</find>
-      <find>zFalling</find>
-      <find>move</find>
-      <find>posZ</find>
-      <find>down</find>
       <find>move areas</find>
       <find>door</find>
       <find>loadedRegions.</find>
@@ -359,9 +296,7 @@
       <find>wallType</find>
       <find>IN_GAME_MENU</find>
       <find>setMenu</find>
-      <find>use</find>
       <find>canPickUpItems</find>
-      <find>inventory</find>
       <find>mouse</find>
       <find>over</find>
       <find>Word</find>
@@ -369,6 +304,14 @@
       <find>pause</find>
       <find>facing</find>
       <find>hand</find>
+      <find>isOpen</find>
+      <find>use</find>
+      <find>closeMen</find>
+      <find>inventory</find>
+      <find>item =</find>
+      <find>deb</find>
+      <find>debug</find>
+      <find>slots</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -394,8 +337,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/toEntity/CollectItemsFromEntityAi.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/toEntity/CollectItemsAi.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/toEntity/AttackEntityAi.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Sword.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/Stairs.java" />
@@ -425,25 +366,27 @@
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Buildings/Interior/SmallHouseGen.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Buildings/SmallHouse.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/Door.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/UsingInterface.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/ChestInterface.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/UsableEntity.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/UseChestAi.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/UseUsableEntityAi.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/input/Keys.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/input/KeyInput.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/Menus/MenuComponents/ButtonListener.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/Menus/MenuComponents/MenuComponent.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/Menus/MenuComponents/Button.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/Menus/Menu.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/input/MouseInput.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Containers/Container.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/Menus/MenuComponents/InventorySlot.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/PauseMenu.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/InGameMenu.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/UsingInterface.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/GameComponent.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/World.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/ChestInterface.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/KillableEntity.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/World.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/Menus/MenuComponents/InventorySlot.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/Menus/MenuComponents/MenuComponent.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/ChestInventory.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/Inventory.java" />
       </list>
     </option>
@@ -576,16 +519,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="tynellis" type="462c0819:PsiDirectoryNode" />
               <item name="World" type="462c0819:PsiDirectoryNode" />
-              <item name="Items" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyGameRestart" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="tynellis" type="462c0819:PsiDirectoryNode" />
-              <item name="World" type="462c0819:PsiDirectoryNode" />
-              <item name="Items" type="462c0819:PsiDirectoryNode" />
-              <item name="Containers" type="462c0819:PsiDirectoryNode" />
+              <item name="world_parts" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -604,7 +538,7 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/tyler/Documents/Java Projects/MyGameRestart/src/com/tynellis/Entities/Mob.java" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536046605240" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536088135239" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
     <property name="dynamic.classpath" value="false" />
@@ -1147,7 +1081,14 @@
       <option name="project" value="LOCAL" />
       <updated>1535928046846</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="added building interiors and player inventory UI">
+      <created>1536046741710</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1536046741710</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1163,7 +1104,7 @@
     <frame x="0" y="23" width="1680" height="1023" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.79072845" visible="true" weight="0.24542125" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.79072845" visible="true" weight="0.24542125" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Favorites" order="3" sideWeight="0.20927152" side_tool="true" weight="0.1991404" />
@@ -1172,7 +1113,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49713057" weight="0.31057268" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5989011" visible="true" weight="0.3876652" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5989011" visible="true" weight="0.3876652" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4856528" weight="0.49669603" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1194,7 +1135,7 @@
       <window_info anchor="right" id="Theme Preview" order="8" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.79072845" visible="true" weight="0.24542125" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.79072845" visible="true" weight="0.24542125" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Favorites" order="3" sideWeight="0.20927152" side_tool="true" weight="0.1991404" />
@@ -1203,7 +1144,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49713057" weight="0.31057268" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5989011" weight="0.4493392" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5989011" visible="true" weight="0.3876652" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4856528" weight="0.49669603" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1212,7 +1153,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4981685" weight="0.280837" />
       <window_info anchor="bottom" id="Application Servers" order="9" />
       <window_info anchor="bottom" id="Changes" order="10" />
-      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.44688645" weight="0.32378855" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.44688645" weight="0.2863436" />
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.32980132" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24928367" />
@@ -1263,7 +1204,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed pathfinding failure causing deadlock of game" />
     <MESSAGE value="added basic move to and attack entity ai" />
     <MESSAGE value="fixed useChestAi so it fully completes before being interrupted by lower priority tasks" />
     <MESSAGE value="fixed up attack ai to use melee attack" />
@@ -1288,7 +1228,8 @@
     <MESSAGE value="Finished major reorganization to allow Regions" />
     <MESSAGE value="fixed most systems broken by reorganization to allow Regions" />
     <MESSAGE value="Fixed remaining issues with Region addition" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed remaining issues with Region addition" />
+    <MESSAGE value="added building interiors and player inventory UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="added building interiors and player inventory UI" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1321,20 +1262,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/Save/StoreLoad.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Orginization/EntityQuadTree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="192" lean-forward="true" selection-start-line="192" selection-end-line="192" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Weapon.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="343">
@@ -1512,23 +1439,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/UsingInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/Chest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="15" column="30" lean-forward="true" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/UseUsableEntityAi.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -1544,13 +1454,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
           <caret line="43" column="13" lean-forward="true" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/ChestInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1627,23 +1530,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/KillableEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="103" column="17" selection-start-line="103" selection-start-column="17" selection-end-line="103" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/Menus/MenuComponents/MenuComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="16" column="55" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home/lib/src.zip!/java.desktop/java/awt/event/MouseMotionListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="58">
@@ -1695,35 +1581,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Containers/Container.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="100" column="35" lean-forward="true" selection-start-line="100" selection-start-column="35" selection-end-line="100" selection-end-column="35" />
-          <folding>
-            <element signature="e#3203#3204#0" expanded="true" />
-            <element signature="e#3238#3239#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/Menus/MenuComponents/InventorySlot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="83" column="5" lean-forward="true" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2040#2041#0" expanded="true" />
-            <element signature="e#2096#2097#0" expanded="true" />
-            <element signature="e#2894#2895#0" expanded="true" />
-            <element signature="e#2921#2922#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/PauseMenu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="38" column="9" lean-forward="true" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
+          <caret line="37" column="9" lean-forward="true" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
           <folding>
             <element signature="e#1001#1002#0" expanded="true" />
             <element signature="e#1047#1048#0" expanded="true" />
@@ -1734,7 +1595,31 @@
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/InGameMenu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
-          <caret line="14" column="37" lean-forward="true" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+          <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="141" selection-start-line="141" selection-end-line="141" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/ItemEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/UsingInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1743,8 +1628,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/GameComponent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="232" column="13" lean-forward="true" selection-start-line="232" selection-start-column="13" selection-end-line="232" selection-end-column="13" />
+        <state relative-caret-position="235">
+          <caret line="212" column="28" lean-forward="true" selection-start-line="212" selection-start-column="28" selection-end-line="212" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#8044#8045#0" expanded="true" />
@@ -1759,53 +1644,103 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/World.java">
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/Chest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="228" column="29" lean-forward="true" selection-start-line="228" selection-start-column="29" selection-end-line="228" selection-end-column="29" />
+        <state relative-caret-position="379">
+          <caret line="92" column="27" lean-forward="true" selection-start-line="92" selection-start-column="27" selection-end-line="92" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5115#5116#0" expanded="true" />
-            <element signature="e#5155#5156#0" expanded="true" />
-            <element signature="e#5199#5200#0" expanded="true" />
-            <element signature="e#5246#5247#0" expanded="true" />
-            <element signature="e#5308#5309#0" expanded="true" />
-            <element signature="e#5351#5352#0" expanded="true" />
-            <element signature="e#5564#5565#0" expanded="true" />
-            <element signature="e#5610#5611#0" expanded="true" />
-            <element signature="e#5684#5685#0" expanded="true" />
-            <element signature="e#5729#5730#0" expanded="true" />
-            <element signature="e#5791#5792#0" expanded="true" />
-            <element signature="e#5844#5845#0" expanded="true" />
-            <element signature="e#5917#5918#0" expanded="true" />
-            <element signature="e#5969#5970#0" expanded="true" />
-            <element signature="e#6000#6001#0" expanded="true" />
-            <element signature="e#6027#6028#0" expanded="true" />
-            <element signature="e#6058#6059#0" expanded="true" />
-            <element signature="e#6091#6092#0" expanded="true" />
-            <element signature="e#6135#6136#0" expanded="true" />
-            <element signature="e#6168#6169#0" expanded="true" />
-            <element signature="e#6207#6208#0" expanded="true" />
-            <element signature="e#6259#6260#0" expanded="true" />
-            <element signature="e#6302#6303#0" expanded="true" />
-            <element signature="e#6335#6336#0" expanded="true" />
-            <element signature="e#8383#8384#0" expanded="true" />
-            <element signature="e#8419#8420#0" expanded="true" />
+            <element signature="e#2777#2778#0" expanded="true" />
+            <element signature="e#2826#2827#0" expanded="true" />
+            <element signature="e#2874#2875#0" expanded="true" />
+            <element signature="e#2923#2924#0" expanded="true" />
+            <element signature="e#2954#2955#0" expanded="true" />
+            <element signature="e#2995#2996#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java">
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/KillableEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="143" selection-start-line="143" selection-end-line="143" />
+        <state relative-caret-position="229">
+          <caret line="120" column="25" lean-forward="true" selection-start-line="120" selection-start-column="25" selection-end-line="120" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3798#3799#0" expanded="true" />
+            <element signature="e#3830#3831#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/ItemEntity.java">
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/World.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1558">
+          <caret line="216" column="90" selection-start-line="216" selection-start-column="90" selection-end-line="216" selection-end-column="90" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5152#5153#0" expanded="true" />
+            <element signature="e#5199#5200#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Containers/Container.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1365">
+          <caret line="99" column="19" selection-start-line="99" selection-start-column="19" selection-end-line="99" selection-end-column="19" />
+          <folding>
+            <element signature="e#3199#3200#0" expanded="true" />
+            <element signature="e#3241#3242#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/ChestInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#215#216#0" expanded="true" />
+            <element signature="e#249#250#0" expanded="true" />
+            <element signature="e#291#292#0" expanded="true" />
+            <element signature="e#326#327#0" expanded="true" />
+            <element signature="e#358#359#0" expanded="true" />
+            <element signature="e#394#395#0" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
+            <element signature="e#636#637#0" expanded="true" />
+            <element signature="e#678#679#0" expanded="true" />
+            <element signature="e#730#731#0" expanded="true" />
+            <element signature="e#821#822#0" expanded="true" />
+            <element signature="e#869#870#0" expanded="true" />
+            <element signature="e#738#739#0" expanded="true" />
+            <element signature="e#791#792#0" expanded="true" />
+            <element signature="e#823#824#0" expanded="true" />
+            <element signature="e#862#863#0" expanded="true" />
+            <element signature="e#910#911#0" expanded="true" />
+            <element signature="e#955#956#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/Menus/MenuComponents/InventorySlot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2836#2837#0" expanded="true" />
+            <element signature="e#2863#2864#0" expanded="true" />
+            <element signature="e#2905#2906#0" expanded="true" />
+            <element signature="e#2932#2933#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/Menus/MenuComponents/MenuComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="24" column="85" lean-forward="true" selection-start-line="24" selection-start-column="85" selection-end-line="24" selection-end-column="85" />
         </state>
       </provider>
     </entry>
@@ -1815,24 +1750,34 @@
           <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
           <folding>
             <element signature="e#540#555#0" expanded="true" />
-            <element signature="e#1205#1206#0" expanded="true" />
-            <element signature="e#1232#1233#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Containers/ContainerSlot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1098">
-          <caret line="77" column="5" lean-forward="true" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
+        <state relative-caret-position="-1047">
+          <caret line="20" column="23" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="23" />
+          <folding>
+            <element signature="e#11270#11271#0" expanded="true" />
+            <element signature="e#11302#11303#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Entity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="235" column="59" lean-forward="true" selection-start-line="235" selection-start-column="59" selection-end-line="235" selection-end-column="59" />
+        <state relative-caret-position="327">
+          <caret line="140" column="39" selection-start-line="140" selection-start-column="12" selection-end-line="140" selection-end-column="39" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="e#14725#14726#0" expanded="true" />
             <element signature="e#14754#14755#0" expanded="true" />
             <element signature="e#14784#14785#0" expanded="true" />
@@ -1841,15 +1786,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/ChestInventory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="56" column="25" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#450#465#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/Inventory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="88" column="160" lean-forward="true" selection-start-line="88" selection-start-column="160" selection-end-line="88" selection-end-column="160" />
+        <state relative-caret-position="267">
+          <caret line="69" column="25" lean-forward="true" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#758#773#0" expanded="true" />
-            <element signature="e#3191#3192#0" expanded="true" />
-            <element signature="e#3231#3232#0" expanded="true" />
+            <element signature="e#1092#1103#0" expanded="true" />
+            <element signature="e#1526#1527#0" expanded="true" />
+            <element signature="e#1545#1546#0" expanded="true" />
+            <element signature="e#5143#5144#0" expanded="true" />
+            <element signature="e#5183#5184#0" expanded="true" />
           </folding>
         </state>
       </provider>

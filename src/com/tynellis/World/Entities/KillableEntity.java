@@ -117,7 +117,7 @@ public abstract class KillableEntity extends Entity {
         }
     }
 
-    public Container getInventory() {
+    public synchronized Container getInventory() {
         return inventory;
     }
 

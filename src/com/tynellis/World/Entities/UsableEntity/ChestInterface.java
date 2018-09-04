@@ -1,5 +1,9 @@
 package com.tynellis.World.Entities.UsableEntity;
 
+import com.tynellis.Menus.InGameMenus.ChestInventory;
+import com.tynellis.Menus.InGameMenus.Inventory;
+import com.tynellis.World.Entities.Player;
+import com.tynellis.World.Items.Containers.ContainerSlot;
 import com.tynellis.World.Items.ItemPile;
 
 public class ChestInterface implements UsingInterface {
@@ -17,9 +21,28 @@ public class ChestInterface implements UsingInterface {
         return chest != null;
     }
 
+    public int getSize() {
+        return chest.getInventory().getContents().length;
+    }
+
+    public ContainerSlot getItem(int i) {
+        return chest.getInventory().getSlot(i);
+    }
+
+    public void setItem(int i, ItemPile pile) {
+        chest.getInventory().setSlot(i, pile);
+    }
+
     public void stopUsing() {
-        chest.removeInterface(this);
-        chest = null;
+        if (isValid()) {
+            chest.removeInterface(this);
+            chest = null;
+        }
+    }
+
+    @Override
+    public Inventory getMenu(Player user) {
+        return new ChestInventory(this, user);
     }
 
     public String toString() {
