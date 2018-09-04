@@ -2,7 +2,7 @@ package com.tynellis.World.Entities.UsableEntity;
 
 import com.tynellis.World.Items.ItemPile;
 
-public class ChestInterface {
+public class ChestInterface implements UsingInterface {
     private Chest chest;
 
     public ChestInterface(Chest chest) {
@@ -17,7 +17,7 @@ public class ChestInterface {
         return chest != null;
     }
 
-    public void closeChest() {
+    public void stopUsing() {
         chest.removeInterface(this);
         chest = null;
     }

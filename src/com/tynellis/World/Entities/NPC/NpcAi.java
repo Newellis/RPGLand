@@ -1,7 +1,7 @@
 package com.tynellis.World.Entities.NPC;
 
 import com.tynellis.World.Entities.NPC.AiTasks.AiTask;
-import com.tynellis.World.world_parts.Region;
+import com.tynellis.World.world_parts.Regions.Region;
 
 import java.io.Serializable;
 import java.util.ArrayList;

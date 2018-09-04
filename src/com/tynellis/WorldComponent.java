@@ -1,8 +1,8 @@
 package com.tynellis;
 
-import com.tynellis.World.WorldGen;
+import com.tynellis.World.Generator.WorldGen;
 import com.tynellis.World.world_parts.Area;
-import com.tynellis.World.world_parts.Region;
+import com.tynellis.World.world_parts.Regions.Region;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -38,7 +38,7 @@ public class WorldComponent extends JComponent{
         long seed = random.nextLong();
         seed = 2000000;
         System.out.println("Seed: " + seed);
-        Region region = new Region("test");
+//        Region region = new Region("test", new WorldGen());
 //        region.genSpawn(seed);
 //        spawn = region.getSpawnPoint();
 //        array = region.gen.getLandAreas(); //region.gen.erodeArea(20 * Area.WIDTH, 10 * Area.HEIGHT, new Random(seed * ((20 * Area.WIDTH * Region.WIDTH) + 10 * Area.HEIGHT)));

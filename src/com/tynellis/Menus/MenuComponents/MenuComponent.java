@@ -37,5 +37,6 @@ public abstract class MenuComponent {
             }
         }
     }
+
     public abstract void tick(MouseInput mouseButtons);
 }

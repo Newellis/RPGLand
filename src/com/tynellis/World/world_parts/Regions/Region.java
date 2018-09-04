@@ -1,20 +1,22 @@
-package com.tynellis.World.world_parts;
+package com.tynellis.World.world_parts.Regions;
 
 import com.tynellis.GameComponent;
 import com.tynellis.Save.SavedArea;
 import com.tynellis.Save.StoreLoad;
 import com.tynellis.World.Entities.Entity;
-import com.tynellis.World.Entities.NPC.monsters.Skeleton;
 import com.tynellis.World.Entities.Orginization.EntityComparator;
 import com.tynellis.World.Entities.Orginization.EntityQuadTree;
+import com.tynellis.World.Entities.Player;
+import com.tynellis.World.Generator.IWorldGen;
 import com.tynellis.World.Light.LightOverlay;
 import com.tynellis.World.Nodes.Node;
 import com.tynellis.World.Tiles.LandTiles.ConnectorTile;
 import com.tynellis.World.Tiles.LandTiles.LayeredTile;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.World;
-import com.tynellis.World.WorldGen;
 import com.tynellis.World.spawners.WorldSpawner;
+import com.tynellis.World.world_parts.Area;
+import com.tynellis.World.world_parts.Land;
 import com.tynellis.debug.Debug;
 
 import java.awt.Graphics;
@@ -33,6 +35,7 @@ public class Region implements Serializable, Land {
     public static final int WIDTH = 1024;
     public static final int HEIGHT = 1024;
     protected String name;
+    private IWorldGen gen;
     private transient Area[][] loadedAreas = new Area[1][1];
     private transient ArrayList<Entity> entities = new ArrayList<Entity>();
     private transient ArrayList<Entity> entityMoveList = new ArrayList<Entity>(), deadEntities = new ArrayList<Entity>(), newEntities = new ArrayList<Entity>();
@@ -44,8 +47,9 @@ public class Region implements Serializable, Land {
 
     private transient LightOverlay lighting = new LightOverlay();
 
-    public Region(String name) {
+    public Region(String name, IWorldGen gen) {
         this.name = name;
+        this.gen = gen;
         addEntitiesToSpawn();
     }
 
@@ -64,7 +68,7 @@ public class Region implements Serializable, Land {
     }
 
     private void addEntitiesToSpawn() {
-        worldSpawner.addEntitySpawn(Skeleton.class, 100);
+//        worldSpawner.addEntitySpawn(Skeleton.class, 100);
     }
 
     public void addSpawnFreeArea(Rectangle area) {
@@ -162,8 +166,14 @@ public class Region implements Serializable, Land {
         //remove entities that have died
         if (deadEntities.size() > 0) {
             for (Entity entity : deadEntities) {
-                entity.performDeath(this, random);
+                if (entity.isDead()) {
+                    entity.performDeath(this, random);
+                }
+                if (entity instanceof Player) {
+                    System.out.println("Remove player from " + this.getName());
+                }
                 entities.remove(entity);
+                collisionTree.remove(entity);
             }
             deadEntities.clear();
         }
@@ -175,8 +185,9 @@ public class Region implements Serializable, Land {
 
 
     //Load areas around player if center area has changed
-    public synchronized void loadAreas(int lastX, int lastY, Rectangle loadedArea, WorldGen gen, Random rand, long seed) {
-        if (lastX != areaOffset[World.X] || lastY != areaOffset[World.Y]) { //if new areas need to be loaded
+    public synchronized void loadAreas(int lastX, int lastY, Rectangle loadedArea, Random rand, long seed) {
+
+        if ((lastX != areaOffset[World.X] || lastY != areaOffset[World.Y]) || loadedAreas.length != loadedArea.width || loadedAreas[0].length != loadedArea.height) { //if new areas need to be loaded
             synchronized (loadedAreas) {
                 shiftAreas(loadedArea, lastX - areaOffset[World.X], lastY - areaOffset[World.Y]);
                 setLoadedAreas(this, gen, rand, seed);
@@ -185,7 +196,7 @@ public class Region implements Serializable, Land {
     }
 
     //initialize all areas around center area
-    public synchronized void loadAreas(Rectangle loadedArea, WorldGen gen, Random rand, long seed) {
+    public synchronized void loadAreas(Rectangle loadedArea, Random rand, long seed) {
         synchronized (loadedAreas) {
             loadedAreas = new Area[loadedArea.width][loadedArea.height];
             setLoadedAreas(this, gen, rand, seed);
@@ -193,7 +204,7 @@ public class Region implements Serializable, Land {
     }
 
     //fills in any null spaces in loadedAreas and populates them
-    private void setLoadedAreas(Region region, WorldGen gen, Random rand, long seed) {
+    private void setLoadedAreas(Region region, IWorldGen gen, Random rand, long seed) {
         for(int i = 0; i < loadedAreas.length; i++){
             int length = loadedAreas[i].length;
             for (int j = 0; j < length; j++){
@@ -215,7 +226,7 @@ public class Region implements Serializable, Land {
             for (int j = 1; j < length; j++){
                 if (loadedAreas[i][j] != null) {
                     if (loadedAreas[i][j].shouldPopulate()){
-                        gen.styleWorld(this, (i + areaOffset[World.X]) * Area.WIDTH, (j + areaOffset[World.Y]) * Area.HEIGHT, seed);
+                        gen.styleArea(this, (i + areaOffset[World.X]) * Area.WIDTH, (j + areaOffset[World.Y]) * Area.HEIGHT, seed);
                         gen.populateArea(this, (i + areaOffset[World.X]) * Area.WIDTH, (j + areaOffset[World.Y]) * Area.HEIGHT, seed);
                         loadedAreas[i][j].Populate();
                         for (Area[] areas : getAdjacentAreas(i, j)) {
@@ -286,6 +297,7 @@ public class Region implements Serializable, Land {
     }
 
     public void setAreaOffset(int[] areaOffset) {
+        System.out.println("Move areas");
         this.areaOffset = areaOffset;
     }
 
@@ -306,10 +318,15 @@ public class Region implements Serializable, Land {
         newEntities.add(e);
     }
 
+    public void queueRemovalOfEntity(Entity e) {
+        deadEntities.add(e);
+    }
+
     //add an entity to the world
     public synchronized void addEntity(Entity e) {
         entities.add(e);
         if (collisionTree == null) {
+            if (areaOffset == null) areaOffset = new int[2];
             collisionTree = new EntityQuadTree(0, new Rectangle(areaOffset[World.X] * Area.WIDTH * Tile.WIDTH, areaOffset[World.Y] * Area.HEIGHT * Tile.HEIGHT, loadedAreas.length * Area.WIDTH * Tile.WIDTH, loadedAreas[0].length * Area.HEIGHT * Tile.HEIGHT));
         }
         collisionTree.insert(e);

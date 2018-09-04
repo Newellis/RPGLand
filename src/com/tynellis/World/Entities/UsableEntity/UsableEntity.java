@@ -11,7 +11,7 @@ public abstract class UsableEntity extends KillableEntity {
         super(x, y, z, width, height);
     }
 
-    public abstract Object use(KillableEntity entity);
+    public abstract UsingInterface use(KillableEntity entity);
 
     public boolean canBeUsedBy(KillableEntity entity) {
         double x, y, z, scoreLeft = 0;

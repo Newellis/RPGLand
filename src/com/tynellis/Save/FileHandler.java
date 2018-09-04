@@ -3,7 +3,7 @@ package com.tynellis.Save;
 import com.tynellis.GameComponent;
 import com.tynellis.Save.OSLib.EnumOS2;
 import com.tynellis.Save.OSLib.EnumOSMappingHelper;
-import com.tynellis.World.world_parts.Region;
+import com.tynellis.World.world_parts.Regions.Region;
 import com.tynellis.debug.Debug;
 
 import java.io.File;

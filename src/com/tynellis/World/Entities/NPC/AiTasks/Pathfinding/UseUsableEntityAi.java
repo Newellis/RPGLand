@@ -6,7 +6,8 @@ import com.tynellis.World.Entities.NPC.AiTasks.FaceClosestAi;
 import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.toEntity.FollowEntityAi;
 import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.Entities.UsableEntity.UsableEntity;
-import com.tynellis.World.world_parts.Region;
+import com.tynellis.World.Entities.UsableEntity.UsingInterface;
+import com.tynellis.World.world_parts.Regions.Region;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -78,7 +79,7 @@ public abstract class UseUsableEntityAi extends FollowEntityAi implements Serial
 
     protected abstract boolean shouldUse(Region region, NpcBase entity);
 
-    protected boolean using(Object o, KillableEntity entity) {
+    protected boolean using(UsingInterface o, KillableEntity entity) {
         return false;
     }
 }

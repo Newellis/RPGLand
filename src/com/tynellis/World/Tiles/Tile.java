@@ -32,11 +32,7 @@ public abstract class Tile implements BoundingBoxOwner, Serializable {
 
     public Tile(String name, SpriteSheet sheet, Random rand, double altPercent, int rank, int height) {
         this.name = name;
-        if (sheet == null) {
-            top = cliffEdge;
-        } else {
-            top = sheet;
-        }
+        top = sheet;
         this.rank = rank;
         alt = rand.nextDouble();
         this.altPercent = altPercent;

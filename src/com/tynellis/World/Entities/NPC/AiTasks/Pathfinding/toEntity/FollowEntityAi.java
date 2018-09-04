@@ -5,7 +5,7 @@ import com.tynellis.World.Entities.NPC.AiTasks.AiTask;
 import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.PathfinderAi;
 import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.Nodes.Node;
-import com.tynellis.World.world_parts.Region;
+import com.tynellis.World.world_parts.Regions.Region;
 
 import java.util.ArrayList;
 import java.util.Random;

@@ -1,9 +1,9 @@
 package com.tynellis.debug.algs;
 
+import com.tynellis.World.Generator.WorldGen;
 import com.tynellis.World.World;
-import com.tynellis.World.WorldGen;
 import com.tynellis.World.world_parts.Area;
-import com.tynellis.World.world_parts.Region;
+import com.tynellis.World.world_parts.Regions.Region;
 
 import java.awt.Color;
 import java.awt.Dimension;

@@ -1,5 +1,6 @@
 package com.tynellis;
 
+import com.tynellis.Menus.InGameMenus.InGameMenu;
 import com.tynellis.Menus.InGameMenus.PauseMenu;
 import com.tynellis.Menus.MainMenu;
 import com.tynellis.Menus.Menu;
@@ -7,6 +8,7 @@ import com.tynellis.Save.FileHandler;
 import com.tynellis.Save.InvalidSaveException;
 import com.tynellis.Save.SavedWorld;
 import com.tynellis.Save.StoreLoad;
+import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.Entities.Player;
 import com.tynellis.World.Tiles.LandTiles.ManMade.Ladder;
@@ -15,7 +17,7 @@ import com.tynellis.World.Tiles.LandTiles.Natural.Slope;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.World;
 import com.tynellis.World.world_parts.Area;
-import com.tynellis.World.world_parts.Region;
+import com.tynellis.World.world_parts.Regions.Region;
 import com.tynellis.debug.Debug;
 import com.tynellis.input.KeyInput;
 import com.tynellis.input.Keys;
@@ -25,6 +27,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.Random;
@@ -48,7 +51,7 @@ public class GameComponent extends JPanel implements Runnable {
     private GameState state = GameState.MENU;
     private Menu menu = new MainMenu(GAME_WIDTH, GAME_HEIGHT);
     public static World world;
-    private Player player;
+    private static Player player;
     private static final int autoSaveTicks = 60 * 30; //ticks per sec * seconds between saves
     private int ticksToSave = autoSaveTicks;
 
@@ -59,6 +62,7 @@ public class GameComponent extends JPanel implements Runnable {
         frame.setContentPane(active);
         frame.addKeyListener(new KeyInput(keys));
         frame.addMouseListener(mouse);
+        frame.addMouseMotionListener(mouse);
         frame.pack();
         frame.setSize(new Dimension(GAME_WIDTH, GAME_HEIGHT));
         frame.setResizable(true);
@@ -189,6 +193,8 @@ public class GameComponent extends JPanel implements Runnable {
             menu.render(screen, width, height);
         }
         screen.setColor(Color.WHITE);
+        Font font = new Font("arial", Font.BOLD, 10);
+        screen.setFont(font);
         screen.drawString("FPS: " + fps, 10, 20);
         width = getWidth();
         height = getHeight();
@@ -200,6 +206,9 @@ public class GameComponent extends JPanel implements Runnable {
         if (keys.pause.wasReleased()){
             if (menu != null) {
                 state = GameState.SINGLE_PLAYER;
+                if (menu instanceof InGameMenu) {
+                    ((InGameMenu) menu).closeMenu();
+                }
                 menu = null;
             } else {
                 state = GameState.PAUSE_MENU;
@@ -219,7 +228,9 @@ public class GameComponent extends JPanel implements Runnable {
             menu.tick(this, mouse, width, height);
         }
         if (state == GameState.IN_GAME_MENU){
-            menu.tick(this, mouse, width, height);
+            if (menu instanceof InGameMenu) {
+                ((InGameMenu) menu).tick(this, mouse, width, height, world);
+            }
         }
         mouse.tick();
     }
@@ -298,6 +309,10 @@ public class GameComponent extends JPanel implements Runnable {
         } else {
             throw new InvalidSaveException();
         }
+    }
+
+    public static boolean isMainPlayer(Entity p) {
+        return p.equals(player);
     }
 
     public void Quit() {

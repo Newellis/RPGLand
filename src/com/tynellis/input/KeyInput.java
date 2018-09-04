@@ -14,9 +14,10 @@ public class KeyInput implements KeyListener {
         mappings.put(KeyEvent.VK_A, keys.left);
         mappings.put(KeyEvent.VK_D, keys.right);
         mappings.put(KeyEvent.VK_SPACE, keys.attack);
-        mappings.put(KeyEvent.VK_ALT, keys.use);
+        mappings.put(KeyEvent.VK_SHIFT, keys.use);
         mappings.put(KeyEvent.VK_T, keys.debug);
         mappings.put(KeyEvent.VK_ESCAPE, keys.pause);
+        mappings.put(KeyEvent.VK_E, keys.inventory);
     }
 
     @Override

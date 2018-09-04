@@ -57,7 +57,7 @@ public class BuildingGeneratorTest extends AlgTest implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        building = new SmallHouse(((getWidth() - infoPanel.getWidth()) / Tile.WIDTH) / 2.0, ((getHeight() / Tile.HEIGHT) + Integer.parseInt(height.getText())) / 2, 0, Integer.parseInt(width.getText()), Integer.parseInt(height.getText()), new Random());
+        building = new SmallHouse(((getWidth() - infoPanel.getWidth()) / Tile.WIDTH) / 2.0, ((getHeight() / Tile.HEIGHT) + Integer.parseInt(height.getText())) / 2, 0, Integer.parseInt(width.getText()), Integer.parseInt(height.getText()), new Random(), null);
         repaint();
     }
 }

@@ -5,7 +5,7 @@ import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.ItemEntity;
 import com.tynellis.World.Entities.Plants.Plant;
 import com.tynellis.World.Tiles.Tile;
-import com.tynellis.World.world_parts.Region;
+import com.tynellis.World.world_parts.Regions.Region;
 
 import java.awt.Rectangle;
 import java.util.List;

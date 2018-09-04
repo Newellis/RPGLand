@@ -10,7 +10,7 @@ import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Items.Materials.Log;
 import com.tynellis.World.Items.TreeSeeds;
 import com.tynellis.World.Tiles.Tile;
-import com.tynellis.World.world_parts.Region;
+import com.tynellis.World.world_parts.Regions.Region;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;

@@ -7,7 +7,7 @@ import com.tynellis.World.Entities.KillableEntity;
 import com.tynellis.World.Entities.damage.Damage;
 import com.tynellis.World.Entities.damage.DamageSource;
 import com.tynellis.World.Tiles.Tile;
-import com.tynellis.World.world_parts.Region;
+import com.tynellis.World.world_parts.Regions.Region;
 
 import java.awt.Rectangle;
 import java.util.ArrayList;

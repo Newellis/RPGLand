@@ -3,7 +3,7 @@ package com.tynellis.World.Entities;
 import com.tynellis.BoundingBox.BoundingBoxOwner;
 import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Tiles.Tile;
-import com.tynellis.World.world_parts.Region;
+import com.tynellis.World.world_parts.Regions.Region;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;

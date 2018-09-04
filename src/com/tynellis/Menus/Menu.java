@@ -13,6 +13,7 @@ import java.util.List;
 public abstract class Menu extends MenuComponent implements ButtonListener{
 
     protected List<Button> buttons = new ArrayList<Button>();
+    private List<MenuComponent> components = new ArrayList<MenuComponent>();
 
     protected Button addButton(Button button) {
         buttons.add(button);
@@ -20,10 +21,18 @@ public abstract class Menu extends MenuComponent implements ButtonListener{
         return button;
     }
 
+    protected MenuComponent addComponent(MenuComponent component) {
+        components.add(component);
+        return component;
+    }
+
     @Override
     public void render(Graphics g, int width, int height) {
         for (Button button : buttons) {
             button.render(g, width, height);
+        }
+        for (MenuComponent component : components) {
+            component.render(g, width, height);
         }
     }
 
@@ -35,6 +44,9 @@ public abstract class Menu extends MenuComponent implements ButtonListener{
     public void tick(MouseInput mouseButtons) {
         for (Button button : buttons) {
             button.tick(mouseButtons);
+        }
+        for (MenuComponent component : components) {
+            component.tick(mouseButtons);
         }
     }
 

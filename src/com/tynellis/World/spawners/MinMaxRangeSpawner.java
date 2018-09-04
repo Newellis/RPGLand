@@ -1,7 +1,7 @@
 package com.tynellis.World.spawners;
 
 import com.tynellis.World.Entities.Entity;
-import com.tynellis.World.world_parts.Region;
+import com.tynellis.World.world_parts.Regions.Region;
 
 import java.awt.Point;
 import java.awt.Rectangle;

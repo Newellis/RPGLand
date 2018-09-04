@@ -82,6 +82,7 @@ public class MouseInput implements MouseListener, MouseMotionListener{
     }
     @Override
     public void mouseClicked(MouseEvent e) {
+        setPosition(e.getPoint());
     }
 
     @Override
@@ -98,20 +99,24 @@ public class MouseInput implements MouseListener, MouseMotionListener{
 
     @Override
     public void mouseEntered(MouseEvent e) {
+        setPosition(e.getPoint());
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
+        setPosition(e.getPoint());
         releaseAll();
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
         mouseMoved = true;
+        setPosition(e.getPoint());
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
         mouseMoved = true;
+        setPosition(e.getPoint());
     }
 }

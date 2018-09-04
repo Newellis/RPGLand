@@ -3,14 +3,13 @@ package com.tynellis.Menus.InGameMenus;
 import com.tynellis.GameComponent;
 import com.tynellis.GameState;
 import com.tynellis.Menus.MainMenu;
-import com.tynellis.Menus.Menu;
 import com.tynellis.Menus.MenuComponents.Button;
 import com.tynellis.Menus.MenuComponents.GuiCompLocations;
 import com.tynellis.input.MouseInput;
 
 import java.awt.Graphics;
 
-public class PauseMenu extends Menu {
+public class PauseMenu extends InGameMenu {
     private boolean ResumeClicked = false, SaveClicked, ExitClicked = false;
     private String resume = "Resume", save = "Save", quit = "Quit";
 
@@ -48,5 +47,10 @@ public class PauseMenu extends Menu {
         } else if (button.getName().equals(quit)) {
             ExitClicked = true;
         }
+    }
+
+    @Override
+    public void closeMenu() {
+
     }
 }

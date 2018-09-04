@@ -19,7 +19,7 @@ public class Button extends MenuComponent{
     private boolean performClick = false;
     protected boolean works;
 
-    public Button(GuiCompLocations x, int xOffset, GuiCompLocations y,int yOffset, String word, boolean on) {
+    public Button(GuiCompLocations x, int xOffset, GuiCompLocations y, int yOffset, String word, boolean on) {
         offsetX = xOffset;
         offsetY = yOffset;
         X = x;

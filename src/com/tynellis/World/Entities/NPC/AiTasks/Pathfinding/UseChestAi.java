@@ -5,10 +5,11 @@ import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.Entities.UsableEntity.Chest;
 import com.tynellis.World.Entities.UsableEntity.ChestInterface;
 import com.tynellis.World.Entities.UsableEntity.UsableEntity;
+import com.tynellis.World.Entities.UsableEntity.UsingInterface;
 import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.Containers.Filters.ItemFilter;
 import com.tynellis.World.Items.ItemPile;
-import com.tynellis.World.world_parts.Region;
+import com.tynellis.World.world_parts.Regions.Region;
 
 public class UseChestAi extends UseUsableEntityAi {
     private ItemFilter filter;
@@ -41,28 +42,28 @@ public class UseChestAi extends UseUsableEntityAi {
     }
 
     @Override
-    protected boolean using(Object o, KillableEntity entity) {
-        if (o instanceof ChestInterface) {
+    protected boolean using(UsingInterface usingInterface, KillableEntity entity) {
+        if (usingInterface instanceof ChestInterface) {
             Container inventory = entity.getInventory();
             for (int i = 0; i < inventory.getInventory().length; i++) {
                 if (inventory.getInventory()[i] != null) {
                     ItemPile pile = inventory.getInventory()[i].getPile();
-                    if (delay <= 0 && pile != null && ((ChestInterface) o).canAddItem(pile) && filter.followsFilter(pile)) {
-                        ((ChestInterface) o).addItem(pile);
+                    if (delay <= 0 && pile != null && ((ChestInterface) usingInterface).canAddItem(pile) && filter.followsFilter(pile)) {
+                        ((ChestInterface) usingInterface).addItem(pile);
                         if (pile.getSize() <= 0) {
                             inventory.getInventory()[i].setPile(null);
                         }
                         using = true;
                         delay = 30;
-                        System.out.println("inventory: " + inventory + " chest: " + o);
-                        ((ChestInterface) o).closeChest();
+                        System.out.println("inventory: " + inventory + " chest: " + usingInterface);
+                        usingInterface.stopUsing();
                         return true;
                     }
                 }
             }
             using = delay != 0;
             delay--;
-            ((ChestInterface) o).closeChest();
+            usingInterface.stopUsing();
         }
         return using;
     }

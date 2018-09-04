@@ -45,6 +45,7 @@ public class Keys {
     public Key pause = new Key();
     public Key attack = new Key();
     public Key use = new Key();
+    public Key inventory = new Key();
 
     public void tick() {
         for (Key key : all)

@@ -97,6 +97,10 @@ public class Container implements Serializable {
         return inventory[i];
     }
 
+    public void setSlot(int i, ItemPile pile) {
+        inventory[i].setPile(pile);
+    }
+
     public void setAllSlotFilters(ItemFilter filter) {
         for (ContainerSlot slot : inventory) {
             slot.setFilter(filter);

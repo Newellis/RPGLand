@@ -1,7 +1,7 @@
 package com.tynellis.World;
 
+import com.tynellis.GameComponent;
 import com.tynellis.Save.FileHandler;
-import com.tynellis.World.Buildings.SmallHouse;
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.ItemEntity;
 import com.tynellis.World.Entities.NPC.NpcBase;
@@ -9,12 +9,13 @@ import com.tynellis.World.Entities.NPC.villagers.LumberJackNpc;
 import com.tynellis.World.Entities.Plants.Tree;
 import com.tynellis.World.Entities.Player;
 import com.tynellis.World.Entities.UsableEntity.Chest;
+import com.tynellis.World.Generator.WorldGen;
 import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Items.Materials.Log;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.world_parts.Area;
 import com.tynellis.World.world_parts.Land;
-import com.tynellis.World.world_parts.Region;
+import com.tynellis.World.world_parts.Regions.Region;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -25,8 +26,8 @@ import java.util.Random;
 public class World implements Land, Serializable {
 
     private Region overRegionRegion;
-    private Region currentRegion;
-    private ArrayList<Region> loadedRegions;
+    private static Region currentRegion;
+    private static ArrayList<Region> loadedRegions;
 
     private final long seed;
     private final Random WORLD_RAND;
@@ -50,17 +51,36 @@ public class World implements Land, Serializable {
         Name = name;
         FileHandler.setGameDir(Name);
         gen = new WorldGen(this);
-        overRegionRegion = new Region("Surface");
+        overRegionRegion = new Region("Surface", gen);
         overRegionRegion.addSpawnFreeArea(screenArea);
         currentRegion = overRegionRegion;
         loadedRegions = new ArrayList<Region>();
         loadedRegions.add(overRegionRegion);
     }
 
-    public void tick() {
-//        overRegionRegion.setAreaOffset(areaOffset);
+    public static void moveEntityToRegion(Entity entity, Region region) {
+        for (Region origin : loadedRegions) {
+            if (!origin.equals(region)) {
+                origin.queueRemovalOfEntity(entity);
+            }
+        }
+        region.addEntity(entity);
+        if (GameComponent.isMainPlayer(entity)) {
+            System.out.println("move to region " + region.getName());
+            currentRegion = region;
+        }
+    }
 
-        overRegionRegion.tick(getRand());
+    public void tick() {
+        if (!loadedRegions.contains(currentRegion)) {
+            loadedRegions.add(currentRegion);
+            currentRegion.setAreaOffset(areaOffset);
+            currentRegion.loadAreas(getLoadedAreaRect(), getRand(), seed);
+        }
+
+        for (Region region : loadedRegions) {
+            region.tick(getRand());
+        }
     }
 
     public void render(Graphics g, int width, int height, int XPos, int YPos, int ZPos) {
@@ -75,7 +95,11 @@ public class World implements Land, Serializable {
         NumOfAreasInWidth = (width / (Tile.WIDTH * Area.WIDTH)) + (3 * Buffer);
         NumOfAreasInHeight = (height / (Tile.HEIGHT * Area.HEIGHT)) + (3 * Buffer);
         //store old and find area offset
-        setAreaOffset((int) (screen.getX() / (Tile.WIDTH * Area.WIDTH)) - Buffer, (int) (screen.getY() / (Tile.HEIGHT * Area.HEIGHT)) - Buffer);
+        int newXOffset = (int) (screen.getX() / (Tile.WIDTH * Area.WIDTH)) - Buffer;
+        int newYOffset = (int) (screen.getY() / (Tile.HEIGHT * Area.HEIGHT)) - Buffer;
+        if (areaOffset[X] != newXOffset || areaOffset[Y] != newYOffset) {
+            setAreaOffset(newXOffset, newYOffset);
+        }
         loadedArea.setBounds(areaOffset[X], areaOffset[Y], NumOfAreasInWidth, NumOfAreasInHeight);
 
         currentRegion.render(g, xOffset, yOffset, renderArea);
@@ -180,7 +204,7 @@ public class World implements Land, Serializable {
 
     public void loadAreas() {
         for (Region region : loadedRegions) {
-            region.loadAreas(oldAreaOffset[X], oldAreaOffset[Y], loadedArea, gen, getRand(), seed);
+            region.loadAreas(oldAreaOffset[X], oldAreaOffset[Y], loadedArea, getRand(), seed);
         }
     }
 
@@ -191,13 +215,16 @@ public class World implements Land, Serializable {
         ItemEntity itemEntity = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 1), getRand(), spawnPoint[0] + 4, spawnPoint[1], spawnPoint[2]);
         ItemEntity itemEntity1 = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 10), getRand(), spawnPoint[0] + 6, spawnPoint[1], spawnPoint[2]);
         ItemEntity itemEntity2 = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 20), getRand(), spawnPoint[0] + 8, spawnPoint[1], spawnPoint[2]);
-        overRegionRegion.addEntity(npc);
+//        overRegionRegion.addEntity(npc);
         overRegionRegion.addEntity(itemEntity);
         overRegionRegion.addEntity(itemEntity1);
         overRegionRegion.addEntity(itemEntity2);
-        overRegionRegion.addEntity(chest);
-        SmallHouse.buildSmallHouse(overRegionRegion, getRand(), spawnPoint[0] - 6, spawnPoint[1] - 5, spawnPoint[2]);
-        SmallHouse.buildSmallHouse(overRegionRegion, getRand(), spawnPoint[0], spawnPoint[1] - 5, spawnPoint[2]);
+//        overRegionRegion.addEntity(chest);
+//        SmallHouse.buildSmallHouse(overRegionRegion, getRand(), spawnPoint[0] - 6, spawnPoint[1] - 5, spawnPoint[2]);
+//        SmallHouse.buildSmallHouse(overRegionRegion, getRand(), spawnPoint[0], spawnPoint[1] - 5, spawnPoint[2]);
     }
 
+    public Region getCurrentRegion() {
+        return currentRegion;
+    }
 }

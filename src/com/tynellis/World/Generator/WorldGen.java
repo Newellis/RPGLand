@@ -1,4 +1,4 @@
-package com.tynellis.World;
+package com.tynellis.World.Generator;
 
 import com.tynellis.GameComponent;
 import com.tynellis.World.Entities.Plants.Tree;
@@ -9,14 +9,15 @@ import com.tynellis.World.Tiles.LandTiles.Natural.Sand;
 import com.tynellis.World.Tiles.LandTiles.Natural.Snow;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.Tiles.Water;
+import com.tynellis.World.World;
 import com.tynellis.World.world_parts.Area;
-import com.tynellis.World.world_parts.Region;
+import com.tynellis.World.world_parts.Regions.Region;
 
 import java.awt.Rectangle;
 import java.io.Serializable;
 import java.util.Random;
 
-public class WorldGen implements Serializable{
+public class WorldGen implements IWorldGen, Serializable {
     private World world;
     public static final int SEA_LEVEL = 25;
     public static final int BEACH_MAX_LEVEL = 50;
@@ -44,7 +45,7 @@ public class WorldGen implements Serializable{
             if (landAreas[x][y] > SEA_LEVEL && landAreas[x][y] < TREE_LEVEL) {
                 world.setHalfNumOfAreas((GameComponent.GAME_WIDTH / (Tile.WIDTH * Area.WIDTH)) + (3 * World.Buffer), (GameComponent.GAME_HEIGHT / (Tile.HEIGHT * Area.HEIGHT)) + (3 * World.Buffer));
                 world.setAreaOffset(x - 3, y - 4);
-                region.loadAreas(world.getLoadedAreaRect(), this, world.getRand(), seed);
+                region.loadAreas(world.getLoadedAreaRect(), world.getRand(), seed);
                 while (!viable) {
                     int areaX = rand.nextInt(2 * Area.WIDTH) - Area.WIDTH,
                             areaY = rand.nextInt(2 * Area.HEIGHT) - Area.HEIGHT;
@@ -268,7 +269,7 @@ public class WorldGen implements Serializable{
         }
     }
 
-    public void styleWorld(Region region, int X, int Y, long seed) {
+    public void styleArea(Region region, int X, int Y, long seed) {
         Random rand = new Random(seed * ((X * Region.WIDTH) + Y)); // for location based randoms
         addBeaches(region, X, Y, rand);
         erode(region, X, Y, rand); // reduces tile Art errors by not allowing tiles to stand alone

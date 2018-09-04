@@ -5,6 +5,8 @@ import com.tynellis.Art.SpriteSheet;
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.KillableEntity;
 import com.tynellis.World.Tiles.Tile;
+import com.tynellis.World.World;
+import com.tynellis.World.world_parts.Regions.Region;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -13,13 +15,16 @@ import java.awt.image.BufferedImage;
 public class Door extends UsableEntity {
     private static transient SpriteSheet doorSheet = new SpriteSheet("tempArt/lpc/buildings/doors.png", 64, 64, 1);
 
+    private Region region;
+
     private boolean locked = false;
     private boolean open = false;
 
-    public Door(double x, double y, double z, int width) {
+    public Door(double x, double y, double z, int width, Region region) {
         super(x, y, z, width * Tile.WIDTH, 4);
         speed = 0.0;
         canBeMoved = false;
+        this.region = region;
     }
 
     public void render(Graphics g, int xOffset, int yOffset) {
@@ -30,11 +35,12 @@ public class Door extends UsableEntity {
     }
 
     @Override
-    public Object use(KillableEntity entity) {
+    public UsingInterface use(KillableEntity entity) {
         if (canBeUsedBy(entity)) {
             System.out.println(entity.getClass().getSimpleName() + " using door");
             Open(!open);
-            return true;
+            World.moveEntityToRegion(entity, region);
+            return null;
         }
         return null;
     }

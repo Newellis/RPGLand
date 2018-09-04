@@ -5,7 +5,7 @@ import com.tynellis.GameComponent;
 import com.tynellis.World.Light.LightSource;
 import com.tynellis.World.Tiles.LandTiles.LayeredTile;
 import com.tynellis.World.Tiles.Tile;
-import com.tynellis.World.world_parts.Region;
+import com.tynellis.World.world_parts.Regions.Region;
 import com.tynellis.debug.Debug;
 
 import java.awt.Color;
@@ -341,6 +341,10 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
 
     public int getHeight() {
         return height;
+    }
+
+    public int getWidth() {
+        return width;
     }
 
     public int getFacing() {

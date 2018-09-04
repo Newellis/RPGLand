@@ -2,12 +2,11 @@ package com.tynellis.World.Buildings;
 
 import com.tynellis.Art.Sprite;
 import com.tynellis.Art.SpriteSheet;
+import com.tynellis.World.Buildings.Interior.SmallHouseGen;
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.UsableEntity.Door;
-import com.tynellis.World.Tiles.LandTiles.ManMade.Stairs;
-import com.tynellis.World.Tiles.LandTiles.Natural.Grass;
 import com.tynellis.World.Tiles.Tile;
-import com.tynellis.World.world_parts.Region;
+import com.tynellis.World.world_parts.Regions.Region;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -16,9 +15,9 @@ import java.util.Random;
 
 public class SmallHouse extends Building {
 
-    protected static transient SpriteSheet wallSheet = new SpriteSheet("tempArt/lpc/buildings/cottage.png", 32, 32, 1);
-    protected static transient SpriteSheet roofSheet = new SpriteSheet("tempArt/lpc/buildings/thatched-roof.png", 32, 32, 1);
-    protected static transient SpriteSheet windowSheet = new SpriteSheet("tempArt/lpc/buildings/windows.png", 32, 32, 1);
+    private static final SpriteSheet wallSheet = new SpriteSheet("tempArt/lpc/buildings/cottage.png", 32, 32, 1);
+    private static final SpriteSheet roofSheet = new SpriteSheet("tempArt/lpc/buildings/thatched-roof.png", 32, 32, 1);
+    private static final SpriteSheet windowSheet = new SpriteSheet("tempArt/lpc/buildings/windows.png", 32, 32, 1);
 
     private int foundationType;
     private int foundationStyle;
@@ -29,7 +28,7 @@ public class SmallHouse extends Building {
     private Door door;
     private ArrayList<Integer> windowLocations;
 
-    public SmallHouse(double x, double y, double z, int width, int height, Random random) {
+    public SmallHouse(double x, double y, double z, int width, int height, Random random, Region region) {
         super(x + (((width + 1) / 2.0) % 1), y + .5, z, width * Tile.WIDTH, height * Tile.HEIGHT);
         foundationType = wallType = random.nextInt(3);
         if (random.nextBoolean()) {
@@ -41,7 +40,8 @@ public class SmallHouse extends Building {
         if (width >= 3) {
             doorLocation = 1 + random.nextInt(width - 2);
         }
-        door = new Door(posX - ((width) / 2.0) + (doorLocation) + .5, posY + (1.0 / 64), z + .66, 1);
+        door = new Door(posX - ((width) / 2.0) + (doorLocation) + .5, posY + (1.0 / 64), z + .66, 1,
+                new Region("House" + random.nextInt(), new SmallHouseGen(this, region)));
         int leftSpaces = doorLocation;
         int rightSpaces = width - doorLocation - 1;
         windowLocations = new ArrayList<Integer>();
@@ -70,11 +70,12 @@ public class SmallHouse extends Building {
             width /= 2;
         }
         int height = (int) Math.ceil(width / 2.0) + random.nextInt(width);
-        SmallHouse house = new SmallHouse(x, y, z, width, height, random);
+        if (height < 3) height = 3;
+        SmallHouse house = new SmallHouse(x, y, z, width, height, random, world);
         world.addEntity(house);
         world.addEntity(house.getDoor());
-        world.setTile(new Stairs(random, (int) house.posZ, 0, world.getTile((int) house.getDoor().getX(), (int) house.getDoor().getY(), (int) house.getDoor().getZ()), (int) house.posZ + .66, (int) house.posZ), (int) house.getDoor().getX(), (int) house.getDoor().getY() + 1, (int) house.getDoor().getZ());
-        world.setTile(new Grass(random, 100), (int) house.getDoor().getX(), (int) house.getDoor().getY(), (int) house.getDoor().getZ() + 1);
+//        world.setTile(new Stairs(random, (int) house.posZ, 0, world.getTile((int) house.getDoor().getX(), (int) house.getDoor().getY(), (int) house.getDoor().getZ()), (int) house.posZ + .66, (int) house.posZ), (int) house.getDoor().getX(), (int) house.getDoor().getY() + 1, (int) house.getDoor().getZ());
+//        world.setTile(new Grass(random, 100), (int) house.getDoor().getX(), (int) house.getDoor().getY(), (int) house.getDoor().getZ() + 1);
     }
 
     public Entity getDoor() {
@@ -194,5 +195,9 @@ public class SmallHouse extends Building {
         if (width >= 3) {
             drawRoof(g, lowerRightX + Tile.WIDTH, lowerRightY - Tile.WIDTH, width - 2, height, roofSlope, roofColor);
         }
+    }
+
+    public int getWallType() {
+        return wallType;
     }
 }

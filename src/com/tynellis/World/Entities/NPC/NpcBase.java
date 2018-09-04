@@ -12,7 +12,7 @@ import com.tynellis.World.Items.weapons.Sword;
 import com.tynellis.World.Items.weapons.Weapon;
 import com.tynellis.World.Nodes.Node;
 import com.tynellis.World.Tiles.Tile;
-import com.tynellis.World.world_parts.Region;
+import com.tynellis.World.world_parts.Regions.Region;
 import com.tynellis.debug.Debug;
 
 import java.awt.Color;

@@ -4,7 +4,7 @@ import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.Player;
 import com.tynellis.World.World;
 import com.tynellis.World.world_parts.Area;
-import com.tynellis.World.world_parts.Region;
+import com.tynellis.World.world_parts.Regions.Region;
 
 import java.awt.Rectangle;
 import java.io.File;

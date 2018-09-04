@@ -71,7 +71,7 @@ public class Chest extends UsableEntity {
     }
 
     @Override
-    public Object use(KillableEntity entity) {
+    public UsingInterface use(KillableEntity entity) {
         if (canBeUsedBy(entity)) {
             System.out.println("Being used by " + entity.getClass().getSimpleName());
             ChestInterface chestInterface = new ChestInterface(this);
