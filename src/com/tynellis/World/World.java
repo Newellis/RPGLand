@@ -9,12 +9,13 @@ import com.tynellis.World.Entities.NPC.villagers.LumberJackNpc;
 import com.tynellis.World.Entities.Plants.Tree;
 import com.tynellis.World.Entities.Player;
 import com.tynellis.World.Entities.UsableEntity.Chest;
-import com.tynellis.World.Generator.WorldGen;
 import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Items.Materials.Log;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.world_parts.Area;
 import com.tynellis.World.world_parts.Land;
+import com.tynellis.World.world_parts.Regions.Generator.WorldGen;
+import com.tynellis.World.world_parts.Regions.OverWorldRegion;
 import com.tynellis.World.world_parts.Regions.Region;
 
 import java.awt.Graphics;
@@ -51,7 +52,7 @@ public class World implements Land, Serializable {
         Name = name;
         FileHandler.setGameDir(Name);
         gen = new WorldGen(this);
-        overRegionRegion = new Region("Surface", gen);
+        overRegionRegion = new OverWorldRegion("Surface", new WorldGen(this));
         overRegionRegion.addSpawnFreeArea(screenArea);
         currentRegion = overRegionRegion;
         loadedRegions = new ArrayList<Region>();

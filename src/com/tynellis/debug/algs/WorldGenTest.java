@@ -1,8 +1,8 @@
 package com.tynellis.debug.algs;
 
-import com.tynellis.World.Generator.WorldGen;
 import com.tynellis.World.World;
 import com.tynellis.World.world_parts.Area;
+import com.tynellis.World.world_parts.Regions.Generator.WorldGen;
 import com.tynellis.World.world_parts.Regions.Region;
 
 import java.awt.Color;
@@ -18,7 +18,7 @@ public class WorldGenTest extends AlgTest {
     private int[] spawn;
 
     public WorldGenTest() {
-        Name = "Region Gen";
+        Name = "Surface Gen";
     }
 
     @Override
@@ -28,8 +28,7 @@ public class WorldGenTest extends AlgTest {
         long seed = 2000000; //random.nextLong();
         System.out.println("Seed: " + seed);
         World world = new World("test", seed);
-//        Region world = new Region("test", seed);
-        world.genSpawn(seed);
+//        world.genSpawn(seed);
         spawn = world.getSpawnPoint();
         array = world.gen.getLandAreas(); //world.gen.erodeArea(20 * Area.WIDTH, 10 * Area.HEIGHT, new Random(seed * ((20 * Area.WIDTH * Region.WIDTH) + 10 * Area.HEIGHT)));
         return true;

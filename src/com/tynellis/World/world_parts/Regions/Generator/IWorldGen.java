@@ -1,4 +1,4 @@
-package com.tynellis.World.Generator;
+package com.tynellis.World.world_parts.Regions.Generator;
 
 import com.tynellis.World.world_parts.Regions.Region;
 

@@ -2,8 +2,6 @@ package com.tynellis.World.Tiles.LandTiles.ManMade;
 
 import com.tynellis.Art.SpriteSheet;
 import com.tynellis.World.Entities.Entity;
-import com.tynellis.World.Tiles.LandTiles.LandTile;
-import com.tynellis.World.Tiles.LandTiles.Natural.Snow;
 import com.tynellis.World.Tiles.Tile;
 
 import java.awt.Graphics;
@@ -15,11 +13,11 @@ public class Wall extends Tile {
     private static final int RANK = 1;
     private static final double altPercent = 0.10;
     private static SpriteSheet wallSheet = new SpriteSheet("tempArt/lpc/buildings/cottage.png", 32, 64, 1);
-    private boolean wall;
     private int wallType;
+    private boolean wall;
 
     public Wall(Random rand, int height, int wallType) {
-        super("Wall", null, rand, altPercent, RANK, height);
+        super("Wall", cliffEdge, rand, altPercent, RANK, height);
         this.wallType = wallType;
     }
 
@@ -42,8 +40,8 @@ public class Wall extends Tile {
     }
 
     @Override
-    public LandTile newTile(Random rand, int height) {
-        return new Snow(rand, height);
+    public Tile newTile(Random rand, int height) {
+        return new Wall(rand, height, wallType);
     }
 
     @Override

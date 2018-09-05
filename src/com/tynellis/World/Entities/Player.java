@@ -86,6 +86,15 @@ public class Player extends Humanoid {
     public void tick(Region region, Random random, List<Entity> near) {
         moving = false;
         if (keys != null) {
+            if (keys.debug.wasPressed()) {
+                GameComponent.debug.setState(!GameComponent.debug.State());
+                if (GameComponent.debug.State() && GameComponent.debug.isType(Debug.Type.FLY)) {
+                    movementType = movementTypes.Flying;
+                } else if (!GameComponent.debug.State() && GameComponent.debug.isType(Debug.Type.FLY)) {
+                    movementType = movementTypes.Walking;
+                    posZ = region.getTopLayerAt((int) posX, (int) posY);
+                }
+            }
             if (keys.inventory.wasPressed()) {
                 if (Inventory != null) {
                     Inventory.closeMenu();
@@ -98,15 +107,6 @@ public class Player extends Humanoid {
                 }
             }
             if (Inventory == null) {//don't allow player to move use or attack while in the inventory screen
-                if (keys.debug.wasPressed()) {
-                    GameComponent.debug.setState(!GameComponent.debug.State());
-                    if (GameComponent.debug.State() && GameComponent.debug.isType(Debug.Type.FLY)) {
-                        movementType = movementTypes.Flying;
-                    } else if (!GameComponent.debug.State() && GameComponent.debug.isType(Debug.Type.FLY)) {
-                        movementType = movementTypes.Walking;
-                        posZ = region.getTopLayerAt((int) posX, (int) posY);
-                    }
-                }
                 if (keys.down.isDown && keys.right.isDown) {
                     facing = 5;
                     moving = true;

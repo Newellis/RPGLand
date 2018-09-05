@@ -3,6 +3,7 @@ package com.tynellis.debug;
 
 import com.tynellis.debug.algs.AlgTest;
 import com.tynellis.debug.algs.BuildingGeneratorTest;
+import com.tynellis.debug.algs.CaveGenTest;
 import com.tynellis.debug.algs.WorldGenTest;
 
 import javax.swing.BoxLayout;
@@ -37,6 +38,7 @@ public class AlgTester extends JPanel implements ActionListener {
         //Algs you can test
         algs.add(new WorldGenTest());
         algs.add(new BuildingGeneratorTest());
+        algs.add(new CaveGenTest());
 
 
 
@@ -65,7 +67,7 @@ public class AlgTester extends JPanel implements ActionListener {
         System.out.println("Selected: " + algName);
         AlgTest run = algs.get(cb.getSelectedIndex());
         run.Start();
-        run.setPreferredSize(frame.getSize());
+//        run.setPreferredSize(frame.getSize());
         setContent(run.draw());
     }
 }

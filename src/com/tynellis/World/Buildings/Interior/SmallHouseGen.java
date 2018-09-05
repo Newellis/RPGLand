@@ -2,11 +2,11 @@ package com.tynellis.World.Buildings.Interior;
 
 import com.tynellis.World.Buildings.SmallHouse;
 import com.tynellis.World.Entities.UsableEntity.Door;
-import com.tynellis.World.Generator.IWorldGen;
 import com.tynellis.World.Tiles.LandTiles.ManMade.Wall;
 import com.tynellis.World.Tiles.LandTiles.ManMade.WoodFloor;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.world_parts.Area;
+import com.tynellis.World.world_parts.Regions.Generator.IWorldGen;
 import com.tynellis.World.world_parts.Regions.Region;
 
 import java.io.Serializable;

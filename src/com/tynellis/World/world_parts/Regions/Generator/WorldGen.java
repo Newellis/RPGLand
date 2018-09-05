@@ -1,4 +1,4 @@
-package com.tynellis.World.Generator;
+package com.tynellis.World.world_parts.Regions.Generator;
 
 import com.tynellis.GameComponent;
 import com.tynellis.World.Entities.Plants.Tree;
@@ -28,11 +28,9 @@ public class WorldGen implements IWorldGen, Serializable {
     public static final int SNOW_LEVEL = 800;//400;
 
     private int[][] landAreas;
-    private int[][] caveAreas = new int[Region.WIDTH][Region.HEIGHT];
 
     public WorldGen(World world) {
         this.world = world;
-        genCaves();
         genLand();
     }
 
@@ -154,72 +152,6 @@ public class WorldGen implements IWorldGen, Serializable {
         }
         int newRand = rand/2;
         return diamondStep(area, maxSize, newRand, random, flip);
-    }
-
-    public void genCaves() {
-        float chanceToBeLand = 0.42f;
-        caveAreas = makeLand(caveAreas, chanceToBeLand);
-        for (int i = 0; i < 5; i++){
-            caveAreas = smoothLand(caveAreas, 3, 4);
-        }
-    }
-
-    public int[][] makeLand(int[][] map, float chance) {
-        for(int x = 0; x< map.length; x++){
-            for(int y = 0; y< map[x].length; y++){
-                if (world.getRand().nextFloat() < chance) {
-                    map[x][y] = 1;
-                }
-            }
-        }
-        return map;
-    }
-
-    public int[][] smoothLand(int[][] oldMap, int deathLimit, int birthLimit) {
-        int[][] newMap = new int[oldMap.length][oldMap[0].length];
-        //Loop over each row and column of the map
-        for(int x=0; x<oldMap.length; x++) {
-            for (int y = 0; y < oldMap[0].length; y++) {
-                int nbs = countAliveNeighbours(oldMap, x, y);
-                //The new value is based on our simulation rules
-                //First, if a cell is alive but has too few neighbours, kill it.
-                if (oldMap[x][y] == 1) {
-                    if (nbs < deathLimit) {
-                        newMap[x][y] = 0;
-                    } else {
-                        newMap[x][y] = 1;
-                    }
-                } //Otherwise, if the cell is dead now, check if it has the right number of neighbours to be 'born'
-                else {
-                    if (nbs > birthLimit) {
-                        newMap[x][y] = 1;
-                    } else {
-                        newMap[x][y] = 0;
-                    }
-                }
-            }
-        }
-        return newMap;
-    }
-
-    //Returns the number of cells in a ring around (x,y) that are alive.
-    private int countAliveNeighbours(int[][] map, int x, int y){
-        int count = 0;
-        for(int i=-1; i<2; i++){
-            for(int j=-1; j<2; j++){
-                int neighbour_x = x+i;
-                int neighbour_y = y+j;
-                //If we're looking at the middle point
-                if (i != 0 || j != 0) {
-                    if (neighbour_x >= 0 && neighbour_y >= 0 && neighbour_x < map.length && neighbour_y < map[0].length) {
-                        if (map[neighbour_x][neighbour_y] > 0) {
-                            count = count + 1;
-                        }
-                    }
-                }
-            }
-        }
-        return count;
     }
 
     public int[][] erodeArea(int X, int Y, Random rand) {
@@ -423,9 +355,4 @@ public class WorldGen implements IWorldGen, Serializable {
     public int[][] getLandAreas() {
         return landAreas;
     }
-
-    public int[][] getCaveAreas() {
-        return caveAreas;
-    }
-
 }

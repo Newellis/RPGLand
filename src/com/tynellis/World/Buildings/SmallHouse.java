@@ -6,6 +6,7 @@ import com.tynellis.World.Buildings.Interior.SmallHouseGen;
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.UsableEntity.Door;
 import com.tynellis.World.Tiles.Tile;
+import com.tynellis.World.world_parts.Regions.BuildingRegion;
 import com.tynellis.World.world_parts.Regions.Region;
 
 import java.awt.Graphics;
@@ -41,7 +42,7 @@ public class SmallHouse extends Building {
             doorLocation = 1 + random.nextInt(width - 2);
         }
         door = new Door(posX - ((width) / 2.0) + (doorLocation) + .5, posY + (1.0 / 64), z + .66, 1,
-                new Region("House" + random.nextInt(), new SmallHouseGen(this, region)));
+                new BuildingRegion("House" + random.nextInt(), new SmallHouseGen(this, region)));
         int leftSpaces = doorLocation;
         int rightSpaces = width - doorLocation - 1;
         windowLocations = new ArrayList<Integer>();

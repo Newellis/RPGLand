@@ -7,7 +7,6 @@ import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.Orginization.EntityComparator;
 import com.tynellis.World.Entities.Orginization.EntityQuadTree;
 import com.tynellis.World.Entities.Player;
-import com.tynellis.World.Generator.IWorldGen;
 import com.tynellis.World.Light.LightOverlay;
 import com.tynellis.World.Nodes.Node;
 import com.tynellis.World.Tiles.LandTiles.ConnectorTile;
@@ -17,6 +16,7 @@ import com.tynellis.World.World;
 import com.tynellis.World.spawners.WorldSpawner;
 import com.tynellis.World.world_parts.Area;
 import com.tynellis.World.world_parts.Land;
+import com.tynellis.World.world_parts.Regions.Generator.IWorldGen;
 import com.tynellis.debug.Debug;
 
 import java.awt.Graphics;
@@ -31,7 +31,7 @@ import java.util.Random;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public class Region implements Serializable, Land {
+public abstract class Region implements Serializable, Land {
     public static final int WIDTH = 1024;
     public static final int HEIGHT = 1024;
     protected String name;
@@ -42,7 +42,7 @@ public class Region implements Serializable, Land {
     private transient EntityQuadTree collisionTree;
     private transient int[] areaOffset;
 
-    private WorldSpawner worldSpawner = new WorldSpawner(5);
+    protected WorldSpawner worldSpawner = new WorldSpawner(5);
     private ArrayList<Rectangle> spawnFreeAreas = new ArrayList<Rectangle>();
 
     private transient LightOverlay lighting = new LightOverlay();
@@ -67,9 +67,7 @@ public class Region implements Serializable, Land {
         //entities = new ArrayList<Entity>();
     }
 
-    private void addEntitiesToSpawn() {
-//        worldSpawner.addEntitySpawn(Skeleton.class, 100);
-    }
+    protected abstract void addEntitiesToSpawn();
 
     public void addSpawnFreeArea(Rectangle area) {
         spawnFreeAreas.add(area);
