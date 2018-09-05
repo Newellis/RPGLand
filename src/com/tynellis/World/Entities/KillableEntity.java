@@ -2,7 +2,8 @@ package com.tynellis.World.Entities;
 
 import com.tynellis.BoundingBox.BoundingBoxOwner;
 import com.tynellis.World.Entities.damage.Damage;
-import com.tynellis.World.Entities.damage.DamageModifier;
+import com.tynellis.World.Entities.damage.DamageModifiers.DamageConverter;
+import com.tynellis.World.Entities.damage.DamageModifiers.DamageModifier;
 import com.tynellis.World.Entities.damage.DamageSource;
 import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.ItemPile;
@@ -17,6 +18,7 @@ public abstract class KillableEntity extends Entity {
     private final int maxHealth = 20;
     private int health = maxHealth;
     protected DamageModifier resistance;
+    protected DamageConverter damageConverter;
 
     protected boolean hurt = false;
     protected boolean heal = false;
@@ -46,8 +48,13 @@ public abstract class KillableEntity extends Entity {
 
     public void DamageBy(DamageSource damage, Random rand) {
         if (hurtCooldown <= 0) {
-
-            for (Damage d : damage.dealDamage()) {
+            DamageSource converted;
+            if (damageConverter != null) {
+                converted = damageConverter.convertDamage(damage);
+            } else {
+                converted = damage;
+            }
+            for (Damage d : converted.dealDamage()) {
                 double amount;
                 if (resistance != null) {
                     amount = resistance.modifyDamage(d);

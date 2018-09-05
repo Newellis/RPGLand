@@ -4,7 +4,8 @@ import com.tynellis.Art.SpriteImage;
 import com.tynellis.Art.SpriteSheet;
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.damage.Damage;
-import com.tynellis.World.Entities.damage.DamageModifier;
+import com.tynellis.World.Entities.damage.DamageModifiers.DamageCombinations;
+import com.tynellis.World.Entities.damage.DamageModifiers.DamageModifier;
 import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Items.Materials.Log;
@@ -40,6 +41,10 @@ public class Tree extends Plant {
         resistances.put(Damage.Types.BLUNT, 1.0);
         resistances.put(Damage.Types.FIRE, -1.0);
         resistance = new DamageModifier(resistances);
+        HashMap<Damage.Types, Damage.Types> convert = new HashMap<Damage.Types, Damage.Types>();
+        convert.put(Damage.Types.SLICING, Damage.Types.BLUNT);
+        damageConverter = new DamageCombinations(convert);
+
         inventory = new Container(2);
         int amount = ((treeHeight) / (5 + rand.nextInt(6)));
         inventory.addItemPile(new ItemPile(new Log(treeType), amount));

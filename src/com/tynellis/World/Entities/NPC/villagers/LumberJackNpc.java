@@ -15,6 +15,7 @@ import com.tynellis.World.Items.Containers.Filters.ItemFilter;
 import com.tynellis.World.Items.Containers.Filters.NameItemFilter;
 import com.tynellis.World.Items.Containers.Filters.TypeItemFilter;
 import com.tynellis.World.Items.Materials.Log;
+import com.tynellis.World.Items.weapons.Axe;
 
 import java.util.Random;
 
@@ -25,6 +26,7 @@ public class LumberJackNpc extends Villager {
         log = new TypeItemFilter(new Class[]{Log.class}, ItemFilter.Type.WhiteList);
         acorn = new NameItemFilter(new String[]{"Acorn"}, ItemFilter.Type.WhiteList);
         pineCone = new NameItemFilter(new String[]{"Pine Cone"}, ItemFilter.Type.WhiteList);
+        equipWeapon(new Axe("Tree Feller", 35, 5, 2));
         inventory = new Container(10); //new Container(new ItemFilter[] {acorn, log, pineCone, log});
         inventory.setAllSlotFilters(log);
         inventory.getSlot(0).setFilter(acorn);

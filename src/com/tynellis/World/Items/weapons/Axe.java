@@ -1,0 +1,15 @@
+package com.tynellis.World.Items.weapons;
+
+import com.tynellis.World.Entities.damage.Damage;
+import com.tynellis.World.Entities.damage.DamageSource;
+
+public class Axe extends Sword {
+
+    public Axe(String name, int coolDown, int artCol, int artRow) {
+        super(name, coolDown, artCol, artRow);
+
+        damage = new DamageSource();
+        damage.addDamageType(new Damage(Damage.Types.SLICING, 3));
+        damage.addDamageType(new Damage(Damage.Types.BLUNT, 3));
+    }
+}
