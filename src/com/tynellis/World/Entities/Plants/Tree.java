@@ -40,6 +40,9 @@ public class Tree extends Plant {
         HashMap<Damage.Types, Double> resistances = new HashMap<Damage.Types, Double>();
         resistances.put(Damage.Types.BLUNT, 1.0);
         resistances.put(Damage.Types.FIRE, -1.0);
+        resistances.put(Damage.Types.PIERCING, 0.99);
+        resistances.put(Damage.Types.FREEZING, 1.0);
+        resistances.put(Damage.Types.POISON, 1.0);
         resistance = new DamageModifier(resistances);
         HashMap<Damage.Types, Damage.Types> convert = new HashMap<Damage.Types, Damage.Types>();
         convert.put(Damage.Types.SLICING, Damage.Types.BLUNT);

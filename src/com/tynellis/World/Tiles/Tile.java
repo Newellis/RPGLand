@@ -214,11 +214,15 @@ public abstract class Tile implements BoundingBoxOwner, Serializable {
                 } else if (corner == -1) {
                     ranks[insertAt] = adjacent[i][j].getRank();
                     still[insertAt] = 2 - i;
-                    sprite[insertAt] = adjacent[i][j].getSheet(this).getSprite(2 + (2 - j));
+                    if (adjacent[i][j].getSheet(this) != null) {
+                        sprite[insertAt] = adjacent[i][j].getSheet(this).getSprite(2 + (2 - j));
+                    }
                 } else {
                     ranks[insertAt] = adjacent[i][j].getRank();
                     still[insertAt] = 1 + corner % 2;
-                    sprite[insertAt] = adjacent[i][j].getSheet(this).getSprite(corner / 2);
+                    if (adjacent[i][j].getSheet(this) != null) {
+                        sprite[insertAt] = adjacent[i][j].getSheet(this).getSprite(corner / 2);
+                    }
                 }
             }
         }

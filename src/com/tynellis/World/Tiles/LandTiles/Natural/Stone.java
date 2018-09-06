@@ -8,13 +8,13 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.Random;
 
-public class LavaRock extends LandTile {
-    private static final SpriteSheet SHEET = new SpriteSheet("tempArt/lpc/core/tiles/terain/lavarock.png", 32, 32, 1);
-    private static final int RANK = 5;
-    private static final double altPercent = 0.15;
+public class Stone extends LandTile {
+    private static final SpriteSheet SHEET = new SpriteSheet("tempArt/lpc/mine/rock.png", 32, 32, 1);
+    private static final int RANK = 4;
+    private static final double altPercent = 0.35;
 
-    public LavaRock(Random rand, int height) {
-        super("Lava Rock", SHEET, rand, altPercent, RANK, height);
+    public Stone(Random rand, int height) {
+        super("Stone", SHEET, rand, altPercent, RANK, height);
     }
 
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
@@ -28,7 +28,7 @@ public class LavaRock extends LandTile {
     }
 
     @Override
-    public Tile newTile(Random rand, int height) {
-        return new LavaRock(rand, height);
+    public LandTile newTile(Random rand, int height) {
+        return new Dirt(rand, height);
     }
 }

@@ -2,7 +2,7 @@ package com.tynellis;
 
 import com.tynellis.World.World;
 import com.tynellis.World.world_parts.Area;
-import com.tynellis.World.world_parts.Regions.Generator.WorldGen;
+import com.tynellis.World.world_parts.Regions.Generator.SurfaceGen;
 import com.tynellis.World.world_parts.Regions.Region;
 
 import javax.swing.JComponent;
@@ -52,19 +52,19 @@ public class WorldComponent extends JComponent{
 
         for (int x = 0; x < array.length; x++) {
             for (int y = 0; y < array[x].length; y++) {
-                if (array[x][y] > WorldGen.SNOW_LEVEL) {
+                if (array[x][y] > SurfaceGen.SNOW_LEVEL) {
                     g2.setColor(new Color(0.95f, 0.95f, 1.0f));
-                } else if (array[x][y] > WorldGen.TREE_LEVEL) {
+                } else if (array[x][y] > SurfaceGen.TREE_LEVEL) {
                     g2.setColor(new Color(0.0f, 0.5f, 0.0f));
-                } else if (array[x][y] > WorldGen.SLOPE_LEVEL) {
+                } else if (array[x][y] > SurfaceGen.SLOPE_LEVEL) {
                     g2.setColor(new Color(0.0f,0.6f,0.0f));
-                } else if (array[x][y] > WorldGen.MOUNTAIN_BASE_LEVEL) {
+                } else if (array[x][y] > SurfaceGen.MOUNTAIN_BASE_LEVEL) {
                     g2.setColor(new Color(0.0f,0.7f,0.0f));
-                } else if (array[x][y] > WorldGen.HILL_LEVEL) {
+                } else if (array[x][y] > SurfaceGen.HILL_LEVEL) {
                     g2.setColor(new Color(0.0f,0.8f,0.0f));
-                } else if (array[x][y] > WorldGen.BEACH_MAX_LEVEL) {
+                } else if (array[x][y] > SurfaceGen.BEACH_MAX_LEVEL) {
                     g2.setColor(new Color(0.0f,0.9f,0.0f));
-                } else if (array[x][y] > WorldGen.SEA_LEVEL) {
+                } else if (array[x][y] > SurfaceGen.SEA_LEVEL) {
                     g2.setColor(new Color(0.9019608f, 0.8980392f, 0.1882353f));
                 } else if (array[x][y] > 23){
                     g2.setColor(new Color(0.5f,0.5f,1.0f));

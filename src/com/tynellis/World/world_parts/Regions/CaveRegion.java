@@ -4,8 +4,8 @@ import com.tynellis.World.World;
 import com.tynellis.World.world_parts.Regions.Generator.CaveGen;
 
 public class CaveRegion extends Region {
-    public CaveRegion(String name, World world) {
-        super(name, new CaveGen(world));
+    public CaveRegion(World world, int depth) {
+        super("Cave_" + depth, new CaveGen(world, depth));
     }
 
     @Override

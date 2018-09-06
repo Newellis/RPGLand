@@ -255,6 +255,7 @@ public class GameComponent extends JPanel implements Runnable {
 
         world.addTestEntities();
         //addTestStructure(world, spawn);
+
         state = GameState.SINGLE_PLAYER;
         System.out.println("Done");
         saveWorld();

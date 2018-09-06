@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChestInventory extends Inventory {
-    private SpriteSheet SHEET = new SpriteSheet("tempArt/lpc/submission_daneeklu 2/ui/scrollsandblocks.png", 32, 32, 96, 224, 1);
+    private SpriteSheet SHEET = new SpriteSheet("tempArt/lpc/mine/chestUI.png", 32, 32, 1);
     private ChestInterface chestInterface;
     private List<InventorySlot> slots = new ArrayList<InventorySlot>();
     private Rectangle chestBouds = new Rectangle();

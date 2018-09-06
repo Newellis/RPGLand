@@ -6,13 +6,13 @@ import com.tynellis.World.Tiles.LandTiles.ManMade.Wall;
 import com.tynellis.World.Tiles.LandTiles.ManMade.WoodFloor;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.world_parts.Area;
-import com.tynellis.World.world_parts.Regions.Generator.IWorldGen;
+import com.tynellis.World.world_parts.Regions.Generator.WorldGen;
 import com.tynellis.World.world_parts.Regions.Region;
 
 import java.io.Serializable;
 import java.util.Random;
 
-public class SmallHouseGen implements IWorldGen, Serializable {
+public class SmallHouseGen extends WorldGen implements Serializable {
     private int x, y, z, height, width;
     private SmallHouse house;
     private Region exitRegion;

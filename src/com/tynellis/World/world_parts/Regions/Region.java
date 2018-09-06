@@ -16,7 +16,7 @@ import com.tynellis.World.World;
 import com.tynellis.World.spawners.WorldSpawner;
 import com.tynellis.World.world_parts.Area;
 import com.tynellis.World.world_parts.Land;
-import com.tynellis.World.world_parts.Regions.Generator.IWorldGen;
+import com.tynellis.World.world_parts.Regions.Generator.WorldGen;
 import com.tynellis.debug.Debug;
 
 import java.awt.Graphics;
@@ -35,7 +35,7 @@ public abstract class Region implements Serializable, Land {
     public static final int WIDTH = 1024;
     public static final int HEIGHT = 1024;
     protected String name;
-    private IWorldGen gen;
+    private WorldGen gen;
     private transient Area[][] loadedAreas = new Area[1][1];
     private transient ArrayList<Entity> entities = new ArrayList<Entity>();
     private transient ArrayList<Entity> entityMoveList = new ArrayList<Entity>(), deadEntities = new ArrayList<Entity>(), newEntities = new ArrayList<Entity>();
@@ -47,7 +47,7 @@ public abstract class Region implements Serializable, Land {
 
     private transient LightOverlay lighting = new LightOverlay();
 
-    public Region(String name, IWorldGen gen) {
+    public Region(String name, WorldGen gen) {
         this.name = name;
         this.gen = gen;
         addEntitiesToSpawn();
@@ -202,7 +202,7 @@ public abstract class Region implements Serializable, Land {
     }
 
     //fills in any null spaces in loadedAreas and populates them
-    private void setLoadedAreas(Region region, IWorldGen gen, Random rand, long seed) {
+    private void setLoadedAreas(Region region, WorldGen gen, Random rand, long seed) {
         for(int i = 0; i < loadedAreas.length; i++){
             int length = loadedAreas[i].length;
             for (int j = 0; j < length; j++){

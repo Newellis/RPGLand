@@ -1,9 +1,9 @@
 package com.tynellis.World.world_parts.Regions;
 
-import com.tynellis.World.world_parts.Regions.Generator.IWorldGen;
+import com.tynellis.World.world_parts.Regions.Generator.WorldGen;
 
 public class BuildingRegion extends Region {
-    public BuildingRegion(String name, IWorldGen gen) {
+    public BuildingRegion(String name, WorldGen gen) {
         super(name, gen);
     }
 

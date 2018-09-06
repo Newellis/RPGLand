@@ -16,7 +16,6 @@ public class CaveGenTest extends AlgTest {
 
     private int[][] array;
     private BufferedImage map = new BufferedImage(Region.WIDTH, Region.HEIGHT, BufferedImage.TYPE_INT_ARGB);
-    ;
 
     public CaveGenTest() {
         Name = "Cave Gen";
@@ -27,7 +26,7 @@ public class CaveGenTest extends AlgTest {
         this.setPreferredSize(new Dimension(Region.WIDTH, Region.HEIGHT));
         Random random = new Random();
         long seed = 2000000; //random.nextLong();
-        CaveGen gen = new CaveGen(new World("test", seed));
+        CaveGen gen = new CaveGen(new World("test", seed), 1);
 //        array = gen.getCaveAreas();
         fillMap();
         return false;

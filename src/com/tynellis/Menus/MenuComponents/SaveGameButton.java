@@ -36,7 +36,7 @@ public class SaveGameButton extends Button {
             }
         }else {
             Random random = new Random();
-            long seed = 2000000;//for testing purposes should be new random.nextLong();
+            long seed = 320000;//for testing purposes should be new random.nextLong();
             game.startGame(this.game, seed);
         }
     }
