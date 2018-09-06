@@ -2,7 +2,10 @@ package com.tynellis.World.world_parts.Regions.Generator;
 
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.Rocks.CopperOre;
+import com.tynellis.World.Entities.Rocks.GoldOre;
+import com.tynellis.World.Entities.Rocks.IronOre;
 import com.tynellis.World.Entities.Rocks.Rock;
+import com.tynellis.World.Entities.Rocks.SilverOre;
 import com.tynellis.World.Entities.Rocks.TinOre;
 import com.tynellis.World.Tiles.LandTiles.Natural.CaveWall;
 import com.tynellis.World.Tiles.LandTiles.Natural.Dirt;
@@ -204,6 +207,15 @@ public class CaveGen extends WorldGen implements Serializable {
             return new CopperOre(x, y, z, rand);
         } else if (rand.nextDouble() < .5) {
             return new TinOre(x, y, z, rand);
+        }
+        if (rand.nextDouble() < 0.2 * (depth - 3)) {
+            return new GoldOre(x, y, z, rand);
+        }
+        if (rand.nextDouble() < 0.1 * (depth - 4)) {
+            return new SilverOre(x, y, z, rand);
+        }
+        if (rand.nextDouble() < 0.4 * (depth - 5)) {
+            return new IronOre(x, y, z, rand);
         }
         return new Rock(x, y, z, rand);
     }

@@ -2,8 +2,8 @@ package com.tynellis.World.Items.Materials.ores;
 
 import com.tynellis.World.Items.Item;
 
-public class Copper extends Item {
-    public Copper() {
-        super("Copper Ore", 10, 0, 2);
+public class Iron extends Item {
+    public Iron() {
+        super("Iron Ore", 10, 0, 6);
     }
 }
