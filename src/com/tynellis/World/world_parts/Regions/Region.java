@@ -196,6 +196,7 @@ public abstract class Region implements Serializable, Land {
     //initialize all areas around center area
     public synchronized void loadAreas(Rectangle loadedArea, Random rand, long seed) {
         synchronized (loadedAreas) {
+            setAreaOffset(new int[]{loadedArea.x, loadedArea.y});
             loadedAreas = new Area[loadedArea.width][loadedArea.height];
             setLoadedAreas(this, gen, rand, seed);
         }
@@ -586,5 +587,9 @@ public abstract class Region implements Serializable, Land {
 
     public ArrayList<Rectangle> getSpawnFreeAreas() {
         return spawnFreeAreas;
+    }
+
+    public WorldGen getGen() {
+        return gen;
     }
 }

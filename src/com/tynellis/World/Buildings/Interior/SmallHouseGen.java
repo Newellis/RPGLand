@@ -18,7 +18,7 @@ public class SmallHouseGen extends WorldGen implements Serializable {
     private Region exitRegion;
 
     public SmallHouseGen(SmallHouse house, Region exitRegion) {
-        this.x = (int) house.getX() + 2;
+        this.x = (int) house.getX() + (house.getWidth() / Tile.WIDTH / 2);
         this.y = (int) house.getY() + 1;
         this.z = (int) house.getZ();
         height = house.getHeight();

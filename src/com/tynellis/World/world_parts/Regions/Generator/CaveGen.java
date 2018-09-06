@@ -7,25 +7,40 @@ import com.tynellis.World.Entities.Rocks.IronOre;
 import com.tynellis.World.Entities.Rocks.Rock;
 import com.tynellis.World.Entities.Rocks.SilverOre;
 import com.tynellis.World.Entities.Rocks.TinOre;
+import com.tynellis.World.Entities.UsableEntity.Door;
+import com.tynellis.World.Tiles.LandTiles.LandTile;
 import com.tynellis.World.Tiles.LandTiles.Natural.CaveWall;
 import com.tynellis.World.Tiles.LandTiles.Natural.Dirt;
 import com.tynellis.World.Tiles.LandTiles.Natural.LavaRock;
 import com.tynellis.World.Tiles.LandTiles.Natural.Stone;
 import com.tynellis.World.World;
 import com.tynellis.World.world_parts.Area;
+import com.tynellis.World.world_parts.Regions.CaveRegion;
 import com.tynellis.World.world_parts.Regions.Region;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class CaveGen extends WorldGen implements Serializable {
     private World world;
     private int depth;
+    private List<LandTile> caveFloor = new ArrayList<LandTile>();
+    private CaveRegion nextCaveDown = null;
 
     public CaveGen(World world, int depth) {
         this.world = world;
         this.depth = depth;
+        if (depth < 2) {
+            nextCaveDown = new CaveRegion(world, depth + 1);
+        }
 //        genCaves();
+        setCaveFloor();
+    }
+
+    private void setCaveFloor() {
+        caveFloor.add(new Dirt(new Random(), 100));
     }
 
 //    public void genCaves() {
@@ -99,8 +114,8 @@ public class CaveGen extends WorldGen implements Serializable {
         Random rand = new Random(seed * ((X * Region.WIDTH) + Y)); // for location based randoms
         int[][] land = makeCaves(X / Area.WIDTH, Y / Area.HEIGHT, seed, 0.5);
         boolean deep = false;
-        double tileChance = 0.3 + (0.1 * depth);
-        if (tileChance > 1.3) {
+        double tileChance = 0.2 + (0.02 * depth);
+        if (tileChance > 1.1) {
             tileChance -= 1;
             deep = true;
         }
@@ -159,6 +174,25 @@ public class CaveGen extends WorldGen implements Serializable {
     public void populateArea(Region region, int x, int y, long seed) {
         Random rand = new Random(seed * ((x * Region.WIDTH) + y)); // for location based randoms
         addRockClumps(region, x, y, rand, 1 + (depth / 6), 4 + (depth / 2));
+        if (nextCaveDown != null) {
+//            addWayDown(region, x, y, seed, rand);
+        }
+    }
+
+    private void addWayDown(Region region, int X, int Y, long seed, Random rand) {
+        nextCaveDown.loadAreas(region.getLoadedAreaBounds(), world.getRand(), seed);
+//        nextCaveDown.getGen().fillArea(nextCaveDown, X, Y, seed);
+        boolean foundSpot = false;
+        do {
+            int x = rand.nextInt(Area.WIDTH);
+            int y = rand.nextInt(Area.HEIGHT);
+            int z = region.getTopLayerAt(X + x, Y + y);
+            if (!(region.getTile(X + x, Y + y, z) instanceof CaveWall) && !(nextCaveDown.getTile(X + x, Y + y - 1, z) instanceof CaveWall)) {
+                region.addEntity(new Door(X + x, Y + y, z, 1, nextCaveDown));
+                nextCaveDown.addEntity(new Door(X + x, Y + y - 1, z, 1, region));
+                foundSpot = true;
+            }
+        } while (foundSpot);
     }
 
     private void addRockClumps(Region region, int X, int Y, Random rand, int min, int max) {
@@ -166,8 +200,8 @@ public class CaveGen extends WorldGen implements Serializable {
         while (count < num) {
             int x = rand.nextInt(Area.WIDTH);
             int y = rand.nextInt(Area.HEIGHT);
-            int z = region.getTopLayerAt(X, Y);
-            if (!(region.getTile(X, Y, z) instanceof CaveWall)) {
+            int z = region.getTopLayerAt(X + x, Y + y);
+            if (!(region.getTile(X + x, Y + y, z) instanceof CaveWall)) {
                 addRockClump(region, X + x, Y + y, 5 + depth, 5 + depth, 1 + (depth / 10), 5 + (depth / 3), rand);
                 count++;
             } else {
@@ -203,20 +237,48 @@ public class CaveGen extends WorldGen implements Serializable {
     }
 
     private Entity getRock(int x, int y, int z, Random rand) {
-        if (rand.nextDouble() < .3) {
+        double chance = rand.nextDouble();
+        double cumulativePercent = 0;
+
+        cumulativePercent = calculateChance(1, 5 + rand.nextInt(10), .3, rand, cumulativePercent);
+        if (chance < cumulativePercent) {
             return new CopperOre(x, y, z, rand);
-        } else if (rand.nextDouble() < .5) {
+        }
+
+        cumulativePercent = calculateChance(1, 3 + rand.nextInt(12), .3, rand, cumulativePercent);
+        if (chance < cumulativePercent) {
             return new TinOre(x, y, z, rand);
         }
-        if (rand.nextDouble() < 0.2 * (depth - 3)) {
+
+        cumulativePercent = calculateChance(3, 3 + rand.nextInt(15), .2, rand, cumulativePercent);
+        if (chance < cumulativePercent) {
             return new GoldOre(x, y, z, rand);
         }
-        if (rand.nextDouble() < 0.1 * (depth - 4)) {
+
+        cumulativePercent = calculateChance(rand.nextInt(4), 3 + rand.nextInt(15), .1, rand, cumulativePercent);
+        if (chance < cumulativePercent) {
             return new SilverOre(x, y, z, rand);
         }
-        if (rand.nextDouble() < 0.4 * (depth - 5)) {
+
+        cumulativePercent = calculateChance(rand.nextInt(5), 5 + rand.nextInt(30), .5, rand, cumulativePercent);
+        if (chance < cumulativePercent) {
             return new IronOre(x, y, z, rand);
         }
+
         return new Rock(x, y, z, rand);
+    }
+
+    private double calculateChance(int minDepth, int maxDepth, double maxPercent, Random random, double previousPercent) {
+        int diff = maxDepth - minDepth;
+        double stepSize = maxPercent / (diff / 2.0);
+        double chance = (depth - minDepth) * stepSize;
+        if (depth > minDepth + (diff / 2.0)) {
+            chance = maxPercent - ((maxDepth - depth) * stepSize);
+        }
+        if (chance < 0) {
+            return previousPercent;
+        } else {
+            return previousPercent + chance;
+        }
     }
 }
