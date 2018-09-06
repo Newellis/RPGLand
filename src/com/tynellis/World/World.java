@@ -238,7 +238,7 @@ public class World implements Land, Serializable {
         SmallHouse.buildSmallHouse(overRegionRegion, getRand(), spawnPoint[0] - 6, spawnPoint[1] - 5, spawnPoint[2]);
         SmallHouse.buildSmallHouse(overRegionRegion, getRand(), spawnPoint[0], spawnPoint[1] - 5, spawnPoint[2]);
 
-        Region Caves = new CaveRegion(this, 4);
+        Region Caves = new CaveRegion(this, 1);
         Door CaveDoor = new Door(spawnPoint[0], spawnPoint[1] + 2, spawnPoint[2], 1, Caves);
         overRegionRegion.addEntity(CaveDoor);
         Caves.addEntity(new Door(spawnPoint[0], spawnPoint[1] + 3, spawnPoint[2], 1, overRegionRegion));

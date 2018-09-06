@@ -7,7 +7,7 @@ import com.tynellis.World.Entities.Rocks.IronOre;
 import com.tynellis.World.Entities.Rocks.Rock;
 import com.tynellis.World.Entities.Rocks.SilverOre;
 import com.tynellis.World.Entities.Rocks.TinOre;
-import com.tynellis.World.Entities.UsableEntity.Door;
+import com.tynellis.World.Entities.UsableEntity.CaveLadder;
 import com.tynellis.World.Tiles.LandTiles.LandTile;
 import com.tynellis.World.Tiles.LandTiles.Natural.CaveWall;
 import com.tynellis.World.Tiles.LandTiles.Natural.Dirt;
@@ -28,11 +28,11 @@ public class CaveGen extends WorldGen implements Serializable {
     private int depth;
     private List<LandTile> caveFloor = new ArrayList<LandTile>();
     private CaveRegion nextCaveDown = null;
-
+    private static final int numOfLayers = 100;
     public CaveGen(World world, int depth) {
         this.world = world;
         this.depth = depth;
-        if (depth < 2) {
+        if (depth < numOfLayers) {
             nextCaveDown = new CaveRegion(world, depth + 1);
         }
 //        genCaves();
@@ -111,7 +111,7 @@ public class CaveGen extends WorldGen implements Serializable {
 
     @Override
     public void fillArea(Region region, int X, int Y, long seed) {
-        Random rand = new Random(seed * ((X * Region.WIDTH) + Y)); // for location based randoms
+        Random rand = new Random(seed * ((X * Region.WIDTH) + Y) + (depth * 10000)); // for location based randoms
         int[][] land = makeCaves(X / Area.WIDTH, Y / Area.HEIGHT, seed, 0.5);
         boolean deep = false;
         double tileChance = 0.2 + (0.02 * depth);
@@ -152,7 +152,7 @@ public class CaveGen extends WorldGen implements Serializable {
         int[][] areas = new int[Area.WIDTH * 3][Area.HEIGHT * 3];
         for (int xOff = -1; xOff < 2; xOff++) {
             for (int yOff = -1; yOff < 2; yOff++) {
-                Random rand = new Random(seed * (((X + xOff) * Region.WIDTH) + (Y + yOff))); // for location based randoms
+                Random rand = new Random(seed * (((X + xOff) * Region.WIDTH) + (Y + yOff)) + (depth * 10000)); // for location based randoms
                 for (int i = 0; i < Area.WIDTH; i++) {
                     for (int j = 0; j < Area.HEIGHT; j++) {
                         if (rand.nextFloat() < chance) {
@@ -172,27 +172,28 @@ public class CaveGen extends WorldGen implements Serializable {
 
     @Override
     public void populateArea(Region region, int x, int y, long seed) {
-        Random rand = new Random(seed * ((x * Region.WIDTH) + y)); // for location based randoms
-        addRockClumps(region, x, y, rand, 1 + (depth / 6), 4 + (depth / 2));
+        Random rand = new Random(seed * ((x * Region.WIDTH) + y) + (depth * 10000)); // for location based randoms
         if (nextCaveDown != null) {
-//            addWayDown(region, x, y, seed, rand);
+            addWayDown(region, x, y, seed, rand);
         }
+        addRockClumps(region, x, y, rand, 1 + (depth / 6), 4 + (depth / 2));
     }
 
     private void addWayDown(Region region, int X, int Y, long seed, Random rand) {
-        nextCaveDown.loadAreas(region.getLoadedAreaBounds(), world.getRand(), seed);
-//        nextCaveDown.getGen().fillArea(nextCaveDown, X, Y, seed);
+        int[][] nextDownLand = ((CaveGen) nextCaveDown.getGen()).makeCaves(X / Area.WIDTH, Y / Area.HEIGHT, seed, 0.5);
         boolean foundSpot = false;
-        do {
-            int x = rand.nextInt(Area.WIDTH);
-            int y = rand.nextInt(Area.HEIGHT);
-            int z = region.getTopLayerAt(X + x, Y + y);
-            if (!(region.getTile(X + x, Y + y, z) instanceof CaveWall) && !(nextCaveDown.getTile(X + x, Y + y - 1, z) instanceof CaveWall)) {
-                region.addEntity(new Door(X + x, Y + y, z, 1, nextCaveDown));
-                nextCaveDown.addEntity(new Door(X + x, Y + y - 1, z, 1, region));
-                foundSpot = true;
-            }
-        } while (foundSpot);
+        if (rand.nextDouble() < (.25 - ((0.25 / numOfLayers) * (depth - 1)))) {
+            do {
+                int x = rand.nextInt(Area.WIDTH);
+                int y = rand.nextInt(Area.HEIGHT);
+                int z = region.getTopLayerAt(X + x, Y + y);
+                if (!(region.getTile(X + x, Y + y, z) instanceof CaveWall) && nextDownLand[x][y] == 1 && region.getEntitiesIntersecting(region.getTileBounds(X + x, Y + y, z)).size() == 0) {
+                    region.addEntity(new CaveLadder(X + x, Y + y, z, true, nextCaveDown));
+                    nextCaveDown.addEntity(new CaveLadder(X + x, Y + y - 1, z, false, region));
+                    foundSpot = true;
+                }
+            } while (!foundSpot);
+        }
     }
 
     private void addRockClumps(Region region, int X, int Y, Random rand, int min, int max) {
