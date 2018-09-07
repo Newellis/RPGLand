@@ -66,6 +66,9 @@ public abstract class Tile implements BoundingBoxOwner, Serializable {
         if (cliff) {
             g.drawImage(cliffEdge.getSprite(3).getStill(1), x, y + (3 * (Tile.HEIGHT / 4)), null);//todo add alt cliff Art
         }
+        if (sprite == null) {
+            startArt();
+        }
         for (int i = sprite.length-1; i >= 0; i-- ){
             if (sprite[i] != null) {
                 g.drawImage(sprite[i].getStill(still[i]), x, y, null);

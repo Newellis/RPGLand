@@ -11,6 +11,7 @@ import com.tynellis.World.Entities.Plants.Tree;
 import com.tynellis.World.Entities.Player;
 import com.tynellis.World.Entities.UsableEntity.Chest;
 import com.tynellis.World.Entities.UsableEntity.Door;
+import com.tynellis.World.Entities.UsableEntity.RegionBoundary;
 import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Items.Materials.Log;
 import com.tynellis.World.Tiles.Tile;
@@ -61,7 +62,7 @@ public class World implements Land, Serializable {
         loadedRegions.add(overRegionRegion);
     }
 
-    public static void moveEntityToRegion(Entity entity, Region region) {
+    public void moveEntityToRegion(Entity entity, Region region) {
         synchronized (loadedRegions) {
             for (Region origin : loadedRegions) {
                 if (!origin.equals(region)) {
@@ -69,22 +70,49 @@ public class World implements Land, Serializable {
                 }
             }
         }
-        region.addEntity(entity);
+        region.queueAdditionOfEntity(entity);
         if (GameComponent.isMainPlayer(entity)) {
             System.out.println("move to region " + region.getName());
             currentRegion = region;
+        }
+        updateLoadedRegions();
+    }
+
+    private void updateLoadedRegions() {
+        if (!loadedRegions.contains(currentRegion)) {
+            currentRegion.setAreaOffset(areaOffset);
+            currentRegion.loadAreas(getLoadedAreaRect(), getRand(), seed);
+        }
+        ArrayList<Region> regions = new ArrayList<Region>();
+        regions.add(currentRegion);
+        ArrayList<Entity> entities = currentRegion.getEntitiesIntersecting(new Rectangle(loadedArea.x * Area.WIDTH * Tile.WIDTH, loadedArea.y * Area.HEIGHT * Tile.HEIGHT, loadedArea.width * Area.WIDTH * Tile.WIDTH, loadedArea.height * Area.HEIGHT * Tile.HEIGHT));
+        for (Entity e : entities) {
+            if (e instanceof RegionBoundary && !regions.contains(((RegionBoundary) e).getDestination())) {
+                regions.add(((RegionBoundary) e).getDestination());
+            }
+        }
+        for (Region region : regions) {
+            if (!loadedRegions.contains(region)) {
+                region.setAreaOffset(areaOffset);
+                region.loadAreas(oldAreaOffset[X], oldAreaOffset[Y], loadedArea, getRand(), seed);
+            }
+        }
+        synchronized (loadedRegions) {
+            for (Region region : loadedRegions) {
+                if (!regions.contains(region)) {
+                    region.saveLoadedAreas();
+                }
+            }
+            loadedRegions.clear();
+            loadedRegions.addAll(regions);
+            System.out.println(regions);
         }
     }
 
     public void tick() {
         synchronized (loadedRegions) {
-            if (!loadedRegions.contains(currentRegion)) {
-                loadedRegions.add(currentRegion);
-                currentRegion.setAreaOffset(areaOffset);
-                currentRegion.loadAreas(getLoadedAreaRect(), getRand(), seed);
-            }
-            for (Region region : loadedRegions) {
-                region.tick(getRand());
+            for (int i = 0; i < loadedRegions.size(); i++) { // not for each to avoid concurrent mod exception
+                loadedRegions.get(i).tick(getRand());
             }
         }
     }
@@ -215,6 +243,7 @@ public class World implements Land, Serializable {
     }
 
     public void loadAreas() {
+//        updateLoadedRegions();
         synchronized (loadedRegions) {
             for (Region region : loadedRegions) {
                 region.loadAreas(oldAreaOffset[X], oldAreaOffset[Y], loadedArea, getRand(), seed);

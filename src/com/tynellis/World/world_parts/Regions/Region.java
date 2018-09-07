@@ -37,7 +37,7 @@ public abstract class Region implements Serializable, Land {
     protected String name;
     private WorldGen gen;
     private transient Area[][] loadedAreas = new Area[1][1];
-    private transient ArrayList<Entity> entities = new ArrayList<Entity>();
+    private final transient ArrayList<Entity> entities = new ArrayList<Entity>();
     private transient ArrayList<Entity> entityMoveList = new ArrayList<Entity>(), deadEntities = new ArrayList<Entity>(), newEntities = new ArrayList<Entity>();
     private transient EntityQuadTree collisionTree;
     private transient int[] areaOffset;
@@ -58,7 +58,6 @@ public abstract class Region implements Serializable, Land {
         entityMoveList = new ArrayList<Entity>();
         deadEntities = new ArrayList<Entity>();
         newEntities = new ArrayList<Entity>();
-        entities = new ArrayList<Entity>();
         loadedAreas = new Area[1][1];
         areaOffset = new int[2];
         collisionTree = new EntityQuadTree(0, getLoadedAreaBounds());
@@ -128,24 +127,26 @@ public abstract class Region implements Serializable, Land {
             entities.addAll(newEntities);
             newEntities.clear();
         }
-        if (entities.size() > 0) {
-            collisionTree = new EntityQuadTree(0, new Rectangle(areaOffset[World.X] * Area.WIDTH * Tile.WIDTH, areaOffset[World.Y] * Area.HEIGHT * Tile.HEIGHT, loadedAreas.length * Area.WIDTH * Tile.WIDTH, loadedAreas[0].length * Area.HEIGHT * Tile.HEIGHT));
-            for (Entity entity : entities) {
-                if (!entity.isDead()) {
-                    collisionTree.insert(entity);
-                } else {
-                    deadEntities.add(entity);
+        synchronized (entities) {
+            if (entities.size() > 0) {
+                collisionTree = new EntityQuadTree(0, new Rectangle(areaOffset[World.X] * Area.WIDTH * Tile.WIDTH, areaOffset[World.Y] * Area.HEIGHT * Tile.HEIGHT, loadedAreas.length * Area.WIDTH * Tile.WIDTH, loadedAreas[0].length * Area.HEIGHT * Tile.HEIGHT));
+                for (Entity entity : entities) {
+                    if (!entity.isDead()) {
+                        collisionTree.insert(entity);
+                    } else {
+                        deadEntities.add(entity);
+                    }
                 }
-            }
-            for (Entity entity : entities) {
-                if (!entity.isDead()) {
-                    List<Entity> near = collisionTree.retrieve(new ArrayList<Entity>(), entity.getBounds());
-                    near.remove(entity);
-                    entity.tick(this, random, near);
-                    if (entity.getLight() != null) {
-                        near = collisionTree.retrieve(new ArrayList<Entity>(), entity.getLight().getBounds());
+                for (Entity entity : entities) {
+                    if (!entity.isDead()) {
+                        List<Entity> near = collisionTree.retrieve(new ArrayList<Entity>(), entity.getBounds());
                         near.remove(entity);
-                        entity.getLight().tick(this, near);
+                        entity.tick(this, random, near);
+                        if (entity.getLight() != null) {
+                            near = collisionTree.retrieve(new ArrayList<Entity>(), entity.getLight().getBounds());
+                            near.remove(entity);
+                            entity.getLight().tick(this, near);
+                        }
                     }
                 }
             }
@@ -296,7 +297,6 @@ public abstract class Region implements Serializable, Land {
     }
 
     public void setAreaOffset(int[] areaOffset) {
-        System.out.println("Move areas");
         this.areaOffset = areaOffset;
     }
 

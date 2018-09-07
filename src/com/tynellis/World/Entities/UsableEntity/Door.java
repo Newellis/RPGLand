@@ -10,7 +10,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-public class Door extends RegionBoundry {
+public class Door extends RegionBoundary {
     private static transient SpriteSheet doorSheet = new SpriteSheet("tempArt/lpc/buildings/doors.png", 64, 64, 1);
 
     private boolean locked = false;

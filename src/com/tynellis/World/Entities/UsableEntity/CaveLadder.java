@@ -9,7 +9,7 @@ import com.tynellis.World.world_parts.Regions.Region;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-public class CaveLadder extends RegionBoundry {
+public class CaveLadder extends RegionBoundary {
     private static transient SpriteSheet ladderSheet = new SpriteSheet("tempArt/lpc/mine/CaveLadder.png", 32, 64, 1);
     private boolean top;
 
