@@ -16,7 +16,6 @@ import com.tynellis.World.Items.weapons.PickAxe;
 import com.tynellis.World.Items.weapons.Weapon;
 import com.tynellis.World.Light.LightSource;
 import com.tynellis.World.Tiles.Tile;
-import com.tynellis.World.World;
 import com.tynellis.World.world_parts.Regions.Region;
 import com.tynellis.debug.Debug;
 import com.tynellis.input.Keys;
@@ -251,8 +250,8 @@ public class Player extends Humanoid {
         isDead = false;
         int x, y, z;
         do {
-            x = World.getSpawnPoint()[0] + (random.nextInt(20) - 10);
-            y = World.getSpawnPoint()[1] + (random.nextInt(20) - 10);
+            x = GameComponent.world.getSpawnPoint()[0] + (random.nextInt(20) - 10);
+            y = GameComponent.world.getSpawnPoint()[1] + (random.nextInt(20) - 10);
             z = region.getTopLayerAt(x, y);
         } while (region.isTileObstructed(x, y, z) && !region.getTile(x, y, z).isPassableBy(this));
 

@@ -186,7 +186,16 @@ public abstract class Region implements Serializable, Land {
     //Load areas around player if center area has changed
     public synchronized void loadAreas(int lastX, int lastY, Rectangle loadedArea, Random rand, long seed) {
 
-        if ((lastX != areaOffset[World.X] || lastY != areaOffset[World.Y]) || loadedAreas.length != loadedArea.width || loadedAreas[0].length != loadedArea.height) { //if new areas need to be loaded
+        boolean nullArea = false;
+        for (int i = 0; i < loadedAreas.length; i++) {
+            for (int j = 0; j < loadedAreas[i].length; j++) {
+                if (loadedAreas[i][j] == null) {
+                    nullArea = true;
+                    break;
+                }
+            }
+        }
+        if (nullArea || (lastX != areaOffset[World.X] || lastY != areaOffset[World.Y]) || loadedAreas.length != loadedArea.width || loadedAreas[0].length != loadedArea.height) {
             synchronized (loadedAreas) {
                 shiftAreas(loadedArea, lastX - areaOffset[World.X], lastY - areaOffset[World.Y]);
                 setLoadedAreas(this, gen, rand, seed);

@@ -38,7 +38,7 @@ public class World implements Land, Serializable {
     private final Random WORLD_RAND;
     private String Name;
     public SurfaceGen gen;
-    private static int[] spawnPoint;
+    private int[] spawnPoint;
     private Region spawnRegion;
 
     public static final int Buffer = 2;
@@ -59,7 +59,7 @@ public class World implements Land, Serializable {
         overRegionRegion = new OverWorldRegion("Surface", new SurfaceGen(this));
         overRegionRegion.addSpawnFreeArea(screenArea);
         currentRegion = overRegionRegion;
-        loadedRegions.add(overRegionRegion);
+        updateLoadedRegions();
     }
 
     public void moveEntityToRegion(Entity entity, Region region) {
@@ -94,7 +94,7 @@ public class World implements Land, Serializable {
         for (Region region : regions) {
             if (!loadedRegions.contains(region)) {
                 region.setAreaOffset(areaOffset);
-                region.loadAreas(oldAreaOffset[X], oldAreaOffset[Y], loadedArea, getRand(), seed);
+                region.loadAreas(loadedArea, getRand(), seed);
             }
         }
         synchronized (loadedRegions) {
@@ -111,7 +111,7 @@ public class World implements Land, Serializable {
 
     public void tick() {
         synchronized (loadedRegions) {
-            for (int i = 0; i < loadedRegions.size(); i++) { // not for each to avoid concurrent mod exception
+            for (int i = 0; i < loadedRegions.size(); i++) { //not foreach to avoid concurrent mod exception
                 loadedRegions.get(i).tick(getRand());
             }
         }
@@ -152,26 +152,18 @@ public class World implements Land, Serializable {
             oldAreaOffset = new int[]{x, y};
         }
         areaOffset = new int[]{x, y};
+        loadedArea.setBounds(areaOffset[X], areaOffset[Y], NumOfAreasInWidth, NumOfAreasInHeight);
+        updateLoadedRegions();
         synchronized (loadedRegions) {
             for (Region region : loadedRegions) {
                 region.setAreaOffset(areaOffset);
+                region.loadAreas(oldAreaOffset[X], oldAreaOffset[Y], loadedArea, getRand(), seed);
             }
         }
-        loadedArea.setBounds(areaOffset[X], areaOffset[Y], NumOfAreasInWidth, NumOfAreasInHeight);
-        //load areas if old and new area offset are different
-        loadAreas();
-    }
-
-    public void addEntity(Region region, Entity entity) {
-        region.addEntity(entity);
     }
 
     public void addEntity(Entity entity) {
         currentRegion.addEntity(entity);
-    }
-
-    public void removeEntity(Region region, Entity entity) {
-        region.removeEntity(entity);
     }
 
     public void removeEntity(Entity entity) {
@@ -216,7 +208,7 @@ public class World implements Land, Serializable {
         gen.setSpawn(overRegionRegion, seed);
     }
 
-    public static int[] getSpawnPoint() {
+    public int[] getSpawnPoint() {
         return spawnPoint;
     }
 

@@ -182,7 +182,8 @@ public class CaveGen extends WorldGen implements Serializable {
     private void addWayDown(Region region, int X, int Y, long seed, Random rand) {
         int[][] nextDownLand = ((CaveGen) nextCaveDown.getGen()).makeCaves(X / Area.WIDTH, Y / Area.HEIGHT, seed, 0.5);
         boolean foundSpot = false;
-        if (rand.nextDouble() < (.25 - ((0.25 / numOfLayers) * (depth - 1)))) {
+        double chanceOfLadder = 1 / 6.0;
+        if (rand.nextDouble() < (chanceOfLadder - ((chanceOfLadder / numOfLayers) * (depth - 1)))) {
             do {
                 int x = rand.nextInt(Area.WIDTH);
                 int y = rand.nextInt(Area.HEIGHT);
