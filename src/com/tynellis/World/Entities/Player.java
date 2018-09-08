@@ -148,7 +148,7 @@ public class Player extends Humanoid {
                 if (keys.use.wasPressed()) {
                     UsableEntity usable = findUsableTarget(region);
                     if (usable != null && usable.canBeUsedBy(this)) {
-                        UsingInterface usableInterface = usable.use(this);
+                        UsingInterface usableInterface = usable.use(region, this);
                         if (usableInterface != null) {
                             Inventory = usableInterface.getMenu(this);
                             GameComponent.active.setMenu(Inventory);

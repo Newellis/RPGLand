@@ -8,6 +8,7 @@ import com.tynellis.World.Entities.UsableEntity.using_interfaces.UsingInterface;
 import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Tiles.Tile;
+import com.tynellis.World.world_parts.Regions.Region;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -73,7 +74,7 @@ public class Chest extends UsableEntity {
     }
 
     @Override
-    public UsingInterface use(KillableEntity entity) {
+    public UsingInterface use(Region region, KillableEntity entity) {
         if (canBeUsedBy(entity)) {
             System.out.println("Being used by " + entity.getClass().getSimpleName());
             ChestInterface chestInterface = new ChestInterface(this);

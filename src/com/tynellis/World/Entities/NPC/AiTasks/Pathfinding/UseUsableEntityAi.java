@@ -41,7 +41,7 @@ public abstract class UseUsableEntityAi extends FollowEntityAi implements Serial
             boolean moving = super.performTask(region, random, entity);
             if (tool.canBeUsedBy(entity)) {
                 faceClosest.performTask(region, random, entity);
-                boolean using = using(tool.use(entity), entity);
+                boolean using = using(tool.use(region, entity), entity);
                 return using;
             }
             return moving;

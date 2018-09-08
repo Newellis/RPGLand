@@ -1,7 +1,7 @@
 package com.tynellis.World.Entities.Rocks;
 
 import com.tynellis.World.Items.ItemPile;
-import com.tynellis.World.Items.Materials.ores.Iron;
+import com.tynellis.World.Items.Materials.metal.ores.Iron;
 
 import java.util.Random;
 

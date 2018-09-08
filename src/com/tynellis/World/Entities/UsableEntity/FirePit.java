@@ -5,11 +5,14 @@ import com.tynellis.Art.SpriteSheet;
 import com.tynellis.BoundingBox.BoundingBoxOwner;
 import com.tynellis.GameComponent;
 import com.tynellis.World.Entities.Entity;
+import com.tynellis.World.Entities.ItemEntity;
 import com.tynellis.World.Entities.KillableEntity;
 import com.tynellis.World.Entities.UsableEntity.using_interfaces.UsingInterface;
 import com.tynellis.World.Entities.damage.Damage;
 import com.tynellis.World.Entities.damage.DamageSource;
 import com.tynellis.World.Items.Containers.Container;
+import com.tynellis.World.Items.Cookable;
+import com.tynellis.World.Items.Item;
 import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Items.Materials.Log;
 import com.tynellis.World.Items.Materials.Stone;
@@ -21,7 +24,7 @@ import java.awt.image.BufferedImage;
 import java.util.List;
 import java.util.Random;
 
-public class Hearth extends UsableEntity {
+public class FirePit extends UsableEntity {
     private boolean built = false;
     private boolean onFire = false;
     private boolean redHot = false;
@@ -31,7 +34,7 @@ public class Hearth extends UsableEntity {
     private int burnTime = 0;
     private int heat = 0;
 
-    public Hearth(double x, double y, double z) {
+    public FirePit(double x, double y, double z) {
         super(x, y, z, 32, 32);
         speed = 0.0;
         canBeMoved = false;
@@ -68,7 +71,6 @@ public class Hearth extends UsableEntity {
             }
         }
         if (onFire) {
-            built = false;
             redHot = true;
             burnTime++;
             if (burnTime % 300 >= 299) {
@@ -89,23 +91,45 @@ public class Hearth extends UsableEntity {
         } else if (redHot) {
             if (heat > 0) {
                 burnTime--;
-                heat = burnTime % 300;
+                heat = burnTime / 300;
             }
             redHot = heat != 0;
         }
         if (heat > 10) {
             heat = 10;
         }
+        if (heat > 0 && redHot) {
+            CookItems(random);
+        }
         super.tick(region, random, near);
     }
 
+    private void CookItems(Random random) {
+        for (ItemPile pile : inventory.getContents()) {
+            if (pile != null && pile.getItem() instanceof Cookable) {
+                Item result = ((Cookable) pile.getItem()).CookTick(heat, random);
+                if (result != null) {
+                    pile.replaceStack(new ItemPile(result, pile.getSize()));
+                }
+            }
+        }
+    }
+
     @Override
-    public UsingInterface use(KillableEntity entity) {
+    public UsingInterface use(Region region, KillableEntity entity) {
         if (built) {
             onFire = !onFire;
             if (onFire) {
                 fireAnim = new Animation(SHEET, 5);
                 fireAnim.playInRange(0, 2, 4);
+            }
+        } else if (!redHot) {
+            for (int i = 1; i < inventory.getContents().length; i++) {
+                System.out.println("Try Drop: " + inventory.getContents()[i]);
+                if (inventory.getContents()[i] != null) {
+                    System.out.print("Drop: " + inventory.getContents()[i].getItem().getName());
+                    region.queueAdditionOfEntity(new ItemEntity(inventory.getContents()[i], GameComponent.world.getRand(), entity.getX(), entity.getY(), entity.getZ()));
+                }
             }
         }
         return null;

@@ -2,6 +2,7 @@ package com.tynellis.World.Entities.UsableEntity;
 
 import com.tynellis.World.Entities.KillableEntity;
 import com.tynellis.World.Entities.UsableEntity.using_interfaces.UsingInterface;
+import com.tynellis.World.world_parts.Regions.Region;
 
 /**
  * Created by tyler on 6/2/16.
@@ -12,7 +13,7 @@ public abstract class UsableEntity extends KillableEntity {
         super(x, y, z, width, height);
     }
 
-    public abstract UsingInterface use(KillableEntity entity);
+    public abstract UsingInterface use(Region region, KillableEntity entity);
 
     public boolean canBeUsedBy(KillableEntity entity) {
         double x, y, z, scoreLeft = 0;

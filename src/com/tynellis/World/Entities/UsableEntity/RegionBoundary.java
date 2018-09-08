@@ -16,10 +16,10 @@ public abstract class RegionBoundary extends UsableEntity {
     }
 
     @Override
-    public UsingInterface use(KillableEntity entity) {
+    public UsingInterface use(Region region, KillableEntity entity) {
         if (canBeUsedBy(entity)) {
             System.out.println(entity.getClass().getSimpleName() + " using door");
-            GameComponent.world.moveEntityToRegion(entity, region);
+            GameComponent.world.moveEntityToRegion(entity, this.region);
             return null;
         }
         return null;

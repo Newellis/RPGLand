@@ -69,4 +69,9 @@ public class ItemPile implements Serializable {
     public boolean isSame(ItemPile pile) {
         return item.getName().equals(pile.getItem().getName()) && size == pile.getSize();
     }
+
+    public void replaceStack(ItemPile pile) {
+        item = pile.item;
+        size = pile.size;
+    }
 }
