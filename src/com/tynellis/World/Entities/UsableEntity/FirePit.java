@@ -94,6 +94,9 @@ public class FirePit extends UsableEntity {
                 heat = burnTime / 300;
             }
             redHot = heat != 0;
+            if (built) {
+                onFire = true;
+            }
         }
         if (heat > 10) {
             heat = 10;
@@ -125,10 +128,10 @@ public class FirePit extends UsableEntity {
             }
         } else if (!redHot) {
             for (int i = 1; i < inventory.getContents().length; i++) {
-                System.out.println("Try Drop: " + inventory.getContents()[i]);
                 if (inventory.getContents()[i] != null) {
                     System.out.print("Drop: " + inventory.getContents()[i].getItem().getName());
-                    region.queueAdditionOfEntity(new ItemEntity(inventory.getContents()[i], GameComponent.world.getRand(), entity.getX(), entity.getY(), entity.getZ()));
+                    //todo figure out how to get items back to user without loss
+                    region.queueAdditionOfEntity(new ItemEntity(inventory.getContents()[i], GameComponent.world.getRand(), (getX() + entity.getX()) / 2, (getY() + entity.getY()) / 2, region.getTopLayerAt((int) ((getX() + entity.getX()) / 2), (int) ((getY() + entity.getY()) / 2))));
                 }
             }
         }
@@ -156,6 +159,10 @@ public class FirePit extends UsableEntity {
             ((KillableEntity) bb).DamageBy(damageSource, GameComponent.world.getRand());
         }
         super.handleCollision(bb, xMove, yMove, isOver);
+
+        if (bb instanceof ItemPile && onFire) {
+            ((ItemPile) bb).removeFromPile(((ItemPile) bb).getSize());
+        }
     }
 
     @Override
