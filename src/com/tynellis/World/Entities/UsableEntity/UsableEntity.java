@@ -1,6 +1,7 @@
 package com.tynellis.World.Entities.UsableEntity;
 
 import com.tynellis.World.Entities.KillableEntity;
+import com.tynellis.World.Entities.UsableEntity.using_interfaces.UsingInterface;
 
 /**
  * Created by tyler on 6/2/16.

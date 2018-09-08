@@ -8,11 +8,11 @@ import com.tynellis.GameState;
 import com.tynellis.Menus.InGameMenus.InGameMenu;
 import com.tynellis.Menus.InGameMenus.Inventory;
 import com.tynellis.World.Entities.UsableEntity.UsableEntity;
-import com.tynellis.World.Entities.UsableEntity.UsingInterface;
+import com.tynellis.World.Entities.UsableEntity.using_interfaces.UsingInterface;
 import com.tynellis.World.Entities.damage.Damage;
 import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.ItemPile;
-import com.tynellis.World.Items.weapons.PickAxe;
+import com.tynellis.World.Items.weapons.Axe;
 import com.tynellis.World.Items.weapons.Weapon;
 import com.tynellis.World.Light.LightSource;
 import com.tynellis.World.Tiles.Tile;
@@ -39,7 +39,7 @@ public class Player extends Humanoid {
     private String name;
 
     private transient InGameMenu Inventory;
-    private Weapon weapon = new PickAxe("Awesome Sauce", 20, 5, 1);
+    private Weapon weapon = new Axe("Awesome Sauce", 20, 5, 1);
 
     public Player(Keys keys, String name, int x, int y, int z) {
         super(x, y, z, 32, 32);

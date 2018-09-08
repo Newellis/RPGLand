@@ -4,7 +4,7 @@ import com.tynellis.Art.SpriteSheet;
 import com.tynellis.Menus.MenuComponents.GuiCompLocations;
 import com.tynellis.Menus.MenuComponents.InventorySlot;
 import com.tynellis.World.Entities.Player;
-import com.tynellis.World.Entities.UsableEntity.ChestInterface;
+import com.tynellis.World.Entities.UsableEntity.using_interfaces.ChestInterface;
 import com.tynellis.World.Items.ItemPile;
 import com.tynellis.input.MouseInput;
 

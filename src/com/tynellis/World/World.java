@@ -11,6 +11,7 @@ import com.tynellis.World.Entities.Plants.Tree;
 import com.tynellis.World.Entities.Player;
 import com.tynellis.World.Entities.UsableEntity.Chest;
 import com.tynellis.World.Entities.UsableEntity.Door;
+import com.tynellis.World.Entities.UsableEntity.Hearth;
 import com.tynellis.World.Entities.UsableEntity.RegionBoundary;
 import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Items.Materials.Log;
@@ -254,10 +255,11 @@ public class World implements Land, Serializable {
         overRegionRegion.addEntity(itemEntity);
         overRegionRegion.addEntity(itemEntity1);
         overRegionRegion.addEntity(itemEntity2);
-
         overRegionRegion.addEntity(chest);
         SmallHouse.buildSmallHouse(overRegionRegion, getRand(), spawnPoint[0] - 6, spawnPoint[1] - 5, spawnPoint[2]);
         SmallHouse.buildSmallHouse(overRegionRegion, getRand(), spawnPoint[0], spawnPoint[1] - 5, spawnPoint[2]);
+
+        overRegionRegion.addEntity(new Hearth(spawnPoint[0] + 4, spawnPoint[1] - 1, spawnPoint[2]));
 
         Region Caves = new CaveRegion(this, 1);
         Door CaveDoor = new Door(spawnPoint[0], spawnPoint[1] + 2, spawnPoint[2], 1, Caves);

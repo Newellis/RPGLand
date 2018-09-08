@@ -119,4 +119,35 @@ public class Container implements Serializable {
         }
         return true;
     }
+
+    public void consumeItem(ItemPile item) {
+        if (canConsumeItem(item)) {
+            int removed = 0;
+            for (ItemPile consume : getContents()) {
+                if (consume != null && item.getItem().getName().equals(consume.getItem().getName())) {
+                    if (consume.getSize() <= item.getSize() - removed) {
+                        removed += consume.getSize();
+                        consume.removeFromPile(consume.getSize());
+                    } else {
+                        consume.removeFromPile(item.getSize() - removed);
+                        return;
+                    }
+                    if (removed >= item.getSize()) {
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    private boolean canConsumeItem(ItemPile item) {
+        if (item == null) return false;
+        int holding = 0;
+        for (ItemPile consume : getContents()) {
+            if (consume != null && item.getItem().getName().equals(consume.getItem().getName())) {
+                holding += item.getSize();
+            }
+        }
+        return holding >= item.getSize();
+    }
 }

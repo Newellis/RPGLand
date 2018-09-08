@@ -6,7 +6,7 @@ import com.tynellis.World.Entities.NPC.AiTasks.FaceClosestAi;
 import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.toEntity.FollowEntityAi;
 import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.Entities.UsableEntity.UsableEntity;
-import com.tynellis.World.Entities.UsableEntity.UsingInterface;
+import com.tynellis.World.Entities.UsableEntity.using_interfaces.UsingInterface;
 import com.tynellis.World.world_parts.Regions.Region;
 
 import java.io.Serializable;

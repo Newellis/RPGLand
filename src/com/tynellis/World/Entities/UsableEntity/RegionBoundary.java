@@ -2,6 +2,7 @@ package com.tynellis.World.Entities.UsableEntity;
 
 import com.tynellis.GameComponent;
 import com.tynellis.World.Entities.KillableEntity;
+import com.tynellis.World.Entities.UsableEntity.using_interfaces.UsingInterface;
 import com.tynellis.World.world_parts.Regions.Region;
 
 public abstract class RegionBoundary extends UsableEntity {

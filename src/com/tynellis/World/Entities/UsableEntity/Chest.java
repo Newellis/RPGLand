@@ -3,6 +3,8 @@ package com.tynellis.World.Entities.UsableEntity;
 import com.tynellis.Art.SpriteSheet;
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.KillableEntity;
+import com.tynellis.World.Entities.UsableEntity.using_interfaces.ChestInterface;
+import com.tynellis.World.Entities.UsableEntity.using_interfaces.UsingInterface;
 import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Tiles.Tile;
@@ -57,7 +59,7 @@ public class Chest extends UsableEntity {
         return movementType == movementTypes.Flying;
     }
 
-    protected void addItem(ItemPile pile) {
+    public void addItem(ItemPile pile) {
         inventory.addItemPile(pile);
     }
 
