@@ -44,6 +44,7 @@ public abstract class KillableEntity extends Entity {
         if (health <= 0) {
             kill();
         }
+        inventory.tick();
     }
 
     public void DamageBy(DamageSource damage, Random rand) {
