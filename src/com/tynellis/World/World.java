@@ -288,4 +288,13 @@ public class World implements Land, Serializable {
     public Region getCurrentRegion() {
         return currentRegion;
     }
+
+    public Region getRegionWithName(String name) {
+        for (Region region : loadedRegions) {
+            if (region.getName().equals(name)) {
+                return region;
+            }
+        }
+        return null;
+    }
 }

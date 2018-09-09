@@ -5,6 +5,9 @@ import com.tynellis.World.Entities.KillableEntity;
 import com.tynellis.World.Entities.UsableEntity.using_interfaces.UsingInterface;
 import com.tynellis.World.world_parts.Regions.Region;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
 public abstract class RegionBoundary extends UsableEntity {
     private Region region;
 
@@ -13,6 +16,14 @@ public abstract class RegionBoundary extends UsableEntity {
         this.region = region;
         speed = 0.0;
         canBeMoved = false;
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+        Region match = GameComponent.world.getRegionWithName(region.getName());
+        if (match != null) {
+            region = match;
+        }
     }
 
     @Override
