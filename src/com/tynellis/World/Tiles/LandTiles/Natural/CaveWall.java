@@ -20,6 +20,11 @@ public class CaveWall extends Tile {
     }
 
     @Override
+    protected void setSprite() {
+        top = SHEET;
+    }
+
+    @Override
     public void render(Graphics g, int x, int y) {
         super.render(g, x, y);
         if (wall) {

@@ -9,6 +9,8 @@ import com.tynellis.debug.Debug;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.Random;
 
@@ -39,6 +41,14 @@ public abstract class Tile implements BoundingBoxOwner, Serializable {
         this.height = height;
         startArt();
     }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+        setSprite();
+        startArt();
+    }
+
+    protected abstract void setSprite();
 
     public void startArt(){
         still = new int[adjacentNum];

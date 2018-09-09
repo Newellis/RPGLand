@@ -4,8 +4,6 @@ import com.tynellis.Art.SpriteSheet;
 import com.tynellis.World.Tiles.LandTiles.LandTile;
 import com.tynellis.World.Tiles.LandTiles.Natural.Snow;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.Random;
 
 public class WoodFloor extends LandTile {
@@ -17,10 +15,9 @@ public class WoodFloor extends LandTile {
         super("Wood Floor", SHEET, rand, altPercent, RANK, height);
     }
 
-    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
-        in.defaultReadObject();
-        //top = SHEET;
-        startArt();
+    @Override
+    protected void setSprite() {
+        top = SHEET;
     }
 
     @Override

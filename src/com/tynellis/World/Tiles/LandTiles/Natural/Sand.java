@@ -4,8 +4,6 @@ import com.tynellis.Art.SpriteSheet;
 import com.tynellis.World.Tiles.LandTiles.LandTile;
 import com.tynellis.World.Tiles.Tile;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.Random;
 
 public class Sand extends LandTile {
@@ -26,10 +24,9 @@ public class Sand extends LandTile {
         return top;
     }
 
-    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
-        in.defaultReadObject();
+    @Override
+    protected void setSprite() {
         top = SHEET;
-        startArt();
     }
 
     @Override

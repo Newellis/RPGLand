@@ -4,9 +4,10 @@ import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.world_parts.Area;
 import com.tynellis.World.world_parts.Regions.Region;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public abstract class WorldGen {
+public abstract class WorldGen implements Serializable {
     public abstract void fillArea(Region region, int x, int y, long seed);
 
     public abstract void styleArea(Region region, int x, int y, long seed);

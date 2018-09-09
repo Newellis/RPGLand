@@ -33,6 +33,11 @@ public class Stairs extends ConnectorTile {
     }
 
     @Override
+    protected void setSprite() {
+        top = null;
+    }
+
+    @Override
     public void render(Graphics g, int x, int y) {
         getBase().render(g, x, y);
     }

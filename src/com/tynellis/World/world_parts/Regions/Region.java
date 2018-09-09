@@ -37,7 +37,7 @@ public abstract class Region implements Serializable, Land {
     protected String name;
     private WorldGen gen;
     private transient Area[][] loadedAreas = new Area[1][1];
-    private final transient ArrayList<Entity> entities = new ArrayList<Entity>();
+    private transient ArrayList<Entity> entities;
     private transient ArrayList<Entity> entityMoveList = new ArrayList<Entity>(), deadEntities = new ArrayList<Entity>(), newEntities = new ArrayList<Entity>();
     private transient EntityQuadTree collisionTree;
     private transient int[] areaOffset;
@@ -51,6 +51,7 @@ public abstract class Region implements Serializable, Land {
         this.name = name;
         this.gen = gen;
         addEntitiesToSpawn();
+        entities = new ArrayList<Entity>();
     }
 
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
@@ -63,7 +64,7 @@ public abstract class Region implements Serializable, Land {
         collisionTree = new EntityQuadTree(0, getLoadedAreaBounds());
         lighting = new LightOverlay();
         addEntitiesToSpawn();
-        //entities = new ArrayList<Entity>();
+        entities = new ArrayList<Entity>();
     }
 
     protected abstract void addEntitiesToSpawn();
@@ -591,6 +592,10 @@ public abstract class Region implements Serializable, Land {
     }
 
     public String getName() {
+        return name;
+    }
+
+    public String toString() {
         return name;
     }
 

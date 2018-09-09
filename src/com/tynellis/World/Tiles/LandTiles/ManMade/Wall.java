@@ -5,8 +5,6 @@ import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Tiles.Tile;
 
 import java.awt.Graphics;
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.Random;
 
 public class Wall extends Tile {
@@ -21,10 +19,9 @@ public class Wall extends Tile {
         this.wallType = wallType;
     }
 
-    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
-        in.defaultReadObject();
-        //top = SHEET;
-        startArt();
+    @Override
+    protected void setSprite() {
+        top = cliffEdge;
     }
 
     @Override

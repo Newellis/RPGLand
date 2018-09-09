@@ -29,6 +29,11 @@ public class Slope extends ConnectorTile {
         getBase().startArt();
     }
 
+    @Override
+    protected void setSprite() {
+        top = SHEET;
+    }
+
     public void render(Graphics g, int x, int y) {
 
     }
