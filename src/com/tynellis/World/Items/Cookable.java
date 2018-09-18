@@ -18,11 +18,11 @@ public abstract class Cookable extends Item {
     public Item CookTick(int temp, Random random) {
         if (cookTemp <= temp) {
             cookingTime -= random.nextInt(3 + (temp - cookTemp));
+            System.out.println("Cook " + getName() + ": " + cookingTime + " at " + temp);
             if (cookingTime <= 0) {
                 return getCooked();
             }
         }
-        System.out.println("Cook " + getName() + ": " + cookingTime + " at " + temp);
         return null;
     }
 

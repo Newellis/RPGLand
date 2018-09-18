@@ -16,6 +16,7 @@ import com.tynellis.World.Items.Item;
 import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Items.Materials.Log;
 import com.tynellis.World.Items.Materials.Stone;
+import com.tynellis.World.Items.Materials.metal.Smeltable;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.world_parts.Regions.Region;
 
@@ -110,7 +111,12 @@ public class FirePit extends UsableEntity {
     private void CookItems(Random random) {
         for (ItemPile pile : inventory.getContents()) {
             if (pile != null && pile.getItem() instanceof Cookable) {
-                Item result = ((Cookable) pile.getItem()).CookTick(heat, random);
+                Item result;
+                if (pile.getItem() instanceof Smeltable) {
+                    result = ((Smeltable) pile.getItem()).CookTick(heat, random, true);
+                } else {
+                    result = ((Cookable) pile.getItem()).CookTick(heat, random);
+                }
                 if (result != null) {
                     pile.replaceStack(new ItemPile(result, pile.getSize()));
                 }
@@ -129,7 +135,7 @@ public class FirePit extends UsableEntity {
         } else if (!redHot) {
             for (int i = 1; i < inventory.getContents().length; i++) {
                 if (inventory.getContents()[i] != null) {
-                    System.out.print("Drop: " + inventory.getContents()[i].getItem().getName());
+                    System.out.println("Drop: " + inventory.getContents()[i].getItem().getName());
                     //todo figure out how to get items back to user without loss
                     region.queueAdditionOfEntity(new ItemEntity(inventory.getContents()[i], GameComponent.world.getRand(), (getX() + entity.getX()) / 2, (getY() + entity.getY()) / 2, region.getTopLayerAt((int) ((getX() + entity.getX()) / 2), (int) ((getY() + entity.getY()) / 2))));
                 }

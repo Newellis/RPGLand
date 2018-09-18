@@ -272,11 +272,11 @@ public class World implements Land, Serializable {
         overRegionRegion.addEntity(CaveDoor);
         Caves.addEntity(new Door(spawnPoint[0], spawnPoint[1] + 3, spawnPoint[2], 1, overRegionRegion));
         ItemEntity itemEntity6 = new ItemEntity(new ItemPile(new Stone(), 10), getRand(), spawnPoint[0] + 4, spawnPoint[1], spawnPoint[2]);
-        ItemEntity itemEntity7 = new ItemEntity(new ItemPile(new Copper(), 10), getRand(), spawnPoint[0] + 6, spawnPoint[1], spawnPoint[2]);
-        ItemEntity itemEntity8 = new ItemEntity(new ItemPile(new Tin(), 10), getRand(), spawnPoint[0] + 8, spawnPoint[1], spawnPoint[2]);
-        ItemEntity itemEntity3 = new ItemEntity(new ItemPile(new Gold(), 10), getRand(), spawnPoint[0] + 10, spawnPoint[1], spawnPoint[2]);
-        ItemEntity itemEntity4 = new ItemEntity(new ItemPile(new Iron(), 10), getRand(), spawnPoint[0] + 12, spawnPoint[1], spawnPoint[2]);
-        ItemEntity itemEntity5 = new ItemEntity(new ItemPile(new Silver(), 10), getRand(), spawnPoint[0] + 14, spawnPoint[1], spawnPoint[2]);
+        ItemEntity itemEntity7 = new ItemEntity(new ItemPile(new Copper(getRand()), 10), getRand(), spawnPoint[0] + 6, spawnPoint[1], spawnPoint[2]);
+        ItemEntity itemEntity8 = new ItemEntity(new ItemPile(new Tin(getRand()), 10), getRand(), spawnPoint[0] + 8, spawnPoint[1], spawnPoint[2]);
+        ItemEntity itemEntity3 = new ItemEntity(new ItemPile(new Gold(getRand()), 10), getRand(), spawnPoint[0] + 10, spawnPoint[1], spawnPoint[2]);
+        ItemEntity itemEntity4 = new ItemEntity(new ItemPile(new Iron(getRand()), 10), getRand(), spawnPoint[0] + 12, spawnPoint[1], spawnPoint[2]);
+        ItemEntity itemEntity5 = new ItemEntity(new ItemPile(new Silver(getRand()), 10), getRand(), spawnPoint[0] + 14, spawnPoint[1], spawnPoint[2]);
         Caves.addEntity(itemEntity6);
         Caves.addEntity(itemEntity7);
         Caves.addEntity(itemEntity8);

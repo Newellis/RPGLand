@@ -9,10 +9,29 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ab3d649-fdfe-4863-8a5f-5a792e85c7aa" name="Default" comment="Fixed some load from file bugs">
+    <list default="true" id="9ab3d649-fdfe-4863-8a5f-5a792e85c7aa" name="Default" comment="Fixed duplicate Regions on reload of doors and ladders">
+      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/MetalNugget.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/RegionBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/RegionBoundary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/CopperOre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/CopperOre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/GoldOre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/GoldOre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/IronOre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/IronOre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/SilverOre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/SilverOre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/TinOre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/TinOre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/FirePit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/FirePit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/Cookable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Cookable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/CopperNug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/CopperNug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/GoldNug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/GoldNug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/IronNug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/IronNug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/SilverNug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/SilverNug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/TinNug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/TinNug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Copper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Copper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Gold.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Gold.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Iron.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Iron.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Silver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Silver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Tin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Tin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/Smeltable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Smeltable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/World.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java" afterDir="false" />
     </list>
     <ignored path="MyGame.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -74,34 +93,35 @@
     <session id="-784675250">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.13" value="1" />
-          <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.6" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="744" />
+          <entry key="java" value="787" />
           <entry key="png" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Image" value="2" />
-          <entry key="JAVA" value="744" />
+          <entry key="JAVA" value="787" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="13" />
-          <entry key="java" value="37779" />
-          <entry key="txt" value="2867" />
+          <entry key="java" value="40712" />
+          <entry key="txt" value="2920" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="37779" />
-          <entry key="PLAIN_TEXT" value="2880" />
+          <entry key="JAVA" value="40712" />
+          <entry key="PLAIN_TEXT" value="2933" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -117,136 +137,104 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Iron.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="594" column="20" lean-forward="true" selection-start-line="594" selection-start-column="20" selection-end-line="594" selection-end-column="20" />
+            <state relative-caret-position="150">
+              <caret line="17" column="33" lean-forward="true" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Smeltable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="156">
+              <caret line="16" column="12" lean-forward="true" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
               <folding>
-                <element signature="e#27518#27519#0" expanded="true" />
-                <element signature="e#27545#27546#0" expanded="true" />
-                <element signature="e#27581#27582#0" expanded="true" />
-                <element signature="e#27608#27609#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/CaveRegion.java">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/CopperNug.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="120">
+              <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#235#236#0" expanded="true" />
-                <element signature="e#300#301#0" expanded="true" />
+                <element signature="e#216#217#0" expanded="true" />
+                <element signature="e#267#268#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/TinNug.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/RegionBoundary.java">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/MetalNugget.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+            <state relative-caret-position="150">
+              <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/IronNug.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="34" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="34" />
+              <folding>
+                <element signature="e#155#156#0" expanded="true" />
+                <element signature="e#201#202#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/GoldNug.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/SilverNug.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Gold.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Copper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1118#1119#0" expanded="true" />
-                <element signature="e#1147#1148#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/World.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="545">
-              <caret line="296" column="9" lean-forward="true" selection-start-line="296" selection-start-column="9" selection-end-line="296" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1817#1825#0" expanded="true" />
-                <marker date="1536457457000" expanded="true" signature="9633:9932" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Tiles/Tile.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="490">
-              <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/Ladder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
-              <folding>
-                <element signature="e#1265#1266#0" expanded="true" />
-                <element signature="e#1291#1292#0" expanded="true" />
-                <element signature="e#1283#1284#0" expanded="true" />
-                <element signature="e#1324#1325#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/CaveWall.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#834#835#0" expanded="true" />
-                <element signature="e#860#861#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/Wall.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#933#934#0" expanded="true" />
-                <element signature="e#964#965#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/WoodFloor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="19" column="20" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#849#850#0" expanded="true" />
-                <element signature="e#876#877#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Tiles/Water.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-              <folding>
-                <element signature="e#677#678#0" expanded="true" />
-                <element signature="e#704#705#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -266,9 +254,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Rock</find>
-      <find>com.tynellis.World.world_parts.Regions.CaveRegion</find>
-      <find>pop</find>
       <find>gen</find>
       <find>nextCaveDown</find>
       <find>save</find>
@@ -284,7 +269,6 @@
       <find>StoreLoad</find>
       <find>setarea</find>
       <find>new Random</find>
-      <find>areaOffset =</find>
       <find>picka</find>
       <find>tick</find>
       <find>use</find>
@@ -292,10 +276,14 @@
       <find>fireAnim</find>
       <find>damage</find>
       <find>treeHeight</find>
-      <find>areaOffset =</find>
       <find>addE</find>
       <find>loadAreas</find>
       <find>load</find>
+      <find>loadarea</find>
+      <find>setAreaOffset</find>
+      <find>newEntities</find>
+      <find>item</find>
+      <find>change</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -321,40 +309,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Containers/Filters/QuantityFilter.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/KillableEntity.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/Gold.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/Iron.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/Silver.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/Tin.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/CopperOre.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/GoldOre.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/SilverOre.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/Hearth.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/Stone.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/CopperNug.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/GoldNug.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/IronNug.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/SilverNug.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/TinNug.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Gold.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Silver.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Tin.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Iron.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/ItemPile.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/Log.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/UsableEntity.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/UseUsableEntityAi.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Smeltable.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Copper.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Cookable.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Tool.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Axe.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/PickAxe.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/FirePit.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Generator/SurfaceGen.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Generator/WorldGen.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Tiles/Tile.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Dirt.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Grass.java" />
@@ -369,9 +329,37 @@
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/Wall.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/WoodFloor.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Tiles/Water.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/World.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/RegionBoundary.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Land.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Area.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/world_parts/LoadRequests.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Generator/WorldGen.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Generator/CaveGen.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Buildings/Interior/SmallHouseGen.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Generator/SurfaceGen.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/world_parts/AreaLoader.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/TinOre.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/FirePit.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Cookable.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Tin.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/SilverOre.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/World.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/CopperOre.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/IronOre.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/GoldOre.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/ItemEntity.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Smeltable.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Silver.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Gold.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Copper.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Iron.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/MetalNugget.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/IronNug.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/GoldNug.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/CopperNug.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/TinNug.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/SilverNug.java" />
       </list>
     </option>
   </component>
@@ -385,10 +373,10 @@
   <component name="MavenProjectNavigator">
     <treeState />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="1680" />
-    <option name="height" value="1023" />
+    <option name="height" value="908" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -434,6 +422,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -473,8 +462,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="tynellis" type="462c0819:PsiDirectoryNode" />
               <item name="World" type="462c0819:PsiDirectoryNode" />
-              <item name="Entities" type="462c0819:PsiDirectoryNode" />
-              <item name="UsableEntity" type="462c0819:PsiDirectoryNode" />
+              <item name="Items" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MyGame" type="b2602c69:ProjectViewProjectNode" />
@@ -482,7 +470,40 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="tynellis" type="462c0819:PsiDirectoryNode" />
               <item name="World" type="462c0819:PsiDirectoryNode" />
-              <item name="Tiles" type="462c0819:PsiDirectoryNode" />
+              <item name="Items" type="462c0819:PsiDirectoryNode" />
+              <item name="Materials" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyGameRestart" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="tynellis" type="462c0819:PsiDirectoryNode" />
+              <item name="World" type="462c0819:PsiDirectoryNode" />
+              <item name="Items" type="462c0819:PsiDirectoryNode" />
+              <item name="Materials" type="462c0819:PsiDirectoryNode" />
+              <item name="metal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyGameRestart" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="tynellis" type="462c0819:PsiDirectoryNode" />
+              <item name="World" type="462c0819:PsiDirectoryNode" />
+              <item name="Items" type="462c0819:PsiDirectoryNode" />
+              <item name="Materials" type="462c0819:PsiDirectoryNode" />
+              <item name="metal" type="462c0819:PsiDirectoryNode" />
+              <item name="Nuggets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyGameRestart" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="tynellis" type="462c0819:PsiDirectoryNode" />
+              <item name="World" type="462c0819:PsiDirectoryNode" />
+              <item name="Items" type="462c0819:PsiDirectoryNode" />
+              <item name="Materials" type="462c0819:PsiDirectoryNode" />
+              <item name="metal" type="462c0819:PsiDirectoryNode" />
+              <item name="ores" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MyGame" type="b2602c69:ProjectViewProjectNode" />
@@ -501,11 +522,20 @@
               <item name="world_parts" type="462c0819:PsiDirectoryNode" />
               <item name="Regions" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="MyGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyGameRestart" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="tynellis" type="462c0819:PsiDirectoryNode" />
+              <item name="World" type="462c0819:PsiDirectoryNode" />
+              <item name="world_parts" type="462c0819:PsiDirectoryNode" />
+              <item name="Regions" type="462c0819:PsiDirectoryNode" />
+              <item name="Generator" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -518,7 +548,7 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/tyler/Documents/Java Projects/MyGameRestart/src/com/tynellis/Entities/Mob.java" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536460241052" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537230107297" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
     <property name="dynamic.classpath" value="false" />
@@ -558,6 +588,7 @@
       <recent name="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.tynellis.World.world_parts" />
       <recent name="com.tynellis.World.Entities.damage" />
       <recent name="com.tynellis.debug" />
       <recent name="com.tynellis.World.Light" />
@@ -770,13 +801,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1361497301759</updated>
-    </task>
-    <task id="LOCAL-00009" summary="started to work on lighting overlay">
-      <created>1535349307288</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1535349307288</updated>
     </task>
     <task id="LOCAL-00010" summary="got basic damage system in place">
       <created>1535354277652</created>
@@ -1114,7 +1138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1536458537471</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Fixed duplicate Regions on reload of doors and ladders">
+      <created>1536460426190</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1536460426190</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1127,10 +1158,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="1023" extended-state="0" />
+    <frame x="0" y="23" width="1680" height="1022" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.79072845" visible="true" weight="0.24603175" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.79072845" visible="true" weight="0.24908425" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Favorites" order="3" sideWeight="0.20927152" side_tool="true" weight="0.1991404" />
@@ -1139,18 +1170,17 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49713057" weight="0.31057268" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5830281" visible="true" weight="0.2654185" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5665446" visible="true" weight="0.52149945" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.490232" weight="0.49669603" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.74300075" weight="0.32819384" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5702076" side_tool="true" weight="0.2863436" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4981685" weight="0.280837" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.43345544" side_tool="true" visible="true" weight="0.52149945" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.46581197" weight="0.33737597" />
       <window_info anchor="bottom" id="Application Servers" order="9" />
       <window_info anchor="bottom" id="Changes" order="10" />
-      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.42979243" weight="0.2863436" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.41269842" weight="0.2855568" />
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.32980132" />
-      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32967034" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24928367" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1160,6 +1190,7 @@
       <window_info anchor="right" id="Palette" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.32967034" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.79072845" visible="true" weight="0.24603175" />
@@ -1232,7 +1263,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="tweaked house generation and added art" />
     <MESSAGE value="Fixed collision so large hitboxes work and pulling is no longer a thing" />
     <MESSAGE value="fix issue with trees being inside of buildings" />
     <MESSAGE value="made doors usable entities and started adding stair tiles" />
@@ -1257,7 +1287,8 @@
     <MESSAGE value="Can now smelt some ores (Buggy)" />
     <MESSAGE value="Smelting in FirePit working but item return buggy" />
     <MESSAGE value="Fixed some load from file bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed some load from file bugs" />
+    <MESSAGE value="Fixed duplicate Regions on reload of doors and ladders" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed duplicate Regions on reload of doors and ladders" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1290,301 +1321,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/GoldNug.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/CopperNug.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="6" column="32" lean-forward="true" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Gold.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#293#294#0" expanded="true" />
-            <element signature="e#320#321#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Silver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#150#151#0" expanded="true" />
-            <element signature="e#195#196#0" expanded="true" />
-            <element signature="e#299#300#0" expanded="true" />
-            <element signature="e#326#327#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Iron.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="11" column="13" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#294#295#0" expanded="true" />
-            <element signature="e#321#322#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/ItemPile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="755">
-          <caret line="74" column="25" lean-forward="true" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Tin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="28" lean-forward="true" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#256#257#0" expanded="true" />
-            <element signature="e#305#306#0" expanded="true" />
-            <element signature="e#353#354#0" expanded="true" />
-            <element signature="e#388#389#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Plant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Tree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/Log.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/Stone.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="20" lean-forward="true" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
-          <folding>
-            <element signature="e#177#178#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/UseUsableEntityAi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="43" column="46" selection-start-line="43" selection-start-column="46" selection-end-line="43" selection-end-column="46" />
-          <folding>
-            <element signature="e#3007#3008#0" expanded="true" />
-            <element signature="e#3035#3036#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="150" column="65" lean-forward="true" selection-start-line="150" selection-start-column="65" selection-end-line="150" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/UsableEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="17" column="53" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Smeltable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Copper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#265#266#0" expanded="true" />
-            <element signature="e#319#320#0" expanded="true" />
-            <element signature="e#367#368#0" expanded="true" />
-            <element signature="e#405#406#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Cookable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Weapon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-217">
-          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Sword.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="23" column="13" lean-forward="true" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Daggar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Axe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/PickAxe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Tool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/using_interfaces/ChestInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/ItemEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="42" column="17" lean-forward="true" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/KillableEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="113" column="26" selection-start-line="113" selection-start-column="26" selection-end-line="113" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Containers/Container.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="38" column="16" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
-          <folding>
-            <element signature="e#3199#3200#0" expanded="true" />
-            <element signature="e#3241#3242#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/FirePit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
-          <caret line="137" column="20" lean-forward="true" selection-start-line="137" selection-start-column="20" selection-end-line="137" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6320#6321#0" expanded="true" />
-            <element signature="e#6344#6345#0" expanded="true" />
-            <element signature="e#6403#6404#0" expanded="true" />
-            <element signature="e#6430#6431#0" expanded="true" />
-            <element signature="e#6507#6508#0" expanded="true" />
-            <element signature="e#6534#6535#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Generator/SurfaceGen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/Save/SavedArea.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Generator/WorldGen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="9" column="54" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/OverWorldRegion.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1609,12 +1345,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="24" column="13" lean-forward="true" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-          <folding>
-            <element signature="e#554#555#0" expanded="true" />
-            <element signature="e#622#623#0" expanded="true" />
-            <element signature="e#824#825#0" expanded="true" />
-            <element signature="e#851#852#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1622,12 +1352,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
-          <folding>
-            <element signature="e#786#787#0" expanded="true" />
-            <element signature="e#855#856#0" expanded="true" />
-            <element signature="e#1233#1234#0" expanded="true" />
-            <element signature="e#1260#1261#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1635,12 +1359,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="24" column="13" lean-forward="true" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-          <folding>
-            <element signature="e#565#566#0" expanded="true" />
-            <element signature="e#638#639#0" expanded="true" />
-            <element signature="e#840#841#0" expanded="true" />
-            <element signature="e#867#868#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1648,10 +1366,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding>
-            <element signature="e#1156#1157#0" expanded="true" />
-            <element signature="e#1183#1184#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1659,10 +1373,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-          <folding>
-            <element signature="e#1178#1179#0" expanded="true" />
-            <element signature="e#1205#1206#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1670,12 +1380,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-          <folding>
-            <element signature="e#772#773#0" expanded="true" />
-            <element signature="e#799#800#0" expanded="true" />
-            <element signature="e#817#818#0" expanded="true" />
-            <element signature="e#862#863#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1683,11 +1387,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#813#814#0" expanded="true" />
-            <element signature="e#840#841#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1695,13 +1394,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1271#1272#0" expanded="true" />
-            <element signature="e#1297#1298#0" expanded="true" />
-            <element signature="e#3632#3633#0" expanded="true" />
-            <element signature="e#3693#3694#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1709,12 +1401,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
-          <folding>
-            <element signature="e#1265#1266#0" expanded="true" />
-            <element signature="e#1291#1292#0" expanded="true" />
-            <element signature="e#1283#1284#0" expanded="true" />
-            <element signature="e#1324#1325#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1722,11 +1408,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#834#835#0" expanded="true" />
-            <element signature="e#860#861#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1734,11 +1415,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#933#934#0" expanded="true" />
-            <element signature="e#964#965#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1746,11 +1422,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="19" column="20" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#849#850#0" expanded="true" />
-            <element signature="e#876#877#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1758,23 +1429,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-          <folding>
-            <element signature="e#677#678#0" expanded="true" />
-            <element signature="e#704#705#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="594" column="20" lean-forward="true" selection-start-line="594" selection-start-column="20" selection-end-line="594" selection-end-column="20" />
-          <folding>
-            <element signature="e#27518#27519#0" expanded="true" />
-            <element signature="e#27545#27546#0" expanded="true" />
-            <element signature="e#27581#27582#0" expanded="true" />
-            <element signature="e#27608#27609#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1797,27 +1451,317 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/World.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="545">
-          <caret line="296" column="9" lean-forward="true" selection-start-line="296" selection-start-column="9" selection-end-line="296" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1817#1825#0" expanded="true" />
-            <marker date="1536457457000" expanded="true" signature="9633:9932" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/RegionBoundary.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+        <state relative-caret-position="420">
+          <caret line="28" column="13" lean-forward="true" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1118#1119#0" expanded="true" />
             <element signature="e#1147#1148#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/world_parts/Land.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home/lib/src.zip!/java.base/java/lang/Cloneable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="52" column="17" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/GameComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/world_parts/Layer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="188" selection-start-line="188" selection-end-line="188" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/world_parts/AreaLoader.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/world_parts/LoadRequests.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Generator/CaveGen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="160" column="21" lean-forward="true" selection-start-line="160" selection-start-column="21" selection-end-line="160" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Buildings/Interior/SmallHouseGen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="42" column="5" lean-forward="true" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Generator/SurfaceGen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="54" column="38" lean-forward="true" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
+          <folding>
+            <element signature="e#14970#14971#0" expanded="true" />
+            <element signature="e#15002#15003#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Generator/WorldGen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/world_parts/Area.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="113" selection-start-line="113" selection-end-line="113" />
+          <folding>
+            <element signature="e#4130#4131#0" expanded="true" />
+            <element signature="e#4161#4162#0" expanded="true" />
+            <element signature="e#4348#4349#0" expanded="true" />
+            <element signature="e#4380#4381#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="129" column="32" lean-forward="true" selection-start-line="129" selection-start-column="32" selection-end-line="129" selection-end-column="32" />
+          <folding>
+            <element signature="e#1558#1566#0" expanded="true" />
+            <element signature="e#1598#1606#0" expanded="true" />
+            <element signature="e#1637#1645#0" expanded="true" />
+            <element signature="e#14177#14178#0" expanded="true" />
+            <element signature="e#14211#14212#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/FirePit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="114" column="58" lean-forward="true" selection-start-line="114" selection-start-column="58" selection-end-line="114" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6629#6630#0" expanded="true" />
+            <element signature="e#6653#6654#0" expanded="true" />
+            <element signature="e#6712#6713#0" expanded="true" />
+            <element signature="e#6739#6740#0" expanded="true" />
+            <element signature="e#6816#6817#0" expanded="true" />
+            <element signature="e#6843#6844#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/TinOre.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Cookable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/SilverOre.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/World.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="270" column="67" selection-start-line="270" selection-start-column="67" selection-end-line="270" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1817#1825#0" expanded="true" />
+            <element signature="e#3605#3613#0" expanded="true" />
+            <element signature="e#7275#7276#0" expanded="true" />
+            <element signature="e#7322#7323#0" expanded="true" />
+            <element signature="e#7596#7597#0" expanded="true" />
+            <element signature="e#7642#7643#0" expanded="true" />
+            <element signature="e#7716#7717#0" expanded="true" />
+            <element signature="e#7761#7762#0" expanded="true" />
+            <element signature="e#7823#7824#0" expanded="true" />
+            <element signature="e#7876#7877#0" expanded="true" />
+            <element signature="e#7949#7950#0" expanded="true" />
+            <element signature="e#8001#8002#0" expanded="true" />
+            <element signature="e#8032#8033#0" expanded="true" />
+            <element signature="e#8059#8060#0" expanded="true" />
+            <element signature="e#8090#8091#0" expanded="true" />
+            <element signature="e#8123#8124#0" expanded="true" />
+            <element signature="e#8167#8168#0" expanded="true" />
+            <element signature="e#8200#8201#0" expanded="true" />
+            <element signature="e#8239#8240#0" expanded="true" />
+            <element signature="e#8291#8292#0" expanded="true" />
+            <element signature="e#8327#8328#0" expanded="true" />
+            <element signature="e#8360#8361#0" expanded="true" />
+            <marker date="1537229519000" expanded="true" signature="9633:9932" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/CopperOre.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/IronOre.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="10" column="56" selection-start-line="10" selection-start-column="56" selection-end-line="10" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/GoldOre.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/ItemEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="53">
+          <caret line="29" column="33" lean-forward="true" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Tin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+          <folding>
+            <element signature="e#311#312#0" expanded="true" />
+            <element signature="e#380#381#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Silver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="20" column="20" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+          <folding>
+            <element signature="e#320#321#0" expanded="true" />
+            <element signature="e#391#392#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Gold.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Copper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Iron.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="17" column="33" lean-forward="true" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Smeltable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="16" column="12" lean-forward="true" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/IronNug.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="34" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="34" />
+          <folding>
+            <element signature="e#155#156#0" expanded="true" />
+            <element signature="e#201#202#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/GoldNug.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/CopperNug.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding>
+            <element signature="e#216#217#0" expanded="true" />
+            <element signature="e#267#268#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/TinNug.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/SilverNug.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/MetalNugget.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
         </state>
       </provider>
     </entry>

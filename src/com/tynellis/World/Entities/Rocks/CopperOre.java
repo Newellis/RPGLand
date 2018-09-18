@@ -9,7 +9,7 @@ import java.util.Random;
 public class CopperOre extends Rock {
     public CopperOre(double x, double y, double z, Random rand) {
         super(x, y, z, rand);
-        inventory.addItemPile(new ItemPile(new Copper(), rand.nextInt(5)));
+        inventory.addItemPile(new ItemPile(new Copper(rand), rand.nextInt(5)));
         inventory.addItemPile(new ItemPile(new CopperNug(), rand.nextInt(3)));
     }
 }

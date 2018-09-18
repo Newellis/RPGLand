@@ -1,9 +1,7 @@
 package com.tynellis.World.Items.Materials.metal.Nuggets;
 
-import com.tynellis.World.Items.Item;
-
-public class CopperNug extends Item {
-    public CopperNug() {
-        super("Copper Nugget", 20, 1, 2);
+public class CopperNug extends MetalNugget {
+    public CopperNug(double purity) {
+        super("Copper Nugget", purity, 1, 2);
     }
 }

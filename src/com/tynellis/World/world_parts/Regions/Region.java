@@ -126,6 +126,7 @@ public abstract class Region implements Serializable, Land {
         worldSpawner.tick(this, random);
         if (newEntities.size() > 0) {
             entities.addAll(newEntities);
+            System.out.println("add entities: " + entities);
             newEntities.clear();
         }
         synchronized (entities) {

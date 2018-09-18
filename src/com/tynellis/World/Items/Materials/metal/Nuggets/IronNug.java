@@ -1,9 +1,7 @@
 package com.tynellis.World.Items.Materials.metal.Nuggets;
 
-import com.tynellis.World.Items.Item;
-
-public class IronNug extends Item {
-    public IronNug() {
-        super("Iron Nugget", 20, 1, 6);
+public class IronNug extends MetalNugget {
+    public IronNug(double purity) {
+        super("Iron Nugget", purity, 1, 6);
     }
 }

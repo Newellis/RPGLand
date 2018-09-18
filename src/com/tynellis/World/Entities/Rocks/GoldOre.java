@@ -9,7 +9,7 @@ import java.util.Random;
 public class GoldOre extends Rock {
     public GoldOre(double x, double y, double z, Random rand) {
         super(x, y, z, rand);
-        inventory.addItemPile(new ItemPile(new Gold(), rand.nextInt(4)));
-        inventory.addItemPile(new ItemPile(new GoldNug(), rand.nextInt(3)));
+        inventory.addItemPile(new ItemPile(new Gold(rand), rand.nextInt(2)));
+        inventory.addItemPile(new ItemPile(new GoldNug(), rand.nextInt(5)));
     }
 }
