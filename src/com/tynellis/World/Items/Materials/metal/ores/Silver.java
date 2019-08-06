@@ -14,7 +14,7 @@ public class Silver extends Smeltable {
     @Override
     protected Item getCooked() {
         if (purity > 0.8) {
-            return new SilverNug();
+            return new SilverNug(purity);
         }
         cookingTime = cookTime;
         return this;

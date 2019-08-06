@@ -14,7 +14,7 @@ public class Tin extends Smeltable {
     @Override
     protected Item getCooked() {
         if (purity > 0.8) {
-            return new TinNug();
+            return new TinNug(purity);
         }
         cookingTime = cookTime;
         return this;

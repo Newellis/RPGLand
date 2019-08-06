@@ -10,6 +10,6 @@ public class SilverOre extends Rock {
     public SilverOre(double x, double y, double z, Random rand) {
         super(x, y, z, rand);
         inventory.addItemPile(new ItemPile(new Silver(rand), rand.nextInt(4)));
-        inventory.addItemPile(new ItemPile(new SilverNug(), rand.nextInt(2)));
+        inventory.addItemPile(new ItemPile(new SilverNug(0.8 + (rand.nextInt(200) / 1000.0)), rand.nextInt(2)));
     }
 }

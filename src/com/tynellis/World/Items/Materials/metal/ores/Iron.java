@@ -14,7 +14,7 @@ public class Iron extends Smeltable {
     @Override
     protected Item getCooked() {
         if (purity > 0.6) {
-            return new IronNug();
+            return new IronNug(purity);
         }
         cookingTime = cookTime;
         return this;

@@ -14,7 +14,7 @@ public class Copper extends Smeltable {
     @Override
     protected Item getCooked() {
         if (purity > 0.8) {
-            return new CopperNug();
+            return new CopperNug(purity);
         }
         cookingTime = cookTime;
         return this;

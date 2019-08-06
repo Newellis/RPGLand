@@ -15,18 +15,14 @@ import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.world_parts.Regions.Region;
 import com.tynellis.debug.Debug;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public abstract class NpcBase extends Humanoid {
     public enum NpcGender {
@@ -34,6 +30,21 @@ public abstract class NpcBase extends Humanoid {
         FEMALE,
         OTHER,
         BOTH,
+        ;
+
+        public static NpcGender randGender(Random random) {
+            return randGender(random, true);
+        }
+
+        public static NpcGender randGender(Random rand, boolean binary) {
+            System.out.println(Arrays.toString(NpcGender.values()));
+            if (!binary) {
+                int choice = rand.nextInt(NpcGender.values().length);
+                return NpcGender.values()[choice];
+            } else {
+                return (rand.nextBoolean()) ? MALE : FEMALE;
+            }
+        }
     }
     private String name;
     protected transient SpriteSheet spriteSheet;
@@ -140,7 +151,7 @@ public abstract class NpcBase extends Humanoid {
             if (hurt) {
                 frame = SpriteImage.Tint(frame, Damage.BLEED_COLOR);
             }
-            g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 1.5)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
+            g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (frame.getHeight() - height / 2.0)/*- (height * 1.5)*/) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
             animation.tick();
         }
         if (!attacking) {
