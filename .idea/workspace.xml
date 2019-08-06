@@ -9,308 +9,21 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ab3d649-fdfe-4863-8a5f-5a792e85c7aa" name="Default" comment="Added ore types and how that effects refining">
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Accessories/Blanket Gallop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Accessories/Blanket Idle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Accessories/Blanket Walk.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Accessories/Saddle Gallop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Accessories/Saddle Idle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Accessories/Saddle Walk.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Horse/Horse Gallop Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Horse/Horse Gallop Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Horse/Horse Gallop Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Horse/Horse Gallop Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Horse/Horse Gallop White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Horse/Horse Idle Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Horse/Horse Idle Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Horse/Horse Idle Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Horse/Horse Idle Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Horse/Horse Idle White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Horse/Horse Walk Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Horse/Horse Walk Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Horse/Horse Walk Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Horse/Horse Walk Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Horse/Horse Walk White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Face/Blaze Gallop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Face/Blaze Idle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Face/Blaze Walk.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Face/Diamond Gallop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Face/Diamond Idle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Face/Diamond Walk.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Face/Star Gallop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Face/Star Idle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Face/Star Walk.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Face/Stripe Gallop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Face/Stripe Idle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Face/Stripe Walk.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Socks Gallop Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Socks Gallop Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Socks Gallop Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Socks Gallop Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Socks Gallop White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Socks Idle Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Socks Idle Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Socks Idle Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Socks Idle Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Socks Idle White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Socks Walk Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Socks Walk Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Socks Walk Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Socks Walk Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Socks Walk White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Stockings Gallop Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Stockings Gallop Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Stockings Gallop Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Stockings Gallop Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Stockings Gallop White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Stockings Idle Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Stockings Idle Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Stockings Idle Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Stockings Idle Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Stockings Idle White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Stockings Walk Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Stockings Walk Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Stockings Walk Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Stockings Walk Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/All Legs/Stockings Walk White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Sock Gallop Left Fore Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Sock Gallop Left Fore Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Sock Gallop Left Fore Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Sock Gallop Left Fore Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Sock Gallop Left Fore White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Sock Idle Left Fore Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Sock Idle Left Fore Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Sock Idle Left Fore Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Sock Idle Left Fore Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Sock Idle Left Fore White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Sock Walk Left Fore Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Sock Walk Left Fore Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Sock Walk Left Fore Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Sock Walk Left Fore Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Sock Walk Left Fore White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Stocking Gallop Left Fore Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Stocking Gallop Left Fore Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Stocking Gallop Left Fore Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Stocking Gallop Left Fore Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Stocking Gallop Left Fore White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Stocking Idle Left Fore Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Stocking Idle Left Fore Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Stocking Idle Left Fore Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Stocking Idle Left Fore Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Stocking Idle Left Fore White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Stocking Walk Left Fore Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Stocking Walk Left Fore Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Stocking Walk Left Fore Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Stocking Walk Left Fore Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Fore/Stocking Walk Left Fore White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Sock Gallop Left Hind Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Sock Gallop Left Hind Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Sock Gallop Left Hind Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Sock Gallop Left Hind Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Sock Gallop Left Hind White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Sock Idle Left Hind Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Sock Idle Left Hind Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Sock Idle Left Hind Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Sock Idle Left Hind Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Sock Idle Left Hind White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Sock Walk Left Hind Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Sock Walk Left Hind Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Sock Walk Left Hind Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Sock Walk Left Hind Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Sock Walk Left Hind White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Stocking Gallop Left Hind Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Stocking Gallop Left Hind Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Stocking Gallop Left Hind Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Stocking Gallop Left Hind Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Stocking Gallop Left Hind White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Stocking Idle Left Hind Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Stocking Idle Left Hind Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Stocking Idle Left Hind Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Stocking Idle Left Hind Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Stocking Idle Left Hind White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Stocking Walk Left Hind Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Stocking Walk Left Hind Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Stocking Walk Left Hind Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Stocking Walk Left Hind Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Left Hind/Stocking Walk Left Hind White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Sock Gallop Right Fore Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Sock Gallop Right Fore Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Sock Gallop Right Fore Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Sock Gallop Right Fore Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Sock Gallop Right Fore White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Sock Idle Right Fore Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Sock Idle Right Fore Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Sock Idle Right Fore Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Sock Idle Right Fore Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Sock Idle Right Fore White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Sock Walk Right Fore Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Sock Walk Right Fore Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Sock Walk Right Fore Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Sock Walk Right Fore Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Sock Walk Right Fore White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Stocking Gallop Right Fore Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Stocking Gallop Right Fore Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Stocking Gallop Right Fore Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Stocking Gallop Right Fore Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Stocking Gallop Right Fore White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Stocking Idle Right Fore Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Stocking Idle Right Fore Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Stocking Idle Right Fore Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Stocking Idle Right Fore Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Stocking Idle Right Fore White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Stocking Walk Right Fore Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Stocking Walk Right Fore Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Stocking Walk Right Fore Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Stocking Walk Right Fore Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Fore/Stocking Walk Right Fore White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Sock Gallop Right Hind Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Sock Gallop Right Hind Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Sock Gallop Right Hind Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Sock Gallop Right Hind Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Sock Gallop Right Hind White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Sock Idle Right Hind Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Sock Idle Right Hind Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Sock Idle Right Hind Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Sock Idle Right Hind Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Sock Idle Right Hind White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Sock Walk Right Hind Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Sock Walk Right Hind Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Sock Walk Right Hind Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Sock Walk Right Hind Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Sock Walk Right Hind White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Stocking Gallop Right Hind Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Stocking Gallop Right Hind Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Stocking Gallop Right Hind Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Stocking Gallop Right Hind Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Stocking Gallop Right Hind White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Stocking Idle Right Hind Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Stocking Idle Right Hind Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Stocking Idle Right Hind Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Stocking Idle Right Hind Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Stocking Idle Right Hind White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Stocking Walk Right Hind Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Stocking Walk Right Hind Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Stocking Walk Right Hind Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Stocking Walk Right Hind Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Legs/Right Hind/Stocking Walk Right Hind White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Mane:Tail/Mane:Tail Gallop Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Mane:Tail/Mane:Tail Gallop Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Mane:Tail/Mane:Tail Gallop Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Mane:Tail/Mane:Tail Gallop Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Mane:Tail/Mane:Tail Gallop White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Mane:Tail/Mane:Tail Idle Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Mane:Tail/Mane:Tail Idle Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Mane:Tail/Mane:Tail Idle Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Mane:Tail/Mane:Tail Idle Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Mane:Tail/Mane:Tail Idle White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Mane:Tail/Mane:Tail Walk Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Mane:Tail/Mane:Tail Walk Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Mane:Tail/Mane:Tail Walk Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Mane:Tail/Mane:Tail Walk Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Mane:Tail/Mane:Tail Walk White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Unicorn Horn/Horn Gallop Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Unicorn Horn/Horn Gallop Blue.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Unicorn Horn/Horn Gallop Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Unicorn Horn/Horn Gallop Purple.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Unicorn Horn/Horn Gallop White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Unicorn Horn/Horn Idle Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Unicorn Horn/Horn Idle Blue.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Unicorn Horn/Horn Idle Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Unicorn Horn/Horn Idle Purple.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Unicorn Horn/Horn Idle White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Unicorn Horn/Horn Walk Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Unicorn Horn/Horn Walk Blue.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Unicorn Horn/Horn Walk Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Unicorn Horn/Horn Walk Purple.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Markings/Unicorn Horn/Horn Walk White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Mask/Mask Gallop Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Mask/Mask Gallop Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Mask/Mask Gallop Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Mask/Mask Gallop Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Mask/Mask Gallop White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Mask/Mask Idle Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Mask/Mask Idle Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Mask/Mask Idle Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Mask/Mask Idle Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Mask/Mask Idle White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Mask/Mask Walk Black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Mask/Mask Walk Brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Mask/Mask Walk Gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Mask/Mask Walk Gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Mask/Mask Walk White.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/LPC Horse Extended/Read Me.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/birds/bird_1_bluejay.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/birds/bird_1_brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/birds/bird_1_red.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/birds/bird_1_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/birds/bird_1_white_crest.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/birds/bird_2_black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/birds/bird_2_blue.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/birds/bird_2_brown_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/birds/bird_2_brown_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/birds/bird_2_cardinal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/birds/bird_2_eagle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/birds/bird_2_red.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/birds/bird_2_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/birds/bird_3_robin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/birds/bird_3_sparrow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/bunnysheet5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/cat-1.0/LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/cat-1.0/PNG/cat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/cat-1.0/PNG/cat_black-32x48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/cat-1.0/PNG/cat_brown-32x48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/cat-1.0/PNG/cat_orange-32x48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/cat-1.0/PNG/cat_white-32x32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/cat-1.0/PNG/cat_white-32x48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/cat-1.0/README.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/cat-1.0/preview.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/cat-1.0/source/cat-32x48.xcf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/cat-1.0/source/preview.xcf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/cat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/dog.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/farm_animals/chicken.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/farm_animals/chicken_eat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/farm_animals/chicken_shadow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/farm_animals/chicken_walk.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/farm_animals/cow_eat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/farm_animals/cow_shadow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/farm_animals/cow_walk.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/farm_animals/llama_eat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/farm_animals/llama_shadow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/farm_animals/llama_walk.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/farm_animals/pig_eat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/farm_animals/pig_walk.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/farm_animals/sheep_eat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/farm_animals/sheep_walk.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/goat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/turkey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/wolf/howl.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/wolf/wolfsheet1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/wolf/wolfsheet2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/wolf/wolfsheet3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/wolf/wolfsheet4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/wolf/wolfsheet5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/wolf/wolfsheet6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/Animals/wolf/wolfsheetsSource.psd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/mine/bunnysheet_reform.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/animals/Animal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/animals/Rabbit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Food/Food.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Food/FoodItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="9ab3d649-fdfe-4863-8a5f-5a792e85c7aa" name="Default" comment="added Bunnies and started to add food">
+      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/ChangeTileAi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/EatTileAi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/GoToTileAi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/CopperOre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/CopperOre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/GoldOre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/GoldOre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/SilverOre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/SilverOre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Copper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Copper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Gold.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Gold.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Iron.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Iron.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Silver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Silver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Tin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Tin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/animals/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/animals/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/animals/Rabbit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/animals/Rabbit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/damage/Damage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/damage/Damage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/Food/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Food/Food.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/Food/FoodItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Food/FoodItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Dirt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Dirt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Grass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Grass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/World.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java" afterDir="false" />
     </list>
     <ignored path="MyGame.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -378,121 +91,118 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/animals/Rabbit.java">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/ChangeTileAi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="285">
+              <caret line="19" column="58" lean-forward="true" selection-start-line="19" selection-start-column="58" selection-end-line="19" selection-end-column="58" />
               <folding>
-                <element signature="e#234#235#0" expanded="true" />
-                <element signature="e#258#259#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/animals/Animal.java">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/EatTileAi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="487">
+              <caret line="36" column="33" lean-forward="true" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
               <folding>
-                <element signature="e#263#264#0" expanded="true" />
-                <element signature="e#307#308#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Grass.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-              <folding>
-                <element signature="e#1017#1018#0" expanded="true" />
-                <element signature="e#1044#1045#0" expanded="true" />
-                <element signature="e#1179#1180#0" expanded="true" />
-                <element signature="e#1225#1226#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Food/Food.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Food/FoodItem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
-              <folding>
-                <element signature="e#124#125#0" expanded="true" />
-                <element signature="e#151#152#0" expanded="true" />
-                <element signature="e#196#197#0" expanded="true" />
-                <element signature="e#224#225#0" expanded="true" />
-                <element signature="e#271#272#0" expanded="true" />
-                <element signature="e#295#296#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Dirt.java">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/animals/Animal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="45" column="17" lean-forward="true" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
+            <state relative-caret-position="519">
+              <caret line="68" column="24" lean-forward="true" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
               <folding>
-                <element signature="e#964#965#0" expanded="true" />
-                <element signature="e#991#992#0" expanded="true" />
-                <element signature="e#1044#1045#0" expanded="true" />
-                <element signature="e#1072#1073#0" expanded="true" />
-                <element signature="e#1119#1120#0" expanded="true" />
-                <element signature="e#1143#1144#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1918#1919#0" expanded="true" />
+                <element signature="e#1988#1989#0" expanded="true" />
+                <element signature="e#2178#2179#0" expanded="true" />
+                <element signature="e#2208#2209#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/LandTile.java">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/KillableEntity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="103" column="16" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/animals/Rabbit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="19" lean-forward="true" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/World.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="382">
+              <caret line="256" column="47" lean-forward="true" selection-start-line="256" selection-start-column="47" selection-end-line="256" selection-end-column="47" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/toEntity/FollowEntityAi.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="36" column="51" lean-forward="true" selection-start-line="36" selection-start-column="51" selection-end-line="36" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="429">
+              <caret line="607" column="19" lean-forward="true" selection-start-line="607" selection-start-column="19" selection-end-line="607" selection-end-column="19" />
+              <folding>
+                <element signature="e#27789#27790#0" expanded="true" />
+                <element signature="e#27815#27816#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/GoToTileAi.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="359">
+              <caret line="36" column="70" lean-forward="true" selection-start-line="36" selection-start-column="70" selection-end-line="36" selection-end-column="70" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2587#2588#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/PathfinderAi.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="8" column="40" lean-forward="true" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Tiles/Tile.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-152">
-              <caret line="27" column="29" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-197">
-              <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Humanoid.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -511,19 +221,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>null</find>
-      <find>move areas</find>
-      <find>entities.add</find>
-      <find>sprite =</find>
-      <find>Remove player from</find>
-      <find>collisionTree =</find>
-      <find>StoreLoad</find>
-      <find>setarea</find>
-      <find>new Random</find>
-      <find>picka</find>
-      <find>tick</find>
-      <find>use</find>
-      <find>hand</find>
       <find>fireAnim</find>
       <find>damage</find>
       <find>treeHeight</find>
@@ -541,6 +238,19 @@
       <find>drawImage</find>
       <find>speed =</find>
       <find>altPercent</find>
+      <find>tick</find>
+      <find>isDead =</find>
+      <find>isDead</find>
+      <find>y</find>
+      <find>get</find>
+      <find>getHeight</find>
+      <find>food</find>
+      <find>No to Food</find>
+      <find>= true</find>
+      <find>rabbit</find>
+      <find>minRange</find>
+      <find>findTarget</find>
+      <find>getTile</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -566,13 +276,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Sand.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Slope.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Snow.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Stone.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/Stairs.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/Ladder.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/CaveWall.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/Wall.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/WoodFloor.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Tiles/Water.java" />
@@ -585,7 +288,6 @@
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Buildings/Interior/SmallHouseGen.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Generator/SurfaceGen.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/world_parts/AreaLoader.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/TinOre.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/FirePit.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Cookable.java" />
@@ -608,23 +310,24 @@
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/CopperOre.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/monsters/Skeleton.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/villagers/LumberJackNpc.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Food.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Dirt.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Food/FoodItem.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Food/Food.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/damage/Damage.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcBase.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/toEntity/HuntForFoodAI.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/StandOnTileAi.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Grass.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/toEntity/FollowEntityAi.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/World.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/animals/Rabbit.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/EatTileAi.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/ChangeTileAi.java" />
+        <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/GoToTileAi.java" />
         <option value="$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/animals/Animal.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Grass.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Food.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Food/Food.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Items/Food/FoodItem.java" />
-        <option value="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Dirt.java" />
       </list>
-    </option>
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="Bundled (Maven 3)" />
-      </MavenGeneralSettings>
     </option>
   </component>
   <component name="MavenProjectNavigator">
@@ -721,7 +424,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="tynellis" type="462c0819:PsiDirectoryNode" />
               <item name="World" type="462c0819:PsiDirectoryNode" />
-              <item name="Items" type="462c0819:PsiDirectoryNode" />
+              <item name="Entities" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MyGame" type="b2602c69:ProjectViewProjectNode" />
@@ -729,8 +432,61 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="tynellis" type="462c0819:PsiDirectoryNode" />
               <item name="World" type="462c0819:PsiDirectoryNode" />
-              <item name="Items" type="462c0819:PsiDirectoryNode" />
-              <item name="Food" type="462c0819:PsiDirectoryNode" />
+              <item name="Entities" type="462c0819:PsiDirectoryNode" />
+              <item name="NPC" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyGameRestart" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="tynellis" type="462c0819:PsiDirectoryNode" />
+              <item name="World" type="462c0819:PsiDirectoryNode" />
+              <item name="Entities" type="462c0819:PsiDirectoryNode" />
+              <item name="NPC" type="462c0819:PsiDirectoryNode" />
+              <item name="AiTasks" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyGameRestart" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="tynellis" type="462c0819:PsiDirectoryNode" />
+              <item name="World" type="462c0819:PsiDirectoryNode" />
+              <item name="Entities" type="462c0819:PsiDirectoryNode" />
+              <item name="NPC" type="462c0819:PsiDirectoryNode" />
+              <item name="AiTasks" type="462c0819:PsiDirectoryNode" />
+              <item name="Pathfinding" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyGameRestart" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="tynellis" type="462c0819:PsiDirectoryNode" />
+              <item name="World" type="462c0819:PsiDirectoryNode" />
+              <item name="Entities" type="462c0819:PsiDirectoryNode" />
+              <item name="NPC" type="462c0819:PsiDirectoryNode" />
+              <item name="AiTasks" type="462c0819:PsiDirectoryNode" />
+              <item name="Pathfinding" type="462c0819:PsiDirectoryNode" />
+              <item name="toEntity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyGameRestart" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="tynellis" type="462c0819:PsiDirectoryNode" />
+              <item name="World" type="462c0819:PsiDirectoryNode" />
+              <item name="Entities" type="462c0819:PsiDirectoryNode" />
+              <item name="NPC" type="462c0819:PsiDirectoryNode" />
+              <item name="animals" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyGameRestart" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="tynellis" type="462c0819:PsiDirectoryNode" />
+              <item name="World" type="462c0819:PsiDirectoryNode" />
+              <item name="Entities" type="462c0819:PsiDirectoryNode" />
+              <item name="NPC" type="462c0819:PsiDirectoryNode" />
+              <item name="villagers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MyGame" type="b2602c69:ProjectViewProjectNode" />
@@ -1045,13 +801,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1361497301759</updated>
-    </task>
-    <task id="LOCAL-00011" summary="fixed modifier to be accurate renamed damage resistance to damage modifier because of ability to have weaknesses (trees now strong against blunt weak against fire)">
-      <created>1535355170418</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1535355170418</updated>
     </task>
     <task id="LOCAL-00012" summary="Added Visual representation of being damaged">
       <created>1535387653605</created>
@@ -1389,7 +1138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1537230787212</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="added Bunnies and started to add food">
+      <created>1565115611222</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1565115611223</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1405,7 +1161,7 @@
     <frame x="0" y="23" width="3008" height="1669" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.79072845" visible="true" weight="0.2774781" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.79072845" visible="true" weight="0.2774781" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Favorites" order="3" sideWeight="0.20927152" side_tool="true" weight="0.1991404" />
@@ -1413,17 +1169,17 @@
       <window_info id="Image Layers" order="5" />
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.495617" weight="0.31008244" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5616993" visible="true" weight="0.42168674" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4949427" weight="0.31008244" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.54989886" visible="true" weight="0.45846543" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.490232" weight="0.49669603" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.74300075" weight="0.32819384" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.43830073" side_tool="true" visible="true" weight="0.42168674" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.46581197" weight="0.33737597" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.45010114" side_tool="true" visible="true" weight="0.45846543" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.46561024" weight="0.33734939" />
       <window_info anchor="bottom" id="Application Servers" order="9" />
       <window_info anchor="bottom" id="Changes" order="10" />
-      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.41065407" weight="0.28471783" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.39986515" weight="0.28471783" />
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.32980132" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24928367" />
@@ -1519,7 +1275,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix issue with trees being inside of buildings" />
     <MESSAGE value="made doors usable entities and started adding stair tiles" />
     <MESSAGE value="fixed weapon attack area to be correct in 3d space" />
     <MESSAGE value="Added user ability to use usable entities" />
@@ -1544,7 +1299,8 @@
     <MESSAGE value="Fixed some load from file bugs" />
     <MESSAGE value="Fixed duplicate Regions on reload of doors and ladders" />
     <MESSAGE value="Added ore types and how that effects refining" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added ore types and how that effects refining" />
+    <MESSAGE value="added Bunnies and started to add food" />
+    <option name="LAST_COMMIT_MESSAGE" value="added Bunnies and started to add food" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1574,111 +1330,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/TinOre.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Cookable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Rocks/IronOre.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="10" column="56" selection-start-line="10" selection-start-column="56" selection-end-line="10" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/ItemEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="29" column="33" lean-forward="true" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Smeltable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="16" column="12" lean-forward="true" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/CopperNug.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/MetalNugget.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/TinNug.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/IronNug.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="35" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/GoldNug.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/Nuggets/SilverNug.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Gold.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Copper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Silver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-          <folding>
-            <element signature="e#320#321#0" expanded="true" />
-            <element signature="e#392#393#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Materials/metal/ores/Iron.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -1725,69 +1376,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/damage/Damage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/FirePit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/villagers/FarmerNpc.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="110" column="23" selection-start-line="110" selection-start-column="23" selection-end-line="110" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/villagers/LumberJackNpc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/RandomWanderAi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="7" column="43" lean-forward="true" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/PathfinderAi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2310">
-          <caret line="171" column="115" selection-start-line="171" selection-start-column="100" selection-end-line="171" selection-end-column="115" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/UseUsableEntityAi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="15" column="57" selection-start-line="15" selection-start-column="57" selection-end-line="15" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/toEntity/FollowEntityAi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1805,29 +1397,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="154" column="180" selection-start-line="154" selection-start-column="180" selection-end-line="154" selection-end-column="180" />
-          <folding>
-            <element signature="e#1202#1203#0" expanded="true" />
-            <element signature="e#1237#1238#0" expanded="true" />
-            <element signature="e#7395#7396#0" expanded="true" />
-            <element signature="e#7428#7429#0" expanded="true" />
-            <element signature="e#7815#7816#0" expanded="true" />
-            <element signature="e#7866#7867#0" expanded="true" />
-            <element signature="e#8217#8218#0" expanded="true" />
-            <element signature="e#8253#8254#0" expanded="true" />
-            <element signature="e#8283#8284#0" expanded="true" />
-            <element signature="e#8310#8311#0" expanded="true" />
-            <element signature="e#8369#8370#0" expanded="true" />
-            <element signature="e#8397#8398#0" expanded="true" />
-            <element signature="e#8474#8475#0" expanded="true" />
-            <element signature="e#8502#8503#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/spawners/MinMaxRangeSpawner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1839,20 +1408,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/World.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="277" lean-forward="true" selection-start-line="277" selection-end-line="277" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Entity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="30" column="38" lean-forward="true" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -1870,24 +1425,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Weapon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="47" column="20" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
-          <folding>
-            <element signature="e#1757#1758#0" expanded="true" />
-            <element signature="e#1785#1786#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Sword.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="43" column="75" selection-start-line="43" selection-start-column="75" selection-end-line="43" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/monsters/Skeleton.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -1902,95 +1439,323 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Humanoid.java">
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Dirt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        <state relative-caret-position="285">
+          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/animals/Rabbit.java">
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Food/FoodItem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="465">
+          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
           <folding>
-            <element signature="e#234#235#0" expanded="true" />
-            <element signature="e#258#259#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/animals/Animal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#263#264#0" expanded="true" />
-            <element signature="e#307#308#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/LandTile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="8" column="40" lean-forward="true" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Tiles/Tile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-152">
-          <caret line="27" column="29" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Grass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="e#1017#1018#0" expanded="true" />
-            <element signature="e#1044#1045#0" expanded="true" />
-            <element signature="e#1179#1180#0" expanded="true" />
-            <element signature="e#1225#1226#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#124#125#0" expanded="true" />
+            <element signature="e#151#152#0" expanded="true" />
+            <element signature="e#819#820#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Food/Food.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/Food/FoodItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+        <state relative-caret-position="315">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
           <folding>
-            <element signature="e#124#125#0" expanded="true" />
-            <element signature="e#151#152#0" expanded="true" />
-            <element signature="e#196#197#0" expanded="true" />
-            <element signature="e#224#225#0" expanded="true" />
-            <element signature="e#271#272#0" expanded="true" />
-            <element signature="e#295#296#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Dirt.java">
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Humanoid.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="45" column="17" lean-forward="true" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
+        <state relative-caret-position="60">
+          <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Sword.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="31" column="58" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Weapon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="53" column="19" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
           <folding>
-            <element signature="e#964#965#0" expanded="true" />
-            <element signature="e#991#992#0" expanded="true" />
-            <element signature="e#1044#1045#0" expanded="true" />
-            <element signature="e#1072#1073#0" expanded="true" />
-            <element signature="e#1119#1120#0" expanded="true" />
-            <element signature="e#1143#1144#0" expanded="true" />
+            <element signature="e#1757#1758#0" expanded="true" />
+            <element signature="e#1785#1786#0" expanded="true" />
+            <element signature="e#1901#1902#0" expanded="true" />
+            <element signature="e#1930#1931#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/damage/DamageSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/FirePit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="533">
+          <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/damage/Damage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/NpcBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="e#1086#1087#0" expanded="true" />
+            <element signature="e#1141#1142#0" expanded="true" />
+            <element signature="e#8544#8545#0" expanded="true" />
+            <element signature="e#8572#8573#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/toEntity/HuntForFoodAI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/StayNearPoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/UseChestAi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/toEntity/CollectItemsFromEntityAi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/RandomWanderAi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="43" lean-forward="true" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/UseUsableEntityAi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="15" column="57" selection-start-line="15" selection-start-column="57" selection-end-line="15" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/toEntity/AttackEntityAi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="36" column="32" lean-forward="true" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+          <folding>
+            <element signature="e#1041#1042#0" expanded="true" />
+            <element signature="e#1091#1092#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Sand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+          <folding>
+            <element signature="e#640#641#0" expanded="true" />
+            <element signature="e#708#709#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/LandTile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="10" column="11" lean-forward="true" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Tiles/Tile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="649">
+          <caret line="243" column="27" selection-start-line="243" selection-start-column="18" selection-end-line="243" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Grass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="16" column="50" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
+          <folding>
+            <element signature="e#1524#1525#0" expanded="true" />
+            <element signature="e#1573#1574#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/villagers/LumberJackNpc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/toEntity/CollectItemsAi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="35" column="71" selection-start-line="35" selection-start-column="71" selection-end-line="35" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/GameComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="192" selection-start-line="192" selection-end-line="192" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/World.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="256" column="47" lean-forward="true" selection-start-line="256" selection-start-column="47" selection-end-line="256" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/animals/Rabbit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="19" lean-forward="true" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/toEntity/FollowEntityAi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="36" column="51" lean-forward="true" selection-start-line="36" selection-start-column="51" selection-end-line="36" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-12.0.1.jdk/Contents/Home/lib/src.zip!/java.desktop/javax/swing/RepaintManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1617" column="16" selection-start-line="1617" selection-start-column="16" selection-end-line="1617" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/PathfinderAi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/Entity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="185" column="5" lean-forward="true" selection-start-line="185" selection-start-column="5" selection-end-line="185" selection-end-column="5" />
+          <folding>
+            <element signature="e#8088#8089#0" expanded="true" />
+            <element signature="e#8115#8116#0" expanded="true" />
+            <element signature="e#14725#14726#0" expanded="true" />
+            <element signature="e#14754#14755#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/GoToTileAi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="36" column="70" lean-forward="true" selection-start-line="36" selection-start-column="70" selection-end-line="36" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2587#2588#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/KillableEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="103" column="16" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/EatTileAi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="487">
+          <caret line="36" column="33" lean-forward="true" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/AiTasks/Pathfinding/ChangeTileAi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="58" lean-forward="true" selection-start-line="19" selection-start-column="58" selection-end-line="19" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="607" column="19" lean-forward="true" selection-start-line="607" selection-start-column="19" selection-end-line="607" selection-end-column="19" />
+          <folding>
+            <element signature="e#27789#27790#0" expanded="true" />
+            <element signature="e#27815#27816#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tynellis/World/Entities/NPC/animals/Animal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="519">
+          <caret line="68" column="24" lean-forward="true" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1918#1919#0" expanded="true" />
+            <element signature="e#1988#1989#0" expanded="true" />
+            <element signature="e#2178#2179#0" expanded="true" />
+            <element signature="e#2208#2209#0" expanded="true" />
           </folding>
         </state>
       </provider>

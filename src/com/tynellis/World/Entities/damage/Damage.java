@@ -1,6 +1,6 @@
 package com.tynellis.World.Entities.damage;
 
-import java.awt.Color;
+import java.awt.*;
 import java.io.Serializable;
 
 public class Damage implements Serializable {
@@ -8,7 +8,7 @@ public class Damage implements Serializable {
         //Physical
         BLUNT, SLICING, PIERCING,
         //Environmental
-        FIRE, FREEZING,
+        FIRE, FREEZING, STARVING,
         //Magical
         ARCANE, POISON
     }

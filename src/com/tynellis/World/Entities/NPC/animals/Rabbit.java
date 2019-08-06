@@ -3,15 +3,17 @@ package com.tynellis.World.Entities.NPC.animals;
 import com.tynellis.Art.Animation;
 import com.tynellis.Art.SpriteSheet;
 import com.tynellis.World.Entities.Entity;
-import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.toEntity.FollowEntityAi;
-import com.tynellis.World.Entities.Player;
+import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.EatTileAi;
+import com.tynellis.World.Tiles.LandTiles.Natural.Dirt;
+import com.tynellis.World.Tiles.LandTiles.Natural.Grass;
 
 import java.util.Random;
 
 public class Rabbit extends Animal {
     public Rabbit(int x, int y, int z, Random random) {
-        super("Rabbit", x, y, z, NpcGender.randGender(random));
-        Ai.addTask(1, new FollowEntityAi(Player.class, 60, 4));
+        super("Rabbit", x, y, z, random);
+        Ai.addTask(0, new EatTileAi(Grass.class, new Dirt(new Random(), 0), 30));
+        //Ai.addTask(1, new FollowEntityAi(Player.class, 60, 4));
         setLooking(random.nextInt(4));
 
         width = 20;

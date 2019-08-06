@@ -21,8 +21,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.*;
+import java.util.Random;
+import java.util.Scanner;
 
 public abstract class NpcBase extends Humanoid {
     public enum NpcGender {
@@ -37,7 +39,6 @@ public abstract class NpcBase extends Humanoid {
         }
 
         public static NpcGender randGender(Random rand, boolean binary) {
-            System.out.println(Arrays.toString(NpcGender.values()));
             if (!binary) {
                 int choice = rand.nextInt(NpcGender.values().length);
                 return NpcGender.values()[choice];
@@ -232,5 +233,9 @@ public abstract class NpcBase extends Humanoid {
     @Override
     public boolean isPassableBy(movementTypes movementType) {
         return false;
+    }
+
+    public NpcGender getGender() {
+        return gender;
     }
 }

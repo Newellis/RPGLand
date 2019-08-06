@@ -1,0 +1,39 @@
+package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding;
+
+import com.tynellis.World.Entities.NPC.NpcBase;
+import com.tynellis.World.Tiles.Tile;
+import com.tynellis.World.world_parts.Regions.Region;
+
+import java.util.Random;
+
+public class ChangeTileAi extends GoToTileAi {
+    private Tile newTile;
+
+    public ChangeTileAi(Class type, Tile newTile, int range) {
+        super(type, range);
+        this.newTile = newTile;
+    }
+
+    public boolean performTask(Region region, Random random, NpcBase entity) {
+        if (closest != null) {
+            if (shouldChange(region, entity)) {
+                return changeTile(region, random, entity);
+            }
+        }
+        boolean task = super.performTask(region, random, entity);
+        if (!task) {
+            closest = null;
+        }
+        return task;
+    }
+
+    protected boolean changeTile(Region region, Random random, NpcBase entity) {
+        region.setTile(newTile.newTile(random, closest.getHeightInWorld()), x, y, z);
+        closest = null;
+        return true;
+    }
+
+    protected boolean shouldChange(Region region, NpcBase entity) {
+        return Math.round(entity.getX()) == x && Math.round(entity.getY()) == y && Math.round(entity.getZ()) == z && tileType.isInstance(closest);
+    }
+}

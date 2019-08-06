@@ -19,17 +19,12 @@ import com.tynellis.World.world_parts.Land;
 import com.tynellis.World.world_parts.Regions.Generator.WorldGen;
 import com.tynellis.debug.Debug;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 
 public abstract class Region implements Serializable, Land {
     public static final int WIDTH = 1024;
@@ -606,5 +601,24 @@ public abstract class Region implements Serializable, Land {
 
     public WorldGen getGen() {
         return gen;
+    }
+
+    public int[] getLocationOfNearestTile(Class tileType, int x, int y, int z, int range) {
+        for (int r = 0; r <= range; r++) {
+            for (int i = -r; i <= x + r; i++) {
+                for (int j = -r; j <= y + r; j++) {
+                    for (int k = -1; k < 2; k++) {
+                        Tile test = getTile(x + i, y + j, z + k);
+                        if (test != null) {
+                            System.out.println(test.getName());
+                            if (tileType.isInstance(test)) {
+                                return new int[]{x + i, y + j, z + k};
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return null;
     }
 }

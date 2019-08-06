@@ -245,7 +245,7 @@ public class World implements Land, Serializable {
         //Testing entities
         Chest chest = new Chest(spawnPoint[0] - 6, spawnPoint[1] - 2, spawnPoint[2]);
         NpcBase npc = new LumberJackNpc(spawnPoint[0] - 4, spawnPoint[1] + 2, spawnPoint[2], NpcBase.NpcGender.FEMALE, chest, getRand());
-        overRegionRegion.addEntity(npc);
+        //overRegionRegion.addEntity(npc);
 
         Rabbit rabbit = new Rabbit(spawnPoint[0] - 3, spawnPoint[1] + 2, spawnPoint[2], getRand());
         overRegionRegion.addEntity(rabbit);

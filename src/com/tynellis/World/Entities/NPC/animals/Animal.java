@@ -1,11 +1,90 @@
 package com.tynellis.World.Entities.NPC.animals;
 
+import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.NPC.NpcBase;
+import com.tynellis.World.Entities.damage.Damage;
+import com.tynellis.World.Entities.damage.DamageSource;
+import com.tynellis.World.Items.Food.Food;
+import com.tynellis.World.world_parts.Regions.Region;
+
+import java.util.List;
+import java.util.Random;
 
 public abstract class Animal extends NpcBase {
 
+    public enum Diet {
+        HERBIVORE,
+        CARNIVORE,
+        OMNIVORE,
+        ;
+    }
 
-    protected Animal(String name, int x, int y, int z, NpcGender gender) {
-        super(name, x, y, z, gender);
+    private double nutrition;
+    private final double maxNutrition;
+    private double starvationNum;
+    private boolean starving = false;
+    private double foodUsage;
+
+    protected Animal(String name, int x, int y, int z, Random random) {
+        super(name, x, y, z, NpcGender.randGender(random));
+        System.out.println("New " + name + " that's a " + getGender());
+        maxNutrition = 20;
+        starvationNum = 5;
+        nutrition = random.nextInt((int) (maxNutrition - starvationNum - 1)) + random.nextDouble() + starvationNum;
+        foodUsage = 0.01;
+    }
+
+    public void tick(Region region, Random random, List<Entity> near) {
+        if (nutrition > maxNutrition / 2.0) {
+            Heal(1);
+        }
+        consumeNutrition(random);
+        super.tick(region, random, near);
+    }
+
+    private void consumeNutrition(Random rand) {
+        if (nutrition < starvationNum && nutrition > 0) {
+            starving = true;
+            if (rand.nextDouble() < 0.01) {
+                DamageBy(new DamageSource(new Damage(Damage.Types.STARVING, 1)), rand);
+            }
+            nutrition -= foodUsage / 2.0;
+        } else {
+            nutrition -= foodUsage;
+        }
+        if (nutrition < 0) {
+            DamageBy(new DamageSource(new Damage(Damage.Types.STARVING, 2)), rand);
+            nutrition = 0;
+        }
+        System.out.println(nutrition + ": starving: " + starving);
+    }
+
+    public boolean canEat() {
+        return nutrition < maxNutrition;
+    }
+
+    public boolean eatFood(Food food) {
+        if (canEat()) {
+            System.out.println("Eat Food");
+            nutrition += food.getNutrition();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isStarving() {
+        return starving;
+    }
+
+    public boolean wantsToEat(Random random) {
+        if (starving) {
+            System.out.println("STARVING!!!!!!!!!!!!!!!!!!");
+            return true;
+        } else {
+            double randNum = random.nextDouble();
+            boolean hungry = (1.0 - (nutrition / maxNutrition)) > randNum;
+            System.out.println("not starving but want " + (1.0 - (nutrition / maxNutrition)) + " > " + randNum + "  = " + hungry);
+            return hungry;
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.tynellis.World.Items.Food;
 
 import com.tynellis.World.Entities.Entity;
+import com.tynellis.World.Entities.NPC.animals.Animal;
 
 public abstract class FoodItem implements Food {
     private FoodType type;
@@ -17,12 +18,16 @@ public abstract class FoodItem implements Food {
     }
 
     @Override
-    public boolean canEat(Entity e) {
-        return true;
+    public boolean canEat(Animal.Diet e) {
+        if (e == Animal.Diet.CARNIVORE && type == FoodType.MEAT) {
+            return true;
+        } else if (e == Animal.Diet.HERBIVORE && type == FoodType.PLANT) {
+            return true;
+        } else return e == Animal.Diet.OMNIVORE;
     }
 
     @Override
-    public int getNutrition() {
+    public double getNutrition() {
         return nutrition;
     }
 

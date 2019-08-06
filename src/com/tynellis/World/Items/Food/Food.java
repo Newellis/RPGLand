@@ -1,6 +1,7 @@
 package com.tynellis.World.Items.Food;
 
 import com.tynellis.World.Entities.Entity;
+import com.tynellis.World.Entities.NPC.animals.Animal;
 
 public interface Food {
     enum FoodType {
@@ -12,9 +13,9 @@ public interface Food {
 
     FoodType getType();
 
-    boolean canEat(Entity e);
+    boolean canEat(Animal.Diet e);
 
-    int getNutrition();
+    double getNutrition();
 
     void doneEating(Entity e);
 }
