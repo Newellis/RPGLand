@@ -1,5 +1,6 @@
 package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding;
 
+import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.Core.PathfinderAi;
 import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.world_parts.Regions.Region;
 

@@ -1,6 +1,7 @@
-package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding;
+package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.toTile;
 
 import com.tynellis.World.Entities.NPC.AiTasks.AiTask;
+import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.Core.PathfinderAi;
 import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.Nodes.Node;
 import com.tynellis.World.Tiles.Tile;
@@ -29,11 +30,17 @@ public class GoToTileAi extends AiTask {
             System.out.println("found food " + closest.getName());
             if (pathfinder.getCurrentActivity() != this) {
                 pathfinder.setCurrentActivity(this);
-                pathfinder.setRanges(range, 1);
+                pathfinder.setRanges(range, 0);
             }
             if (pathfinder.heuristicCostEstimate(new Node(entity.getX(), entity.getY(), entity.getZ()), new Node(x, y, z)) > 0) {
                 pathfinder.setLocation(x, y, z);
-                return pathfinder.performTask(region, random, entity);
+                System.out.println("moving to food");
+                boolean pathfind = pathfinder.performTask(region, random, entity);
+                if (!pathfind) {
+                    entity.setMoving(false);
+                    closest = null;
+                }
+                return pathfind;
             } else {
                 entity.setMoving(false);
                 return false;

@@ -3,7 +3,8 @@ package com.tynellis.World.Entities.NPC.animals;
 import com.tynellis.Art.Animation;
 import com.tynellis.Art.SpriteSheet;
 import com.tynellis.World.Entities.Entity;
-import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.EatTileAi;
+import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.Core.PathfindInRangeAi;
+import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.toTile.EatTileAi;
 import com.tynellis.World.Tiles.LandTiles.Natural.Dirt;
 import com.tynellis.World.Tiles.LandTiles.Natural.Grass;
 
@@ -19,6 +20,8 @@ public class Rabbit extends Animal {
         width = 20;
         height = 20;
         speed = 0.07;
+//        pathfinder = new PathfindInAreaAi(new Rectangle(x - 5, y- 5, 10,10));
+        pathfinder = new PathfindInRangeAi(7, x, y, z);
     }
 
     @Override

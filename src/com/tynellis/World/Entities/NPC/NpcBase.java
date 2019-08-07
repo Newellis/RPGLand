@@ -6,7 +6,7 @@ import com.tynellis.Art.SpriteSheet;
 import com.tynellis.GameComponent;
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.Humanoid;
-import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.PathfinderAi;
+import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.Core.PathfinderAi;
 import com.tynellis.World.Entities.damage.Damage;
 import com.tynellis.World.Items.weapons.Sword;
 import com.tynellis.World.Items.weapons.Weapon;

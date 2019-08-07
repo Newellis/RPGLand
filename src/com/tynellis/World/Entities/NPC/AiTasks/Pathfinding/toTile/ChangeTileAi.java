@@ -1,4 +1,4 @@
-package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding;
+package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.toTile;
 
 import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.Nodes.Node;

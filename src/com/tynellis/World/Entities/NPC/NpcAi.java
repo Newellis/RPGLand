@@ -27,6 +27,9 @@ public class NpcAi implements Serializable {
             boolean success = true;
             for (AiTask task : tasks) {
                 success &= task.tryTask(region, random, npc);
+                if (!success && npc.getPathfinder().getCurrentActivity() == task) {
+                    npc.getPathfinder().clearCurrentActivity();
+                }
             }
             if (success) {
                 return;

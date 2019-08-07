@@ -1,4 +1,4 @@
-package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding;
+package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.Core;
 
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.NPC.AiTasks.AiTask;
@@ -9,17 +9,13 @@ import com.tynellis.World.world_parts.Regions.Region;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class PathfinderAi extends AiTask {
     protected double destX, destY, destZ;
     protected int range, minRange, tempMinRangeMod = 0;
     protected transient List<Node> path = new ArrayList<Node>();
-    private AiTask currentActivity;
+    AiTask currentActivity;
 
     public PathfinderAi(int x, int y, int z, int range) {
         destX = x;
@@ -232,6 +228,10 @@ public class PathfinderAi extends AiTask {
             path.clear();
             tempMinRangeMod = 0;
         }
+    }
+
+    public void clearCurrentActivity() {
+        setCurrentActivity(null);
     }
 
     public List<Node> getPath() {

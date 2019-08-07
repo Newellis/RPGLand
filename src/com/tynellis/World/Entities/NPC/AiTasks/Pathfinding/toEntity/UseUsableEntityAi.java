@@ -1,9 +1,8 @@
-package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding;
+package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.toEntity;
 
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.KillableEntity;
 import com.tynellis.World.Entities.NPC.AiTasks.FaceClosestAi;
-import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.toEntity.FollowEntityAi;
 import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.Entities.UsableEntity.UsableEntity;
 import com.tynellis.World.Entities.UsableEntity.using_interfaces.UsingInterface;

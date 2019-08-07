@@ -1,4 +1,4 @@
-package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding;
+package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.toEntity;
 
 import com.tynellis.World.Entities.KillableEntity;
 import com.tynellis.World.Entities.NPC.NpcBase;

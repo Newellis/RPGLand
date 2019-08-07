@@ -2,7 +2,7 @@ package com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.toEntity;
 
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.NPC.AiTasks.AiTask;
-import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.PathfinderAi;
+import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.Core.PathfinderAi;
 import com.tynellis.World.Entities.NPC.NpcBase;
 import com.tynellis.World.Nodes.Node;
 import com.tynellis.World.world_parts.Regions.Region;
