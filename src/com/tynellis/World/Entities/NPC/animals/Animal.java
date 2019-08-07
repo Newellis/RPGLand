@@ -31,7 +31,7 @@ public abstract class Animal extends NpcBase {
         maxNutrition = 20;
         starvationNum = 5;
         nutrition = random.nextInt((int) (maxNutrition - starvationNum - 1)) + random.nextDouble() + starvationNum;
-        foodUsage = 0.01;
+        foodUsage = 0.0001;
     }
 
     public void tick(Region region, Random random, List<Entity> near) {
@@ -56,7 +56,6 @@ public abstract class Animal extends NpcBase {
             DamageBy(new DamageSource(new Damage(Damage.Types.STARVING, 2)), rand);
             nutrition = 0;
         }
-        System.out.println(nutrition + ": starving: " + starving);
     }
 
     public boolean canEat() {
@@ -65,8 +64,11 @@ public abstract class Animal extends NpcBase {
 
     public boolean eatFood(Food food) {
         if (canEat()) {
-            System.out.println("Eat Food");
             nutrition += food.getNutrition();
+            if (nutrition > maxNutrition) {
+                Heal((int) Math.ceil(nutrition - maxNutrition));
+                nutrition = maxNutrition;
+            }
             return true;
         }
         return false;
@@ -82,7 +84,7 @@ public abstract class Animal extends NpcBase {
             return true;
         } else {
             double randNum = random.nextDouble();
-            boolean hungry = (1.0 - (nutrition / maxNutrition)) > randNum;
+            boolean hungry = (1.0 - (nutrition / maxNutrition)) > randNum && random.nextBoolean();
             System.out.println("not starving but want " + (1.0 - (nutrition / maxNutrition)) + " > " + randNum + "  = " + hungry);
             return hungry;
         }

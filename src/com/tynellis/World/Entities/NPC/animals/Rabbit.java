@@ -12,7 +12,7 @@ import java.util.Random;
 public class Rabbit extends Animal {
     public Rabbit(int x, int y, int z, Random random) {
         super("Rabbit", x, y, z, random);
-        Ai.addTask(0, new EatTileAi(Grass.class, new Dirt(new Random(), 0), 30));
+        Ai.addTask(0, new EatTileAi(Grass.class, new Dirt(new Random(), 0), 20));
         //Ai.addTask(1, new FollowEntityAi(Player.class, 60, 4));
         setLooking(random.nextInt(4));
 

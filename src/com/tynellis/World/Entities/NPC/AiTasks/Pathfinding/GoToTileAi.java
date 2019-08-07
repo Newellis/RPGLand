@@ -25,7 +25,7 @@ public class GoToTileAi extends AiTask {
     public boolean performTask(Region region, Random random, NpcBase entity) {
         PathfinderAi pathfinder = entity.getPathfinder();
         System.out.println("find food");
-        if (findTarget(region, entity)) {
+        if (findTarget(region, entity, random)) {
             System.out.println("found food " + closest.getName());
             if (pathfinder.getCurrentActivity() != this) {
                 pathfinder.setCurrentActivity(this);
@@ -33,10 +33,8 @@ public class GoToTileAi extends AiTask {
             }
             if (pathfinder.heuristicCostEstimate(new Node(entity.getX(), entity.getY(), entity.getZ()), new Node(x, y, z)) > 0) {
                 pathfinder.setLocation(x, y, z);
-                System.out.println("move to food");
                 return pathfinder.performTask(region, random, entity);
             } else {
-                System.out.println("At food");
                 entity.setMoving(false);
                 return false;
             }
@@ -45,13 +43,13 @@ public class GoToTileAi extends AiTask {
         return false;
     }
 
-    boolean findTarget(Region region, NpcBase entity) {
+    boolean findTarget(Region region, NpcBase entity, Random rand) {
         if (tileType.isInstance(closest)) {
             return true;
         }
         Rectangle center = entity.getBounds();
-        int x = (int) Math.round(center.x + (center.width / 2.0)) / Tile.WIDTH;
-        int y = (int) Math.round(center.y + (center.height / 2.0)) / Tile.HEIGHT;
+        int x = (int) (center.x + (center.width / 2.0)) / Tile.WIDTH;
+        int y = (int) (center.y + (center.height / 2.0)) / Tile.HEIGHT;
         int[] point = region.getLocationOfNearestTile(tileType, x, y, (int) entity.getZ(), range);
 
         if (point != null) {
@@ -59,9 +57,7 @@ public class GoToTileAi extends AiTask {
             this.y = point[1];
             this.z = point[2];
             closest = region.getTile(x, y, z);
-            System.out.println("Closest " + closest.getName());
             if (tileType.isInstance(closest)) {
-                System.out.println("New Target " + closest.getName());
                 return true;
             }
         }
@@ -71,6 +67,6 @@ public class GoToTileAi extends AiTask {
 
     @Override
     public boolean isFinished(NpcBase entity) {
-        return false;
+        return entity.getPathfinder().heuristicCostEstimate(new Node(entity.getX(), entity.getY(), entity.getZ()), new Node(x, y, z)) < 0.5;
     }
 }

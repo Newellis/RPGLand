@@ -611,7 +611,7 @@ public abstract class Region implements Serializable, Land {
                         Tile test = getTile(x + i, y + j, z + k);
                         if (test != null) {
                             System.out.println(test.getName());
-                            if (tileType.isInstance(test)) {
+                            if (tileType.isInstance(test) && !isTileObstructed(x + i, y + j, z + k)) {
                                 return new int[]{x + i, y + j, z + k};
                             }
                         }
