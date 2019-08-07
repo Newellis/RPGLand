@@ -80,12 +80,10 @@ public abstract class Animal extends NpcBase {
 
     public boolean wantsToEat(Random random) {
         if (starving) {
-            System.out.println("STARVING!!!!!!!!!!!!!!!!!!");
             return true;
         } else {
             double randNum = random.nextDouble();
             boolean hungry = (1.0 - (nutrition / maxNutrition)) > randNum && random.nextBoolean();
-            System.out.println("not starving but want " + (1.0 - (nutrition / maxNutrition)) + " > " + randNum + "  = " + hungry);
             return hungry;
         }
     }

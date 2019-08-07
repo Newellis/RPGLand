@@ -621,4 +621,23 @@ public abstract class Region implements Serializable, Land {
         }
         return null;
     }
+
+    public void updateTileArtAt(int x, int y) {
+        Tile[][] adjacent = new Tile[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                adjacent[i][j] = getTile(i - 1 + x, j - 1 + y, getTopLayerAt(i - 1 + x, j - 1 + y));
+            }
+        }
+        getTile(x, y, getTopLayerAt(x, y)).updateArt(adjacent);
+    }
+
+    public void updateTileArtAround(int x, int y) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                updateTileArtAt(i - 1 + x, j - 1 + y);
+            }
+
+        }
+    }
 }

@@ -30,6 +30,7 @@ public class ChangeTileAi extends GoToTileAi {
 
     protected boolean changeTile(Region region, Random random, NpcBase entity) {
         region.setTile(newTile.newTile(random, closest.getHeightInWorld()), x, y, z);
+        region.updateTileArtAround(x, y);
         closest = null;
         return true;
     }
