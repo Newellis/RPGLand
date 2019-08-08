@@ -25,16 +25,13 @@ public class GoToTileAi extends AiTask {
     @Override
     public boolean performTask(Region region, Random random, NpcBase entity) {
         PathfinderAi pathfinder = entity.getPathfinder();
-        System.out.println("find food");
         if (findTarget(region, entity, random)) {
-            System.out.println("found food " + closest.getName());
             if (pathfinder.getCurrentActivity() != this) {
                 pathfinder.setCurrentActivity(this);
                 pathfinder.setRanges(range, 0);
             }
             if (pathfinder.heuristicCostEstimate(new Node(entity.getX(), entity.getY(), entity.getZ()), new Node(x, y, z)) > 0) {
                 pathfinder.setLocation(x, y, z);
-                System.out.println("moving to food");
                 boolean pathfind = pathfinder.performTask(region, random, entity);
                 if (!pathfind) {
                     entity.setMoving(false);
