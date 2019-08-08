@@ -3,7 +3,7 @@ package com.tynellis.World.Entities.NPC.villagers;
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.NPC.AiTasks.AiTask;
 import com.tynellis.World.Entities.NPC.AiTasks.FaceClosestAi;
-import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.StayNearPoint;
+import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.Core.PathfindInRangeAi;
 import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.toEntity.CollectItemsFromEntityAi;
 import com.tynellis.World.Entities.NPC.AiTasks.Pathfinding.toEntity.UseChestAi;
 import com.tynellis.World.Entities.NPC.NpcBase;
@@ -35,10 +35,10 @@ public class LumberJackNpc extends Villager {
 
         //new PathfinderAi(x, y, z, 48);
 
-        StayNearPoint ai = new StayNearPoint(x, y, z, 50);
+        pathfinder = new PathfindInRangeAi(50, x, y, z);
+
         AiTask items = new CollectItemsFromEntityAi(Tree.class, 50, 1);
         UseChestAi chestAi = new UseChestAi(chest, new TypeItemFilter(new Class[]{Log.class}, ItemFilter.Type.WhiteList), 400);
-        ai.dontInterrupt(items);
         items.dontInterrupt(chestAi);
         //pathfinder = items;//new AttackEntityAi(Tree.class, 15, 1);
 

@@ -20,8 +20,7 @@ public class Rabbit extends Animal {
         width = 20;
         height = 20;
         speed = 0.07;
-//        pathfinder = new PathfindInAreaAi(new Rectangle(x - 5, y- 5, 10,10));
-        pathfinder = new PathfindInRangeAi(7, x, y, z);
+        pathfinder = new PathfindInRangeAi(100, x, y, z);
     }
 
     @Override
