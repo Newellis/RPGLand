@@ -2,7 +2,7 @@ package com.tynellis.debug;
 
 public class Debug {
     private boolean state = false;
-    Type types[] = new Type[]{Type.PATH, Type.TILES, Type.AREAS, Type.ATTACK};
+    Type types[] = new Type[]{Type.PATH, Type.COLLISION, Type.AREAS};
 
     public enum Type {
         COLLISION, //shows hitboxes of entities

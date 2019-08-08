@@ -56,7 +56,7 @@ public class PathfinderAi extends AiTask {
                 System.out.println("no next node");
                 return false;
             }
-            return path.size() > 0 && moveAlongPath(entity);
+            return path.size() > 0 && moveAlongPath(region, random, entity);
         }
     }
 
@@ -64,21 +64,25 @@ public class PathfinderAi extends AiTask {
         return path.size() == 0;
     }
 
-    protected boolean moveAlongPath(Entity e) {
+    protected boolean moveAlongPath(Region region, Random random, Entity e) {
         Node nextNode = path.get(0);
-        if (path.size() == 1 && (Math.abs(e.getX() - nextNode.getX()) == 0 && Math.abs(e.getY() - nextNode.getY()) == 0)) {
+        if (path.size() == 1 && (Math.abs(e.getX() - nextNode.getX()) == 0 && Math.abs(e.getY() - nextNode.getY()) == 0)) { //at end of path
             e.setMoving(false);
             path.clear();
             return false;
-        } else if ((Math.abs(e.getX() - nextNode.getX()) == 0 && Math.abs(e.getY() - nextNode.getY()) == 0)) {
+        } else if ((Math.abs(e.getX() - nextNode.getX()) == 0 && Math.abs(e.getY() - nextNode.getY()) == 0)) { // at next node
             path.remove(nextNode);
             return true;
-        } else if ((Math.abs(e.getX() - nextNode.getX()) < (e.getSpeed()) && Math.abs(e.getY() - nextNode.getY()) < (e.getSpeed()))) {
+        } else if ((Math.abs(e.getX() - nextNode.getX()) < (e.getSpeed()) && Math.abs(e.getY() - nextNode.getY()) < (e.getSpeed()))) { //almost at next node
             e.setMoving(false);
             e.setLocation(nextNode.getX(), nextNode.getY(), nextNode.getZ());
             return true;
-        } else {
-            e.setFacing(FaceClosestAi.facingPoint(e, nextNode.getX(), nextNode.getY()));
+        } else { // move to next node
+            if (region.isTileCurrentlyObstructedFor(e, (int) nextNode.getX(), (int) nextNode.getY(), (int) nextNode.getZ())) { // next node is currently obstructed
+                e.setFacing(FaceClosestAi.facingPoint(e, nextNode.getX(), nextNode.getY()) + 0.75);
+            } else {
+                e.setFacing(FaceClosestAi.facingPoint(e, nextNode.getX(), nextNode.getY()));
+            }
             e.setMoving(true);
             return true;
         }

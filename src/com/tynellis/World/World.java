@@ -4,16 +4,12 @@ import com.tynellis.GameComponent;
 import com.tynellis.Save.FileHandler;
 import com.tynellis.World.Buildings.SmallHouse;
 import com.tynellis.World.Entities.Entity;
-import com.tynellis.World.Entities.ItemEntity;
 import com.tynellis.World.Entities.Living.LivingEntity;
 import com.tynellis.World.Entities.Living.animals.Rabbit;
 import com.tynellis.World.Entities.Living.villagers.LumberJackNpc;
-import com.tynellis.World.Entities.Plants.Tree;
 import com.tynellis.World.Entities.Player;
 import com.tynellis.World.Entities.UsableEntity.Chest;
 import com.tynellis.World.Entities.UsableEntity.RegionBoundary;
-import com.tynellis.World.Items.ItemPile;
-import com.tynellis.World.Items.Materials.Log;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.world_parts.Area;
 import com.tynellis.World.world_parts.Land;
@@ -244,6 +240,7 @@ public class World implements Land, Serializable {
     public void addTestEntities() {
         //Testing entities
         Chest chest = new Chest(spawnPoint[0] - 6, spawnPoint[1] - 2, spawnPoint[2]);
+        overRegionRegion.addEntity(chest);
         LivingEntity npc = new LumberJackNpc(spawnPoint[0] - 4, spawnPoint[1] + 2, spawnPoint[2], LivingEntity.NpcGender.FEMALE, chest, getRand());
         //overRegionRegion.addEntity(npc);
 
@@ -254,13 +251,12 @@ public class World implements Land, Serializable {
             }
         }
         //Add log items
-        ItemEntity itemEntity = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 1), getRand(), spawnPoint[0] + 4, spawnPoint[1], spawnPoint[2]);
-        ItemEntity itemEntity1 = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 3), getRand(), spawnPoint[0] + 6, spawnPoint[1], spawnPoint[2]);
-        ItemEntity itemEntity2 = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 6), getRand(), spawnPoint[0] + 8, spawnPoint[1], spawnPoint[2]);
-        overRegionRegion.addEntity(itemEntity);
-        overRegionRegion.addEntity(itemEntity1);
-        overRegionRegion.addEntity(itemEntity2);
-        overRegionRegion.addEntity(chest);
+//        ItemEntity itemEntity = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 1), getRand(), spawnPoint[0] + 4, spawnPoint[1], spawnPoint[2]);
+//        ItemEntity itemEntity1 = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 3), getRand(), spawnPoint[0] + 6, spawnPoint[1], spawnPoint[2]);
+//        ItemEntity itemEntity2 = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 6), getRand(), spawnPoint[0] + 8, spawnPoint[1], spawnPoint[2]);
+//        overRegionRegion.addEntity(itemEntity);
+//        overRegionRegion.addEntity(itemEntity1);
+//        overRegionRegion.addEntity(itemEntity2);
 
         //add houses
         SmallHouse.buildSmallHouse(overRegionRegion, getRand(), spawnPoint[0] - 6, spawnPoint[1] - 5, spawnPoint[2]);

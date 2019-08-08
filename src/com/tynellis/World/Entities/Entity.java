@@ -8,9 +8,7 @@ import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.world_parts.Regions.Region;
 import com.tynellis.debug.Debug;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -360,6 +358,7 @@ public abstract class Entity implements BoundingBoxOwner, Serializable {
     }
 
     public void setFacing(double facing) {
+        facing = facing % 4.0;
         this.facing = (int) (facing * 2.0);
         if (this.facing == 0) spriteFacing = 0;
         else if (this.facing > 0 && this.facing < 4) spriteFacing = 1;

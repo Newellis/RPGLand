@@ -565,6 +565,19 @@ public abstract class Region implements Serializable, Land {
         return list.size() > 0;
     }
 
+    public boolean isTileCurrentlyObstructed(int x, int y, int z) {
+        return isTileCurrentlyObstructedFor(null, x, y, z);
+    }
+
+    public boolean isTileCurrentlyObstructedFor(Entity e, int x, int y, int z) {
+        if (getTile(x, y, z) == null) {
+            return true;
+        }
+        ArrayList<Entity> list = getEntitiesIntersecting(getTileBounds(x, y, z));
+        list.remove(e);
+        return list.size() > 0;
+    }
+
     public int getTopLayerAt(int x, int y) {
         return getTopLayerAtBelow(x, y, Area.DEPTH);
     }

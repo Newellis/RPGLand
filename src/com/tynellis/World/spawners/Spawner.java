@@ -4,7 +4,7 @@ import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.world_parts.Regions.Region;
 
-import java.awt.Rectangle;
+import java.awt.*;
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -37,6 +37,7 @@ public class Spawner implements Serializable {
     }
 
     public void tick(Region region, Random random) {
+        //todo make not lag horribly when spawn area is large
         if (spawnCoolDown <= 0 && creatures.size() > 0) {
 
             boolean sucessful = false;
