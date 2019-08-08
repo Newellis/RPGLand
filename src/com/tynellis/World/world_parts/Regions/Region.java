@@ -610,7 +610,6 @@ public abstract class Region implements Serializable, Land {
                     for (int k = -1; k < 2; k++) {
                         Tile test = getTile(x + i, y + j, z + k);
                         if (test != null) {
-                            System.out.println(test.getName());
                             if (tileType.isInstance(test) && !isTileObstructed(x + i, y + j, z + k)) {
                                 return new int[]{x + i, y + j, z + k};
                             }
@@ -629,7 +628,10 @@ public abstract class Region implements Serializable, Land {
                 adjacent[i][j] = getTile(i - 1 + x, j - 1 + y, getTopLayerAt(i - 1 + x, j - 1 + y));
             }
         }
-        getTile(x, y, getTopLayerAt(x, y)).updateArt(adjacent);
+        Tile tile = getTile(x, y, getTopLayerAt(x, y));
+        if (tile != null) {
+            tile.updateArt(adjacent);
+        }
     }
 
     public void updateTileArtAround(int x, int y) {

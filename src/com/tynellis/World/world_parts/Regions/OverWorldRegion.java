@@ -9,6 +9,6 @@ public class OverWorldRegion extends Region {
 
     @Override
     protected void addEntitiesToSpawn() {
-//        worldSpawner.addEntitySpawn(Skeleton.class, 100);
+        //worldSpawner.addEntitySpawn(Rabbit.class, 20);
     }
 }

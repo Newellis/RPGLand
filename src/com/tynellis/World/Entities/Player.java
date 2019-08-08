@@ -20,9 +20,7 @@ import com.tynellis.World.world_parts.Regions.Region;
 import com.tynellis.debug.Debug;
 import com.tynellis.input.Keys;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -30,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Player extends Humanoid {
+public class Player extends AttackingEntity {
     private transient Keys keys;
     private transient SpriteSheet spriteSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_walkcycle.png", 64, 64, 1);
     private transient Animation animation = new Animation(spriteSheet, 5);

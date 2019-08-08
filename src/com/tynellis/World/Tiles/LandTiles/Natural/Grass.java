@@ -2,7 +2,7 @@ package com.tynellis.World.Tiles.LandTiles.Natural;
 
 import com.tynellis.Art.SpriteSheet;
 import com.tynellis.World.Entities.Entity;
-import com.tynellis.World.Entities.NPC.animals.Animal;
+import com.tynellis.World.Entities.Living.animals.Animal;
 import com.tynellis.World.Items.Food.Food;
 import com.tynellis.World.Tiles.LandTiles.LandTile;
 import com.tynellis.World.Tiles.Tile;

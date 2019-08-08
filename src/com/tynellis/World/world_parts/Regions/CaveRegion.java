@@ -10,6 +10,6 @@ public class CaveRegion extends Region {
 
     @Override
     protected void addEntitiesToSpawn() {
-
+        //worldSpawner.addEntitySpawn(Skeleton.class, 50);
     }
 }

@@ -5,9 +5,9 @@ import com.tynellis.Save.FileHandler;
 import com.tynellis.World.Buildings.SmallHouse;
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.ItemEntity;
-import com.tynellis.World.Entities.NPC.NpcBase;
-import com.tynellis.World.Entities.NPC.animals.Rabbit;
-import com.tynellis.World.Entities.NPC.villagers.LumberJackNpc;
+import com.tynellis.World.Entities.Living.LivingEntity;
+import com.tynellis.World.Entities.Living.animals.Rabbit;
+import com.tynellis.World.Entities.Living.villagers.LumberJackNpc;
 import com.tynellis.World.Entities.Plants.Tree;
 import com.tynellis.World.Entities.Player;
 import com.tynellis.World.Entities.UsableEntity.Chest;
@@ -244,12 +244,15 @@ public class World implements Land, Serializable {
     public void addTestEntities() {
         //Testing entities
         Chest chest = new Chest(spawnPoint[0] - 6, spawnPoint[1] - 2, spawnPoint[2]);
-        NpcBase npc = new LumberJackNpc(spawnPoint[0] - 4, spawnPoint[1] + 2, spawnPoint[2], NpcBase.NpcGender.FEMALE, chest, getRand());
+        LivingEntity npc = new LumberJackNpc(spawnPoint[0] - 4, spawnPoint[1] + 2, spawnPoint[2], LivingEntity.NpcGender.FEMALE, chest, getRand());
         //overRegionRegion.addEntity(npc);
 
-        Rabbit rabbit = new Rabbit(spawnPoint[0] - 3, spawnPoint[1] + 2, spawnPoint[2], getRand());
-        overRegionRegion.addEntity(rabbit);
-
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                Rabbit rabbit = new Rabbit(spawnPoint[0] - 3 + i, spawnPoint[1] + 2 + j, spawnPoint[2], getRand());
+                overRegionRegion.addEntity(rabbit);
+            }
+        }
         //Add log items
         ItemEntity itemEntity = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 1), getRand(), spawnPoint[0] + 4, spawnPoint[1], spawnPoint[2]);
         ItemEntity itemEntity1 = new ItemEntity(new ItemPile(new Log(Tree.Type.Oak), 3), getRand(), spawnPoint[0] + 6, spawnPoint[1], spawnPoint[2]);

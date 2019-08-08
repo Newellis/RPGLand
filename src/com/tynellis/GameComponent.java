@@ -9,7 +9,7 @@ import com.tynellis.Save.InvalidSaveException;
 import com.tynellis.Save.SavedWorld;
 import com.tynellis.Save.StoreLoad;
 import com.tynellis.World.Entities.Entity;
-import com.tynellis.World.Entities.NPC.NpcBase;
+import com.tynellis.World.Entities.Living.LivingEntity;
 import com.tynellis.World.Entities.Player;
 import com.tynellis.World.Tiles.LandTiles.ManMade.Ladder;
 import com.tynellis.World.Tiles.LandTiles.Natural.Grass;
@@ -23,12 +23,8 @@ import com.tynellis.input.KeyInput;
 import com.tynellis.input.Keys;
 import com.tynellis.input.MouseInput;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
@@ -250,7 +246,7 @@ public class GameComponent extends JPanel implements Runnable {
         world.genSpawn(seed);
         int[] spawn = world.getSpawnPoint();
         //todo add player customization
-        player = new Player(keys, NpcBase.getName(NpcBase.NpcGender.MALE, world.getRand()), spawn[0], spawn[1], spawn[2]);
+        player = new Player(keys, LivingEntity.getName(LivingEntity.NpcGender.MALE, world.getRand()), spawn[0], spawn[1], spawn[2]);
         world.addPlayer(player);
 
         world.addTestEntities();

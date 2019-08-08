@@ -3,13 +3,13 @@ package com.tynellis.World.Tiles.LandTiles.ManMade;
 import com.tynellis.Art.Sprite;
 import com.tynellis.Art.SpriteSheet;
 import com.tynellis.BoundingBox.BoundingBoxOwner;
+import com.tynellis.World.Entities.AttackingEntity;
 import com.tynellis.World.Entities.Entity;
-import com.tynellis.World.Entities.Humanoid;
 import com.tynellis.World.Tiles.LandTiles.ConnectorTile;
 import com.tynellis.World.Tiles.LandTiles.LandTile;
 import com.tynellis.World.Tiles.Tile;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.Random;
@@ -68,7 +68,7 @@ public class Stairs extends ConnectorTile {
 
     @Override
     public void handleCollision(BoundingBoxOwner bb, double xMove, double yMove, boolean isOver) {
-        if (bb instanceof Humanoid) {
+        if (bb instanceof AttackingEntity) {
             if (((Entity) bb).isWalking() && isOver) {
                 double down = 0;
                 if (direction % 2 == 0 && !((Entity) bb).getCanMoveY()) {
@@ -105,7 +105,7 @@ public class Stairs extends ConnectorTile {
 
     @Override
     public boolean canUse(Entity e) {
-        return e.isWalking() && e instanceof Humanoid;
+        return e.isWalking() && e instanceof AttackingEntity;
     }
 }
 
