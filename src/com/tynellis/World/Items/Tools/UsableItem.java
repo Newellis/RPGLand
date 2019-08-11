@@ -1,6 +1,7 @@
-package com.tynellis.World.Items;
+package com.tynellis.World.Items.Tools;
 
 import com.tynellis.World.Entities.KillableEntity;
+import com.tynellis.World.Items.Item;
 import com.tynellis.World.world_parts.Regions.Region;
 
 import java.util.Random;

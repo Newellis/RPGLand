@@ -13,7 +13,7 @@ import com.tynellis.World.Items.TreeSeeds;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.world_parts.Regions.Region;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.List;
@@ -56,9 +56,6 @@ public class Tree extends Plant {
 
     public void tick(Region region, Random random, List<Entity> near) {
         super.tick(region, random, near);
-//        if (GameComponent.debug.State()) {
-//            kill();
-//        }
     }
 
     public void render(Graphics g, int xOffset, int yOffset) {

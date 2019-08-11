@@ -1,6 +1,6 @@
 package com.tynellis.World.Entities;
 
-import com.tynellis.World.Items.weapons.Weapon;
+import com.tynellis.World.Items.Tools.Weapons.Weapon;
 import com.tynellis.World.world_parts.Regions.Region;
 
 import java.util.Random;

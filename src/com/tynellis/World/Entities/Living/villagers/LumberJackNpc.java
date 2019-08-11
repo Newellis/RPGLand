@@ -15,7 +15,7 @@ import com.tynellis.World.Items.Containers.Filters.ItemFilter;
 import com.tynellis.World.Items.Containers.Filters.NameItemFilter;
 import com.tynellis.World.Items.Containers.Filters.TypeItemFilter;
 import com.tynellis.World.Items.Materials.Log;
-import com.tynellis.World.Items.weapons.Axe;
+import com.tynellis.World.Items.Tools.Weapons.Axe;
 
 import java.util.Random;
 

@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Dirt extends LandTile {
     private static final SpriteSheet SHEET = new SpriteSheet("tempArt/lpc/core/tiles/terain/dirt2.png", 32, 32, 1);
-    private static final int RANK = 3;
+    private static final int RANK = 4;
     private static final double altPercent = 0.35;
 
     public Dirt(Random rand, int height) {

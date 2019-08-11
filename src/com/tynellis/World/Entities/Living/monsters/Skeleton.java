@@ -6,7 +6,7 @@ import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.Living.Ai.Pathfinding.toEntity.AttackEntityAi;
 import com.tynellis.World.Entities.Living.LivingEntity;
 import com.tynellis.World.Entities.Player;
-import com.tynellis.World.Items.weapons.Daggar;
+import com.tynellis.World.Items.Tools.Weapons.Daggar;
 
 import java.util.Random;
 

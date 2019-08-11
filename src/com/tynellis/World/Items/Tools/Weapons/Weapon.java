@@ -1,15 +1,15 @@
-package com.tynellis.World.Items.weapons;
+package com.tynellis.World.Items.Tools.Weapons;
 
 import com.tynellis.Art.Animation;
 import com.tynellis.Art.SpriteSheet;
 import com.tynellis.World.Entities.KillableEntity;
 import com.tynellis.World.Entities.damage.DamageSource;
-import com.tynellis.World.Items.UsableItem;
+import com.tynellis.World.Items.Tools.UsableItem;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.world_parts.Regions.Region;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -50,6 +50,8 @@ public abstract class Weapon extends UsableItem {
     }
 
     public abstract Rectangle getAttackArea(KillableEntity attacker);
+
+    public abstract Point2D getAttackPoint(KillableEntity attacker);
 
     public DamageSource getAttackDamage() {
         return damage;

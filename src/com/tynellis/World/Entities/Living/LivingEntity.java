@@ -9,8 +9,8 @@ import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.Living.Ai.NpcAi;
 import com.tynellis.World.Entities.Living.Ai.Pathfinding.Core.PathfinderAi;
 import com.tynellis.World.Entities.damage.Damage;
-import com.tynellis.World.Items.weapons.Sword;
-import com.tynellis.World.Items.weapons.Weapon;
+import com.tynellis.World.Items.Tools.Weapons.Sword;
+import com.tynellis.World.Items.Tools.Weapons.Weapon;
 import com.tynellis.World.Nodes.Node;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.world_parts.Regions.Region;
@@ -184,6 +184,8 @@ public abstract class LivingEntity extends AttackingEntity {
             Rectangle rectangle = weapon.getAttackArea(this);
             g.setColor(Color.RED);
             g.drawRect(rectangle.x + xOffset, rectangle.y + yOffset, rectangle.width, rectangle.height);
+            g.setColor(Color.GREEN);
+            g.drawOval(rectangle.x + xOffset + (rectangle.width / 2), rectangle.y + yOffset + (rectangle.height / 2), 3, 3);
 
         }
         super.render(g, xOffset, yOffset);

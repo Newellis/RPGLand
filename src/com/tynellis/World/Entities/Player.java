@@ -12,8 +12,8 @@ import com.tynellis.World.Entities.UsableEntity.using_interfaces.UsingInterface;
 import com.tynellis.World.Entities.damage.Damage;
 import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.ItemPile;
-import com.tynellis.World.Items.weapons.Axe;
-import com.tynellis.World.Items.weapons.Weapon;
+import com.tynellis.World.Items.Tools.Hoe;
+import com.tynellis.World.Items.Tools.Weapons.Weapon;
 import com.tynellis.World.Light.LightSource;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.world_parts.Regions.Region;
@@ -21,6 +21,7 @@ import com.tynellis.debug.Debug;
 import com.tynellis.input.Keys;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -37,7 +38,7 @@ public class Player extends AttackingEntity {
     private String name;
 
     private transient InGameMenu Inventory;
-    private Weapon weapon = new Axe("Awesome Sauce", 20, 5, 1);
+    private Weapon weapon = new Hoe("Awesome Sauce", 20, 5, 1);//new Axe("Awesome Sauce", 20, 5, 1);
 
     public Player(Keys keys, String name, int x, int y, int z) {
         super(x, y, z, 32, 32);
@@ -152,6 +153,8 @@ public class Player extends AttackingEntity {
                             GameComponent.active.setMenu(Inventory);
                             GameComponent.active.setState(GameState.IN_GAME_MENU);
                         }
+                    } else {
+
                     }
                 }
             }
@@ -209,6 +212,9 @@ public class Player extends AttackingEntity {
                 Rectangle rectangle = weapon.getAttackArea(this);
                 g.setColor(Color.RED);
                 g.drawRect(rectangle.x + xOffset, rectangle.y + yOffset, rectangle.width, rectangle.height);
+                Point2D point = weapon.getAttackPoint(this);
+                g.setColor(Color.ORANGE);
+                g.drawOval(xOffset + (int) (point.getX() * Tile.WIDTH), yOffset + (int) (point.getY() * Tile.HEIGHT), 3, 3);
             }
         }
 

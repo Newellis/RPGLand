@@ -2,7 +2,7 @@ package com.tynellis.World.Entities.Living.villagers;
 
 import com.tynellis.World.Entities.Living.Ai.Pathfinding.toEntity.AttackEntityAi;
 import com.tynellis.World.Entities.Living.monsters.Skeleton;
-import com.tynellis.World.Items.weapons.Sword;
+import com.tynellis.World.Items.Tools.Weapons.Sword;
 
 import java.util.Random;
 

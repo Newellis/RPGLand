@@ -1,4 +1,4 @@
-package com.tynellis.World.Items.weapons;
+package com.tynellis.World.Items.Tools.Weapons;
 
 import com.tynellis.Art.Animation;
 import com.tynellis.Art.SpriteSheet;
@@ -9,7 +9,8 @@ import com.tynellis.World.Entities.damage.DamageSource;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.world_parts.Regions.Region;
 
-import java.awt.Rectangle;
+import java.awt.*;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -45,5 +46,10 @@ public class Sword extends Weapon {
         double AttackYOffset = user.getY() - (Math.cos(attackDirection) * (getRange() / 2.0)) - ((getRange() - 1) / 2.0);
 
         return new Rectangle((int) ((AttackXOffset) * Tile.WIDTH), (int) ((AttackYOffset) * Tile.WIDTH) - (int) (3 * (user.getZ() / 4.0) * Tile.HEIGHT), (int) (getRange() * Tile.WIDTH), (int) (getRange() * Tile.HEIGHT));
+    }
+
+    @Override
+    public Point2D getAttackPoint(KillableEntity attacker) {
+        return null;
     }
 }

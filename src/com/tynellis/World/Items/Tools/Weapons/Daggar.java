@@ -1,4 +1,4 @@
-package com.tynellis.World.Items.weapons;
+package com.tynellis.World.Items.Tools.Weapons;
 
 import com.tynellis.Art.Animation;
 import com.tynellis.Art.SpriteSheet;
@@ -7,7 +7,7 @@ import com.tynellis.World.Entities.damage.Damage;
 import com.tynellis.World.Entities.damage.DamageSource;
 import com.tynellis.World.Tiles.Tile;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.ObjectInputStream;

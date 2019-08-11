@@ -9,7 +9,7 @@ import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.world_parts.Regions.Region;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.util.List;
 import java.util.Random;
 
@@ -28,6 +28,7 @@ public abstract class KillableEntity extends Entity {
     private int flashDuration = healthCooldownMax / 2;
 
     protected Container inventory;
+    protected ItemPile holding;
     protected boolean canPickUpItems = false;
 
     public KillableEntity(double x, double y, double z, int width, int height) {

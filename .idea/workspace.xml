@@ -10,15 +10,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ab3d649-fdfe-4863-8a5f-5a792e85c7aa" name="Default" comment="Added some">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/Ai/StupidRunAwayAi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/mine/plowed_soil.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Crops/Crop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Crops/Seeds/Seedling.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Crops/Seeds/TreeSeed.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Tools/Hoe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/SeedHill.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/TilledSoil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/Ai/Pathfinding/Core/PathfinderAi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/Ai/Pathfinding/Core/PathfinderAi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/animals/Rabbit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/animals/Rabbit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/AttackingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/AttackingEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/KillableEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/KillableEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/LivingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/LivingEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/monsters/Skeleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/monsters/Skeleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/villagers/LumberJackNpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/villagers/LumberJackNpc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/villagers/Soldier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/villagers/Soldier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Tree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/UsableItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Tools/UsableItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Axe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Tools/Weapons/Axe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Daggar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Tools/Weapons/Daggar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/PickAxe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Tools/Weapons/PickAxe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Sword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Tools/Weapons/Sword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Tools/Tool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Tools/Weapons/Weapon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Dirt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Dirt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Stone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Stone.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/World.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/spawners/Spawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/spawners/Spawner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/debug/Debug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/debug/Debug.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -103,12 +120,12 @@
         <option value="tyler &lt;tynellis@gmail.com&gt;" />
       </list>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IgnoredFileRootStore">
     <option name="generatedRoots">
