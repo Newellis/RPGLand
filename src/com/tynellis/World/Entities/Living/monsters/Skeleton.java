@@ -5,21 +5,21 @@ import com.tynellis.Art.SpriteSheet;
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.Living.Ai.Pathfinding.toEntity.AttackEntityAi;
 import com.tynellis.World.Entities.Living.LivingEntity;
-import com.tynellis.World.Entities.Player;
+import com.tynellis.World.Entities.Living.Player;
 import com.tynellis.World.Items.Tools.Weapons.Daggar;
 
 import java.util.Random;
 
 public class Skeleton extends LivingEntity {
     public Skeleton(int x, int y, int z, Random random) {
-        super("Skeleton", x, y, z, NpcGender.BOTH);
+        super("Skeleton", x, y, z, Gender.BOTH);
         equipWeapon(new Daggar("Pin Pricker", 25, 5, 3));
         Ai.addTask(1, new AttackEntityAi(Player.class, 10, 1));
         setLooking(random.nextInt(4));
     }
 
     @Override
-    protected void setSprite(NpcGender gender) {
+    protected void setSprite(Gender gender) {
         spriteSheet = new SpriteSheet("tempArt/lpc/lpc_entry/png/walkcycle/BODY_skeleton.png", 64, 64, 1);
         attackSheet = new SpriteSheet("tempArt/lpc/lpc_entry/png/slash/BODY_skeleton.png", 64, 64, 1);
         animation = new Animation(spriteSheet, 5);

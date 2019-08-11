@@ -5,9 +5,9 @@ import com.tynellis.Save.FileHandler;
 import com.tynellis.World.Buildings.SmallHouse;
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.Living.LivingEntity;
+import com.tynellis.World.Entities.Living.Player;
 import com.tynellis.World.Entities.Living.animals.Rabbit;
 import com.tynellis.World.Entities.Living.villagers.LumberJackNpc;
-import com.tynellis.World.Entities.Player;
 import com.tynellis.World.Entities.UsableEntity.Chest;
 import com.tynellis.World.Entities.UsableEntity.RegionBoundary;
 import com.tynellis.World.Tiles.Tile;
@@ -241,7 +241,7 @@ public class World implements Land, Serializable {
         //Testing entities
         Chest chest = new Chest(spawnPoint[0] - 6, spawnPoint[1] - 2, spawnPoint[2]);
         overRegionRegion.addEntity(chest);
-        LivingEntity npc = new LumberJackNpc(spawnPoint[0] - 4, spawnPoint[1] + 2, spawnPoint[2], LivingEntity.NpcGender.FEMALE, chest, getRand());
+        LivingEntity npc = new LumberJackNpc(spawnPoint[0] - 4, spawnPoint[1] + 2, spawnPoint[2], LivingEntity.Gender.FEMALE, chest, getRand());
         //overRegionRegion.addEntity(npc);
 
         for (int i = 0; i < 2; i++) {

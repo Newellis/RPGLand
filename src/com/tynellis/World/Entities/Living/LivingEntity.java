@@ -17,6 +17,7 @@ import com.tynellis.World.world_parts.Regions.Region;
 import com.tynellis.debug.Debug;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,21 +29,21 @@ import java.util.Random;
 import java.util.Scanner;
 
 public abstract class LivingEntity extends AttackingEntity {
-    public enum NpcGender {
+    public enum Gender {
         MALE,
         FEMALE,
         OTHER,
         BOTH,
         ;
 
-        public static NpcGender randGender(Random random) {
+        public static Gender randGender(Random random) {
             return randGender(random, true);
         }
 
-        public static NpcGender randGender(Random rand, boolean binary) {
+        public static Gender randGender(Random rand, boolean binary) {
             if (!binary) {
-                int choice = rand.nextInt(NpcGender.values().length);
-                return NpcGender.values()[choice];
+                int choice = rand.nextInt(Gender.values().length);
+                return Gender.values()[choice];
             } else {
                 return (rand.nextBoolean()) ? MALE : FEMALE;
             }
@@ -53,28 +54,28 @@ public abstract class LivingEntity extends AttackingEntity {
     protected transient Animation animation;
     protected transient SpriteSheet attackSheet;
     protected transient Animation attackAnimation;
-    private NpcGender gender;
+    private Gender gender;
     protected NpcAi Ai = new NpcAi();
     protected PathfinderAi pathfinder = new PathfinderAi();
 
 
-    private Weapon weapon = new Sword("Murder Town", 25, 5, 2);
+    protected Weapon weapon = new Sword("Murder Town", 25, 5, 2);
 
 
-    protected LivingEntity(String name, int x, int y, int z, NpcGender gender) {
+    protected LivingEntity(String name, int x, int y, int z, Gender gender) {
         super(x, y, z, 32, 32);
         this.name = name;
         this.gender = gender;
         setSprite(gender);
     }
 
-    public LivingEntity(int x, int y, int z, NpcGender gender, Random random) {
+    public LivingEntity(int x, int y, int z, Gender gender, Random random) {
         this(getName(gender, random), x, y, z, gender);
         setLooking(random.nextInt(4));
     }
 
     public LivingEntity(int x, int y, int z, Random random) {
-        this(x, y, z, NpcGender.values()[random.nextInt(NpcGender.values().length)], random);
+        this(x, y, z, Gender.values()[random.nextInt(Gender.values().length)], random);
     }
 
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
@@ -86,11 +87,11 @@ public abstract class LivingEntity extends AttackingEntity {
         out.defaultWriteObject();
     }
 
-    protected void setSprite(NpcGender gender) {
-        if (gender == NpcGender.MALE) {
+    protected void setSprite(Gender gender) {
+        if (gender == Gender.MALE) {
             spriteSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_walkcycle.png", 64, 64, 1);
             attackSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_slash.png", 64, 64, 1);
-        } else if (gender == NpcGender.FEMALE) {
+        } else if (gender == Gender.FEMALE) {
             spriteSheet = new SpriteSheet("tempArt/lpc/core/char/female/female_walkcycle.png", 64, 64, 1);
             attackSheet = new SpriteSheet("tempArt/lpc/core/char/female/female_slash.png", 64, 64, 1);
         } else {
@@ -103,13 +104,13 @@ public abstract class LivingEntity extends AttackingEntity {
         attackAnimation.playFromStart(spriteFacing);
     }
 
-    public static String getName(NpcGender gender, Random random) {
+    public static String getName(Gender gender, Random random) {
         InputStream names;
-        if (gender == NpcGender.MALE) {
+        if (gender == Gender.MALE) {
             names = GameComponent.class.getResourceAsStream("names/MaleNames.txt");
-        } else if (gender == NpcGender.FEMALE) {
+        } else if (gender == Gender.FEMALE) {
             names = GameComponent.class.getResourceAsStream("names/FemaleNames.txt");
-        } else if (gender == NpcGender.OTHER) {
+        } else if (gender == Gender.OTHER) {
             names = GameComponent.class.getResourceAsStream("names/GenderlessNames.txt");
         } else {
             if (random.nextInt(2) == 0) {
@@ -153,9 +154,10 @@ public abstract class LivingEntity extends AttackingEntity {
             if (hurt) {
                 frame = SpriteImage.Tint(frame, Damage.BLEED_COLOR);
             }
-            g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (frame.getHeight() - height / 2.0)/*- (height * 1.5)*/) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
+            g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (frame.getHeight() - height / 2.0)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
             animation.tick();
         }
+
         if (!attacking) {
             attackAnimation.pause();
             attackAnimation.skipToFrame(0);
@@ -168,7 +170,7 @@ public abstract class LivingEntity extends AttackingEntity {
             if (hurt) {
                 frame = SpriteImage.Tint(frame, Damage.BLEED_COLOR);
             }
-            g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 1.5)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
+            g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (frame.getHeight() - height / 2.0)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
             attackAnimation.tick();
             weapon.renderAttack(g, xOffset, yOffset, this);
         }
@@ -184,9 +186,11 @@ public abstract class LivingEntity extends AttackingEntity {
             Rectangle rectangle = weapon.getAttackArea(this);
             g.setColor(Color.RED);
             g.drawRect(rectangle.x + xOffset, rectangle.y + yOffset, rectangle.width, rectangle.height);
-            g.setColor(Color.GREEN);
-            g.drawOval(rectangle.x + xOffset + (rectangle.width / 2), rectangle.y + yOffset + (rectangle.height / 2), 3, 3);
-
+            Point2D point = weapon.getAttackPoint(this);
+            if (point != null) {
+                g.setColor(Color.ORANGE);
+                g.drawOval(xOffset + (int) (point.getX() * Tile.WIDTH), yOffset + (int) (point.getY() * Tile.HEIGHT), 3, 3);
+            }
         }
         super.render(g, xOffset, yOffset);
     }
@@ -238,7 +242,7 @@ public abstract class LivingEntity extends AttackingEntity {
         return false;
     }
 
-    public NpcGender getGender() {
+    public Gender getGender() {
         return gender;
     }
 }

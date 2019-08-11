@@ -10,7 +10,7 @@ import com.tynellis.Save.SavedWorld;
 import com.tynellis.Save.StoreLoad;
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.Living.LivingEntity;
-import com.tynellis.World.Entities.Player;
+import com.tynellis.World.Entities.Living.Player;
 import com.tynellis.World.Tiles.LandTiles.ManMade.Ladder;
 import com.tynellis.World.Tiles.LandTiles.Natural.Grass;
 import com.tynellis.World.Tiles.LandTiles.Natural.Slope;
@@ -246,7 +246,7 @@ public class GameComponent extends JPanel implements Runnable {
         world.genSpawn(seed);
         int[] spawn = world.getSpawnPoint();
         //todo add player customization
-        player = new Player(keys, LivingEntity.getName(LivingEntity.NpcGender.MALE, world.getRand()), spawn[0], spawn[1], spawn[2]);
+        player = new Player(keys, LivingEntity.getName(LivingEntity.Gender.MALE, world.getRand()), LivingEntity.Gender.MALE, spawn[0], spawn[1], spawn[2]);
         world.addPlayer(player);
 
         world.addTestEntities();

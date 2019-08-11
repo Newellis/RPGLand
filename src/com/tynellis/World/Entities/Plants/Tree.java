@@ -3,6 +3,7 @@ package com.tynellis.World.Entities.Plants;
 import com.tynellis.Art.SpriteImage;
 import com.tynellis.Art.SpriteSheet;
 import com.tynellis.World.Entities.Entity;
+import com.tynellis.World.Entities.Plants.Crops.Crop;
 import com.tynellis.World.Entities.damage.Damage;
 import com.tynellis.World.Entities.damage.DamageModifiers.DamageCombinations;
 import com.tynellis.World.Entities.damage.DamageModifiers.DamageModifier;
@@ -19,11 +20,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-public class Tree extends Plant {
+public class Tree extends Crop {
     private static final SpriteSheet trunk = new SpriteSheet("tempArt/lpc/core/tiles/trunk.png", 96, 96, 1);
     private static final SpriteSheet top = new SpriteSheet("tempArt/lpc/core/tiles/treetop.png", 96, 96, 1);
     private Type treeType;
     private int treeHeight;
+    private int maxHeight;
 
     public enum Type {
         Oak,
@@ -31,9 +33,14 @@ public class Tree extends Plant {
     }
 
     public Tree(Type type, double x, double y, double z, Random rand) {
-        super(x, y, z, 20, 20);
+        this(type, x, y, z, rand, rand.nextInt(100));
+    }
+
+    public Tree(Type type, double x, double y, double z, Random rand, int age) {
+        super("Tree", x, y, z, rand, 100, age, 20, 20);
         treeType = type;
-        treeHeight = 20 + rand.nextInt(20);
+        maxHeight = 20 + rand.nextInt(20);
+        treeHeight = 20 + ((maxHeight - 20) / maxGrowthStage);
         speed = 0.0;
         canBeMoved = false;
 
@@ -51,11 +58,20 @@ public class Tree extends Plant {
         inventory = new Container(2);
         int amount = ((treeHeight) / (5 + rand.nextInt(6)));
         inventory.addItemPile(new ItemPile(new Log(treeType), amount));
-        inventory.addItemPile(new ItemPile(new TreeSeeds(treeType), rand.nextInt(5)));
+        inventory.addItemPile(new ItemPile(new TreeSeeds(treeType, rand), rand.nextInt(5)));
+    }
+
+    public Tree(Type type, Random rand) {
+        super("Tree", 0, 0, 0, rand, 100, 0, 20, 20);
     }
 
     public void tick(Region region, Random random, List<Entity> near) {
         super.tick(region, random, near);
+    }
+
+    @Override
+    protected void Grow(Random random) {
+        treeHeight = 20 + ((maxHeight - 20) / maxGrowthStage);
     }
 
     public void render(Graphics g, int xOffset, int yOffset) {

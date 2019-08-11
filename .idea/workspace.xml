@@ -9,34 +9,34 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ab3d649-fdfe-4863-8a5f-5a792e85c7aa" name="Default" comment="Added some">
-      <change afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/mine/plowed_soil.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Crops/Crop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Crops/Seeds/Seedling.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Crops/Seeds/TreeSeed.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Tools/Hoe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/SeedHill.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/TilledSoil.java" afterDir="false" />
+    <list default="true" id="9ab3d649-fdfe-4863-8a5f-5a792e85c7aa" name="Default" comment="Added a hoe and started to add crops and some minor refactoring">
+      <change afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Seed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/AttackingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/AttackingEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/KillableEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/KillableEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/mine/plowed_soil.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/com/tynellis/tempArt/lpc/mine/plowed_soil.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/GameComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/GameComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/ChestInventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/ChestInventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/Menus/InGameMenus/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/Save/StoreLoad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/Save/StoreLoad.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/LivingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/LivingEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/animals/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/animals/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/animals/Rabbit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/animals/Rabbit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/monsters/Skeleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/monsters/Skeleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/villagers/FarmerNpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/villagers/FarmerNpc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/villagers/LumberJackNpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/villagers/LumberJackNpc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/villagers/Soldier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/villagers/Soldier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/villagers/Villager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/villagers/Villager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Crops/Crop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Crops/Crop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Crops/Seeds/Seedling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Crops/Seeds/Seedling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Crops/Seeds/TreeSeed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Crops/Seeds/TreeSeed.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Tree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/UsableItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Tools/UsableItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Axe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Tools/Weapons/Axe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Daggar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Tools/Weapons/Daggar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/PickAxe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Tools/Weapons/PickAxe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Sword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Tools/Weapons/Sword.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Tools/Tool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/weapons/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Tools/Weapons/Weapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Dirt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Dirt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Stone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Stone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/using_interfaces/ChestInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/using_interfaces/ChestInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/using_interfaces/UsingInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/UsableEntity/using_interfaces/UsingInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/TreeSeeds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/TreeSeeds.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/SeedHill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/SeedHill.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/World.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/debug/Debug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/debug/Debug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -452,13 +452,6 @@
       <option name="presentableId" value="Default" />
       <updated>1361497301759</updated>
     </task>
-    <task id="LOCAL-00019" summary="added basic move to and attack entity ai">
-      <created>1535436396688</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1535436396688</updated>
-    </task>
     <task id="LOCAL-00020" summary="fixed useChestAi so it fully completes before being interrupted by lower priority tasks">
       <created>1535436956819</created>
       <option name="number" value="00020" />
@@ -795,7 +788,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565230279758</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Added a hoe and started to add crops and some minor refactoring">
+      <created>1565559929006</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1565559929006</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TodoView">
@@ -843,7 +843,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added chest inventory UI and fixed some issues with player inventory" />
     <MESSAGE value="Added new damage management/modification systems" />
     <MESSAGE value="Added Cave World Gen and Region" />
     <MESSAGE value="added Ore and more detailed cave floors" />
@@ -868,7 +867,8 @@
     <MESSAGE value="Replaced StayNearPoint Ai with new Pathfinders" />
     <MESSAGE value="Fixed RandomWanderAi" />
     <MESSAGE value="Did A Bunch of Refactoring around Entities" />
-    <option name="LAST_COMMIT_MESSAGE" value="Did A Bunch of Refactoring around Entities" />
+    <MESSAGE value="Added a hoe and started to add crops and some minor refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a hoe and started to add crops and some minor refactoring" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -883,6 +883,11 @@
           <properties class="java.io.StreamCorruptedException" package="java.io" />
           <option name="timeStamp" value="75" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/tynellis/Art/Animation.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="java-exception">

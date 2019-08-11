@@ -13,11 +13,17 @@ public abstract class Crop extends Plant {
     private int GrowDelay;
     private int MaxGrowDelay = 2 * 60 * 20; // mins * secs * tick per sec
     private boolean fullyGrown = false;
-    private int growthStage;
-    private int maxGrowthStage;
+    protected int growthStage;
+    protected int maxGrowthStage;
+    private String name;
 
-    public Crop(double x, double y, double z, Random random, int maxGrowth, int currentGrowth) {
-        super(x, y, z, Tile.WIDTH, Tile.HEIGHT);
+    public Crop(String name, double x, double y, double z, Random random, int maxGrowth, int currentGrowth) {
+        this(name, x, y, z, random, maxGrowth, currentGrowth, Tile.WIDTH, Tile.HEIGHT);
+    }
+
+    public Crop(String name, double x, double y, double z, Random random, int maxGrowth, int currentGrowth, int width, int height) {
+        super(x, y, z, width, height);
+        this.name = name;
         GrowDelay = random.nextInt(MaxGrowDelay);
         maxGrowthStage = maxGrowth;
         growthStage = currentGrowth;
@@ -42,4 +48,8 @@ public abstract class Crop extends Plant {
     }
 
     protected abstract void Grow(Random random);
+
+    public String getName() {
+        return name;
+    }
 }

@@ -27,7 +27,7 @@ public class Rabbit extends Animal {
     }
 
     @Override
-    protected void setSprite(NpcGender gender) {
+    protected void setSprite(Gender gender) {
         spriteSheet = new SpriteSheet("tempArt/lpc/mine/bunnysheet_reform.png", 35, 35, 1);
         attackSheet = new SpriteSheet("tempArt/lpc/mine/bunnysheet_reform.png", 35, 35, 1);
         animation = new Animation(spriteSheet, 5);

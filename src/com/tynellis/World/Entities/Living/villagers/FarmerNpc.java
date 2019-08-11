@@ -6,7 +6,7 @@ import com.tynellis.World.Items.ItemPile;
 import java.util.Random;
 
 public class FarmerNpc extends Villager {
-    public FarmerNpc(int x, int y, int z, NpcGender gender, Random random) {
+    public FarmerNpc(int x, int y, int z, Gender gender, Random random) {
         super(x, y, z, gender, random);
         canPickUpItems = true;
     }

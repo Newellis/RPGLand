@@ -8,7 +8,7 @@ public class TreeSeed extends Seedling {
     private Tree.Type type;
 
     public TreeSeed(Tree.Type type, double x, double y, double z, Random random) {
-        super(x, y, z, random, 2);
+        super(type.name() + " seed", x, y, z, random, 2);
         this.type = type;
     }
 

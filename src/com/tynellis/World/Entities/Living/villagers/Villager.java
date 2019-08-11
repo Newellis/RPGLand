@@ -7,11 +7,11 @@ import com.tynellis.World.Entities.Living.Types.Person;
 import java.util.Random;
 
 public class Villager extends LivingEntity implements Person {
-    protected Villager(String name, int x, int y, int z, NpcGender gender) {
+    protected Villager(String name, int x, int y, int z, Gender gender) {
         super(name, x, y, z, gender);
     }
 
-    public Villager(int x, int y, int z, NpcGender gender, Random random) {
+    public Villager(int x, int y, int z, Gender gender, Random random) {
         super(x, y, z, gender, random);
     }
 

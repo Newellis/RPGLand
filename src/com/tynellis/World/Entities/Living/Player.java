@@ -1,19 +1,14 @@
-package com.tynellis.World.Entities;
+package com.tynellis.World.Entities.Living;
 
-import com.tynellis.Art.Animation;
-import com.tynellis.Art.SpriteImage;
-import com.tynellis.Art.SpriteSheet;
 import com.tynellis.GameComponent;
 import com.tynellis.GameState;
 import com.tynellis.Menus.InGameMenus.InGameMenu;
 import com.tynellis.Menus.InGameMenus.Inventory;
+import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.UsableEntity.UsableEntity;
 import com.tynellis.World.Entities.UsableEntity.using_interfaces.UsingInterface;
-import com.tynellis.World.Entities.damage.Damage;
 import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.ItemPile;
-import com.tynellis.World.Items.Tools.Hoe;
-import com.tynellis.World.Items.Tools.Weapons.Weapon;
 import com.tynellis.World.Light.LightSource;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.world_parts.Regions.Region;
@@ -21,48 +16,28 @@ import com.tynellis.debug.Debug;
 import com.tynellis.input.Keys;
 
 import java.awt.*;
-import java.awt.geom.Point2D;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Player extends AttackingEntity {
+public class Player extends LivingEntity {
     private transient Keys keys;
-    private transient SpriteSheet spriteSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_walkcycle.png", 64, 64, 1);
-    private transient Animation animation = new Animation(spriteSheet, 5);
-    private transient SpriteSheet attackSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_slash.png", 64, 64, 1);
-    private transient Animation attackAnimation = new Animation(attackSheet, 2);
-    private String name;
-
     private transient InGameMenu Inventory;
-    private Weapon weapon = new Hoe("Awesome Sauce", 20, 5, 1);//new Axe("Awesome Sauce", 20, 5, 1);
 
-    public Player(Keys keys, String name, int x, int y, int z) {
-        super(x, y, z, 32, 32);
+    public Player(Keys keys, String name, Gender gender, int x, int y, int z) {
+        super(name, x, y, z, gender);
         this.keys = keys;
-        animation.playInRange(spriteFacing, 1, 8);
-        attackAnimation.playFromStart(spriteFacing);
-        this.name = name;
         speed = 0.08;
         movementType = movementTypes.Walking;
         inventory = new Container(20);
-//        inventory.setFilter(new NameItemFilter(new String[]{"Acorn"}, ItemFilter.Type.WhiteList));
         canPickUpItems = true;
         light = new LightSource(12);
     }
 
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
-        spriteSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_walkcycle.png", 64, 64, 1);
-        animation = new Animation(spriteSheet, 5);
-        attackSheet = new SpriteSheet("tempArt/lpc/core/char/male/male_slash.png", 64, 64, 1);
-        attackAnimation = new Animation(attackSheet, 2);
-        animation.playInRange(spriteFacing, 1, 8);
-        attackAnimation.playFromStart(spriteFacing);
-        attacking = false;
         System.out.println("load player " + hashCode() + " with " + keys);
     }
 
@@ -76,7 +51,7 @@ public class Player extends AttackingEntity {
     @Override
     public int compareTo(Entity entity) {
         if (entity instanceof Player) {
-            return name.compareTo(((Player) entity).getName());
+            return getName().compareTo(((Player) entity).getName());
         }
         return 0;
     }
@@ -153,8 +128,6 @@ public class Player extends AttackingEntity {
                             GameComponent.active.setMenu(Inventory);
                             GameComponent.active.setState(GameState.IN_GAME_MENU);
                         }
-                    } else {
-
                     }
                 }
             }
@@ -166,59 +139,7 @@ public class Player extends AttackingEntity {
 //            speed = 0.08;
 //        }
         super.tick(region, random, near);
-        animation.setRow(spriteFacing);
-        attackAnimation.setRow(spriteFacing);
         light.setLocation(posX + 0.5, posY + 0.5, posZ);
-    }
-
-    public void render(Graphics g, int xOffset, int yOffset) {
-
-        BufferedImage frame;
-        if (!moving) {
-            animation.pause();
-            animation.skipToFrame(0);
-        } else {
-            animation.play();
-        }
-        if (!attacking) {
-            frame = animation.getFrame();
-            if (hurt) {
-                frame = SpriteImage.Tint(frame, Damage.BLEED_COLOR);
-            }
-            g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 1.5)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
-            animation.tick();
-        }
-
-        if (!attacking) {
-            attackAnimation.pause();
-            attackAnimation.skipToFrame(0);
-        } else {
-            attackAnimation.play();
-            if (attackAnimation.getFrameNum() == 5) {
-                attacking = false;
-            }
-            frame = attackAnimation.getFrame();
-            if (hurt) {
-                frame = SpriteImage.Tint(frame, Damage.BLEED_COLOR);
-            }
-            g.drawImage(frame, (int) ((posX + 0.5) * Tile.WIDTH) + xOffset - (frame.getWidth() / 2), (int) (((posY + 0.5) * Tile.HEIGHT) + yOffset - (height * 1.5)) - (int) (3 * (posZ / 4.0) * Tile.HEIGHT), null);
-            attackAnimation.tick();
-            weapon.renderAttack(g, xOffset, yOffset, this);
-        }
-        if (GameComponent.debug.State()) {
-            g.setColor(Color.WHITE);
-            g.drawString("X,Y,Z: " + posX + ", " + posY + ", " + posZ, 10, 34);
-            if (GameComponent.debug.isType(Debug.Type.ATTACK)) {
-                Rectangle rectangle = weapon.getAttackArea(this);
-                g.setColor(Color.RED);
-                g.drawRect(rectangle.x + xOffset, rectangle.y + yOffset, rectangle.width, rectangle.height);
-                Point2D point = weapon.getAttackPoint(this);
-                g.setColor(Color.ORANGE);
-                g.drawOval(xOffset + (int) (point.getX() * Tile.WIDTH), yOffset + (int) (point.getY() * Tile.HEIGHT), 3, 3);
-            }
-        }
-
-        super.render(g, xOffset, yOffset);
     }
 
     private UsableEntity findUsableTarget(Region region) {
@@ -272,10 +193,6 @@ public class Player extends AttackingEntity {
     @Override
     public boolean isPassableBy(movementTypes movementType) {
         return movementType == movementTypes.Flying;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setKeys(Keys keys) {

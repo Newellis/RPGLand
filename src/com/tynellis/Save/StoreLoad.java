@@ -1,12 +1,12 @@
 package com.tynellis.Save;
 
 import com.tynellis.World.Entities.Entity;
-import com.tynellis.World.Entities.Player;
+import com.tynellis.World.Entities.Living.Player;
 import com.tynellis.World.World;
 import com.tynellis.World.world_parts.Area;
 import com.tynellis.World.world_parts.Regions.Region;
 
-import java.awt.Rectangle;
+import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 

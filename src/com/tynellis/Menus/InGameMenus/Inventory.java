@@ -6,16 +6,13 @@ import com.tynellis.Menus.MenuComponents.Button;
 import com.tynellis.Menus.MenuComponents.GuiCompLocations;
 import com.tynellis.Menus.MenuComponents.InventorySlot;
 import com.tynellis.World.Entities.ItemEntity;
-import com.tynellis.World.Entities.Player;
+import com.tynellis.World.Entities.Living.Player;
 import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.ItemPile;
 import com.tynellis.debug.Debug;
 import com.tynellis.input.MouseInput;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Point;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;

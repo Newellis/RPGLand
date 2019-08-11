@@ -2,7 +2,7 @@ package com.tynellis.World.Entities.UsableEntity.using_interfaces;
 
 import com.tynellis.Menus.InGameMenus.ChestInventory;
 import com.tynellis.Menus.InGameMenus.Inventory;
-import com.tynellis.World.Entities.Player;
+import com.tynellis.World.Entities.Living.Player;
 import com.tynellis.World.Entities.UsableEntity.Chest;
 import com.tynellis.World.Items.Containers.ContainerSlot;
 import com.tynellis.World.Items.ItemPile;

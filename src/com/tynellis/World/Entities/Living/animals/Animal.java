@@ -26,7 +26,7 @@ public abstract class Animal extends LivingEntity {
     private double foodUsage;
 
     protected Animal(String name, int x, int y, int z, Random random) {
-        super(name, x, y, z, NpcGender.randGender(random));
+        super(name, x, y, z, Gender.randGender(random));
         System.out.println("New " + name + " that's a " + getGender());
         maxNutrition = 20;
         starvationNum = 5;

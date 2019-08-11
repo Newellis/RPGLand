@@ -6,9 +6,8 @@ import com.tynellis.World.Entities.Living.Ai.FaceClosestAi;
 import com.tynellis.World.Entities.Living.Ai.Pathfinding.Core.PathfindInRangeAi;
 import com.tynellis.World.Entities.Living.Ai.Pathfinding.toEntity.CollectItemsFromEntityAi;
 import com.tynellis.World.Entities.Living.Ai.Pathfinding.toEntity.UseChestAi;
-import com.tynellis.World.Entities.Living.LivingEntity;
+import com.tynellis.World.Entities.Living.Player;
 import com.tynellis.World.Entities.Plants.Tree;
-import com.tynellis.World.Entities.Player;
 import com.tynellis.World.Entities.UsableEntity.Chest;
 import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.Containers.Filters.ItemFilter;
@@ -20,7 +19,7 @@ import com.tynellis.World.Items.Tools.Weapons.Axe;
 import java.util.Random;
 
 public class LumberJackNpc extends Villager {
-    public LumberJackNpc(int x, int y, int z, LivingEntity.NpcGender gender, Chest chest, Random random) {
+    public LumberJackNpc(int x, int y, int z, Gender gender, Chest chest, Random random) {
         super(x, y, z, gender, random);
         ItemFilter log, acorn, pineCone;
         log = new TypeItemFilter(new Class[]{Log.class}, ItemFilter.Type.WhiteList);
