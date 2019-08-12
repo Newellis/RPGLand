@@ -58,11 +58,16 @@ public class Tree extends Crop {
         inventory = new Container(2);
         int amount = ((treeHeight) / (5 + rand.nextInt(6)));
         inventory.addItemPile(new ItemPile(new Log(treeType), amount));
-        inventory.addItemPile(new ItemPile(new TreeSeeds(treeType, rand), rand.nextInt(5)));
     }
 
     public Tree(Type type, Random rand) {
         super("Tree", 0, 0, 0, rand, 100, 0, 20, 20);
+    }
+
+
+    public void performDeath(Region region, Random random) {
+        inventory.addItemPile(new ItemPile(new TreeSeeds(treeType, random), random.nextInt(5)));
+        super.performDeath(region, random);
     }
 
     public void tick(Region region, Random random, List<Entity> near) {

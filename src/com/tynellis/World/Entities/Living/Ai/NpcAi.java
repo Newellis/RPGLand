@@ -30,6 +30,8 @@ public class NpcAi implements Serializable {
                 if (!success && npc.getPathfinder().getCurrentActivity() == task) {
                     npc.getPathfinder().clearCurrentActivity();
                 }
+                if (success) {
+                }
             }
             if (success) {
                 return;

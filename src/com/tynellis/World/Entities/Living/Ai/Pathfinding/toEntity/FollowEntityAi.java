@@ -75,7 +75,7 @@ public class FollowEntityAi extends AiTask {
             for (int i = 0; i <= range; i++) {
                 ArrayList<Entity> testEntities = region.getEntitiesNearEntity(e, i);
                 for (Entity entity : testEntities) {
-                    if (entityType.isInstance(entity)) {
+                    if (entityType.isInstance(entity) && e.getPathfinder().canGetTo(e, entity.getX(), entity.getY(), entity.getZ())) {
                         closest = entity;
                         return true;
                     }

@@ -30,7 +30,6 @@ public class CollectItemsFromEntityAi extends AttackEntityAi {
                 entity.getPathfinder().setPath(path);
             }
             boolean attack = super.performTask(region, random, entity);
-
             path = (attack) ? entity.getPathfinder().getPath() : null;
 
             return attack;

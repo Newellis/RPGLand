@@ -44,13 +44,13 @@ public abstract class Tool extends Weapon {
                     ((KillableEntity) e).DamageBy(getAttackDamage(), random);
                 }
             }
-            System.out.println("Used " + getName());
-            if (hit.size() <= 0) {
-                System.out.println("Used " + getName() + " on tile");
+
+            if (hit.size() <= 0) { //todo change to use button not attack
                 boolean used = useOnTile(region, random, user);
                 coolDownTimer = coolDown;
                 return used;
             }
+
             coolDownTimer = coolDown;
             return true;
         }

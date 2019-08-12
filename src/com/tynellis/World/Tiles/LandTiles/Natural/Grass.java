@@ -9,7 +9,7 @@ import com.tynellis.World.Tiles.Tile;
 
 import java.util.Random;
 
-public class Grass extends LandTile implements Food {
+public class Grass extends Dirt implements Food {
     private static final SpriteSheet SHEET = new SpriteSheet("tempArt/lpc/core/tiles/terain/grass.png", 32, 32, 1);
     private static final SpriteSheet ALT = new SpriteSheet("tempArt/lpc/core/tiles/terain/grassalt.png", 32, 32, 1);
     //waprivate static final SpriteSheet WATER = new SpriteSheet("tempArt/lpc/mine/grasswater.png", 32, 32, 1);

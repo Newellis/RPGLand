@@ -15,6 +15,11 @@ public class Dirt extends LandTile {
         super("Dirt", SHEET, rand, altPercent, RANK, height);
     }
 
+    //for dirt variations ex.Grass
+    public Dirt(String name, SpriteSheet sheet, Random rand, double altPercent, int rank, int height) {
+        super(name, sheet, rand, altPercent, rank, height);
+    }
+
     @Override
     protected void setSprite() {
         top = SHEET;

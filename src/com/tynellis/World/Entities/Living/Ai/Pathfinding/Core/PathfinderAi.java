@@ -39,25 +39,28 @@ public class PathfinderAi extends AiTask {
     }
 
     public boolean performTask(Region region, Random random, LivingEntity entity) {
-        if ((path.size() == 0 || !pathIsValid(region, entity)) && (Math.abs(entity.getX() - destX) > entity.getSpeed() || Math.abs(entity.getY() - destY) > entity.getSpeed())) {
-            if (findPath(region, entity, minRange + tempMinRangeMod)) {
-                tempMinRangeMod = 0;
-                return true;
-            } else {
-                tempMinRangeMod++;
-                if (tempMinRangeMod > range / 2) {
+        if (canGetTo(entity, destX, destY, destZ)) {
+            if ((path.size() == 0 || !pathIsValid(region, entity)) && (Math.abs(entity.getX() - destX) > entity.getSpeed() || Math.abs(entity.getY() - destY) > entity.getSpeed())) {
+                if (findPath(region, entity, minRange + tempMinRangeMod)) {
                     tempMinRangeMod = 0;
+                    return true;
+                } else {
+                    tempMinRangeMod++;
+                    if (tempMinRangeMod > range / 2) {
+                        tempMinRangeMod = 0;
+                    }
+                    return false;
                 }
-                return false;
+            } else {
+                if (path.size() > 0 && region.getTile((int) path.get(0).getX(), (int) path.get(0).getY(), (int) path.get(0).getZ()) == null) {
+                    entity.setMoving(false);
+                    System.out.println("no next node");
+                    return false;
+                }
+                return path.size() > 0 && moveAlongPath(region, random, entity);
             }
-        } else {
-            if (path.size() > 0 && region.getTile((int) path.get(0).getX(), (int) path.get(0).getY(), (int) path.get(0).getZ()) == null) {
-                entity.setMoving(false);
-                System.out.println("no next node");
-                return false;
-            }
-            return path.size() > 0 && moveAlongPath(region, random, entity);
         }
+        return false;
     }
 
     public boolean isFinished(LivingEntity entity) {
@@ -83,6 +86,8 @@ public class PathfinderAi extends AiTask {
             } else {
                 e.setFacing(FaceClosestAi.facingPoint(e, nextNode.getX(), nextNode.getY()));
             }
+//            e.setFacing(FaceClosestAi.facingPoint(e, nextNode.getX(), nextNode.getY()));
+
             e.setMoving(true);
             return true;
         }
@@ -256,4 +261,7 @@ public class PathfinderAi extends AiTask {
         return length;
     }
 
+    public boolean canGetTo(LivingEntity entity, double x, double y, double z) {
+        return heuristicCostEstimate(new Node(entity.getX(), entity.getY(), entity.getZ()), new Node(x, y, z)) < range;
+    }
 }

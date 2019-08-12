@@ -17,7 +17,6 @@ public class Rabbit extends Animal {
 //        Ai.addTask(0, new StupidRunAwayAi(AttackingEntity.class, 0.3));
         Ai.addTask(1, new EatTileAi(Grass.class, new Dirt(new Random(), 0), 20));
         Ai.addTask(2, new RandomWanderAi(15, 60));
-        //Ai.addTask(1, new FollowEntityAi(Player.class, 60, 4));
         setLooking(random.nextInt(4));
 
         width = 20;

@@ -19,7 +19,8 @@ public class AttackEntityAi extends FollowEntityAi {
         if (findTarget(region, entity)) {
             faceClosest.performTask(region, random, entity);
             if (shouldAttack(region, entity)) {
-                return attack(region, random, entity);
+                boolean attack = attack(region, random, entity);
+                return attack;
             }
         }
         boolean task = super.performTask(region, random, entity);

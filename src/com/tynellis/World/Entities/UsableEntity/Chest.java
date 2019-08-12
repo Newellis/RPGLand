@@ -10,7 +10,7 @@ import com.tynellis.World.Items.ItemPile;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.world_parts.Regions.Region;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -76,7 +76,6 @@ public class Chest extends UsableEntity {
     @Override
     public UsingInterface use(Region region, KillableEntity entity) {
         if (canBeUsedBy(entity)) {
-            System.out.println("Being used by " + entity.getClass().getSimpleName());
             ChestInterface chestInterface = new ChestInterface(this);
             interfaces.add(chestInterface);
             isOpen = true;

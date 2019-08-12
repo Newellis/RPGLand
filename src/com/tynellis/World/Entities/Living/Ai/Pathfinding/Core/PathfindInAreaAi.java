@@ -1,10 +1,8 @@
 package com.tynellis.World.Entities.Living.Ai.Pathfinding.Core;
 
 import com.tynellis.World.Entities.Living.LivingEntity;
-import com.tynellis.World.world_parts.Regions.Region;
 
 import java.awt.*;
-import java.util.Random;
 
 public class PathfindInAreaAi extends PathfinderAi {
 
@@ -13,12 +11,10 @@ public class PathfindInAreaAi extends PathfinderAi {
     public PathfindInAreaAi(Rectangle area) {
         super();
         this.area = area;
+        range = area.width + area.height;
     }
 
-    public boolean performTask(Region region, Random random, LivingEntity entity) {
-        if (area.contains(destX, destY)) {
-            return super.performTask(region, random, entity);
-        }
-        return false;
+    public boolean canGetTo(LivingEntity entity, double x, double y, double z) {
+        return area.contains(x, y);
     }
 }

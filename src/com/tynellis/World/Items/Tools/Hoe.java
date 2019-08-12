@@ -3,7 +3,6 @@ package com.tynellis.World.Items.Tools;
 import com.tynellis.World.Entities.damage.Damage;
 import com.tynellis.World.Tiles.LandTiles.ManMade.TilledSoil;
 import com.tynellis.World.Tiles.LandTiles.Natural.Dirt;
-import com.tynellis.World.Tiles.LandTiles.Natural.Grass;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.world_parts.Regions.Region;
 
@@ -26,7 +25,7 @@ public class Hoe extends Tool {
         for (int X = (int) Math.floor(x); X <= (int) Math.ceil(x); X++) {
             for (int Y = (int) Math.floor(y); Y <= (int) Math.ceil(y); Y++) {
                 Tile test = region.getTile(X, Y, (int) z);
-                if (test instanceof Grass || test instanceof Dirt) {
+                if (test instanceof Dirt) {
                     region.setTile(new TilledSoil(random, test.getHeightInWorld()), X, Y, (int) z);
                     region.updateTileArtAround(X, Y);
                 }
