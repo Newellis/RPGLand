@@ -32,9 +32,6 @@ public abstract class AiTask implements Serializable {
         boolean goodToGo = true;
         for (AiTask task : noInterrupt) {
             goodToGo &= task.isFinished(entity);
-            if (!goodToGo) {
-                System.out.println("Don't Interrupt " + task.getClass().getSimpleName());
-            }
         }
         return goodToGo;
     }

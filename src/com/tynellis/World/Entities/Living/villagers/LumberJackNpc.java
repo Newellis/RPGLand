@@ -6,6 +6,7 @@ import com.tynellis.World.Entities.Living.Ai.FaceClosestAi;
 import com.tynellis.World.Entities.Living.Ai.Pathfinding.Core.PathfindInRangeAi;
 import com.tynellis.World.Entities.Living.Ai.Pathfinding.toEntity.CollectItemsFromEntityAi;
 import com.tynellis.World.Entities.Living.Ai.Pathfinding.toEntity.UseChestAi;
+import com.tynellis.World.Entities.Living.Ai.Pathfinding.toTile.PlantSeedsAi;
 import com.tynellis.World.Entities.Living.Player;
 import com.tynellis.World.Entities.Plants.Tree;
 import com.tynellis.World.Entities.UsableEntity.Chest;
@@ -17,6 +18,7 @@ import com.tynellis.World.Items.Materials.Log;
 import com.tynellis.World.Items.Tools.Weapons.Axe;
 import com.tynellis.World.Items.TreeSeeds;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -35,7 +37,7 @@ public class LumberJackNpc extends Villager {
         canPickUpItems = true;
 
 
-        pathfinder = new PathfindInRangeAi(10, x, y, z);
+        pathfinder = new PathfindInRangeAi(15, x - 2, y - 4, z);
 
         AiTask items = new CollectItemsFromEntityAi(Tree.class, 50, 1);
         UseChestAi chestAi = new UseChestAi(chest, new TypeItemFilter(new Class[]{Log.class}, ItemFilter.Type.WhiteList), 400);
@@ -47,7 +49,7 @@ public class LumberJackNpc extends Villager {
 
         ArrayList<Class> seeds = new ArrayList<Class>();
         seeds.add(TreeSeeds.class);
-        //Ai.addTask(4, new PlantSeedsAi(new Rectangle(x - 2,y + 5,5,5), seeds));
+        Ai.addTask(4, new PlantSeedsAi(new Rectangle(x - 6, y - 2, 9, 9), seeds));
 
         //put all ai above this point
         //Ai.addTask(1000, new RandomWanderAi(15, 60));

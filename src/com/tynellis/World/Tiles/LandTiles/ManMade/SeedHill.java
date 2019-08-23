@@ -11,8 +11,9 @@ import java.util.Random;
 
 public class SeedHill extends LayeredTile {
     private static final SpriteSheet SHEET = new SpriteSheet("tempArt/lpc/mine/plowed_soil.png", 32, 32, 1);
+    private static final double altPercent = 0.35;
 
-    public SeedHill(Seed item, Random rand, double altPercent, Tile base) {
+    public SeedHill(Seed item, Random rand, Tile base) {
         super(item.getCrop().getName() + " Mound", null, rand, altPercent, base.getRank(), base.getHeightInWorld(), base);
     }
 

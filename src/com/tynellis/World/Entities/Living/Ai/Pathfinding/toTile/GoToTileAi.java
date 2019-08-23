@@ -26,6 +26,7 @@ public class GoToTileAi extends AiTask {
     public boolean performTask(Region region, Random random, LivingEntity entity) {
         PathfinderAi pathfinder = entity.getPathfinder();
         if (findTarget(region, entity, random)) {
+            System.out.println("Found target at " + x + ", " + y + ", " + z);
             if (pathfinder.getCurrentActivity() != this) {
                 pathfinder.setCurrentActivity(this);
                 pathfinder.setRanges(range, 0);
@@ -37,8 +38,10 @@ public class GoToTileAi extends AiTask {
                     entity.setMoving(false);
                     closest = null;
                 }
+                System.out.println("move to target: " + pathfind);
                 return pathfind;
             } else {
+                System.out.println("Target To far away");
                 entity.setMoving(false);
                 return false;
             }

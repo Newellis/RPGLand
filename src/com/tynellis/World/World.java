@@ -2,7 +2,6 @@ package com.tynellis.World;
 
 import com.tynellis.GameComponent;
 import com.tynellis.Save.FileHandler;
-import com.tynellis.World.Buildings.SmallHouse;
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Entities.Living.LivingEntity;
 import com.tynellis.World.Entities.Living.Player;
@@ -259,8 +258,8 @@ public class World implements Land, Serializable {
 //        overRegionRegion.addEntity(itemEntity2);
 
         //add houses
-        SmallHouse.buildSmallHouse(overRegionRegion, getRand(), spawnPoint[0] - 6, spawnPoint[1] - 5, spawnPoint[2]);
-        SmallHouse.buildSmallHouse(overRegionRegion, getRand(), spawnPoint[0], spawnPoint[1] - 5, spawnPoint[2]);
+//        SmallHouse.buildSmallHouse(overRegionRegion, getRand(), spawnPoint[0] - 6, spawnPoint[1] - 5, spawnPoint[2]);
+//        SmallHouse.buildSmallHouse(overRegionRegion, getRand(), spawnPoint[0], spawnPoint[1] - 5, spawnPoint[2]);
 
         //add fire pit
 //        overRegionRegion.addEntity(new FirePit(spawnPoint[0] + 4, spawnPoint[1] - 1, spawnPoint[2]));

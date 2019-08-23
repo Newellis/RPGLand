@@ -574,8 +574,18 @@ public abstract class Region implements Serializable, Land {
             return true;
         }
         ArrayList<Entity> list = getEntitiesIntersecting(getTileBounds(x, y, z));
-        list.remove(e);
-        return list.size() > 0;
+        ArrayList<Entity> blocking = new ArrayList<Entity>();
+        if (e != null) {
+            list.remove(e);
+            for (Entity entity : list) {
+                if (entity.isPassableBy(e)) {
+                    blocking.add(entity);
+                }
+            }
+        } else {
+            blocking.addAll(list);
+        }
+        return blocking.size() > 0;
     }
 
     public int getTopLayerAt(int x, int y) {

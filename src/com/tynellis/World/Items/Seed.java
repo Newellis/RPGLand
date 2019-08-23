@@ -8,6 +8,7 @@ public abstract class Seed extends UsableItem {
 
     public Seed(Crop crop, int artRow, int artCol) {
         super(crop.getName() + " Seed", 100, artRow, artCol);
+        this.crop = crop;
     }
 
     public Crop getCrop() {
