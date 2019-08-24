@@ -1,9 +1,9 @@
 package com.tynellis.World.Nodes;
 
+import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Tiles.Tile;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +13,19 @@ public class Node implements Serializable {
     private double X, Y, Z;
     private double scoreFromStart = Double.MAX_VALUE;
     private double fScore;
+    private Tile terrain = null;
 
     public Node(double x, double y, double z) {
-        X=x;
-        Y=y;
+        X = x;
+        Y = y;
         Z = z;
+    }
+
+    public Node(double x, double y, double z, Tile tile) {
+        X = x;
+        Y = y;
+        Z = z;
+        terrain = tile;
     }
 
     public void render(Graphics g, int xOffset, int yOffset){
@@ -35,9 +43,15 @@ public class Node implements Serializable {
         return neighbors;
     }
 
-    public void addNeighbor(Node node) {
-        int distance = (int) Math.sqrt(Math.pow(Math.abs(X - node.getX()), 2) + Math.pow(Math.abs(Y - node.getY()), 2));
-        NodeRelation neighbor = new NodeRelation(node, distance);
+    public void addNeighbor(Node node, Entity e) {
+        double distance;
+        if (terrain != null) {
+            double difficulty = terrain.getTraversalDifficulty(e);
+            distance = Math.sqrt(Math.pow(Math.abs((X - node.getX()) * difficulty), 2) + Math.pow(Math.abs((Y - node.getY()) * difficulty), 2));
+        } else {
+            distance = Math.sqrt(Math.pow(Math.abs(X - node.getX()), 2) + Math.pow(Math.abs(Y - node.getY()), 2));
+        }
+        NodeRelation neighbor = new NodeRelation(node, (int) distance);//todo remove cast to int after polishing pathfinder to stop zig-zagging when given double values
         neighbors.add(neighbor);
     }
 
@@ -98,13 +112,15 @@ public class Node implements Serializable {
     }
 
     public class NodeRelation implements Serializable {
-        private int distance;
+        private double distance;
         private Node node;
-        public NodeRelation(Node node, int distance){
+
+        public NodeRelation(Node node, double distance) {
             this.node = node;
             this.distance = distance;
         }
-        public int getDistance(){
+
+        public double getDistance() {
             return distance;
         }
         public Node getNode() {

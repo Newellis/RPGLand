@@ -4,7 +4,7 @@ import com.tynellis.Art.SpriteSheet;
 import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Tiles.Tile;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.util.Random;
 
 public class Wall extends Tile {
@@ -39,6 +39,11 @@ public class Wall extends Tile {
     @Override
     public Tile newTile(Random rand, int height) {
         return new Wall(rand, height, wallType);
+    }
+
+    @Override
+    public double getTraversalDifficulty(Entity e) {
+        return 0;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.tynellis.World.Tiles;
 
 import com.tynellis.Art.SpriteSheet;
+import com.tynellis.World.Entities.Entity;
 
 import java.util.Random;
 
@@ -25,5 +26,15 @@ public class Water extends LiquidTile{
     @Override
     public Tile newTile(Random rand, int height) {
         return new Water(rand, height);
+    }
+
+    @Override
+    public double getTraversalDifficulty(Entity e) {
+        if (e.isSwimming()) {
+            return 1.0;
+        } else if (e.isFlying()) {
+            return 1.0;
+        }
+        return 0;
     }
 }

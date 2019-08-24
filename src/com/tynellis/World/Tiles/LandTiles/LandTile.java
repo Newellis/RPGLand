@@ -12,6 +12,16 @@ public abstract class LandTile extends Tile {
     }
 
     @Override
+    public double getTraversalDifficulty(Entity e) {
+        if (e.isWalking()) {
+            return 1.0;
+        } else if (e.isFlying()) {
+            return 1.0;
+        }
+        return 0;
+    }
+
+    @Override
     public boolean isPassableBy(Entity e) {
         return !e.isSwimming();
     }

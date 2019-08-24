@@ -498,18 +498,18 @@ public abstract class Region implements Serializable, Land {
                         if (!(centerTile instanceof ConnectorTile)) {
                             if (tile != null && tile.isPassableBy(e) && !isTileObstructed(x + i, y + j, z) && getTile(x + i, y, z) != null && getTile(x + i, y, z).isPassableBy(e) && !isTileObstructed(x + i, y, z) && !(getTile(x + i, y, z) instanceof ConnectorTile) && getTile(x, y + j, z) != null && !(getTile(x, y + j, z) instanceof ConnectorTile) && getTile(x, y + j, z).isPassableBy(e) && !isTileObstructed(x, y + j, z)) {
                                 if (!(tile instanceof ConnectorTile)) {
-                                    nodes.add(new Node(x + i, y + j, z));
+                                    nodes.add(new Node(x + i, y + j, z, tile));
                                 }
                             }
                         }
                     } else if (tile != null && tile.isPassableBy(e) && !isTileObstructed(x + i, y + j, z)) {
                         if (tile instanceof ConnectorTile && ((ConnectorTile) tile).isFull() && ((ConnectorTile) tile).canUse(e) && ((ConnectorTile) tile).getDirection() % 2 == Math.abs(i)) {
-                            nodes.add(new Node(x + i, y + j, ((ConnectorTile) tile).getHeight()));
+                            nodes.add(new Node(x + i, y + j, ((ConnectorTile) tile).getHeight(), tile));
                         } else if (!(tile instanceof ConnectorTile)) {
                             if (centerTile instanceof ConnectorTile && ((ConnectorTile) centerTile).isFull() && ((ConnectorTile) centerTile).canUse(e) && ((ConnectorTile) centerTile).getDirection() % 2 == Math.abs(i)) {
-                                nodes.add(new Node(x + i, y + j, z));
+                                nodes.add(new Node(x + i, y + j, z, tile));
                             } else if (!(centerTile instanceof ConnectorTile)) {
-                                nodes.add(new Node(x + i, y + j, z));
+                                nodes.add(new Node(x + i, y + j, z, tile));
                             }
                         }
                     }
@@ -530,17 +530,22 @@ public abstract class Region implements Serializable, Land {
         } else {
             ArrayList<Node> nodes = new ArrayList<Node>();
             Node[] adjacent = new Node[4];
-            if (getTile((int) Math.floor(node.getX()), (int) Math.floor(node.getY()), (int) Math.floor(node.getZ())) != null && getTile((int) Math.floor(node.getX()), (int) Math.floor(node.getY()), (int) Math.floor(node.getZ())).isPassableBy(e) && !isTileObstructed((int) Math.floor(node.getX()), (int) Math.floor(node.getY()), (int) Math.floor(node.getZ()))) {
-                adjacent[0] = new Node((int) Math.floor(node.getX()), (int) Math.floor(node.getY()), node.getZ());
+            Tile ne, nw, se, sw;
+            ne = getTile((int) Math.ceil(node.getX()), (int) Math.floor(node.getY()), (int) Math.floor(node.getZ()));
+            nw = getTile((int) Math.floor(node.getX()), (int) Math.floor(node.getY()), (int) Math.floor(node.getZ()));
+            se = getTile((int) Math.ceil(node.getX()), (int) Math.ceil(node.getY()), (int) Math.floor(node.getZ()));
+            sw = getTile((int) Math.floor(node.getX()), (int) Math.ceil(node.getY()), (int) Math.floor(node.getZ()));
+            if (nw != null && nw.isPassableBy(e) && !isTileObstructed((int) Math.floor(node.getX()), (int) Math.floor(node.getY()), (int) Math.floor(node.getZ()))) {
+                adjacent[0] = new Node((int) Math.floor(node.getX()), (int) Math.floor(node.getY()), node.getZ(), nw);
             }
-            if (getTile((int) Math.floor(node.getX()), (int) Math.ceil(node.getY()), (int) Math.floor(node.getZ())) != null && getTile((int) Math.floor(node.getX()), (int) Math.ceil(node.getY()), (int) Math.floor(node.getZ())).isPassableBy(e) && !isTileObstructed((int) Math.floor(node.getX()), (int) Math.ceil(node.getY()), (int) Math.floor(node.getZ()))) {
-                adjacent[1] = new Node((int) Math.floor(node.getX()), (int) Math.ceil(node.getY()), node.getZ());
+            if (sw != null && sw.isPassableBy(e) && !isTileObstructed((int) Math.floor(node.getX()), (int) Math.ceil(node.getY()), (int) Math.floor(node.getZ()))) {
+                adjacent[1] = new Node((int) Math.floor(node.getX()), (int) Math.ceil(node.getY()), node.getZ(), sw);
             }
-            if (getTile((int) Math.ceil(node.getX()), (int) Math.floor(node.getY()), (int) Math.floor(node.getZ())) != null && getTile((int) Math.ceil(node.getX()), (int) Math.floor(node.getY()), (int) Math.floor(node.getZ())).isPassableBy(e) && !isTileObstructed((int) Math.ceil(node.getX()), (int) Math.floor(node.getY()), (int) Math.floor(node.getZ()))) {
-                adjacent[2] = new Node((int) Math.ceil(node.getX()), (int) Math.floor(node.getY()), node.getZ());
+            if (ne != null && ne.isPassableBy(e) && !isTileObstructed((int) Math.ceil(node.getX()), (int) Math.floor(node.getY()), (int) Math.floor(node.getZ()))) {
+                adjacent[2] = new Node((int) Math.ceil(node.getX()), (int) Math.floor(node.getY()), node.getZ(), ne);
             }
-            if (getTile((int) Math.ceil(node.getX()), (int) Math.ceil(node.getY()), (int) Math.floor(node.getZ())) != null && getTile((int) Math.ceil(node.getX()), (int) Math.ceil(node.getY()), (int) Math.floor(node.getZ())).isPassableBy(e) && !isTileObstructed((int) Math.ceil(node.getX()), (int) Math.ceil(node.getY()), (int) Math.floor(node.getZ()))) {
-                adjacent[3] = new Node((int) Math.ceil(node.getX()), (int) Math.ceil(node.getY()), node.getZ());
+            if (se != null && se.isPassableBy(e) && !isTileObstructed((int) Math.ceil(node.getX()), (int) Math.ceil(node.getY()), (int) Math.floor(node.getZ()))) {
+                adjacent[3] = new Node((int) Math.ceil(node.getX()), (int) Math.ceil(node.getY()), node.getZ(), se);
             }
             for (Node adj : adjacent) {
                 if (adj != null) {
@@ -578,7 +583,7 @@ public abstract class Region implements Serializable, Land {
         if (e != null) {
             list.remove(e);
             for (Entity entity : list) {
-                if (entity.isPassableBy(e)) {
+                if (!entity.isPassableBy(e)) {
                     blocking.add(entity);
                 }
             }

@@ -119,8 +119,8 @@ public class PathfinderAi extends AiTask {
     private boolean findPath(Region region, Entity e, int minRange) {
         List<Node> closedSet = new ArrayList<Node>();// The set of nodes already evaluated.
         List<Node> openSet = new ArrayList<Node>(); // The set of tentative nodes to be evaluated, initially containing the start node
-        Node start = new Node(e.getX(), e.getY(), e.getZ());
-        Node goal = new Node(destX, destY, destZ);
+        Node start = new Node(e.getX(), e.getY(), e.getZ(), region.getTile((int) Math.round(e.getX()), (int) Math.round(e.getY()), (int) Math.round(e.getZ())));
+        Node goal = new Node(destX, destY, destZ, region.getTile((int) Math.round(destX), (int) Math.round(destY), (int) Math.round(destZ)));
         if (region.getTile((int) goal.getX(), (int) goal.getY(), (int) goal.getZ()) != null && (!region.getTile((int) goal.getX(), (int) goal.getY(), (int) goal.getZ()).isPassableBy(e) || region.isTileObstructed((int) goal.getX(), (int) goal.getY(), (int) goal.getZ()))) {
             if (minRange < 1) {
                 return false;
@@ -156,7 +156,7 @@ public class PathfinderAi extends AiTask {
             closedSet.add(current);
             ArrayList<Node> nodes = region.getAdjacentNodes(current, e);
             for (Node node : nodes) {
-                current.addNeighbor(node);
+                current.addNeighbor(node, e);
             }
             for (Node.NodeRelation nodeRelation : current.getNeighbors()) {
                 Node neighbor = nodeRelation.getNode();
@@ -194,26 +194,13 @@ public class PathfinderAi extends AiTask {
 
     //uses as strait of a line as can be done using 8 directions to calculate
     public double heuristicCostEstimate(Node pos, Node goal) {//todo get a better cost estimate
-        double x, y, z, scoreLeft = 0;
-        x = Math.abs(pos.getX() - goal.getX());
-        y = Math.abs(pos.getY() - goal.getY());
-        z = Math.abs(pos.getZ() - goal.getZ());
-        if (x + y + z == 0) {
-            return scoreLeft;
-        }
-        if (x < y) {
-            scoreLeft += y - x;
-            scoreLeft += Math.sqrt(Math.pow(x, 2) + Math.pow(x, 2));
-            scoreLeft += z;
-        } else if (y < x) {
-            scoreLeft += x - y;
-            scoreLeft += Math.sqrt(Math.pow(y, 2) + Math.pow(y, 2));
-            scoreLeft += z;
-        } else {
-            scoreLeft += Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
-            scoreLeft += z;
-        }
-        return scoreLeft;
+        double dx = Math.abs(pos.getX() - goal.getX());
+        double dy = Math.abs(pos.getY() - goal.getY());
+        double dz = Math.abs(pos.getZ() - goal.getZ());
+
+        double D = 1, C = Math.sqrt(2), H = 1 / range;
+
+        return (D * (dx + dy + dz) + (C - 2 * D) * Math.min(dx, dy)) * (1.0 + H);
     }
 
     public void setLocation(double x, double y, double z) {

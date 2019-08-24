@@ -9,7 +9,7 @@ import com.tynellis.World.Entities.UsableEntity.UsableEntity;
 import com.tynellis.World.Entities.UsableEntity.using_interfaces.UsingInterface;
 import com.tynellis.World.Items.Containers.Container;
 import com.tynellis.World.Items.ItemPile;
-import com.tynellis.World.Items.Tools.Weapons.Axe;
+import com.tynellis.World.Items.Tools.Hoe;
 import com.tynellis.World.Light.LightSource;
 import com.tynellis.World.Tiles.Tile;
 import com.tynellis.World.world_parts.Regions.Region;
@@ -35,7 +35,7 @@ public class Player extends LivingEntity {
         inventory = new Container(20);
         canPickUpItems = true;
         light = new LightSource(12);
-        equipWeapon(new Axe("Chopper", 35, 5, 2));
+        equipWeapon(new Hoe("Chopper", 35, 5, 2));
     }
 
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {

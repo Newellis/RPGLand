@@ -4,11 +4,10 @@ import com.tynellis.Art.Sprite;
 import com.tynellis.Art.SpriteSheet;
 import com.tynellis.BoundingBox.BoundingBoxOwner;
 import com.tynellis.GameComponent;
+import com.tynellis.World.Entities.Entity;
 import com.tynellis.debug.Debug;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
@@ -270,4 +269,6 @@ public abstract class Tile implements BoundingBoxOwner, Serializable {
     }
 
     public abstract Tile newTile(Random rand, int height);
+
+    public abstract double getTraversalDifficulty(Entity e);
 }

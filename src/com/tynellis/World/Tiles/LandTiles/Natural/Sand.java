@@ -1,6 +1,7 @@
 package com.tynellis.World.Tiles.LandTiles.Natural;
 
 import com.tynellis.Art.SpriteSheet;
+import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Tiles.LandTiles.LandTile;
 import com.tynellis.World.Tiles.Tile;
 
@@ -31,6 +32,16 @@ public class Sand extends LandTile {
 
     @Override
     public void update(Tile[][] adjacent) {
+    }
+
+    @Override
+    public double getTraversalDifficulty(Entity e) {
+        if (e.isWalking()) {
+            return 1.0;
+        } else if (e.isFlying()) {
+            return 1.0;
+        }
+        return 0;
     }
 
     @Override

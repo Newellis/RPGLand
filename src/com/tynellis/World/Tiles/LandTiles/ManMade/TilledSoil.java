@@ -1,6 +1,7 @@
 package com.tynellis.World.Tiles.LandTiles.ManMade;
 
 import com.tynellis.Art.SpriteSheet;
+import com.tynellis.World.Entities.Entity;
 import com.tynellis.World.Tiles.LandTiles.LandTile;
 import com.tynellis.World.Tiles.Tile;
 
@@ -23,5 +24,20 @@ public class TilledSoil extends LandTile {
     @Override
     public Tile newTile(Random rand, int height) {
         return new TilledSoil(rand, height);
+    }
+
+    @Override
+    public double getTraversalDifficulty(Entity e) {
+        if (e.isWalking()) {
+            return 1.0;
+        } else if (e.isFlying()) {
+            return 1.0;
+        }
+        return 0;
+    }
+
+    @Override
+    public void update(Tile[][] adjacent) {
+
     }
 }
