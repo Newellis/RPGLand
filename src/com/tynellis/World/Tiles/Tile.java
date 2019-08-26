@@ -21,7 +21,7 @@ public abstract class Tile implements BoundingBoxOwner, Serializable {
     private static final int adjacentNum = 9;
     private transient Sprite[] sprite;
     private int[] still;
-    private int rank;
+    private TileRank rank;
     private int height;
     private String name;
     private double altPercent;
@@ -31,7 +31,35 @@ public abstract class Tile implements BoundingBoxOwner, Serializable {
     private boolean debugRender = false;
     private Color debugColor = Color.GREEN;
 
-    public Tile(String name, SpriteSheet sheet, Random rand, double altPercent, int rank, int height) {
+    protected enum TileRank {
+        //lower numbers visually "spill" onto higher numbers covering the grid edges
+
+        //indoor tiles
+        Wall(1), //used for cave walls as well
+        WoodFloor(1),
+
+        //outdoor tiles
+        Snow(1),
+        Grass(2),
+        TilledSoil(3),
+        Sand(4),
+        Dirt(5),
+        Rock(10),
+        Water(11),
+
+        ; //End of ranks
+        private int rank;
+
+        TileRank(int rank) {
+            this.rank = rank;
+        }
+
+        public int getRank() {
+            return rank;
+        }
+    }
+
+    public Tile(String name, SpriteSheet sheet, Random rand, double altPercent, TileRank rank, int height) {
         this.name = name;
         top = sheet;
         this.rank = rank;
@@ -109,7 +137,7 @@ public abstract class Tile implements BoundingBoxOwner, Serializable {
     public void updateArt(Tile[][] adjacent){
         int[] ranks = new int[adjacentNum];
         java.util.Arrays.fill(ranks, -1);
-        ranks[0] = this.rank;
+        ranks[0] = this.rank.getRank();
         startArt();
         if (adjacent[1][2] == null) {
             cliff = true;
@@ -129,7 +157,7 @@ public abstract class Tile implements BoundingBoxOwner, Serializable {
                     adjacentSides[1] = adjacent[1][j];
                 }
                 if (adjacentSides[1] != null && adjacentSides[0] != null && adjacent[i][j] != null) {
-                    if (adjacent[i][j].getRank() == adjacentSides[0].getRank() || adjacent[i][j].getRank() == adjacentSides[1].getRank()) {
+                    if (adjacent[i][j].getRankNum() == adjacentSides[0].getRankNum() || adjacent[i][j].getRankNum() == adjacentSides[1].getRankNum()) {
                         continue;
                     }
                 }
@@ -192,16 +220,16 @@ public abstract class Tile implements BoundingBoxOwner, Serializable {
                         }
                         continue;
                     }
-                    if (ranks[k] == -1 || adjacent[i][j].getRank() == rank) {
+                    if (ranks[k] == -1 || adjacent[i][j].getRankNum() == rank.getRank()) {
                         continue;
                     }
-                    if (adjacent[i][j].getRank() > ranks[k]) {
+                    if (adjacent[i][j].getRankNum() > ranks[k]) {
                         break;
                     }
-                    if (adjacent[i][j].getRank() == adjacent[i][j].getRank()) {
+                    if (adjacent[i][j].getRankNum() == adjacent[i][j].getRankNum()) {
                         // for sharp square edges might use for something else
                     }
-                    if (adjacent[i][j].getRank() < ranks[k]) {
+                    if (adjacent[i][j].getRankNum() < ranks[k]) {
                         insertAt = k;
                     }
                 }
@@ -224,13 +252,13 @@ public abstract class Tile implements BoundingBoxOwner, Serializable {
                         sprite[insertAt] = cliffEdge.getSprite(corner / 2);
                     }
                 } else if (corner == -1) {
-                    ranks[insertAt] = adjacent[i][j].getRank();
+                    ranks[insertAt] = adjacent[i][j].getRankNum();
                     still[insertAt] = 2 - i;
                     if (adjacent[i][j].getSheet(this) != null) {
                         sprite[insertAt] = adjacent[i][j].getSheet(this).getSprite(2 + (2 - j));
                     }
                 } else {
-                    ranks[insertAt] = adjacent[i][j].getRank();
+                    ranks[insertAt] = adjacent[i][j].getRankNum();
                     still[insertAt] = 1 + corner % 2;
                     if (adjacent[i][j].getSheet(this) != null) {
                         sprite[insertAt] = adjacent[i][j].getSheet(this).getSprite(corner / 2);
@@ -244,7 +272,11 @@ public abstract class Tile implements BoundingBoxOwner, Serializable {
         return 0.0;
     }
 
-    public int getRank(){
+    public int getRankNum() {
+        return rank.getRank();
+    }
+
+    public TileRank getRank() {
         return rank;
     }
 

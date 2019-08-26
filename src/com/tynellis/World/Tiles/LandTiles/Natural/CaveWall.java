@@ -9,14 +9,13 @@ import java.util.Random;
 
 public class CaveWall extends Tile {
 
-    private static final int RANK = 1;
     private static final double altPercent = 0.10;
     private static SpriteSheet caveSheet = new SpriteSheet("tempArt/lpc/core/tiles/mountains.png", 32, 64, 0, 64, 1);
     private static final SpriteSheet SHEET = new SpriteSheet("tempArt/lpc/mine/cliffWall.png", 32, 32, 1);
     protected boolean wall;
 
     public CaveWall(Random rand, int height) {
-        super("Cave_Wall", SHEET, rand, altPercent, RANK, height);
+        super("Cave_Wall", SHEET, rand, altPercent, TileRank.Wall, height);
     }
 
     @Override

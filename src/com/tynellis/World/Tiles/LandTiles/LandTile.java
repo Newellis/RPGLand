@@ -7,7 +7,7 @@ import com.tynellis.World.Tiles.Tile;
 import java.util.Random;
 
 public abstract class LandTile extends Tile {
-    public LandTile(String name, SpriteSheet sheet, Random rand, double altPercent, int rank, int height) {
+    public LandTile(String name, SpriteSheet sheet, Random rand, double altPercent, TileRank rank, int height) {
         super(name, sheet, rand, altPercent, rank, height);
     }
 

@@ -10,12 +10,11 @@ import java.util.Random;
 public class Sand extends LandTile {
     private static final SpriteSheet SHEET = new SpriteSheet("tempArt/lpc/submission_daneeklu 2/tilesets/sand.png", 32, 32, 1);
     //private static final SpriteSheet WATER = new SpriteSheet("tempArt/lpc/submission_daneeklu 2/tilesets/sandwater.png", 32, 32, 1);
-    private static final int RANK = 3;
     private static final double altPercent = 0.10;
 
 
     public Sand(Random rand, int height) {
-        super("Sand", SHEET, rand, altPercent, RANK, height);
+        super("Sand", SHEET, rand, altPercent, TileRank.Sand, height);
     }
 
     public SpriteSheet getSheet(Tile tile) {

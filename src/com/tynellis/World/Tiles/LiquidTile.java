@@ -6,10 +6,9 @@ import com.tynellis.World.Entities.Entity;
 import java.util.Random;
 
 public abstract class LiquidTile extends Tile{
-    private static final int RANK = 0;
 
     public LiquidTile(String name, SpriteSheet sheet, Random rand, double altPercent, int height) {
-        super(name, sheet, rand, altPercent, RANK, height);
+        super(name, sheet, rand, altPercent, TileRank.Water, height);
     }
 
     @Override

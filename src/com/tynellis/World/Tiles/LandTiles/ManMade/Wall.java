@@ -8,14 +8,13 @@ import java.awt.*;
 import java.util.Random;
 
 public class Wall extends Tile {
-    private static final int RANK = 1;
     private static final double altPercent = 0.10;
     private static SpriteSheet wallSheet = new SpriteSheet("tempArt/lpc/buildings/cottage.png", 32, 64, 1);
     private int wallType;
     private boolean wall;
 
     public Wall(Random rand, int height, int wallType) {
-        super("Wall", cliffEdge, rand, altPercent, RANK, height);
+        super("Wall", cliffEdge, rand, altPercent, TileRank.Wall, height);
         this.wallType = wallType;
     }
 

@@ -8,11 +8,10 @@ import java.util.Random;
 
 public class LavaRock extends LandTile {
     private static final SpriteSheet SHEET = new SpriteSheet("tempArt/lpc/core/tiles/terain/lavarock.png", 32, 32, 1);
-    private static final int RANK = 5;
     private static final double altPercent = 0.15;
 
     public LavaRock(Random rand, int height) {
-        super("Lava Rock", SHEET, rand, altPercent, RANK, height);
+        super("Lava Rock", SHEET, rand, altPercent, TileRank.Rock, height);
     }
 
     @Override

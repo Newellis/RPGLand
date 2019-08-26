@@ -8,11 +8,10 @@ import java.util.Random;
 
 public class Stone extends LandTile {
     private static final SpriteSheet SHEET = new SpriteSheet("tempArt/lpc/mine/rock.png", 32, 32, 1);
-    private static final int RANK = 5;
     private static final double altPercent = 0.35;
 
     public Stone(Random rand, int height) {
-        super("Stone", SHEET, rand, altPercent, RANK, height);
+        super("Stone", SHEET, rand, altPercent, TileRank.Rock, height);
     }
 
     @Override

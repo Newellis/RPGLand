@@ -3,8 +3,7 @@ package com.tynellis.World.Tiles.LandTiles;
 import com.tynellis.Art.SpriteSheet;
 import com.tynellis.World.Tiles.Tile;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
 import java.util.Random;
 
 public abstract class LayeredTile extends LandTile {
@@ -13,7 +12,7 @@ public abstract class LayeredTile extends LandTile {
     private boolean fillsAir = false;
     private boolean blocksAir = false;
 
-    public LayeredTile(String name, SpriteSheet sheet, Random rand, double altPercent, int rank, int height, Tile base) {
+    public LayeredTile(String name, SpriteSheet sheet, Random rand, double altPercent, TileRank rank, int height, Tile base) {
         super(name, sheet, rand, altPercent, rank, height);
         this.base = base;
     }

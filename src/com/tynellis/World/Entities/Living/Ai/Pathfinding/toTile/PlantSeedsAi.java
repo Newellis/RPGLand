@@ -17,7 +17,7 @@ public class PlantSeedsAi extends GoToTileAi {
     private Rectangle farm;
     private ItemFilter seedTypes;
     private int spacing;
-    private int resting = 0, minRest = 10, maxRest = 30;
+    private int performing = 0, maxPerforming = 30;
 
 
     public PlantSeedsAi(Rectangle farm, ItemFilter SeedsFilter) {
@@ -45,16 +45,16 @@ public class PlantSeedsAi extends GoToTileAi {
 
 
     public boolean performTask(Region region, Random random, LivingEntity entity) {
-        if (resting >= 0) {
-            resting--;
-            return false;
-        }
         boolean task = super.performTask(region, random, entity);
         if (closest != null) {
             if (shouldPlant(region, entity)) {
+                if (performing != 0) {
+                    performing--;
+                    return true;
+                }
                 boolean plant = Plant(region, random, entity);
                 if (plant) {
-                    resting = minRest + random.nextInt(maxRest - minRest);
+                    performing = maxPerforming;
                 }
                 return plant;
             }

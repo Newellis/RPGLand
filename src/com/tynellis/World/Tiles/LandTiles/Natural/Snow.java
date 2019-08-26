@@ -7,11 +7,10 @@ import java.util.Random;
 
 public class Snow extends LandTile {
     private static final SpriteSheet SHEET = new SpriteSheet("tempArt/lpc/mine/snow.png", 32, 32, 1);
-    private static final int RANK = 1;
     private static final double altPercent = 0.10;
 
     public Snow(Random rand, int height) {
-        super("Snow", SHEET, rand, altPercent, RANK, height);
+        super("Snow", SHEET, rand, altPercent, TileRank.Snow, height);
     }
 
     @Override

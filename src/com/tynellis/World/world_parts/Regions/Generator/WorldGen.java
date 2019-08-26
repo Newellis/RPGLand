@@ -23,25 +23,25 @@ public abstract class WorldGen implements Serializable {
                     if (tile == null) {
                         continue;
                     }
-                    int rank = tile.getRank(), count = 0;
-                    if (adjacent[2][1] != null && adjacent[2][1].getRank() >= rank) {
+                    int rank = tile.getRankNum(), count = 0;
+                    if (adjacent[2][1] != null && adjacent[2][1].getRankNum() >= rank) {
                         count++;
                     } else if (adjacent[2][1] != null) {
                         topTile = adjacent[2][1];
                     }
-                    if (adjacent[0][1] != null && adjacent[0][1].getRank() >= rank) {
+                    if (adjacent[0][1] != null && adjacent[0][1].getRankNum() >= rank) {
                         count++;
-                    } else if (topTile == null || adjacent[0][1] != null && adjacent[0][1].getRank() < topTile.getRank()) {
+                    } else if (topTile == null || adjacent[0][1] != null && adjacent[0][1].getRankNum() < topTile.getRankNum()) {
                         topTile = adjacent[0][1];
                     }
-                    if (adjacent[1][2] != null && adjacent[1][2].getRank() >= rank) {
+                    if (adjacent[1][2] != null && adjacent[1][2].getRankNum() >= rank) {
                         count++;
-                    } else if (topTile == null || adjacent[1][2] != null && adjacent[1][2].getRank() < topTile.getRank()) {
+                    } else if (topTile == null || adjacent[1][2] != null && adjacent[1][2].getRankNum() < topTile.getRankNum()) {
                         topTile = adjacent[1][2];
                     }
-                    if (adjacent[1][0] != null && adjacent[1][0].getRank() >= rank) {
+                    if (adjacent[1][0] != null && adjacent[1][0].getRankNum() >= rank) {
                         count++;
-                    } else if (topTile == null || adjacent[1][0] != null && adjacent[1][0].getRank() < topTile.getRank()) {
+                    } else if (topTile == null || adjacent[1][0] != null && adjacent[1][0].getRankNum() < topTile.getRankNum()) {
                         topTile = adjacent[1][0];
                     }
                     if (count < 2 && topTile != null) {

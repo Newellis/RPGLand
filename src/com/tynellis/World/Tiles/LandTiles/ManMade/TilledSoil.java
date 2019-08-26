@@ -9,11 +9,10 @@ import java.util.Random;
 
 public class TilledSoil extends LandTile {
     private static final SpriteSheet SHEET = new SpriteSheet("tempArt/lpc/mine/plowed_soil.png", 32, 32, 1);
-    private static final int RANK = 3;
     private static final double altPercent = 0;
 
     public TilledSoil(Random rand, int height) {
-        super("Tilled_Soil", SHEET, rand, altPercent, RANK, height);
+        super("Tilled_Soil", SHEET, rand, altPercent, TileRank.TilledSoil, height);
     }
 
     @Override

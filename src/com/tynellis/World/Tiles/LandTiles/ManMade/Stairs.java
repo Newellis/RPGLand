@@ -18,9 +18,9 @@ public class Stairs extends ConnectorTile {
     private static final SpriteSheet TOP = new SpriteSheet("tempArt/lpc/buildings/cottage.png", 32, 32, 1);
     private static final double altPercent = 0.10;
 
-    public Stairs(Random rand, int heightinWorld, int faceing, Tile base, double top, double bottom) {
-        super("Stairs", null, rand, altPercent, base.getRank(), heightinWorld, base);
-        direction = faceing % 4;
+    public Stairs(Random rand, int heightInWorld, int facing, Tile base, double top, double bottom) {
+        super("Stairs", null, rand, altPercent, base.getRank(), heightInWorld, base);
+        direction = facing % 4;
         height = top;
         this.bottom = bottom;
         setFull(true, false);

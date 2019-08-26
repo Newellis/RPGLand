@@ -241,10 +241,10 @@ public class World implements Land, Serializable {
         Chest chest = new Chest(spawnPoint[0] - 6, spawnPoint[1] - 2, spawnPoint[2]);
         overRegionRegion.addEntity(chest);
         LivingEntity npc = new LumberJackNpc(spawnPoint[0] - 4, spawnPoint[1] + 2, spawnPoint[2], LivingEntity.Gender.FEMALE, chest, getRand());
-        overRegionRegion.addEntity(npc);
+        //overRegionRegion.addEntity(npc);
 
         for (int i = 0; i < 0; i++) {
-            for (int j = 0; j < 1; j++) {
+            for (int j = 0; j < 5; j++) {
                 Rabbit rabbit = new Rabbit(spawnPoint[0] - 3 + i, spawnPoint[1] + 2 + j, spawnPoint[2], getRand());
                 overRegionRegion.addEntity(rabbit);
             }
