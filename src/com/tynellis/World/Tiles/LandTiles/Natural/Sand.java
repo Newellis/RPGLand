@@ -30,10 +30,6 @@ public class Sand extends LandTile {
     }
 
     @Override
-    public void update(Tile[][] adjacent) {
-    }
-
-    @Override
     public double getTraversalDifficulty(Entity e) {
         if (e.isWalking()) {
             return 1.0;

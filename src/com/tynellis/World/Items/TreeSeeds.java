@@ -10,7 +10,7 @@ public class TreeSeeds extends Seed {
     private Tree.Type seedType;
 
     public TreeSeeds(Tree.Type type, Random rand) {
-        super(new Tree(type, rand), 3, 0);
+        super(new Tree(type, rand), 20, 3, 0);
         seedType = type;
         if (type == Tree.Type.Oak) {
             setName("Acorn");

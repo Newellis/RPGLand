@@ -2,11 +2,10 @@ package com.tynellis.World.world_parts;
 
 import com.tynellis.GameComponent;
 import com.tynellis.World.Tiles.Tile;
+import com.tynellis.World.world_parts.Regions.Region;
 import com.tynellis.debug.Debug;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
@@ -81,9 +80,9 @@ public class Area implements Land, Serializable {
         }
     }
 
-    public void updateLayers(Area[][] areas) {
-        if (updateArt) {
-            for (int i = 0; i < layers.length; i++) {
+    public void updateLayers(Region region, Area[][] areas, int X, int Y, Random rand) {
+        for (int i = 0; i < layers.length; i++) {
+            if (rand.nextBoolean()) {
                 Layer[][] adjacent = new Layer[areas.length][areas[0].length];
                 for (int j = 0; j < areas.length; j++) {
                     for (int k = 0; k < areas[j].length; k++) {
@@ -92,9 +91,8 @@ public class Area implements Land, Serializable {
                         }
                     }
                 }
-                layers[i].updateTiles(adjacent);
+                layers[i].updateTiles(region, adjacent, X, Y, i, rand);
             }
-            updateArt = false;
         }
     }
 

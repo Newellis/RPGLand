@@ -173,6 +173,7 @@ public abstract class Region implements Serializable, Land {
             }
             deadEntities.clear();
         }
+        updateAreas(random);
     }
 
     public Rectangle getLoadedAreaBounds() {
@@ -235,14 +236,14 @@ public abstract class Region implements Serializable, Land {
                         gen.styleArea(this, (i + areaOffset[World.X]) * Area.WIDTH, (j + areaOffset[World.Y]) * Area.HEIGHT, seed);
                         gen.populateArea(this, (i + areaOffset[World.X]) * Area.WIDTH, (j + areaOffset[World.Y]) * Area.HEIGHT, seed);
                         loadedAreas[i][j].Populate();
-                        for (Area[] areas : getAdjacentAreas(i, j)) {
+                        for (Area[] areas : getAdjacentLoadedAreas(i, j)) {
                             for (Area area : areas) {
                                 area.shouldUpdateArt(true);
                             }
                         }
                     }
                     if (loadedAreas[i][j].shouldUpdateArt()) {
-                        Area[][] adjacent = getAdjacentAreas(i, j);
+                        Area[][] adjacent = getAdjacentLoadedAreas(i, j);
                         loadedAreas[i][j].updateLayerArt(adjacent);
                     }
                 }
@@ -307,12 +308,12 @@ public abstract class Region implements Serializable, Land {
     }
 
     //get areas adjacent to the coordinates X, Y
-    public Area[][] getAdjacentAreas(int X, int Y) {
+    public Area[][] getAdjacentLoadedAreas(int loadedX, int loadedY) {
         Area[][] adjacentAreas = new Area[3][3];
         for(int x = 0; x < adjacentAreas.length; x++) {
             for (int y = 0; y < adjacentAreas[x].length; y++) {
-                if (X + (x - 1) >= 0 && Y + (y - 1) >= 0 && X + (x - 1) < WIDTH && Y + (y - 1) < HEIGHT && loadedAreas[X + (x - 1)][Y + (y - 1)] != null) {
-                    adjacentAreas[x][y] = loadedAreas[X + (x - 1)][Y + (y - 1)];
+                if (loadedX + (x - 1) >= 0 && loadedY + (y - 1) >= 0 && loadedX + (x - 1) < loadedAreas.length && loadedY + (y - 1) < loadedAreas[loadedX + (x - 1)].length && loadedAreas[loadedX + (x - 1)][loadedY + (y - 1)] != null) {
+                    adjacentAreas[x][y] = loadedAreas[loadedX + (x - 1)][loadedY + (y - 1)];
                 }
             }
         }
@@ -668,6 +669,17 @@ public abstract class Region implements Serializable, Land {
                 updateTileArtAt(i - 1 + x, j - 1 + y);
             }
 
+        }
+    }
+
+    public void updateAreas(Random rand) {
+
+        for (int i = 0; i < loadedAreas.length; i++) {
+            for (int j = 0; j < loadedAreas[i].length; j++) {
+                if (rand.nextBoolean()) {
+                    loadedAreas[i][j].updateLayers(this, getAdjacentLoadedAreas(i, j), i + areaOffset[World.X], j + areaOffset[World.Y], rand);
+                }
+            }
         }
     }
 }

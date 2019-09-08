@@ -49,6 +49,8 @@ public abstract class Crop extends Plant {
 
     protected abstract void Grow(Random random);
 
+    public abstract Crop newCrop(Random rand, double x, double y, double z);
+
     public String getName() {
         return name;
     }

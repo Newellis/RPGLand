@@ -61,7 +61,7 @@ public class Tree extends Crop {
     }
 
     public Tree(Type type, Random rand) {
-        super("Tree", 0, 0, 0, rand, 100, 0, 20, 20);
+        this(type, 0, 0, 0, rand, 0);
     }
 
 
@@ -77,6 +77,12 @@ public class Tree extends Crop {
     @Override
     protected void Grow(Random random) {
         treeHeight = 20 + ((maxHeight - 20) / maxGrowthStage);
+    }
+
+    @Override
+    public Crop newCrop(Random rand, double x, double y, double z) {
+        System.out.println("new " + treeType + " tree");
+        return new Tree(treeType, x, y, z, rand, 0);
     }
 
     public void render(Graphics g, int xOffset, int yOffset) {

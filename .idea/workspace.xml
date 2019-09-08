@@ -9,27 +9,30 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ab3d649-fdfe-4863-8a5f-5a792e85c7aa" name="Default" comment="polished PlantSeedAi and tweaked Pathfinding to consider tile type in travel cost">
+    <list default="true" id="9ab3d649-fdfe-4863-8a5f-5a792e85c7aa" name="Default" comment="Refactored and cleaned Tile code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/Ai/Pathfinding/toTile/PlantSeedsAi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/Ai/Pathfinding/toTile/PlantSeedsAi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ConnectorTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ConnectorTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/LandTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/LandTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/LayeredTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/LayeredTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/Ai/Pathfinding/toEntity/UseChestAi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/Ai/Pathfinding/toEntity/UseChestAi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Living/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Crops/Crop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Crops/Crop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Crops/Seeds/TreeSeed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Crops/Seeds/TreeSeed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Entities/Plants/Tree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/Seed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/Seed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Items/TreeSeeds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Items/TreeSeeds.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/Ladder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/Ladder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/SeedHill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/SeedHill.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/Stairs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/Stairs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/TilledSoil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/TilledSoil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/Wall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/WoodFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/ManMade/WoodFloor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/CaveWall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/CaveWall.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Dirt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Dirt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Grass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Grass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/LavaRock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/LavaRock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Sand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Sand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Snow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Snow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Slope.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Slope.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Stone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LandTiles/Natural/Stone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LiquidTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/LiquidTile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/Tiles/Tile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/World.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Generator/WorldGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Generator/WorldGen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Area.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Area.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Layer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Layer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tynellis/World/world_parts/Regions/Region.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -445,13 +448,6 @@
       <option name="presentableId" value="Default" />
       <updated>1361497301759</updated>
     </task>
-    <task id="LOCAL-00024" summary="fixed some pathfinder freezing up problems">
-      <created>1535504930515</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1535504930515</updated>
-    </task>
     <task id="LOCAL-00025" summary="Added Skeleton that attacks the player and respawn mechanics">
       <created>1535562421000</created>
       <option name="number" value="00025" />
@@ -788,7 +784,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566670146515</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Refactored and cleaned Tile code">
+      <created>1566842823883</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1566842823883</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -827,7 +830,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Started to add entrances to cave levels and fixed house interior bug" />
     <MESSAGE value="Added ladders between cave levels" />
     <MESSAGE value="Started to add removal of loaded Regions" />
     <MESSAGE value="Finished adding removal of loaded Regions" />
@@ -852,7 +854,8 @@
     <MESSAGE value="Fixed Area Pathfinding bugs" />
     <MESSAGE value="Got PlantSeedsAi working" />
     <MESSAGE value="polished PlantSeedAi and tweaked Pathfinding to consider tile type in travel cost" />
-    <option name="LAST_COMMIT_MESSAGE" value="polished PlantSeedAi and tweaked Pathfinding to consider tile type in travel cost" />
+    <MESSAGE value="Refactored and cleaned Tile code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored and cleaned Tile code" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

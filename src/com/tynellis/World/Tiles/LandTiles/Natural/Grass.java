@@ -6,6 +6,7 @@ import com.tynellis.World.Entities.Living.animals.Animal;
 import com.tynellis.World.Items.Food.Food;
 import com.tynellis.World.Tiles.LandTiles.LandTile;
 import com.tynellis.World.Tiles.Tile;
+import com.tynellis.World.world_parts.Regions.Region;
 
 import java.util.Random;
 
@@ -32,7 +33,7 @@ public class Grass extends Dirt implements Food {
     }
 
     @Override
-    public void update(Tile[][] adjacent) {
+    public void update(Region region, Tile[][] adjacent, int x, int y, int z, Random rand) {
     }
 
     @Override

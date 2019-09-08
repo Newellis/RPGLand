@@ -5,6 +5,7 @@ import com.tynellis.Art.SpriteSheet;
 import com.tynellis.BoundingBox.BoundingBoxOwner;
 import com.tynellis.GameComponent;
 import com.tynellis.World.Entities.Entity;
+import com.tynellis.World.world_parts.Regions.Region;
 import com.tynellis.debug.Debug;
 
 import java.awt.*;
@@ -131,7 +132,7 @@ public abstract class Tile implements BoundingBoxOwner, Serializable {
 
     }
 
-    public void update(Tile[][] adjacent) {
+    public void update(Region region, Tile[][] adjacent, int x, int y, int z, Random rand) {
     }
 
     public void updateArt(Tile[][] adjacent){

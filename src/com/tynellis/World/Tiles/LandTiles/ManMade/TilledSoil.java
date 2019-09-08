@@ -34,9 +34,4 @@ public class TilledSoil extends LandTile {
         }
         return 0;
     }
-
-    @Override
-    public void update(Tile[][] adjacent) {
-
-    }
 }

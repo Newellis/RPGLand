@@ -2,7 +2,6 @@ package com.tynellis.World.Tiles.LandTiles.Natural;
 
 import com.tynellis.Art.SpriteSheet;
 import com.tynellis.World.Tiles.LandTiles.LandTile;
-import com.tynellis.World.Tiles.Tile;
 
 import java.util.Random;
 
@@ -17,10 +16,6 @@ public class Stone extends LandTile {
     @Override
     protected void setSprite() {
         top = SHEET;
-    }
-
-    @Override
-    public void update(Tile[][] adjacent) {
     }
 
     @Override

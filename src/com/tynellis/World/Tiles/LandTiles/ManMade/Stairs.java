@@ -62,11 +62,6 @@ public class Stairs extends ConnectorTile {
     }
 
     @Override
-    public void update(Tile[][] adjacent) {
-
-    }
-
-    @Override
     public void handleCollision(BoundingBoxOwner bb, double xMove, double yMove, boolean isOver) {
         if (bb instanceof AttackingEntity) {
             if (((Entity) bb).isWalking() && isOver) {

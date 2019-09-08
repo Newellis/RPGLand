@@ -32,7 +32,7 @@ public class UseChestAi extends UseUsableEntityAi {
             Container inventory = entity.getInventory();
             for (int i = 0; i < inventory.getInventory().length; i++) {
                 ItemPile pile = inventory.getInventory()[i].getPile();
-                if (pile != null && filter.followsFilter(pile) && !((Chest) tool).isFull()) {
+                if (pile != null && filter.followsFilter(pile) && !((Chest) tool).isFull() && ((Chest) tool).canAddItem(pile)) {
                     return true;
                 }
             }

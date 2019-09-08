@@ -7,7 +7,7 @@ import com.tynellis.World.Tiles.LandTiles.ConnectorTile;
 import com.tynellis.World.Tiles.LandTiles.LandTile;
 import com.tynellis.World.Tiles.Tile;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.Random;
@@ -48,10 +48,6 @@ public class Slope extends ConnectorTile {
             g.drawImage(cliffEdge.getSprite(2).getStill(1), x, y, null);
             g.drawImage(cliffEdge.getSprite(4).getStill(1), x, y, null);
         }
-    }
-
-    @Override
-    public void update(Tile[][] adjacent) {
     }
 
     @Override

@@ -20,10 +20,6 @@ public class LavaRock extends LandTile {
     }
 
     @Override
-    public void update(Tile[][] adjacent) {
-    }
-
-    @Override
     public Tile newTile(Random rand, int height) {
         return new LavaRock(rand, height);
     }

@@ -1,5 +1,6 @@
 package com.tynellis.World.Entities.Plants.Crops.Seeds;
 
+import com.tynellis.World.Entities.Plants.Crops.Crop;
 import com.tynellis.World.Entities.Plants.Tree;
 
 import java.util.Random;
@@ -16,5 +17,10 @@ public class TreeSeed extends Seedling {
     @Override
     protected void Grow(Random random) {
         increaseGrowthStage();
+    }
+
+    @Override
+    public Crop newCrop(Random rand, double x, double y, double z) {
+        return new Tree(type, x, y, z, rand, 0);
     }
 }
